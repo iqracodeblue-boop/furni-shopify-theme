@@ -16,9 +16,9 @@
         "heading": "Modern Interior Design Studio",
         "description": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit.",
         "shop_text": "Shop Now",
-        "shop_link": "",
+        "shop_link": "shopify://pages/new-home",
         "explore_text": "Explore",
-        "explore_link": "",
+        "explore_link": "shopify://pages/new-home",
         "hero_image": "shopify://shop_images/imgi_3_couch.png"
       }
     },
@@ -116,7 +116,7 @@
           "settings": {
             "image": "shopify://shop_images/imgi_4_product-1.png",
             "title": "Nordic Chair",
-            "description": "",
+            "description": "Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada.",
             "button_text": "Read More",
             "button_link": ""
           }
@@ -126,7 +126,7 @@
           "settings": {
             "image": "shopify://shop_images/imgi_6_product-2.png",
             "title": "Kuzurro Chair",
-            "description": "",
+            "description": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
             "button_text": "Read More",
             "button_link": ""
           }
@@ -136,7 +136,7 @@
           "settings": {
             "image": "shopify://shop_images/imgi_7_product-3.png",
             "title": "Ergonomic Chair",
-            "description": "",
+            "description": "Aliquam vulputate velit imperdiet dolor tempor tristique. Donec vitae odio quis nisl dapibus malesuada.",
             "button_text": "Read More",
             "button_link": ""
           }
