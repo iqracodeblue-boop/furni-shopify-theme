@@ -1,1 +1,228 @@
-{"sections":{"hero_jVaWmY":{"type":"hero","blocks":{"text_YLPk4p":{"type":"text","name":"t:names.heading","settings":{"text":"<p>Browse our latest products<\/p>","width":"fit-content","max_width":"normal","alignment":"left","type_preset":"h2","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","text_color":"{{ settings.color_palette.background }}","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}},"button_H9gpTf":{"type":"button","name":"t:names.button","settings":{"label":"Shop all","link":"shopify:\/\/collections\/all","open_in_new_tab":false,"style_class":"button-custom","custom_button_background":"rgba(0,0,0,0)","custom_button_text":"{{ settings.color_palette.background }}","custom_button_border":"{{ settings.color_palette.background }}","link_text_color":"","width":"fit-content","custom_width":100,"width_mobile":"fit-content","custom_width_mobile":100},"blocks":{}}},"block_order":["text_YLPk4p","button_H9gpTf"],"name":"t:names.hero","settings":{"media_type_1":"image","media_type_2":"image","stack_media_on_mobile":false,"custom_mobile_media":false,"media_type_1_mobile":"image","media_type_2_mobile":"image","link":"","open_in_new_tab":false,"content_direction":"column","vertical_on_mobile":true,"horizontal_alignment":"space-between","vertical_alignment":"flex-end","align_baseline":true,"horizontal_alignment_flex_direction_column":"center","vertical_alignment_flex_direction_column":"flex-end","gap":24,"section_width":"page-width","section_height":"medium","section_height_custom":50,"background_color":"rgba(0,0,0,0)","toggle_overlay":true,"overlay_color":"#12121266","overlay_style":"solid","gradient_direction":"to bottom","blurred_reflection":false,"reflection_opacity":75,"padding-block-start":100,"padding-block-end":72}},"product_list_fa6P9H":{"type":"product-list","blocks":{"static-header":{"type":"_product-list-content","name":"t:names.header","static":true,"settings":{"content_direction":"row","vertical_on_mobile":false,"horizontal_alignment":"space-between","vertical_alignment":"flex-end","align_baseline":true,"horizontal_alignment_flex_direction_column":"flex-start","vertical_alignment_flex_direction_column":"center","gap":12,"width":"fill","custom_width":100,"width_mobile":"fill","custom_width_mobile":100,"height":"fit","custom_height":100,"background_media":"none","background_color":"","video_position":"cover","background_image_position":"cover","border":"none","border_width":1,"border_opacity":100,"border_color":"","border_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{"product_list_text_YFtzcL":{"type":"_product-list-text","name":"t:names.collection_title","settings":{"text":"<h3>{{ closest.collection.title }}<\/h3>","width":"fit-content","max_width":"normal","alignment":"left","type_preset":"h4","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","text_color":"","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}},"product_list_button_MWeP9V":{"type":"_product-list-button","name":"t:names.product_list_button","settings":{"label":"View all","open_in_new_tab":false,"style_class":"link","custom_button_background":"{{ settings.color_palette.foreground }}","custom_button_text":"{{ settings.color_palette.background }}","custom_button_border":"{{ settings.color_palette.background }}","link_text_color":"","width":"fit-content","custom_width":100,"width_mobile":"fit-content","custom_width_mobile":100},"blocks":{}}},"block_order":["product_list_text_YFtzcL","product_list_button_MWeP9V"]},"static-product-card":{"type":"_product-card","name":"t:names.product_card","static":true,"settings":{"product_card_gap":4,"background_color":"","border":"none","border_width":1,"border_opacity":100,"border_color":"","border_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{"product_card_gallery_677WP3":{"type":"_product-card-gallery","name":"t:names.product_card_media","settings":{"image_ratio":"adapt","border":"none","border_width":1,"border_opacity":100,"border_color":"","border_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}},"product_title_YXxMTj":{"type":"product-title","name":"t:names.product_title","settings":{"width":"100%","max_width":"normal","alignment":"left","type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","text_color":"","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":4,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}},"price_JQzVV4":{"type":"price","name":"t:names.product_price","settings":{"show_sale_price_first":true,"show_installments":false,"show_tax_info":false,"type_preset":"h6","width":"100%","alignment":"left","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","text_color":"","padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}}},"block_order":["product_card_gallery_677WP3","product_title_YXxMTj","price_JQzVV4"]}},"name":"Featured collection","settings":{"collection":"all","layout_type":"grid","carousel_on_mobile":false,"max_products":8,"columns":4,"mobile_columns":"2","mobile_card_size":"60cqw","columns_gap":8,"rows_gap":24,"icons_style":"arrow","icons_shape":"none","section_width":"page-width","horizontal_alignment":"flex-start","gap":28,"background_color":"{{ settings.color_palette.background }}","padding-block-start":48,"padding-block-end":48}}},"order":["hero_jVaWmY","product_list_fa6P9H"]}
+{"sections":{"hero_jVaWmY":{"type":"hero","blocks":{"text_YLPk4p":{"type":"text","name":"t:names.heading","settings":{"text":"<p>Browse our latest products<\/p>","width":"fit-content","max_width":"normal","alignment":"left","type_preset":"h2","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","text_color":"{{ settings.color_palette.background }}","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}},"button_H9gpTf":{"type":"button","name":"t:names.button","settings":{"label":"Shop all","link":"shopify:\/\/collections\/all","open_in_new_tab":false,"style_class":"button-custom","custom_button_background":"rgba(0,0,0,0)","custom_button_text":"{{ settings.color_palette.background }}","custom_button_border":"{{ settings.color_palette.background }}","link_text_color":"","width":"fit-content","custom_width":100,"width_mobile":"fit-content","custom_width_mobile":100},"blocks":{}}},"block_order":["text_YLPk4p","button_H9gpTf"],"name":"t:names.hero","settings":{"media_type_1":"image","media_type_2":"image","stack_media_on_mobile":false,"custom_mobile_media":false,"media_type_1_mobile":"image","media_type_2_mobile":"image","link":"","open_in_new_tab":false,"content_direction":"column","vertical_on_mobile":true,"horizontal_alignment":"space-between","vertical_alignment":"flex-end","align_baseline":true,"horizontal_alignment_flex_direction_column":"center","vertical_alignment_flex_direction_column":"flex-end","gap":24,"section_width":"page-width","section_height":"medium","section_height_custom":50,"background_color":"rgba(0,0,0,0)","toggle_overlay":true,"overlay_color":"#12121266","overlay_style":"solid","gradient_direction":"to bottom","blurred_reflection":false,"reflection_opacity":75,"padding-block-start":100,"padding-block-end":72}},"product_list_fa6P9H":{"type":"product-list","blocks":{"static-header":{"type":"_product-list-content","name":"t:names.header","static":true,"settings":{"content_direction":"row","vertical_on_mobile":false,"horizontal_alignment":"space-between","vertical_alignment":"flex-end","align_baseline":true,"horizontal_alignment_flex_direction_column":"flex-start","vertical_alignment_flex_direction_column":"center","gap":12,"width":"fill","custom_width":100,"width_mobile":"fill","custom_width_mobile":100,"height":"fit","custom_height":100,"background_media":"none","background_color":"","video_position":"cover","background_image_position":"cover","border":"none","border_width":1,"border_opacity":100,"border_color":"","border_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{"product_list_text_YFtzcL":{"type":"_product-list-text","name":"t:names.collection_title","settings":{"text":"<h3>{{ closest.collection.title }}<\/h3>","width":"fit-content","max_width":"normal","alignment":"left","type_preset":"h4","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","text_color":"","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}},"product_list_button_MWeP9V":{"type":"_product-list-button","name":"t:names.product_list_button","settings":{"label":"View all","open_in_new_tab":false,"style_class":"link","custom_button_background":"{{ settings.color_palette.foreground }}","custom_button_text":"{{ settings.color_palette.background }}","custom_button_border":"{{ settings.color_palette.background }}","link_text_color":"","width":"fit-content","custom_width":100,"width_mobile":"fit-content","custom_width_mobile":100},"blocks":{}}},"block_order":["product_list_text_YFtzcL","product_list_button_MWeP9V"]},"static-product-card":{"type":"_product-card","name":"t:names.product_card","static":true,"settings":{"product_card_gap":4,"background_color":"","border":"none","border_width":1,"border_opacity":100,"border_color":"","border_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{"product_card_gallery_677WP3":{"type":"_product-card-gallery","name":"t:names.product_card_media","settings":{"image_ratio":"adapt","border":"none","border_width":1,"border_opacity":100,"border_color":"","border_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}},"product_title_YXxMTj":{"type":"product-title","name":"t:names.product_title","settings":{"width":"100%","max_width":"normal","alignment":"left","type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","text_color":"","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":4,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}},"price_JQzVV4":{"type":"price","name":"t:names.product_price","settings":{"show_sale_price_first":true,"show_installments":false,"show_tax_info":false,"type_preset":"h6","width":"100%","alignment":"left","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","text_color":"","padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}}},"block_order":["product_card_gallery_677WP3","product_title_YXxMTj","price_JQzVV4"]}},"name":"Featured collection","settings":{"collection":"all","layout_type":"grid","carousel_on_mobile":false,"max_products":8,"columns":4,"mobile_columns":"2","mobile_card_size":"60cqw","columns_gap":8,"rows_gap":24,"icons_style":"arrow","icons_shape":"none","section_width":"page-width","horizontal_alignment":"flex-start","gap":28,"background_color":"{{ settings.color_palette.background }}","padding-block-start":48,"padding-block-end":48}}},"order":["hero_jVaWmY","product_list_fa6P9H"]}/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_hero_JgNEJW": {
+      "type": "custom-hero",
+      "name": "Custom Hero",
+      "settings": {
+        "heading": "Modern Interior Design Studio",
+        "description": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit.",
+        "shop_text": "Shop Now",
+        "shop_link": "shopify://pages/new-home",
+        "explore_text": "Explore",
+        "explore_link": "shopify://pages/new-home",
+        "hero_image": "shopify://shop_images/imgi_3_couch.png"
+      }
+    },
+    "crafted_material_4hTaVy": {
+      "type": "crafted-material",
+      "blocks": {
+        "product_qYwEhf": {
+          "type": "product",
+          "settings": {
+            "image": "shopify://shop_images/imgi_4_product-1.png",
+            "title": "Nordic Chair",
+            "price": "$50.00"
+          }
+        },
+        "product_b6wkcF": {
+          "type": "product",
+          "settings": {
+            "image": "shopify://shop_images/imgi_6_product-2.png",
+            "title": "Kurzu Aero Chair",
+            "price": "$78.00"
+          }
+        },
+        "product_ajh7yr": {
+          "type": "product",
+          "settings": {
+            "image": "shopify://shop_images/imgi_7_product-3.png",
+            "title": "Ergonomic Chair",
+            "price": "$48.00"
+          }
+        }
+      },
+      "block_order": [
+        "product_qYwEhf",
+        "product_b6wkcF",
+        "product_ajh7yr"
+      ],
+      "name": "Crafted Material",
+      "settings": {
+        "heading": "Crafted with excellent material.",
+        "description": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.",
+        "button_text": "Explore",
+        "button_link": ""
+      }
+    },
+    "interior_design_X7QBzg": {
+      "type": "interior-design",
+      "blocks": {
+        "product_8wbz9P": {
+          "type": "product",
+          "settings": {
+            "image": "shopify://shop_images/imgi_4_product-1.png",
+            "title": "Nordic Chair",
+            "description": "Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio.",
+            "button_text": "Read More",
+            "button_link": ""
+          }
+        },
+        "product_9d4D8n": {
+          "type": "product",
+          "settings": {
+            "image": "shopify://shop_images/imgi_6_product-2.png",
+            "title": "Kruzo Aero Chair",
+            "description": "Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio.",
+            "button_text": "Read More",
+            "button_link": ""
+          }
+        },
+        "product_DnMFBe": {
+          "type": "product",
+          "settings": {
+            "image": "shopify://shop_images/imgi_7_product-3.png",
+            "title": "Ergonomic Chair",
+            "description": "Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio.",
+            "button_text": "Read More",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_8wbz9P",
+        "product_9d4D8n",
+        "product_DnMFBe"
+      ],
+      "name": "Interior Design",
+      "settings": {
+        "heading": "We Help You Make Modern Interior Design",
+        "description": "Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.",
+        "button_text": "Explore",
+        "button_link": "",
+        "big_image": "shopify://shop_images/imgi_13_img-grid-1.jpg",
+        "top_image": "shopify://shop_images/imgi_14_img-grid-2.jpg",
+        "bottom_image": "shopify://shop_images/imgi_15_img-grid-3.jpg",
+        "feature_1": "Donec vitae odio quis nisl dapibus malesuada",
+        "feature_2": "Donec vitae odio quis nisl dapibus malesuada",
+        "feature_3": "Donec vitae odio quis nisl dapibus malesuada",
+        "feature_4": "Donec vitae odio quis nisl dapibus malesuada"
+      }
+    },
+    "why_choose_bFpX3a": {
+      "type": "why-choose",
+      "blocks": {
+        "feature_XGAD6z": {
+          "type": "feature",
+          "settings": {
+            "title": "Fast & Free Shipping",
+            "description": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit."
+          }
+        },
+        "feature_6XNp8h": {
+          "type": "feature",
+          "settings": {
+            "title": "Easy to Shop",
+            "description": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate."
+          }
+        },
+        "feature_APxHtV": {
+          "type": "feature",
+          "settings": {
+            "title": "24/7 Support",
+            "description": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate."
+          }
+        },
+        "feature_pzLXCi": {
+          "type": "feature",
+          "settings": {
+            "title": "24/7 Support",
+            "description": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate."
+          }
+        }
+      },
+      "block_order": [
+        "feature_XGAD6z",
+        "feature_6XNp8h",
+        "feature_APxHtV",
+        "feature_pzLXCi"
+      ],
+      "name": "Why Choose Us",
+      "settings": {
+        "heading": "Why Choose Us",
+        "description": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.",
+        "right_image": "shopify://shop_images/imgi_12_why-choose-us-img.jpg"
+      }
+    },
+    "testimonials_RwUF3b": {
+      "type": "testimonials",
+      "name": "Testimonials",
+      "settings": {
+        "heading": "Testimonials",
+        "testimonial": "Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.",
+        "person_image": "shopify://shop_images/imgi_16_person-1.png",
+        "person_name": "Maria Jones",
+        "person_designation": "CEO, Co-Founder, XYZ Inc."
+      }
+    },
+    "recent_blog_4mqDQ4": {
+      "type": "recent-blog",
+      "blocks": {
+        "blog_h7AnBt": {
+          "type": "blog",
+          "settings": {
+            "image": "shopify://shop_images/imgi_18_post-2.jpg",
+            "title": "First Time Home Owner Ideas",
+            "author": "Kristin Watson",
+            "date": "Dec 19, 2021"
+          }
+        },
+        "blog_YqCryj": {
+          "type": "blog",
+          "settings": {
+            "image": "shopify://shop_images/imgi_17_post-1.jpg",
+            "title": "How To Keep Your Furniture Clean",
+            "author": "Robert Fox",
+            "date": "Dec 15, 2021"
+          }
+        },
+        "blog_EfwHef": {
+          "type": "blog",
+          "settings": {
+            "image": "shopify://shop_images/imgi_44_post-9.jpg",
+            "title": "Small Space Furniture Apartment Ideas",
+            "author": "Kristin Watson",
+            "date": "Dec 12, 2021"
+          }
+        }
+      },
+      "block_order": [
+        "blog_h7AnBt",
+        "blog_YqCryj",
+        "blog_EfwHef"
+      ],
+      "name": "Recent Blog",
+      "settings": {
+        "heading": "Recent Blog",
+        "button_text": "View All Posts",
+        "button_link": ""
+      }
+    }
+  },
+  "order": [
+    "custom_hero_JgNEJW",
+    "crafted_material_4hTaVy",
+    "interior_design_X7QBzg",
+    "why_choose_bFpX3a",
+    "testimonials_RwUF3b",
+    "recent_blog_4mqDQ4"
+  ]
+}
