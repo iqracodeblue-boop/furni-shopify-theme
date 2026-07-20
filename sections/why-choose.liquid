@@ -1,0 +1,119 @@
+{{ 'why-choose.css' | asset_url | stylesheet_tag }}
+
+<section class="why-choose">
+  <div class="page-width why-wrapper">
+
+    <div class="why-left">
+
+      <h2>{{ section.settings.heading }}</h2>
+
+      <p class="why-text">
+        {{ section.settings.description }}
+      </p>
+
+      <div class="why-grid">
+
+        {% for block in section.blocks %}
+
+          <div class="why-box" {{ block.shopify_attributes }}>
+
+            <div class="icon-circle">
+  {% if block.settings.icon != blank %}
+    {{
+      block.settings.icon
+      | image_url: width: 40
+      | image_tag:
+        loading: 'lazy',
+        widths: '40',
+        alt: block.settings.title,
+        class: 'feature-icon'
+    }}
+  {% endif %}
+</div>
+
+<h4>{{ block.settings.title }}</h4>
+
+<p>{{ block.settings.description }}</p>
+          </div>
+
+        {% endfor %}
+
+      </div>
+
+    </div>
+
+    <div class="why-right">
+
+      <div class="dots"></div>
+
+      <img
+        src="{{ section.settings.right_image | image_url }}"
+        alt="Why Choose Us"
+        width="520"
+        height="620">
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Why Choose Us",
+  "tag": "section",
+  "class": "section-why-choose",
+
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why Choose Us"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique."
+    },
+    {
+      "type": "image_picker",
+      "id": "right_image",
+      "label": "Right Image"
+    }
+  ],
+
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Feature Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Feature Title",
+          "default": "Fast & Free Shipping"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Feature Description",
+          "default": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit."
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Why Choose Us"
+    }
+  ]
+}
+{% endschema %}

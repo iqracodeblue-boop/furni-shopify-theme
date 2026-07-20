@@ -1,0 +1,148 @@
+.why-choose{
+    padding:100px 0;
+    background:#fff;
+}
+
+.why-wrapper{
+    max-width:1200px;
+    margin:0 auto;
+    padding:0 15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:80px;
+}
+
+.why-left{
+    width:50%;
+}
+
+.why-left h2{
+    font-size:36px;
+    font-weight:700;
+    color:#2f2f2f;
+    margin-bottom:20px;
+}
+
+.why-text{
+    font-size:15px;
+    color:#6a6a6a;
+    line-height:28px;
+    margin-bottom:45px;
+}
+
+.why-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(240px,1fr));
+    gap:35px 40px;
+}
+
+.why-box{
+    width:100%;
+}
+
+.icon-circle{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    background:#edf2f1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.icon-circle{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    background:#dce5e4;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:15px;
+    flex-shrink:0;
+}
+
+.feature-icon{
+    width:24px;
+    height:24px;
+    object-fit:contain;
+    display:block;
+}
+
+.why-box{
+    width:100%;
+    min-width:0;
+}
+
+.why-box h4{
+    font-size:18px;
+    font-weight:600;
+    line-height:1.4;
+    margin:15px 0 10px;
+    white-space:normal;
+    word-break:normal;
+    overflow-wrap:break-word;
+}
+
+.why-box p{
+    font-size:14px;
+    line-height:1.8;
+    margin:0;
+}
+}
+
+.why-right{
+    width:45%;
+    position:relative;
+}
+
+.why-right img{
+    width:100%;
+    display:block;
+    border-radius:20px;
+    position:relative;
+    z-index:2;
+}
+
+.dots{
+    position:absolute;
+    width:220px;
+    height:220px;
+    top:-35px;
+    left:-35px;
+    z-index:1;
+    background-image:radial-gradient(#f9bf29 2px, transparent 2px);
+    background-size:18px 18px;
+}
+
+@media(max-width:991px){
+
+    .why-wrapper{
+        flex-direction:column;
+        gap:60px;
+    }
+
+    .why-left,
+    .why-right{
+        width:100%;
+    }
+
+    .why-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:767px){
+
+    .why-grid{
+        grid-template-columns:1fr;
+    }
+
+    .why-left h2{
+        font-size:30px;
+    }
+
+}

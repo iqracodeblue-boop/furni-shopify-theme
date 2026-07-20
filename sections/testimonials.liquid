@@ -1,0 +1,86 @@
+{{ 'testimonials.css' | asset_url | stylesheet_tag }}
+
+<section class="testimonials">
+  <div class="page-width">
+
+    <div class="dots"></div>
+
+    <h2>{{ section.settings.heading }}</h2>
+
+    <p class="testimonial-text">
+      {{ section.settings.testimonial }}
+    </p>
+
+    <div class="testimonial-person">
+
+      {% if section.settings.person_image != blank %}
+        <img
+          src="{{ section.settings.person_image | image_url: width: 120 }}"
+          alt="{{ section.settings.person_name }}"
+          width="80"
+          height="80">
+      {% endif %}
+
+      <h4>{{ section.settings.person_name }}</h4>
+
+      <span>{{ section.settings.person_designation }}</span>
+
+    </div>
+
+    <div class="testimonial-dots">
+      <span class="active"></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <button class="arrow left">&#10094;</button>
+    <button class="arrow right">&#10095;</button>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "tag": "section",
+  "class": "section-testimonials",
+
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Testimonials"
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial",
+      "label": "Testimonial",
+      "default": "Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque."
+    },
+    {
+      "type": "image_picker",
+      "id": "person_image",
+      "label": "Person Image"
+    },
+    {
+      "type": "text",
+      "id": "person_name",
+      "label": "Person Name",
+      "default": "Maria Jones"
+    },
+    {
+      "type": "text",
+      "id": "person_designation",
+      "label": "Designation",
+      "default": "CEO, Co-Founder, XYZ Inc."
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Testimonials"
+    }
+  ]
+}
+{% endschema %}

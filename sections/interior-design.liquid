@@ -1,0 +1,202 @@
+{{ 'interior-design.css' | asset_url | stylesheet_tag }}
+
+<section class="interior-design">
+  <div class="page-width">
+
+    <div class="interior-top">
+
+      <div class="interior-gallery">
+
+        <div class="dots"></div>
+
+        <img
+          class="img-big"
+          src="{{ section.settings.big_image | image_url }}"
+          alt="Living Room"
+          width="420"
+          height="500"
+        >
+
+        <img
+          class="img-small-top"
+         src="{{ section.settings.top_image | image_url }}"
+          alt="Room"
+          width="180"
+          height="180"
+        >
+
+        <img
+          class="img-small-bottom"
+          src="{{ section.settings.bottom_image | image_url }}"
+          alt="Chair"
+          width="260"
+          height="300"
+        >
+
+      </div>
+
+      <div class="interior-content">
+
+        <h2>We Help You Make Modern Interior Design</h2>
+
+        <p>
+          Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis
+          nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate
+          velit imperdiet dolor tempor tristique.
+        </p>
+
+        <ul class="feature-list">
+  <li>{{ section.settings.feature_1 }}</li>
+  <li>{{ section.settings.feature_2 }}</li>
+  <li>{{ section.settings.feature_3 }}</li>
+  <li>{{ section.settings.feature_4 }}</li>
+</ul>
+
+        <a href="#" class="explore-btn">Explore</a>
+
+      </div>
+
+    </div>
+
+<div class="products-row">
+
+  {% for block in section.blocks %}
+
+    <div class="product-item" {{ block.shopify_attributes }}>
+
+      <img
+        src="{{ block.settings.image | image_url: width: 80 }}"
+        alt="{{ block.settings.title }}"
+        width="80"
+        height="80"
+      >
+
+      <div class="product-info">
+
+        <h4>{{ block.settings.title }}</h4>
+
+        <p>{{ block.settings.description }}</p>
+
+        <a href="{{ block.settings.button_link }}">
+          {{ block.settings.button_text }}
+        </a>
+
+      </div>
+
+    </div>
+
+  {% endfor %}
+
+</div>
+</section>
+
+{% schema %}
+{
+  "name": "Interior Design",
+  "tag": "section",
+  "class": "section-interior-design",
+
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "We Help You Make Modern Interior Design"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Explore"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "big_image",
+      "label": "Big Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "top_image",
+      "label": "Top Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "bottom_image",
+      "label": "Bottom Image"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_1",
+      "label": "Feature 1"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_2",
+      "label": "Feature 2"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_3",
+      "label": "Feature 3"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_4",
+      "label": "Feature 4"
+    }
+  ],
+
+ "blocks": [
+  {
+    "type": "product",
+    "name": "Product",
+    "limit": 3,
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Product Image"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Product Title",
+        "default": "Nordic Chair"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Description"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+        "default": "Read More"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link"
+      }
+    ]
+  }
+],
+  "presets": [
+    {
+      "name": "Interior Design"
+    }
+  ]
+}
+{% endschema %}
