@@ -9,293 +9,209 @@
  */
 {
   "sections": {
-    "hero_jVaWmY": {
-      "type": "hero",
+    "custom_hero_RqWz33": {
+      "type": "custom-hero",
+      "name": "Custom Hero",
+      "settings": {
+        "heading": "Modern Interior Design Studio",
+        "description": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit.",
+        "shop_text": "Shop Now",
+        "shop_link": "",
+        "explore_text": "Explore",
+        "explore_link": "",
+        "hero_image": "shopify://shop_images/imgi_3_couch.png"
+      }
+    },
+    "crafted_material_T8kcMm": {
+      "type": "crafted-material",
       "blocks": {
-        "text_YLPk4p": {
-          "type": "text",
-          "name": "t:names.heading",
+        "product_qKyUze": {
+          "type": "product",
           "settings": {
-            "text": "<p>Browse our latest products</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "{{ settings.color_palette.background }}",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "image": "shopify://shop_images/imgi_4_product-1.png",
+            "title": "Nordic Chair",
+            "price": "$50.00"
+          }
         },
-        "button_H9gpTf": {
-          "type": "button",
-          "name": "t:names.button",
+        "product_thpGCA": {
+          "type": "product",
           "settings": {
-            "label": "Shop all",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "button-custom",
-            "custom_button_background": "rgba(0,0,0,0)",
-            "custom_button_text": "{{ settings.color_palette.background }}",
-            "custom_button_border": "{{ settings.color_palette.background }}",
-            "link_text_color": "",
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
-          },
-          "blocks": {}
+            "image": "shopify://shop_images/imgi_6_product-2.png",
+            "title": "Kuzuro Chair",
+            "price": "$78.00"
+          }
+        },
+        "product_DqYKdF": {
+          "type": "product",
+          "settings": {
+            "image": "shopify://shop_images/imgi_7_product-3.png",
+            "title": "Egronomic Chair",
+            "price": "$48.00"
+          }
         }
       },
       "block_order": [
-        "text_YLPk4p",
-        "button_H9gpTf"
+        "product_qKyUze",
+        "product_thpGCA",
+        "product_DqYKdF"
       ],
-      "name": "t:names.hero",
+      "name": "Crafted Material",
       "settings": {
-        "media_type_1": "image",
-        "media_type_2": "image",
-        "stack_media_on_mobile": false,
-        "custom_mobile_media": false,
-        "media_type_1_mobile": "image",
-        "media_type_2_mobile": "image",
-        "link": "",
-        "open_in_new_tab": false,
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "space-between",
-        "vertical_alignment": "flex-end",
-        "align_baseline": true,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "flex-end",
-        "gap": 24,
-        "section_width": "page-width",
-        "section_height": "medium",
-        "section_height_custom": 50,
-        "background_color": "rgba(0,0,0,0)",
-        "toggle_overlay": true,
-        "overlay_color": "#12121266",
-        "overlay_style": "solid",
-        "gradient_direction": "to bottom",
-        "blurred_reflection": false,
-        "reflection_opacity": 75,
-        "padding-block-start": 100,
-        "padding-block-end": 72
+        "heading": "Crafted with excellent material.",
+        "description": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.",
+        "button_text": "Explore",
+        "button_link": ""
       }
     },
-    "product_list_fa6P9H": {
-      "type": "product-list",
+    "why_choose_YiBb7w": {
+      "type": "why-choose",
       "blocks": {
-        "static-header": {
-          "type": "_product-list-content",
-          "name": "t:names.header",
-          "static": true,
+        "feature_QxHWLY": {
+          "type": "feature",
           "settings": {
-            "content_direction": "row",
-            "vertical_on_mobile": false,
-            "horizontal_alignment": "space-between",
-            "vertical_alignment": "flex-end",
-            "align_baseline": true,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "background_media": "none",
-            "background_color": "",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_list_text_YFtzcL": {
-              "type": "_product-list-text",
-              "name": "t:names.collection_title",
-              "settings": {
-                "text": "<h3>{{ closest.collection.title }}</h3>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_list_button_MWeP9V": {
-              "type": "_product-list-button",
-              "name": "t:names.product_list_button",
-              "settings": {
-                "label": "View all",
-                "open_in_new_tab": false,
-                "style_class": "link",
-                "custom_button_background": "{{ settings.color_palette.foreground }}",
-                "custom_button_text": "{{ settings.color_palette.background }}",
-                "custom_button_border": "{{ settings.color_palette.background }}",
-                "link_text_color": "",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_list_text_YFtzcL",
-            "product_list_button_MWeP9V"
-          ]
+            "title": "Fast & Free Shipping",
+            "description": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit."
+          }
         },
-        "static-product-card": {
-          "type": "_product-card",
-          "name": "t:names.product_card",
-          "static": true,
+        "feature_ADWTPW": {
+          "type": "feature",
           "settings": {
-            "product_card_gap": 4,
-            "background_color": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_card_gallery_677WP3": {
-              "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
-              "settings": {
-                "image_ratio": "adapt",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_color": "",
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_title_YXxMTj": {
-              "type": "product-title",
-              "name": "t:names.product_title",
-              "settings": {
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "price_JQzVV4": {
-              "type": "price",
-              "name": "t:names.product_price",
-              "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "h6",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "text_color": "",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_card_gallery_677WP3",
-            "product_title_YXxMTj",
-            "price_JQzVV4"
-          ]
+            "title": "Fast & Free Shipping",
+            "description": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit."
+          }
+        },
+        "feature_PUGYAi": {
+          "type": "feature",
+          "settings": {
+            "title": "Fast & Free Shipping",
+            "description": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit."
+          }
+        },
+        "feature_bG7JNM": {
+          "type": "feature",
+          "settings": {
+            "title": "Fast & Free Shipping",
+            "description": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit."
+          }
         }
       },
-      "name": "Featured collection",
+      "block_order": [
+        "feature_QxHWLY",
+        "feature_ADWTPW",
+        "feature_PUGYAi",
+        "feature_bG7JNM"
+      ],
+      "name": "Why Choose Us",
       "settings": {
-        "collection": "all",
-        "layout_type": "grid",
-        "carousel_on_mobile": false,
-        "max_products": 8,
-        "columns": 4,
-        "mobile_columns": "2",
-        "mobile_card_size": "60cqw",
-        "columns_gap": 8,
-        "rows_gap": 24,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "page-width",
-        "horizontal_alignment": "flex-start",
-        "gap": 28,
-        "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "heading": "Why Choose Us",
+        "description": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique."
+      }
+    },
+    "interior_design_49qtAW": {
+      "type": "interior-design",
+      "blocks": {
+        "product_BRiUDe": {
+          "type": "product",
+          "settings": {
+            "title": "Nordic Chair",
+            "description": "",
+            "button_text": "Read More",
+            "button_link": ""
+          }
+        },
+        "product_TpyzNE": {
+          "type": "product",
+          "settings": {
+            "title": "Nordic Chair",
+            "description": "",
+            "button_text": "Read More",
+            "button_link": ""
+          }
+        },
+        "product_zFxLPY": {
+          "type": "product",
+          "settings": {
+            "title": "Nordic Chair",
+            "description": "",
+            "button_text": "Read More",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_BRiUDe",
+        "product_TpyzNE",
+        "product_zFxLPY"
+      ],
+      "name": "Interior Design",
+      "settings": {
+        "heading": "We Help You Make Modern Interior Design",
+        "description": "Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.",
+        "button_text": "Explore",
+        "button_link": "",
+        "feature_1": "",
+        "feature_2": "",
+        "feature_3": "",
+        "feature_4": ""
+      }
+    },
+    "testimonials_JhCeHU": {
+      "type": "testimonials",
+      "name": "Testimonials",
+      "settings": {
+        "heading": "Testimonials",
+        "testimonial": "Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.",
+        "person_name": "Maria Jones",
+        "person_designation": "CEO, Co-Founder, XYZ Inc."
+      }
+    },
+    "recent_blog_RwJ8yB": {
+      "type": "recent-blog",
+      "blocks": {
+        "blog_Xp7yBA": {
+          "type": "blog",
+          "settings": {
+            "title": "First Time Home Owner Ideas",
+            "author": "Kristin Watson",
+            "date": "Dec 19, 2021"
+          }
+        },
+        "blog_CVPaC6": {
+          "type": "blog",
+          "settings": {
+            "title": "First Time Home Owner Ideas",
+            "author": "Kristin Watson",
+            "date": "Dec 19, 2021"
+          }
+        },
+        "blog_74C9VN": {
+          "type": "blog",
+          "settings": {
+            "title": "First Time Home Owner Ideas",
+            "author": "Kristin Watson",
+            "date": "Dec 19, 2021"
+          }
+        }
+      },
+      "block_order": [
+        "blog_Xp7yBA",
+        "blog_CVPaC6",
+        "blog_74C9VN"
+      ],
+      "name": "Recent Blog",
+      "settings": {
+        "heading": "Recent Blog",
+        "button_text": "View All Posts",
+        "button_link": ""
       }
     }
   },
   "order": [
-    "hero_jVaWmY",
-    "product_list_fa6P9H"
+    "custom_hero_RqWz33",
+    "crafted_material_T8kcMm",
+    "why_choose_YiBb7w",
+    "interior_design_49qtAW",
+    "testimonials_JhCeHU",
+    "recent_blog_RwJ8yB"
   ]
 }
