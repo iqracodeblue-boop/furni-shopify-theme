@@ -104,7 +104,8 @@
       "name": "Why Choose Us",
       "settings": {
         "heading": "Why Choose Us",
-        "description": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique."
+        "description": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.",
+        "right_image": "shopify://shop_images/imgi_12_why-choose-us-img.jpg"
       }
     },
     "interior_design_49qtAW": {
@@ -113,6 +114,7 @@
         "product_BRiUDe": {
           "type": "product",
           "settings": {
+            "image": "shopify://shop_images/imgi_4_product-1.png",
             "title": "Nordic Chair",
             "description": "",
             "button_text": "Read More",
@@ -122,7 +124,8 @@
         "product_TpyzNE": {
           "type": "product",
           "settings": {
-            "title": "Nordic Chair",
+            "image": "shopify://shop_images/imgi_6_product-2.png",
+            "title": "Kuzurro Chair",
             "description": "",
             "button_text": "Read More",
             "button_link": ""
@@ -131,7 +134,8 @@
         "product_zFxLPY": {
           "type": "product",
           "settings": {
-            "title": "Nordic Chair",
+            "image": "shopify://shop_images/imgi_7_product-3.png",
+            "title": "Ergonomic Chair",
             "description": "",
             "button_text": "Read More",
             "button_link": ""
@@ -149,6 +153,9 @@
         "description": "Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.",
         "button_text": "Explore",
         "button_link": "",
+        "big_image": "shopify://shop_images/imgi_13_img-grid-1.jpg",
+        "top_image": "shopify://shop_images/imgi_14_img-grid-2.jpg",
+        "bottom_image": "shopify://shop_images/imgi_15_img-grid-3.jpg",
         "feature_1": "",
         "feature_2": "",
         "feature_3": "",
@@ -161,6 +168,7 @@
       "settings": {
         "heading": "Testimonials",
         "testimonial": "Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.",
+        "person_image": "shopify://shop_images/imgi_16_person-1.png",
         "person_name": "Maria Jones",
         "person_designation": "CEO, Co-Founder, XYZ Inc."
       }
@@ -171,6 +179,7 @@
         "blog_Xp7yBA": {
           "type": "blog",
           "settings": {
+            "image": "shopify://shop_images/imgi_18_post-2.jpg",
             "title": "First Time Home Owner Ideas",
             "author": "Kristin Watson",
             "date": "Dec 19, 2021"
@@ -179,7 +188,8 @@
         "blog_CVPaC6": {
           "type": "blog",
           "settings": {
-            "title": "First Time Home Owner Ideas",
+            "image": "shopify://shop_images/imgi_17_post-1.jpg",
+            "title": "How to keep your furniture clean",
             "author": "Kristin Watson",
             "date": "Dec 19, 2021"
           }
@@ -187,7 +197,8 @@
         "blog_74C9VN": {
           "type": "blog",
           "settings": {
-            "title": "First Time Home Owner Ideas",
+            "image": "shopify://shop_images/imgi_44_post-9.jpg",
+            "title": "Small space furniture apartment ideas",
             "author": "Kristin Watson",
             "date": "Dec 19, 2021"
           }
