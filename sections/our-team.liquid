@@ -1,4 +1,5 @@
 {{ 'our-team.css' | asset_url | stylesheet_tag }}
+
 <section class="our-team-section page-width">
   <div class="our-team-header">
     <h2>{{ section.settings.heading }}</h2>
@@ -36,6 +37,7 @@
     {% endfor %}
   </div>
 </section>
+
 {% schema %}
 {
   "name": "Our Team",
@@ -96,18 +98,10 @@
     {
       "name": "Our Team",
       "blocks": [
-        {
-          "type": "member"
-        },
-        {
-          "type": "member"
-        },
-        {
-          "type": "member"
-        },
-        {
-          "type": "member"
-        }
+        { "type": "member" },
+        { "type": "member" },
+        { "type": "member" },
+        { "type": "member" }
       ]
     }
   ]
