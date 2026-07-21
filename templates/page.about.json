@@ -1,27 +1,10 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */{
+{
   "sections": {
-  "main": {
-    ...
-  },
-
-  "our_team": {
-    "type": "our-team",
-    "settings": {}
-  }
-},
+    "main": {
       "type": "main-page",
       "blocks": {
         "heading": {
           "type": "text",
-          "name": "Title",
           "settings": {
             "text": "<h1>{{ closest.page.title }}</h1>",
             "width": "100%",
@@ -40,13 +23,11 @@
             "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0
-          },
-          "blocks": {}
+          }
         },
         "page-content": {
           "type": "page-content",
-          "settings": {},
-          "blocks": {}
+          "settings": {}
         }
       },
       "block_order": [
@@ -60,10 +41,16 @@
         "padding-block-start": 40,
         "padding-block-end": 80
       }
+    },
+    "our_team": {
+      "type": "our-team",
+      "settings": {
+        "heading": "Our Team"
+      }
     }
   },
   "order": [
     "main",
-     "our_team"
+    "our_team"
   ]
 }
