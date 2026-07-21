@@ -7,7 +7,6 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-
 {
   "sections": {
     "main": {
@@ -79,10 +78,11 @@
       "type": "contact-info",
       "settings": {}
     },
+
     "hero": {
-  "type": "contact-hero",
-  "settings": {}
-},
+      "type": "contact-hero",
+      "settings": {}
+    },
 
     "form": {
       "type": "section",
@@ -151,7 +151,7 @@
     }
   },
 
-    "order": [
+  "order": [
     "hero",
     "main",
     "contact_info",
