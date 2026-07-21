@@ -1,28 +1,52 @@
-{{ 'contact-page.css' | asset_url | stylesheet_tag }}
+{{ 'contact-hero.css' | asset_url | stylesheet_tag }}
+
 <section class="contact-hero">
-  <div class="page-width hero-wrapper">
+  <div class="page-width">
+    <div class="contact-hero__wrapper">
 
-    <div class="hero-content">
-      <h1>Contact</h1>
+      <div class="contact-hero__content">
+        <h1>Contact</h1>
 
-      <p>
-        Donec vitae odio quis nisl dapibus malesuada.
-        Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.
-      </p>
+        <p>
+          Donec vitae odio quis nisl dapibus malesuada.
+          Nullam ac aliquet velit. Aliquam vulputate velit
+          imperdiet dolor tempor tristique.
+        </p>
 
-      <div class="hero-buttons">
-        <a href="/collections/all" class="btn-yellow">Shop Now</a>
-        <a href="/collections/all" class="btn-outline">Explore</a>
+        <div class="contact-hero__buttons">
+          <a href="/collections/all" class="btn-primary">
+            Shop Now
+          </a>
+
+          <a href="/collections/all" class="btn-secondary">
+            Explore
+          </a>
+        </div>
       </div>
-    </div>
 
-    <div class="hero-image">
+      <div class="contact-hero__image">
+
         <img
-  src="{{ 'imgi_3_couch.png' | asset_url }}"
-  alt="Sofa"
-  class="hero-couch">
-       
-    </div>
+          src="{{ 'imgi_3_couch.png' | asset_url }}"
+          alt="Sofa"
+          class="hero-sofa">
 
+        <div class="hero-dots"></div>
+
+      </div>
+
+    </div>
   </div>
 </section>
+
+{% schema %}
+{
+  "name": "Contact Hero",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Contact Hero"
+    }
+  ]
+}
+{% endschema %}
