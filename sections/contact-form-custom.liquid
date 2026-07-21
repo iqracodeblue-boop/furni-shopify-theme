@@ -1,0 +1,49 @@
+{{ 'contact-page.css' | asset_url | stylesheet_tag }}
+
+<section class="contact-custom-form">
+  <div class="page-width">
+
+    <form method="post" action="/contact#contact_form" id="contact_form">
+
+      <div class="row">
+        <div class="field">
+          <label>First name</label>
+          <input type="text" name="contact[first_name]">
+        </div>
+
+        <div class="field">
+          <label>Last name</label>
+          <input type="text" name="contact[last_name]">
+        </div>
+      </div>
+
+      <div class="field full">
+        <label>Email address</label>
+        <input type="email" name="contact[email]" required>
+      </div>
+
+      <div class="field full">
+        <label>Message</label>
+        <textarea name="contact[body]" rows="8"></textarea>
+      </div>
+
+      <button type="submit" class="contact-btn">
+        Send Message
+      </button>
+
+    </form>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact Form Custom",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Contact Form Custom"
+    }
+  ]
+}
+{% endschema %}
