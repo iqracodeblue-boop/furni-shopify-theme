@@ -1,0 +1,48 @@
+{{ 'contact-info.css' | asset_url | stylesheet_tag }}
+
+<section class="contact-info page-width">
+  <div class="contact-info-wrapper">
+
+    <div class="contact-card">
+      <div class="icon">📍</div>
+      <div>
+        <h4>Address</h4>
+        <p>43 Raymouth Rd, Baltemoer,<br>London 3910</p>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="icon">✉️</div>
+      <div>
+        <h4>Email</h4>
+        <p>info@yourdomain.com</p>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="icon">📞</div>
+      <div>
+        <h4>Phone</h4>
+        <p>+1 294 3925 3939</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact Info",
+  "tag": "section",
+  "class": "contact-info-section",
+  "enabled_on": {
+    "templates": ["page"]
+  },
+  "settings": [],
+  "presets": [
+    {
+      "name": "Contact Info"
+    }
+  ]
+}
+{% endschema %}
