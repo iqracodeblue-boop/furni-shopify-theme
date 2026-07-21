@@ -1,0 +1,72 @@
+.contact-hero{
+background:#3d6254;
+padding:90px 0;
+}
+
+.hero-wrapper{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:60px;
+}
+
+.hero-content{
+max-width:500px;
+}
+
+.hero-content h1{
+color:#fff;
+font-size:64px;
+font-weight:700;
+margin-bottom:20px;
+}
+
+.hero-content p{
+color:#d8dfd9;
+line-height:1.8;
+margin-bottom:30px;
+}
+
+.hero-buttons{
+display:flex;
+gap:15px;
+}
+
+.btn-yellow{
+background:#f9bf29;
+padding:14px 34px;
+border-radius:40px;
+text-decoration:none;
+color:#222;
+font-weight:600;
+}
+
+.btn-outline{
+border:2px solid rgba(255,255,255,.4);
+padding:14px 34px;
+border-radius:40px;
+text-decoration:none;
+color:#fff;
+}
+
+.hero-image img{
+max-width:700px;
+width:100%;
+}
+
+@media(max-width:990px){
+
+.hero-wrapper{
+flex-direction:column;
+text-align:center;
+}
+
+.hero-buttons{
+justify-content:center;
+}
+
+.hero-content h1{
+font-size:46px;
+}
+
+}
