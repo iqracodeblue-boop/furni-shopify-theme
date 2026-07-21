@@ -70,3 +70,51 @@ font-size:46px;
 }
 
 }
+/* Contact Hero Couch */
+
+.contact-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-hero::after {
+  content: "";
+  position: absolute;
+  right: 70px;
+  bottom: -20px;
+  width: 700px;
+  height: 420px;
+  background: url('{{ "imgi_3_couch.png" | asset_url }}') no-repeat center;
+  background-size: contain;
+  pointer-events: none;
+}
+
+.contact-hero__content{
+  position: relative;
+  z-index: 2;
+  max-width: 500px;
+}
+
+.contact-hero h1{
+  font-size: 64px;
+  color:#fff;
+  margin-bottom:20px;
+}
+
+.contact-hero p{
+  color:#d9d9d9;
+  max-width:420px;
+  line-height:1.8;
+}
+
+@media(max-width:991px){
+  .contact-hero::after{
+    position: relative;
+    display:block;
+    width:90%;
+    height:260px;
+    margin:30px auto 0;
+    right:auto;
+    bottom:auto;
+  }
+}
