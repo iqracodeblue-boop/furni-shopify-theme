@@ -215,6 +215,61 @@
         "button_text": "View All Posts",
         "button_link": ""
       }
+    },
+    "our_team_qYUWAx": {
+      "type": "our-team",
+      "blocks": {
+        "member_dqEgiU": {
+          "type": "member",
+          "settings": {
+            "name": "Lawson Arnold",
+            "designation": "CEO, Founder, Atty.",
+            "description": "Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.",
+            "button_label": "Learn More",
+            "button_link": ""
+          }
+        },
+        "member_f4hKf7": {
+          "type": "member",
+          "settings": {
+            "name": "Lawson Arnold",
+            "designation": "CEO, Founder, Atty.",
+            "description": "Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.",
+            "button_label": "Learn More",
+            "button_link": ""
+          }
+        },
+        "member_pQVeW6": {
+          "type": "member",
+          "settings": {
+            "name": "Lawson Arnold",
+            "designation": "CEO, Founder, Atty.",
+            "description": "Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.",
+            "button_label": "Learn More",
+            "button_link": ""
+          }
+        },
+        "member_tWkfUV": {
+          "type": "member",
+          "settings": {
+            "name": "Lawson Arnold",
+            "designation": "CEO, Founder, Atty.",
+            "description": "Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.",
+            "button_label": "Learn More",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "member_dqEgiU",
+        "member_f4hKf7",
+        "member_pQVeW6",
+        "member_tWkfUV"
+      ],
+      "name": "Our Team",
+      "settings": {
+        "heading": "Our Team"
+      }
     }
   },
   "order": [
@@ -223,6 +278,7 @@
     "why_choose_YiBb7w",
     "interior_design_49qtAW",
     "testimonials_JhCeHU",
-    "recent_blog_RwJ8yB"
+    "recent_blog_RwJ8yB",
+    "our_team_qYUWAx"
   ]
 }
