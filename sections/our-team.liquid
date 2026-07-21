@@ -1,0 +1,115 @@
+{{ 'our-team.css' | asset_url | stylesheet_tag }}
+<section class="our-team-section page-width">
+  <div class="our-team-header">
+    <h2>{{ section.settings.heading }}</h2>
+  </div>
+
+  <div class="our-team-grid">
+    {% for block in section.blocks %}
+      <div class="team-card" {{ block.shopify_attributes }}>
+
+        {% if block.settings.image != blank %}
+          <img
+            src="{{ block.settings.image | image_url: width: 600 }}"
+            alt="{{ block.settings.name }}"
+            class="team-image"
+          >
+        {% endif %}
+
+        <h3>{{ block.settings.name }}</h3>
+
+        <p class="designation">
+          {{ block.settings.designation }}
+        </p>
+
+        <p class="description">
+          {{ block.settings.description }}
+        </p>
+
+        {% if block.settings.button_label != blank %}
+          <a href="{{ block.settings.button_link }}" class="learn-more">
+            {{ block.settings.button_label }}
+          </a>
+        {% endif %}
+
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Our Team",
+  "tag": "section",
+  "class": "section-our-team",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Our Team"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "member",
+      "name": "Team Member",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Member Image"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Lawson Arnold"
+        },
+        {
+          "type": "text",
+          "id": "designation",
+          "label": "Designation",
+          "default": "CEO, Founder, Atty."
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label",
+          "default": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Our Team",
+      "blocks": [
+        {
+          "type": "member"
+        },
+        {
+          "type": "member"
+        },
+        {
+          "type": "member"
+        },
+        {
+          "type": "member"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
