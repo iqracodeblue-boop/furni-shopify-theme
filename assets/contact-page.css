@@ -1,0 +1,120 @@
+.contact-hero{
+background:#3d6254;
+padding:90px 0;
+}
+
+.hero-wrapper{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:60px;
+}
+
+.hero-content{
+max-width:500px;
+}
+
+.hero-content h1{
+color:#fff;
+font-size:64px;
+font-weight:700;
+margin-bottom:20px;
+}
+
+.hero-content p{
+color:#d8dfd9;
+line-height:1.8;
+margin-bottom:30px;
+}
+
+.hero-buttons{
+display:flex;
+gap:15px;
+}
+
+.btn-yellow{
+background:#f9bf29;
+padding:14px 34px;
+border-radius:40px;
+text-decoration:none;
+color:#222;
+font-weight:600;
+}
+
+.btn-outline{
+border:2px solid rgba(255,255,255,.4);
+padding:14px 34px;
+border-radius:40px;
+text-decoration:none;
+color:#fff;
+}
+
+.hero-image img{
+max-width:700px;
+width:100%;
+}
+
+@media(max-width:990px){
+
+.hero-wrapper{
+flex-direction:column;
+text-align:center;
+}
+
+.hero-buttons{
+justify-content:center;
+}
+
+.hero-content h1{
+font-size:46px;
+}
+
+}
+/* Contact Hero Couch */
+
+.contact-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-hero::after {
+  content: "";
+  position: absolute;
+  right: 70px;
+  bottom: -20px;
+  width: 700px;
+  height: 420px;
+  background: url('{{ "imgi_3_couch.png" | asset_url }}') no-repeat center;
+  background-size: contain;
+  pointer-events: none;
+}
+
+.contact-hero__content{
+  position: relative;
+  z-index: 2;
+  max-width: 500px;
+}
+
+.contact-hero h1{
+  font-size: 64px;
+  color:#fff;
+  margin-bottom:20px;
+}
+
+.contact-hero p{
+  color:#d9d9d9;
+  max-width:420px;
+  line-height:1.8;
+}
+
+@media(max-width:991px){
+  .contact-hero::after{
+    position: relative;
+    display:block;
+    width:90%;
+    height:260px;
+    margin:30px auto 0;
+    right:auto;
+    bottom:auto;
+  }
+}
