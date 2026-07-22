@@ -1,0 +1,80 @@
+<!-- ───────── GET A QUOTE PAGE ───────── -->
+<main id="page-quote" class="page">
+
+  <section class="quote-section" id="quote">
+    <div class="quote-inner">
+      <div class="quote-side">
+        <div class="quote-side-inner">
+          <span class="sec-label">Free Mockup</span>
+          <h3>Get a Free <em>Mockup in 2 Hours.</em></h3>
+          <p>Tell us a little about your business and the sign you have in mind. We will send a designed mockup on your actual storefront, with no obligation.</p>
+          <ul class="quote-side-list">
+            <li><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg>Free mockup, no commitment</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg>Designed by hand, not a template</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg>Transparent pricing up front</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg>Permit and install guidance included</li>
+          </ul>
+        </div>
+      </div>
+
+      <form class="quote-form" id="quoteForm" onsubmit="event.preventDefault();handleQuote();">
+        <div class="qf-row">
+          <div class="qf-field">
+            <label class="qf-label" for="qf-name">Full Name <span class="req">*</span></label>
+            <input type="text" id="qf-name" class="qf-input" placeholder="John Carter" required>
+          </div>
+          <div class="qf-field">
+            <label class="qf-label" for="qf-phone">Phone <span class="req">*</span></label>
+            <input type="tel" id="qf-phone" class="qf-input" placeholder="(555) 123-4567" required>
+          </div>
+        </div>
+        <div class="qf-row">
+          <div class="qf-field">
+            <label class="qf-label" for="qf-email">Email <span class="req">*</span></label>
+            <input type="email" id="qf-email" class="qf-input" placeholder="you@business.com" required>
+          </div>
+          <div class="qf-field">
+            <label class="qf-label" for="qf-business">Business Name</label>
+            <input type="text" id="qf-business" class="qf-input" placeholder="Your business">
+          </div>
+        </div>
+        <div class="qf-row">
+          <div class="qf-field">
+            <label class="qf-label" for="qf-type">Sign Type <span class="req">*</span></label>
+            <select id="qf-type" class="qf-select" required>
+              <option value="">Select sign type</option>
+              <option>Storefront signs</option>
+              <option>Reception &amp; studio signs</option>
+              <option>Medical and Clinic signs</option>
+              <option>Coffee shops and restaurants</option>
+              <option>Gym, Spa &amp; Salon signs</option>
+              <option>Auto Services &amp; Real Estate</option>
+              <option>Lobby &amp; Interior Signs</option>
+              <option>Other / Browse All Signs</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="qf-field">
+            <label class="qf-label" for="qf-state">State</label>
+            <input type="text" id="qf-state" class="qf-input" placeholder="e.g. Texas">
+          </div>
+        </div>
+        <div class="qf-row">
+          <div class="qf-field full">
+            <label class="qf-label" for="qf-msg">Project Details</label>
+            <textarea id="qf-msg" class="qf-textarea" placeholder="Approximate size, dimensions, timeline, or any reference images you have..."></textarea>
+          </div>
+        </div>
+        <button type="submit" class="qf-submit">
+          Send Me My Free Mockup
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+        <p class="qf-note">
+          <svg viewBox="0 0 24 24"><path d="M12 2L3 7v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7l-9-5z"/></svg>
+          Your information is private. We never sell, share or spam.
+        </p>
+      </form>
+    </div>
+  </section>
+
+</main>
