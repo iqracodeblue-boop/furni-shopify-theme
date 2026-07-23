@@ -259,7 +259,9 @@
             "image": "shopify://shop_images/imgi_44_post-9.jpg",
             "title": "Small space furniture apartment ideas",
             "author": "Kristin Watson",
-            "date": "Dec 19, 2021"vgit branchgit branch
+            "date": "Dec 19, 2021"
+          }
+        }
       },
       "block_order": [
         "blog_Xp7yBA",
@@ -272,6 +274,11 @@
         "button_text": "View All Posts",
         "button_link": ""
       }
+    },
+    "nt_about_us_page_v1_zYWpFx": {
+      "type": "nt-about-us-page-v1",
+      "name": "NT About Us Page",
+      "settings": {}
     }
   },
   "order": [
@@ -281,6 +288,7 @@
     "our_team_qYUWAx",
     "interior_design_49qtAW",
     "testimonials_JhCeHU",
-    "recent_blog_RwJ8yB"
+    "recent_blog_RwJ8yB",
+    "nt_about_us_page_v1_zYWpFx"
   ]
 }
