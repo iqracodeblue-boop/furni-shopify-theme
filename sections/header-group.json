@@ -140,6 +140,11 @@
       "type": "nt-sign-category-page-v1",
       "name": "NT Sign Category Page",
       "settings": {}
+    },
+    "nt_portfolio_page_v1_4L9HC3": {
+      "type": "nt-portfolio-page-v1",
+      "name": "NT Portfolio Page",
+      "settings": {}
     }
   },
   "order": [
@@ -147,6 +152,7 @@
     "header_section",
     "nt_about_us_page_v1_4d4fRK",
     "nt_sign_categories_page_v1_khW3kL",
-    "nt_sign_category_page_v1_tNqyLq"
+    "nt_sign_category_page_v1_tNqyLq",
+    "nt_portfolio_page_v1_4L9HC3"
   ]
 }
