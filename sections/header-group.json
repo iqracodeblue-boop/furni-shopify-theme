@@ -95,14 +95,14 @@
         "text_color_transparent_collection": ""
       }
     },
-    "nt_contact_us_page_v1_pmKUAD": {
-      "type": "nt-contact-us-page-v1",
-      "name": "NT Contact Us Page",
+    "nt_get_a_quote_page_v1_CCdWiL": {
+      "type": "nt-get-a-quote-page-v1",
+      "name": "NT Get A Quote Page",
       "settings": {}
     }
   },
   "order": [
     "header_section",
-    "nt_contact_us_page_v1_pmKUAD"
+    "nt_get_a_quote_page_v1_CCdWiL"
   ]
 }
