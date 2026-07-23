@@ -144,6 +144,11 @@
       "type": "nt-header-v1",
       "name": "NT Header",
       "settings": {}
+    },
+    "nt_sign_categories_page_v1_e9NkWA": {
+      "type": "nt-sign-categories-page-v1",
+      "name": "NT Sign Categories Page",
+      "settings": {}
     }
   },
   "order": [
@@ -157,6 +162,7 @@
     "nt_contact_us_page_v1_fKKkVG",
     "nt_get_a_quote_page_v1_A3Gz6T",
     "nt_home_page_v1_9m4UMc",
-    "nt_header_v1_aehJyb"
+    "nt_header_v1_aehJyb",
+    "nt_sign_categories_page_v1_e9NkWA"
   ]
 }
