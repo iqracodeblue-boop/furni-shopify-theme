@@ -124,15 +124,21 @@
       "type": "nt-sign-category-page-v1",
       "name": "NT Sign Category Page",
       "settings": {}
+    },
+    "nt_home_page_v1_zM6BBD": {
+      "type": "nt-home-page-v1",
+      "name": "NT Home Page",
+      "settings": {}
     }
   },
   "order": [
+    "nt_home_page_v1_zM6BBD",
+    "nt_sign_category_page_v1_LecQXw",
+    "nt_sign_category_page_v1_yj78aJ",
+    "nt_portfolio_page_v1_xLdpCB",
     "nt_about_us_page_v1_4d4fRK",
     "header_section",
-    "nt_sign_category_page_v1_LecQXw",
     "nt_contact_us_page_v1_7tm4Dd",
-    "nt_get_a_quote_page_v1_GhCH7X",
-    "nt_portfolio_page_v1_xLdpCB",
-    "nt_sign_category_page_v1_yj78aJ"
+    "nt_get_a_quote_page_v1_GhCH7X"
   ]
 }
