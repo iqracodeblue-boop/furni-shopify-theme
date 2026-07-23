@@ -95,14 +95,20 @@
         "text_color_transparent_collection": ""
       }
     },
-    "nt_portfolio_page_v1_fEwpDT": {
-      "type": "nt-portfolio-page-v1",
-      "name": "NT Portfolio Page",
+    "nt_header_v1_g3R7aV": {
+      "type": "nt-header-v1",
+      "name": "NT Header",
+      "settings": {}
+    },
+    "nt_home_page_v1_VyABPw": {
+      "type": "nt-home-page-v1",
+      "name": "NT Home Page",
       "settings": {}
     }
   },
   "order": [
     "header_section",
-    "nt_portfolio_page_v1_fEwpDT"
+    "nt_header_v1_g3R7aV",
+    "nt_home_page_v1_VyABPw"
   ]
 }

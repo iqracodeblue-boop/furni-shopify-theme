@@ -274,11 +274,6 @@
         "button_text": "View All Posts",
         "button_link": ""
       }
-    },
-    "nt_about_us_page_v1_zYWpFx": {
-      "type": "nt-about-us-page-v1",
-      "name": "NT About Us Page",
-      "settings": {}
     }
   },
   "order": [
@@ -288,7 +283,6 @@
     "our_team_qYUWAx",
     "interior_design_49qtAW",
     "testimonials_JhCeHU",
-    "recent_blog_RwJ8yB",
-    "nt_about_us_page_v1_zYWpFx"
+    "recent_blog_RwJ8yB"
   ]
 }
