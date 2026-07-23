@@ -57,15 +57,9 @@
         "padding-block-start": 40,
         "padding-block-end": 80
       }
-    },
-    "nt_get_a_quote_page_v1_4RdMWt": {
-      "type": "nt-get-a-quote-page-v1",
-      "name": "NT Get A Quote Page",
-      "settings": {}
     }
   },
   "order": [
-    "main",
-    "nt_get_a_quote_page_v1_4RdMWt"
+    "main"
   ]
 }

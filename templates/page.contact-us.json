@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "main": {
       "type": "main-page",
@@ -21,10 +22,12 @@
             "alignment": "left",
             "type_preset": "h2",
             "font": "var(--font-primary--family)",
+            "font_size": "1rem",
             "line_height": "normal",
             "letter_spacing": "normal",
             "case": "none",
             "wrap": "pretty",
+            "text_color": "",
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
@@ -37,7 +40,9 @@
         },
         "page-content": {
           "type": "page-content",
-          "settings": {},
+          "settings": {
+            "text_color": ""
+          },
           "blocks": {}
         }
       },
@@ -52,9 +57,27 @@
         "padding-block-start": 40,
         "padding-block-end": 80
       }
+    },
+    "nt_contact_hero_v1_cEe9fT": {
+      "type": "nt-contact-hero-v1",
+      "name": "NT Contact Hero",
+      "settings": {}
+    },
+    "nt_contact_form_v1_8niJ8x": {
+      "type": "nt-contact-form-v1",
+      "name": "NT Contact Form",
+      "settings": {}
+    },
+    "nt_contact_cta_v1_tDxeVT": {
+      "type": "nt-contact-cta-v1",
+      "name": "NT Contact CTA",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "nt_contact_hero_v1_cEe9fT",
+    "nt_contact_form_v1_8niJ8x",
+    "nt_contact_cta_v1_tDxeVT"
   ]
 }
