@@ -145,6 +145,11 @@
       "type": "nt-portfolio-page-v1",
       "name": "NT Portfolio Page",
       "settings": {}
+    },
+    "nt_contact_us_page_v1_fKKkVG": {
+      "type": "nt-contact-us-page-v1",
+      "name": "NT Contact Us Page",
+      "settings": {}
     }
   },
   "order": [
@@ -153,6 +158,7 @@
     "nt_about_us_page_v1_4d4fRK",
     "nt_sign_categories_page_v1_khW3kL",
     "nt_sign_category_page_v1_tNqyLq",
-    "nt_portfolio_page_v1_4L9HC3"
+    "nt_portfolio_page_v1_4L9HC3",
+    "nt_contact_us_page_v1_fKKkVG"
   ]
 }
