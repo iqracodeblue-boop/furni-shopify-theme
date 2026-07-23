@@ -322,6 +322,31 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   </section>
 
 </main>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const filters = document.querySelectorAll('.port-filter');
+    const items = document.querySelectorAll('.port-item');
+    
+    filters.forEach(filter => {
+      filter.addEventListener('click', () => {
+        // Remove active from all
+        filters.forEach(f => f.classList.remove('active'));
+        // Add active to clicked
+        filter.classList.add('active');
+        
+        const filterValue = filter.getAttribute('data-filter');
+        
+        items.forEach(item => {
+          if (filterValue === 'all' || item.getAttribute('data-cat').includes(filterValue)) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      });
+    });
+  });
+</script>
 
 {% schema %}
 {
