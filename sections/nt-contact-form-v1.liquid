@@ -1,0 +1,215 @@
+<style>
+:root{
+  --ts-xl:2.2rem; --navy:#111111; --gold:#0188CC; --red:#0188CC;
+  --cream:#ffffff; --cream-deep:#f5f5f5; --ink:#111111; --body:#333333; --muted:#666666;
+  --line:rgba(0,0,0,.07); --line2:rgba(0,0,0,.12); --gold-line:rgba(1,136,204,.24); --gold-soft:rgba(1,136,204,.10);
+  --fh:'DM Serif Display',Georgia,serif; --fb:'Inter',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:93%}
+body{font-family:var(--fb);background:var(--cream);color:var(--body);line-height:1.6;}
+
+.contact-form-section{
+  padding:72px 48px 80px;
+  background:linear-gradient(160deg,#eff2f5 0%,#e8ecf0 100%);
+  position:relative;
+}
+.contact-form-section::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(ellipse 60% 50% at 100% 0%,rgba(1,136,204,.06) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 0% 100%,rgba(1,136,204,.04) 0%,transparent 55%);
+}
+.contact-form-wrap{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1.2fr;gap:48px;
+  align-items:start;position:relative;z-index:1;
+}
+
+.contact-form-left .sec-label{justify-content:flex-start}
+.sec-label{display:inline-flex;align-items:center;gap:8px;font-family:var(--fb);font-size:.82rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--red);margin-bottom:16px;}
+.sec-label::before{content:"";width:24px;height:1px;background:var(--red);}
+.sec-label::after{content:"";width:24px;height:1px;background:var(--red);}
+.contact-form-left .sec-label::before,.contact-form-left .sec-label::after{display:none}
+.contact-form-left .sec-h{text-align:left;margin-bottom:10px}
+.sec-h{font-family:var(--fh);font-size:var(--ts-xl);color:var(--ink);line-height:1.05;letter-spacing:-.02em;margin-bottom:14px;font-weight:400;}
+.sec-h em{font-style:italic;color:var(--red)}
+.contact-form-left>p{font-family:var(--fb);font-size:.95rem;color:var(--body);line-height:1.7;margin-bottom:28px;}
+
+.contact-tab-nav{display:flex;flex-direction:column;gap:6px;margin-bottom:28px;}
+.contact-tab-btn{
+  display:flex;align-items:center;gap:12px;
+  padding:13px 16px;border-radius:12px;
+  border:1.5px solid transparent;background:transparent;
+  cursor:pointer;text-align:left;width:100%;
+  transition:all .22s cubic-bezier(.16,1,.3,1);
+}
+.contact-tab-btn:hover{background:#fff;border-color:var(--line)}
+.contact-tab-btn.active{background:#fff;border-color:var(--gold-line);box-shadow:0 4px 16px rgba(1,136,204,.10);}
+.contact-tab-icon{
+  width:38px;height:38px;border-radius:10px;flex-shrink:0;
+  background:var(--cream-deep);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;transition:all .22s;
+}
+.contact-tab-icon svg{width:16px;height:16px;fill:none;stroke:var(--muted);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;transition:stroke .22s}
+.contact-tab-btn.active .contact-tab-icon,.contact-tab-btn:hover .contact-tab-icon{background:var(--gold-soft);border-color:var(--gold-line)}
+.contact-tab-btn.active .contact-tab-icon svg,.contact-tab-btn:hover .contact-tab-icon svg{stroke:var(--gold)}
+.contact-tab-text strong{display:block;font-family:var(--fb);font-size:.88rem;color:var(--ink);font-weight:600;margin-bottom:1px}
+.contact-tab-text span{font-family:var(--fb);font-size:.78rem;color:var(--muted);line-height:1.4}
+.contact-tab-btn.active .contact-tab-text strong{color:var(--gold)}
+.contact-tab-arrow{margin-left:auto;flex-shrink:0;width:20px;height:20px;border-radius:50%;background:transparent;display:flex;align-items:center;justify-content:center;transition:background .22s,transform .22s;}
+.contact-tab-arrow svg{width:12px;height:12px;fill:none;stroke:var(--muted);stroke-width:2.5;stroke-linecap:round;transition:stroke .22s}
+.contact-tab-btn.active .contact-tab-arrow{background:var(--gold-soft);transform:translateX(2px)}
+.contact-tab-btn.active .contact-tab-arrow svg{stroke:var(--gold)}
+
+.contact-tab-blurb{
+  background:#fff;border:1px solid var(--gold-line);border-radius:12px;
+  padding:16px 18px;font-family:var(--fb);font-size:.86rem;color:var(--body);line-height:1.6;
+  animation:fadeDown .28s ease;border-left:3px solid var(--gold);
+}
+
+.contact-form-right{
+  background:#fff;border-radius:20px;padding:36px 32px;
+  border:1px solid rgba(0,0,0,.06);
+  box-shadow:0 2px 0 0 rgba(1,136,204,.18),0 8px 24px rgba(0,0,0,.07),0 24px 56px rgba(0,0,0,.10),0 48px 80px rgba(0,0,0,.06);
+  position:relative;
+}
+.contact-form-right::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--gold) 0%,rgba(1,136,204,.3) 60%,transparent 100%);
+  border-radius:20px 20px 0 0;
+}
+
+.qf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.qf-field{display:flex;flex-direction:column}
+.qf-field.full{grid-column:span 2}
+.qf-label{font-family:var(--fb);font-size:.74rem;font-weight:700;color:var(--ink);letter-spacing:.06em;text-transform:uppercase;margin-bottom:7px;}
+.qf-label .req{color:var(--red)}
+.qf-input,.qf-textarea{
+  font-family:var(--fb);font-size:.92rem;padding:13px 14px;border-radius:9px;
+  border:1.5px solid var(--line2);background:var(--cream);color:var(--ink);
+  transition:border-color .2s,background .2s,box-shadow .2s;width:100%;outline:none;
+}
+.qf-input:focus,.qf-textarea:focus{border-color:var(--gold);background:#fff;box-shadow:0 0 0 4px rgba(1,136,204,.14);}
+.qf-textarea{resize:vertical;min-height:90px;font-family:var(--fb)}
+.qf-submit{
+  width:100%;background:var(--navy);color:#fff;font-family:var(--fb);font-size:.95rem;font-weight:700;
+  padding:16px;border-radius:10px;margin-top:6px;display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  transition:background .25s,transform .2s,box-shadow .25s;letter-spacing:.01em;cursor:pointer;
+}
+.qf-submit:hover{background:var(--navy-deep);transform:translateY(-1px);box-shadow:0 10px 26px rgba(0,0,0,.28)}
+.qf-submit svg{width:16px;height:16px;stroke:#fff;stroke-width:2.5;fill:none}
+.qf-note{font-family:var(--fb);font-size:.72rem;color:var(--muted);text-align:center;margin-top:14px;line-height:1.5;}
+.qf-note svg{width:11px;height:11px;stroke:var(--gold);stroke-width:2;fill:none;display:inline-block;vertical-align:-1px;margin-right:3px}
+
+@media(max-width:1024px){
+  .contact-form-wrap{grid-template-columns:1fr;gap:0;}
+  .contact-form-right{order:-1}
+  .contact-form-left{order:1;margin-top:40px}
+  .contact-tab-nav{flex-direction:row;flex-wrap:wrap;gap:8px}
+  .contact-tab-btn{flex:1;min-width:calc(50% - 4px)}
+  .contact-tab-arrow{display:none}
+}
+@media(max-width:768px){
+  .contact-form-section{padding:28px 16px 48px}
+  .contact-form-wrap{gap:0}
+  .contact-form-right{padding:22px 16px 24px;border-radius:16px;box-shadow:0 2px 0 0 rgba(1,136,204,.18),0 8px 32px rgba(0,0,0,.10),0 24px 48px rgba(0,0,0,.08);}
+  .contact-form-left{display:none}
+  .contact-form-right .qf-row{grid-template-columns:1fr;gap:0}
+  .contact-form-right .qf-field{width:100%}
+  .qf-input,.qf-textarea{font-size:.95rem;padding:11px 13px}
+  .qf-label{font-size:.74rem}
+  .qf-submit{width:100%;justify-content:center;padding:15px 20px;font-size:.95rem}
+  .qf-note{justify-content:center;text-align:center}
+}
+</style>
+
+<section class="contact-form-section">
+  <div class="contact-form-wrap">
+
+    <div class="contact-form-left">
+      <span class="sec-label">Contact Us</span>
+      <h2 class="sec-h">How Can We <em>Help You?</em></h2>
+      <p>Pick the topic that best fits and we will route your message to the right person. Every inquiry gets a real response.</p>
+
+      <nav class="contact-tab-nav" id="contactTabNav">
+        <button type="button" class="contact-tab-btn active" data-tab="general">
+          <span class="contact-tab-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span>
+          <span class="contact-tab-text"><strong>General Inquiry</strong><span>Questions about sign types, materials or process</span></span>
+          <span class="contact-tab-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></span>
+        </button>
+        <button type="button" class="contact-tab-btn" data-tab="mockup">
+          <span class="contact-tab-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></span>
+          <span class="contact-tab-text"><strong>Request a Mockup</strong><span>Free design on your storefront in 2 hours</span></span>
+          <span class="contact-tab-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></span>
+        </button>
+        <button type="button" class="contact-tab-btn" data-tab="order">
+          <span class="contact-tab-icon"><svg viewBox="0 0 24 24"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span>
+          <span class="contact-tab-text"><strong>Order / Support</strong><span>Track production, shipping or fix an issue</span></span>
+          <span class="contact-tab-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></span>
+        </button>
+        <button type="button" class="contact-tab-btn" data-tab="trade">
+          <span class="contact-tab-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></span>
+          <span class="contact-tab-text"><strong>Trade &amp; Partnership</strong><span>Volume pricing for contractors &amp; designers</span></span>
+          <span class="contact-tab-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></span>
+        </button>
+      </nav>
+
+      <div class="contact-tab-blurb" id="contactTabBlurb">
+        Ask us anything — about sign types, materials, lead times, pricing, permitting, or the process from idea to installation. No question is too small.
+      </div>
+    </div>
+
+    <div class="contact-form-right">
+      <form class="contact-form-wrap-inner" id="contactForm" onsubmit="event.preventDefault();alert('Message Sent! We will get back to you within 2 business hours.');this.reset();">
+        
+        <div class="qf-row">
+          <div class="qf-field">
+            <label class="qf-label" for="contact-name">Full Name <span class="req">*</span></label>
+            <input type="text" id="contact-name" class="qf-input" placeholder="John Carter" required>
+          </div>
+          <div class="qf-field">
+            <label class="qf-label" for="contact-email">Email <span class="req">*</span></label>
+            <input type="email" id="contact-email" class="qf-input" placeholder="you@business.com" required>
+          </div>
+        </div>
+
+        <div class="qf-row">
+          <div class="qf-field">
+            <label class="qf-label" for="contact-phone">Phone</label>
+            <input type="tel" id="contact-phone" class="qf-input" placeholder="(555) 123-4567">
+          </div>
+          <div class="qf-field">
+            <label class="qf-label" for="contact-business">Business Name</label>
+            <input type="text" id="contact-business" class="qf-input" placeholder="Your business">
+          </div>
+        </div>
+
+        <div class="qf-row">
+          <div class="qf-field full">
+            <label class="qf-label" for="contact-msg">Project Details <span class="req">*</span></label>
+            <textarea id="contact-msg" class="qf-textarea" placeholder="Tell us about your project, sign type, or question..." required></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="qf-submit">
+          Send Message
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+        <p class="qf-note">
+          <svg viewBox="0 0 24 24"><path d="M12 2L3 7v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7l-9-5z"/></svg>
+          Your information is private. We never sell, share or spam.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NT Contact Form",
+  "presets": [
+    {
+      "name": "NT Contact Form"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,164 @@
+<style>
+:root{
+  --ts-2xl:clamp(2.2rem,5vw,3.6rem); --navy:#111111; --gold:#0188CC;
+  --cream:#ffffff; --fh:'DM Serif Display',Georgia,serif; --fb:'Inter',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:93%}
+body{font-family:var(--fb);background:var(--cream);color:#333;line-height:1.6;}
+
+.contact-hero{
+  position:relative;padding:130px 48px 0;
+  background:linear-gradient(160deg,#0a0a0a 0%,#111 55%,#0d1a26 100%);
+  color:#fff;text-align:center;overflow:hidden;
+}
+.contact-hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 70% 60% at 50% 20%,rgba(1,136,204,.18) 0%,transparent 60%),radial-gradient(ellipse 40% 50% at 5% 80%,rgba(1,136,204,.10) 0%,transparent 55%),radial-gradient(ellipse 35% 45% at 95% 70%,rgba(1,136,204,.08) 0%,transparent 55%);
+}
+.contact-hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:52px 52px;
+  mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000 20%,transparent 72%);
+  -webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000 20%,transparent 72%);
+}
+.contact-hero-inner{max-width:720px;margin:0 auto;position:relative;z-index:1;padding-bottom:52px}
+.contact-hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(1,136,204,.12);border:1px solid rgba(1,136,204,.3);
+  border-radius:100px;padding:6px 16px 6px 10px;
+  font-family:var(--fb);font-size:.76rem;font-weight:600;
+  color:var(--gold);letter-spacing:.04em;text-transform:uppercase;
+  margin-bottom:24px;
+}
+.contact-hero-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:pulse 1.8s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+.contact-hero h1{
+  font-family:var(--fh);font-size:var(--ts-2xl);color:#fff;
+  line-height:1.04;letter-spacing:-.025em;margin-bottom:18px;font-weight:400;
+}
+.contact-hero h1 em{font-style:italic;color:var(--gold)}
+.contact-hero-sub{
+  font-family:var(--fb);font-size:1.05rem;line-height:1.7;
+  color:rgba(255,255,255,.6);max-width:540px;margin:0 auto 36px;
+}
+.contact-hero-trust{
+  display:flex;align-items:center;justify-content:center;gap:28px;
+  flex-wrap:wrap;margin-bottom:0;
+}
+.contact-hero-trust-item{
+  display:flex;align-items:center;gap:7px;
+  font-family:var(--fb);font-size:.82rem;color:rgba(255,255,255,.55);
+}
+.contact-hero-trust-item svg{width:14px;height:14px;fill:none;stroke:var(--gold);stroke-width:2.2}
+.contact-hero-trust-item strong{color:rgba(255,255,255,.9)}
+
+.contact-info-bar{
+  position:relative;z-index:2;
+  background:rgba(255,255,255,.04);
+  border-top:1px solid rgba(255,255,255,.08);
+  padding:0 48px;margin:0 -48px;width:calc(100% + 96px);
+}
+.contact-info-bar-inner{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.contact-info-item{
+  display:flex;align-items:center;gap:14px;
+  padding:24px 20px;
+  border-right:1px solid rgba(255,255,255,.08);
+  transition:background .22s;
+}
+.contact-info-item:last-child{border-right:none}
+.contact-info-item:hover{background:rgba(255,255,255,.04)}
+.contact-info-icon{
+  width:40px;height:40px;border-radius:10px;flex-shrink:0;
+  background:rgba(1,136,204,.12);border:1px solid rgba(1,136,204,.25);
+  display:flex;align-items:center;justify-content:center;
+}
+.contact-info-icon svg{width:17px;height:17px;fill:none;stroke:var(--gold);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.contact-info-text strong{display:block;font-family:var(--fb);font-size:.84rem;color:#fff;font-weight:600;margin-bottom:2px}
+.contact-info-text span{font-family:var(--fb);font-size:.78rem;color:rgba(255,255,255,.5);line-height:1.4}
+.contact-info-text a{color:var(--gold);font-weight:600;font-size:.84rem;transition:color .2s;text-decoration:none;}
+.contact-info-text a:hover{color:#fff}
+
+@media(max-width:1024px){
+  .contact-info-bar-inner{grid-template-columns:repeat(2,1fr)}
+  .contact-info-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.08);padding:18px 16px}
+  .contact-info-item:nth-child(even){border-left:1px solid rgba(255,255,255,.08)}
+  .contact-info-item:last-child{border-bottom:none}
+  .contact-info-item:nth-last-child(2):nth-child(odd){border-bottom:none}
+}
+@media(max-width:768px){
+  .contact-hero{padding:90px 20px 0}
+  .contact-hero-inner{padding-bottom:36px}
+  .contact-info-bar{margin:0 -20px;width:calc(100% + 40px);padding:0 20px}
+  .contact-hero-trust{display:none}
+  .contact-info-bar{padding:0}
+  .contact-info-bar-inner{grid-template-columns:1fr 1fr}
+  .contact-info-item{padding:14px 12px}
+  .contact-info-item:nth-child(3),.contact-info-item:nth-child(4){display:none}
+  .contact-info-item:nth-child(even){border-left:none}
+  .contact-info-item:nth-child(1){border-right:1px solid rgba(255,255,255,.08)}
+  .contact-info-item:nth-child(2){border-left:none}
+  .contact-info-item{border-bottom:none}
+}
+</style>
+
+<section class="contact-hero">
+  <div class="contact-hero-inner">
+    <div class="contact-hero-badge">
+      <span class="contact-hero-badge-dot"></span>
+      Typically responds in under 2 hours
+    </div>
+    <h1>We&rsquo;re Here to <em>Help.</em></h1>
+    <p class="contact-hero-sub">Whether you have a project in mind, a question about an order, a partnership idea, or just want to know what&rsquo;s possible — our team is ready.</p>
+    <div class="contact-hero-trust">
+      <div class="contact-hero-trust-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg>
+        <strong>4.9/5</strong><span>from 450+ businesses</span>
+      </div>
+      <div class="contact-hero-trust-item">
+        <svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg>
+        <strong>Free mockup</strong><span>no commitment</span>
+      </div>
+      <div class="contact-hero-trust-item">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <strong>All 50 states</strong><span>served</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-info-bar">
+    <div class="contact-info-bar-inner">
+      <div class="contact-info-item">
+        <span class="contact-info-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg></span>
+        <div class="contact-info-text"><strong>Call Us</strong><a href="tel:+12059007525">+1 205 900 7525</a></div>
+      </div>
+      <div class="contact-info-item">
+        <span class="contact-info-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+        <div class="contact-info-text"><strong>Email Us</strong><a href="mailto:hello@signs.inc">hello@signs.inc</a></div>
+      </div>
+      <div class="contact-info-item">
+        <span class="contact-info-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+        <div class="contact-info-text"><strong>Response Time</strong><span>Under 2 hours, Mon&ndash;Fri</span></div>
+      </div>
+      <div class="contact-info-item">
+        <span class="contact-info-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <div class="contact-info-text"><strong>Service Area</strong><span>All 50 states nationwide</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NT Contact Hero",
+  "presets": [
+    {
+      "name": "NT Contact Hero"
+    }
+  ]
+}
+{% endschema %}
