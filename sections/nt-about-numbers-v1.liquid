@@ -1,0 +1,39 @@
+<style>
+:root{
+  --navy:#111111; --gold:#0188CC;
+  --fh:'DM Serif Display',Georgia,serif; --fb:'Inter',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:93%}
+body{font-family:var(--fb);background:#fff;color:#333;line-height:1.6;}
+
+.numbers-strip{padding:64px 48px;background:var(--navy);position:relative;overflow:hidden;}
+.numbers-strip::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 50% 70% at 50% 50%,rgba(1,136,204,.10) 0%,transparent 70%);}
+.numbers-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;position:relative;z-index:1;text-align:center;}
+.num-val{font-family:var(--fh);font-size:clamp(2.4rem,4vw,3.6rem);color:#fff;line-height:1;margin-bottom:6px;font-weight:400;}
+.num-val span{color:var(--gold)}
+.num-label{font-family:var(--fb);font-size:.76rem;color:rgba(255,255,255,.5);letter-spacing:.14em;text-transform:uppercase;font-weight:600;}
+
+@media(max-width:880px){.numbers-strip{padding:48px 22px}.numbers-inner{grid-template-columns:repeat(2,1fr);gap:32px 20px}}
+@media(max-width:480px){.numbers-inner{grid-template-columns:1fr 1fr;gap:28px}.num-val{font-size:2.2rem}}
+</style>
+
+<section class="numbers-strip">
+  <div class="numbers-inner">
+    <div class="num-block"><div class="num-val">450<span>+</span></div><div class="num-label">Businesses Served</div></div>
+    <div class="num-block"><div class="num-val">50</div><div class="num-label">States Installed</div></div>
+    <div class="num-block"><div class="num-val">10<span>k+</span></div><div class="num-label">Signs Manufactured</div></div>
+    <div class="num-block"><div class="num-val">2<span>hr</span></div><div class="num-label">Avg. Mockup Turnaround</div></div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NT About Numbers",
+  "presets": [
+    {
+      "name": "NT About Numbers"
+    }
+  ]
+}
+{% endschema %}

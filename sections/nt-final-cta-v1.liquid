@@ -1,0 +1,44 @@
+<style>
+:root{
+  --ts-2xl:clamp(2.4rem,5vw,4.4rem); --navy:#111111; --navy-deep:#0a0a0a; --gold:#0188CC;
+  --fh:'DM Serif Display',Georgia,serif; --fb:'Inter',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:93%}
+body{font-family:var(--fb);background:#fff;color:#333;line-height:1.6;}
+
+.final-cta{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-deep) 100%);color:#fff;padding:104px 48px;position:relative;overflow:hidden;text-align:center;}
+.final-cta::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 50% at 0% 100%,rgba(1,136,204,.16) 0%,transparent 70%),radial-gradient(ellipse 60% 50% at 100% 0%,rgba(1,136,204,.10) 0%,transparent 65%);}
+.final-inner{max-width:780px;margin:0 auto;position:relative;z-index:1}
+.sec-label{display:inline-flex;align-items:center;gap:8px;font-family:var(--fb);font-size:.82rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.sec-label::before{content:"";width:24px;height:1px;background:var(--gold);}
+.sec-label::after{content:"";width:24px;height:1px;background:var(--gold);}
+.final-inner h2{font-family:var(--fh);font-size:var(--ts-2xl);color:#fff;line-height:1.04;letter-spacing:-.02em;margin-bottom:18px;font-weight:400;}
+.final-inner h2 em{font-style:italic;color:var(--gold)}
+.final-inner p{font-family:var(--fb);font-size:1.08rem;line-height:1.6;color:rgba(255,255,255,.72);max-width:560px;margin:0 auto 36px;}
+.btn-primary{background:var(--gold);color:var(--navy);font-family:var(--fb);font-size:.95rem;font-weight:700;padding:16px 28px;border-radius:10px;display:inline-flex;align-items:center;gap:10px;transition:transform .2s,box-shadow .25s,background .25s;box-shadow:0 8px 24px rgba(1,136,204,.32);letter-spacing:.005em;text-decoration:none;}
+.btn-primary:hover{background:#02a0eb;transform:translateY(-2px);box-shadow:0 14px 32px rgba(1,136,204,.42)}
+.btn-primary svg{width:16px;height:16px;stroke:var(--navy);stroke-width:2.5;fill:none}
+
+@media(max-width:768px){.final-cta{padding:76px 24px}}
+</style>
+
+<section class="final-cta">
+  <div class="final-inner">
+    <span class="sec-label">Let's Build It</span>
+    <h2>Ready to See Your Sign <em>Come to Life?</em></h2>
+    <p>Get a free, photo-realistic mockup in two hours. No commitment, no pressure, just a designed mockup on your actual building.</p>
+    <a href="/pages/get-a-quote" class="btn-primary">Get Your Free Mockup <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NT Final CTA",
+  "presets": [
+    {
+      "name": "NT Final CTA"
+    }
+  ]
+}
+{% endschema %}
