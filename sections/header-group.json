@@ -95,14 +95,14 @@
         "text_color_transparent_collection": ""
       }
     },
-    "nt_get_a_quote_page_v1_CCdWiL": {
-      "type": "nt-get-a-quote-page-v1",
-      "name": "NT Get A Quote Page",
+    "nt_portfolio_page_v1_fEwpDT": {
+      "type": "nt-portfolio-page-v1",
+      "name": "NT Portfolio Page",
       "settings": {}
     }
   },
   "order": [
     "header_section",
-    "nt_get_a_quote_page_v1_CCdWiL"
+    "nt_portfolio_page_v1_fEwpDT"
   ]
 }
