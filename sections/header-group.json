@@ -95,14 +95,14 @@
         "text_color_transparent_collection": ""
       }
     },
-    "nt_about_us_page_v1_9d9HtL": {
-      "type": "nt-about-us-page-v1",
-      "name": "NT About Us Page",
+    "nt_sign_categories_page_v1_tgycej": {
+      "type": "nt-sign-categories-page-v1",
+      "name": "NT Sign Categories Page",
       "settings": {}
     }
   },
   "order": [
     "header_section",
-    "nt_about_us_page_v1_9d9HtL"
+    "nt_sign_categories_page_v1_tgycej"
   ]
 }
