@@ -16,11 +16,6 @@
       "name": "NT Header",
       "settings": {}
     },
-    "nt_about_us_page_v1_4d4fRK": {
-      "type": "nt-about-us-page-v1",
-      "name": "NT About Us Page",
-      "settings": {}
-    },
     "header_section": {
       "type": "header",
       "blocks": {
@@ -104,11 +99,16 @@
         "collection_inverse_logo": false,
         "text_color_transparent_collection": ""
       }
+    },
+    "nt_home_page_v1_LqMUPX": {
+      "type": "nt-home-page-v1",
+      "name": "NT Home Page",
+      "settings": {}
     }
   },
   "order": [
     "nt_header_v1_4HLfFt",
-    "nt_about_us_page_v1_4d4fRK",
-    "header_section"
+    "header_section",
+    "nt_home_page_v1_LqMUPX"
   ]
 }
