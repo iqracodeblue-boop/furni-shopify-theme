@@ -100,11 +100,6 @@
         "text_color_transparent_collection": ""
       }
     },
-    "nt_home_page_v1_zUAjG9": {
-      "type": "nt-home-page-v1",
-      "name": "NT Home Page",
-      "settings": {}
-    },
     "nt_sign_categories_page_v1_khW3kL": {
       "type": "nt-sign-categories-page-v1",
       "name": "NT Sign Categories Page",
@@ -174,7 +169,6 @@
   "order": [
     "nt_header_v1_4HLfFt",
     "header_section",
-    "nt_home_page_v1_zUAjG9",
     "nt_sign_categories_page_v1_khW3kL",
     "nt_sign_category_page_v1_tNqyLq",
     "nt_portfolio_page_v1_4L9HC3",
