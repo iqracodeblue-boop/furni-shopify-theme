@@ -134,6 +134,16 @@
       "type": "nt-get-a-quote-page-v1",
       "name": "NT Get A Quote Page",
       "settings": {}
+    },
+    "nt_home_page_v1_9m4UMc": {
+      "type": "nt-home-page-v1",
+      "name": "NT Home Page",
+      "settings": {}
+    },
+    "nt_header_v1_aehJyb": {
+      "type": "nt-header-v1",
+      "name": "NT Header",
+      "settings": {}
     }
   },
   "order": [
@@ -145,6 +155,8 @@
     "nt_portfolio_page_v1_4L9HC3",
     "nt_about_us_page_v1_4d4fRK",
     "nt_contact_us_page_v1_fKKkVG",
-    "nt_get_a_quote_page_v1_A3Gz6T"
+    "nt_get_a_quote_page_v1_A3Gz6T",
+    "nt_home_page_v1_9m4UMc",
+    "nt_header_v1_aehJyb"
   ]
 }
