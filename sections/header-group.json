@@ -99,10 +99,16 @@
         "collection_inverse_logo": false,
         "text_color_transparent_collection": ""
       }
+    },
+    "nt_sign_category_page_v1_LecQXw": {
+      "type": "nt-sign-category-page-v1",
+      "name": "NT Sign Category Page",
+      "settings": {}
     }
   },
   "order": [
     "nt_about_us_page_v1_4d4fRK",
-    "header_section"
+    "header_section",
+    "nt_sign_category_page_v1_LecQXw"
   ]
 }
