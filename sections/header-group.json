@@ -159,6 +159,11 @@
       "type": "nt-contact-us-page-v1",
       "name": "NT Contact Us Page",
       "settings": {}
+    },
+    "nt_get_a_quote_page_v1_bmyk6F": {
+      "type": "nt-get-a-quote-page-v1",
+      "name": "NT Get A Quote Page",
+      "settings": {}
     }
   },
   "order": [
@@ -175,6 +180,7 @@
     "nt_header_v1_aehJyb",
     "nt_sign_categories_page_v1_e9NkWA",
     "nt_about_us_page_v1_rdTdyE",
-    "nt_contact_us_page_v1_VCJjNH"
+    "nt_contact_us_page_v1_VCJjNH",
+    "nt_get_a_quote_page_v1_bmyk6F"
   ]
 }
