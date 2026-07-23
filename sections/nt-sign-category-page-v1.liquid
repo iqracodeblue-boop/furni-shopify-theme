@@ -1,255 +1,380 @@
-{{ 'nt-signs-styles.css' | asset_url | stylesheet_tag }}
-<!-- ───────── CATEGORY: Storefront signs ───────── -->
-<main id="page-cat-channel-letters" class="page cat-page">
+<style>
+:root{
+  --ts-2xs:.68rem; --ts-xs:.78rem; --ts-sm:.88rem; --ts-base:1rem; --ts-md:1.15rem;
+  --ts-lg:1.5rem; --ts-xl:2.2rem; --ts-2xl:clamp(2.4rem,5vw,4.4rem);
+  --navy:#111111; --navy-deep:#0a0a0a; --navy-light:#1a1a1a; --gold:#0188CC;
+  --gold-deep:#0170a8; --gold-soft:rgba(1,136,204,.10); --gold-line:rgba(1,136,204,.24);
+  --red:#0188CC; --red-deep:#016da0; --cream:#ffffff; --cream-deep:#f5f5f5;
+  --cream-warm:#fafafa; --ink:#111111; --body:#333333; --muted:#666666;
+  --ghost:#999999; --line:rgba(0,0,0,.07); --line2:rgba(0,0,0,.12);
+  --line3:rgba(0,0,0,.20); --card:#fff; --white:#fff; --star:#0188CC;
+  --fh:'DM Serif Display',Georgia,serif; --fb:'Inter',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:93%;-webkit-text-size-adjust:100%;text-size-adjust:100%;overflow-x:hidden;overflow-x:clip}
+@media(max-width:480px){html{font-size:100%}}
+body{font-family:var(--fb);background:var(--cream);color:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip;max-width:100%;position:relative;min-height:100dvh;min-height:-webkit-fill-available;line-height:1.6;}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+
+/* Category Page Specific CSS */
+.cat-page{display:block;min-height:100vh;max-width:100%;overflow-x:clip}
+
+.cat-hero{position:relative;padding:150px 48px 0;background:linear-gradient(180deg,var(--navy-deep) 0%,var(--navy) 100%);color:#fff;overflow:hidden;}
+.cat-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 20%,rgba(1,136,204,.12) 0%,transparent 65%),radial-gradient(ellipse 40% 30% at 50% 100%,rgba(1,136,204,.08) 0%,transparent 70%);}
+.cat-hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center;position:relative;z-index:1;padding-bottom:80px;}
+.cat-breadcrumb{display:inline-flex;align-items:center;gap:8px;font-family:var(--fb);font-size:.74rem;color:rgba(255,255,255,.5);margin-bottom:22px;letter-spacing:.06em;}
+.cat-breadcrumb a{color:rgba(255,255,255,.7);transition:color .2s}
+.cat-breadcrumb a:hover{color:var(--gold)}
+.cat-breadcrumb svg{width:10px;height:10px;stroke:rgba(255,255,255,.4);stroke-width:2.5;fill:none}
+.cat-breadcrumb .current{color:var(--gold)}
+.cat-hero h1{font-family:var(--fh);font-size:var(--ts-2xl);color:#fff;line-height:1.02;letter-spacing:-.02em;margin-bottom:20px;font-weight:400;}
+.cat-hero h1 em{font-style:italic;color:var(--gold)}
+.cat-hero-desc{font-family:var(--fb);font-size:1.06rem;line-height:1.7;color:rgba(255,255,255,.78);margin-bottom:28px;max-width:540px;}
+.cat-pills{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
+.cat-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(1,136,204,.08);border:1px solid rgba(1,136,204,.32);color:var(--gold);padding:7px 13px;border-radius:100px;font-family:var(--fb);font-size:.78rem;font-weight:600;letter-spacing:.005em;}
+.cat-pill svg{width:13px;height:13px;stroke:var(--gold);stroke-width:2.5;fill:none}
+.cat-hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.cat-hero-visual{position:relative;aspect-ratio:4/5;border-radius:18px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.5),0 0 0 1px rgba(1,136,204,.22);}
+.cat-hero-visual img{width:100%;height:100%;object-fit:cover}
+.cat-hero-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.6) 100%);}
+
+.trust-bar-merged{background:rgba(0,0,0,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid rgba(1,136,204,.22);border-bottom:none;padding:22px 48px;margin:auto -48px 0;position:relative;z-index:2;width:calc(100% + 96px);}
+.trust-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;align-items:center;}
+.trust-item{display:flex;align-items:center;justify-content:center;gap:10px;color:rgba(255,255,255,.88);font-family:var(--fb);font-size:.82rem;font-weight:500;letter-spacing:.005em;text-align:left;}
+.trust-item svg{width:18px;height:18px;stroke:var(--gold);stroke-width:2;fill:none;flex-shrink:0}
+.trust-item strong{color:#fff;font-weight:700;margin-right:3px}
+
+.cat-stats{background:var(--cream-deep);padding:28px 48px;border-bottom:1px solid var(--line2);}
+.cat-stats-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.cat-stat{display:flex;align-items:center;gap:14px;}
+.cat-stat-icon{width:42px;height:42px;border-radius:10px;background:#fff;border:1px solid var(--gold-line);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cat-stat-icon svg{width:18px;height:18px;stroke:var(--navy);stroke-width:2;fill:none}
+.cat-stat-meta{display:flex;flex-direction:column;line-height:1.2}
+.cat-stat-num{font-family:var(--fh);font-size:1.32rem;color:var(--ink);font-weight:400}
+.cat-stat-lab{font-family:var(--fb);font-size:.74rem;color:var(--muted);margin-top:2px}
+
+.sec-head{text-align:center;max-width:680px;margin:0 auto 56px}
+.sec-label{display:inline-flex;align-items:center;gap:8px;font-family:var(--fb);font-size:.82rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--red);margin-bottom:16px;}
+.sec-label::before{content:"";width:24px;height:1px;background:var(--red);}
+.sec-label::after{content:"";width:24px;height:1px;background:var(--red);}
+.sec-h{font-family:var(--fh);font-size:var(--ts-xl);color:var(--ink);line-height:1.05;letter-spacing:-.02em;margin-bottom:14px;font-weight:400;}
+.sec-h em{font-style:italic;color:var(--red);font-family:var(--fh)}
+.sec-sub{font-family:var(--fb);font-size:1rem;color:var(--muted);line-height:1.65;max-width:580px;margin:0 auto;}
+
+.cat-variants{padding:88px 48px;background:#fff}
+.cat-var-filters{max-width:1180px;margin:0 auto 32px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;}
+.cat-var-filter{font-family:var(--fb);font-size:.82rem;font-weight:600;color:var(--muted);padding:9px 22px;border-radius:100px;border:1px solid var(--line2);background:#fff;white-space:nowrap;transition:all .25s;cursor:pointer;}
+.cat-var-filter:hover{color:var(--ink);border-color:var(--gold-line)}
+.cat-var-filter.active{background:var(--gold);color:#fff;border-color:var(--gold);}
+.cat-variants-grid .var-card.hidden{display:none}
+.cat-variants-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.var-card{background:#fff;border-radius:14px;overflow:hidden;border:1px solid var(--line);transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .25s;display:flex;flex-direction:column;}
+.var-card:hover{transform:translateY(-5px);box-shadow:0 22px 44px rgba(0,0,0,.12);border-color:var(--gold-line);}
+.var-card-img{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--navy);}
+.var-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.var-card:hover .var-card-img img{transform:scale(1.06)}
+.var-card-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+.var-card h3{font-family:var(--fh);font-size:1.22rem;color:var(--ink);margin-bottom:7px;font-weight:400;line-height:1.18;}
+.var-card p{font-family:var(--fb);font-size:.86rem;color:var(--muted);line-height:1.6;margin-bottom:14px;flex:1;}
+.var-tags{display:flex;flex-wrap:wrap;gap:6px}
+.var-tag{background:var(--cream);color:var(--body);font-family:var(--fb);font-size:.68rem;font-weight:600;padding:4px 10px;border-radius:100px;border:1px solid var(--line2);}
+.var-card-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.var-card-btn{flex:1;min-width:calc(50% - 4px);font-family:var(--fb);font-size:.72rem;font-weight:700;padding:10px 10px;border-radius:8px;border:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s,color .2s;text-align:center;line-height:1.25;letter-spacing:.01em;}
+.var-card-btn:not(.var-card-btn-outline){background:var(--gold);color:var(--navy);box-shadow:0 4px 12px rgba(1,136,204,.22);}
+.var-card-btn:not(.var-card-btn-outline):hover{background:#02a0eb;transform:translateY(-1px);box-shadow:0 6px 16px rgba(1,136,204,.3);}
+.var-card-btn-outline{background:#fff;color:var(--ink);border:1.5px solid var(--line2);}
+.var-card-btn-outline:hover{border-color:var(--gold);color:var(--navy);transform:translateY(-1px);}
+
+.cat-specs{padding:88px 48px;background:var(--cream)}
+.specs-inner{max-width:980px;margin:0 auto}
+.specs-grid{background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 14px 36px rgba(0,0,0,.06);}
+.spec-row{display:grid;grid-template-columns:240px 1fr;border-bottom:1px solid var(--line);padding:22px 28px;align-items:center;}
+.spec-row:last-child{border-bottom:none}
+.spec-label{font-family:var(--fb);font-size:.78rem;font-weight:700;color:var(--navy);letter-spacing:.06em;text-transform:uppercase;}
+.spec-val{font-family:var(--fb);font-size:.94rem;color:var(--body);line-height:1.55;}
+
+.cat-portfolio{padding:72px 0;background:var(--navy);overflow:hidden;position:relative}
+.cat-portfolio .sec-head{padding:0 48px;margin-bottom:36px}
+.cat-portfolio .sec-h{color:#fff}
+.cat-portfolio .sec-sub{color:rgba(255,255,255,.5)}
+.cat-portfolio .sec-label{color:var(--gold)}
+.cat-portfolio .sec-label::before,.cat-portfolio .sec-label::after{background:var(--gold)}
+.cat-strip-wrap{position:relative}
+.cat-strip-wrap::before,.cat-strip-wrap::after{content:"";position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none;}
+.cat-strip-wrap::before{left:0;background:linear-gradient(90deg,var(--navy) 0%,transparent 100%)}
+.cat-strip-wrap::after{right:0;background:linear-gradient(270deg,var(--navy) 0%,transparent 100%)}
+.cat-strip{display:flex;gap:14px;animation:stripScroll 35s linear infinite;width:max-content;}
+.cat-strip:hover{animation-play-state:paused}
+@keyframes stripScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.cat-strip-item{flex-shrink:0;width:280px;height:200px;border-radius:12px;overflow:hidden;position:relative;cursor:pointer;}
+.cat-strip-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1);}
+.cat-strip-item:hover img{transform:scale(1.08)}
+.cat-strip-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.65) 100%);opacity:.85;}
+.cat-strip-cap{position:absolute;left:14px;right:14px;bottom:12px;z-index:2;color:#fff;font-family:var(--fh);font-size:.95rem;line-height:1.2;}
+.cat-strip-cap small{display:block;font-family:var(--fb);font-size:.66rem;font-weight:600;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px;}
+.cat-portfolio-link{text-align:center;padding:28px 48px 0}
+.cat-portfolio-link a{display:inline-flex;align-items:center;gap:8px;font-family:var(--fb);font-size:.84rem;font-weight:600;color:rgba(255,255,255,.5);transition:color .25s,gap .25s;}
+.cat-portfolio-link a:hover{color:var(--gold);gap:12px}
+.cat-portfolio-link svg{width:13px;height:13px;stroke:currentColor;stroke-width:2.5;fill:none}
+
+.cat-bestfor{padding:88px 48px;background:#fff}
+.bestfor-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.bestfor-card{background:var(--cream);padding:28px 22px;border-radius:14px;border:1px solid var(--line);text-align:center;transition:transform .25s,box-shadow .25s;}
+.bestfor-card:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(0,0,0,.08)}
+.bestfor-card-icon{width:50px;height:50px;border-radius:50%;background:var(--gold-soft);border:1px solid var(--gold-line);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;}
+.bestfor-card-icon svg{width:22px;height:22px;stroke:var(--navy);stroke-width:1.8;fill:none}
+.bestfor-card h4{font-family:var(--fh);font-size:1.05rem;color:var(--ink);margin-bottom:6px;font-weight:400;}
+.bestfor-card p{font-family:var(--fb);font-size:.82rem;color:var(--muted);line-height:1.55;}
+
+.final-cta{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-deep) 100%);color:#fff;padding:60px 48px;position:relative;overflow:hidden;text-align:center;}
+.final-cta::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 50% at 0% 100%,rgba(1,136,204,.16) 0%,transparent 70%),radial-gradient(ellipse 60% 50% at 100% 0%,rgba(1,136,204,.10) 0%,transparent 65%);}
+.final-inner{max-width:780px;margin:0 auto;position:relative;z-index:1}
+.final-inner .sec-label{color:var(--gold);justify-content:center}
+.final-inner .sec-label::before,.final-inner .sec-label::after{background:var(--gold)}
+.final-inner h2{font-family:var(--fh);font-size:clamp(1.6rem,3.5vw,2.6rem);color:#fff;line-height:1.04;letter-spacing:-.02em;margin-bottom:12px;font-weight:400;}
+.final-inner h2 em{font-style:italic;color:var(--gold)}
+.final-inner p{font-family:var(--fb);font-size:.96rem;line-height:1.6;color:rgba(255,255,255,.72);max-width:560px;margin:0 auto 28px;}
+.final-ctas{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:var(--navy);font-family:var(--fb);font-size:.95rem;font-weight:700;padding:16px 28px;border-radius:10px;display:inline-flex;align-items:center;gap:10px;transition:transform .2s,box-shadow .25s,background .25s;box-shadow:0 8px 24px rgba(1,136,204,.32);letter-spacing:.005em;}
+.btn-primary:hover{background:#02a0eb;transform:translateY(-2px);box-shadow:0 14px 32px rgba(1,136,204,.42)}
+.btn-primary svg{width:16px;height:16px;stroke:var(--navy);stroke-width:2.5;fill:none;transition:transform .2s}
+.btn-primary:hover svg{transform:translateX(3px)}
+.btn-ghost{background:transparent;color:#fff;font-family:var(--fb);font-size:.95rem;font-weight:600;padding:15px 26px;border-radius:10px;border:1.5px solid rgba(255,255,255,.32);display:inline-flex;align-items:center;gap:10px;transition:background .25s,border-color .25s,transform .2s;}
+.btn-ghost:hover{background:rgba(255,255,255,.08);border-color:rgba(1,136,204,.6);transform:translateY(-2px)}
+.btn-ghost svg{width:14px;height:14px;stroke:#fff;stroke-width:2;fill:none}
+
+@media(max-width:980px){
+  .cat-hero{padding:130px 22px 0}
+  .cat-hero-inner{grid-template-columns:1fr;gap:36px;padding-bottom:56px}
+  .cat-hero-visual{max-width:420px;margin:0 auto;width:100%;aspect-ratio:5/4}
+  .trust-bar-merged{margin:auto -22px 0;width:calc(100% + 44px);padding:18px 22px}
+  .trust-inner{grid-template-columns:repeat(2,1fr);gap:14px 18px}
+  .trust-item{font-size:.76rem;justify-content:flex-start}
+  .cat-stats{padding:22px}
+  .cat-stats-inner{grid-template-columns:1fr 1fr;gap:18px}
+  .cat-stat-num{font-size:1.1rem}
+  .cat-variants{padding:64px 22px}
+  .cat-var-filters{padding:0 4px;margin-bottom:24px}
+  .cat-variants-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+  .cat-specs{padding:64px 22px}
+  .spec-row{grid-template-columns:1fr;gap:4px;padding:18px 20px}
+  .spec-label{font-size:.7rem;color:var(--muted)}
+  .cat-portfolio{padding:56px 0}
+  .cat-portfolio .sec-head{padding:0 22px;margin-bottom:28px}
+  .cat-strip-item{width:240px;height:170px}
+  .cat-portfolio-link{padding:22px 22px 0}
+  .cat-bestfor{padding:64px 22px}
+  .bestfor-grid{grid-template-columns:1fr 1fr;gap:14px}
+  .final-cta{padding:46px 22px}
+}
+@media(max-width:560px){
+  .cat-variants-grid{grid-template-columns:1fr}
+  .trust-inner{grid-template-columns:1fr;gap:14px;justify-items:center;}
+  .trust-item{font-size:.85rem;white-space:normal;line-height:1.4;justify-content:center;text-align:center;}
+}
+</style>
+
+<!-- CATEGORY: Storefront signs HTML -->
+<main id="page-cat-channel-letters" class="page cat-page active">
 
   <section class="cat-hero">
     <div class="cat-hero-inner">
       <div class="cat-hero-text">
         <div class="cat-breadcrumb">
-          <a href="#" data-page="home">Home</a>
+          <a href="#">Home</a>
           <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-          <a href="#" data-page="types">Sign Types</a>
+          <a href="#">Sign Types</a>
           <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
           <span class="current">Storefront signs</span>
         </div>
         <h1>Storefront signs <em>Built to Glow.</em></h1>
         <p class="cat-hero-desc">The most-ordered custom storefront sign in America. Hand-fabricated backlit channel letters with custom LED illumination, available as halo-lit, front lit backlit, and reverse-lit acrylic storefront signs. Engineered for permits, built for the long haul.</p>
-        <div class="cat-pills"><span class="cat-pill"><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg>UL-listed components</span><span class="cat-pill"><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg>Front-lit, halo, or combo</span><span class="cat-pill"><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg>Day & night visibility</span><span class="cat-pill"><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg>All 50 states</span></div>
+        <div class="cat-pills">
+          <span class="cat-pill"><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg>UL-listed components</span>
+          <span class="cat-pill"><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg>Front-lit, halo, or combo</span>
+          <span class="cat-pill"><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg>Day & night visibility</span>
+          <span class="cat-pill"><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg>All 50 states</span>
+        </div>
         <div class="cat-hero-ctas">
-          <a href="#" data-page="contact" class="btn-primary">
-            Get Your Free Mockup
-            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </a>
-          <a href="#" data-page="types" class="btn-ghost">
-            All Sign Types
-            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-          </a>
+          <a href="#" class="btn-primary">Get Your Free Mockup <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+          <a href="#" class="btn-ghost">All Sign Types <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></a>
         </div>
       </div>
       <div class="cat-hero-visual">
         <img src="https://cdn.shopify.com/s/files/1/0598/2096/6023/files/a41f50aee39a3c269c600156808215e7.jpg?v=1773827697" alt="Custom backlit channel letter signs installed on commercial storefront – signs.inc" loading="eager">
       </div>
     </div>
-  </div>
 
-    <!-- TRUST BAR (merged into hero) -->
     <div class="trust-bar trust-bar-merged">
       <div class="trust-inner">
-      <div class="trust-item">
-        <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg>
-        <span><strong>4.9/5</strong> from 450+ businesses</span>
-      </div>
-      <div class="trust-item">
-        <svg viewBox="0 0 24 24"><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/><circle cx="12" cy="12" r="10"/></svg>
-        <span>Installed in <strong>all 50 states</strong></span>
-      </div>
-      <div class="trust-item">
-        <svg viewBox="0 0 24 24"><path d="M12 2L3 7v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7l-9-5z"/><path d="M9 12l2 2 4-4"/></svg>
-        <span><strong>5-year</strong> warranty</span>
-      </div>
-      <div class="trust-item">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        <span>Free mockup in <strong>2 hours</strong></span>
-      </div>
-      <div class="trust-item">
-        <svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg>
-        <span><strong>UL listed</strong> components</span>
+        <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><span><strong>4.9/5</strong> from 450+ businesses</span></div>
+        <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/><circle cx="12" cy="12" r="10"/></svg><span>Installed in <strong>all 50 states</strong></span></div>
+        <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7l-9-5z"/><path d="M9 12l2 2 4-4"/></svg><span><strong>5-year</strong> warranty</span></div>
+        <div class="trust-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Free mockup in <strong>2 hours</strong></span></div>
+        <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg><span><strong>UL listed</strong> components</span></div>
       </div>
     </div>
-  </div>
   </section>
 
   <div class="cat-stats">
     <div class="cat-stats-inner">
       <div class="cat-stat">
         <div class="cat-stat-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg></div>
-        <div class="cat-stat-meta">
-          <span class="cat-stat-num">Most Popular</span>
-          <span class="cat-stat-lab">Sign Type in US</span>
-        </div>
+        <div class="cat-stat-meta"><span class="cat-stat-num">Most Popular</span><span class="cat-stat-lab">Sign Type in US</span></div>
       </div>
       <div class="cat-stat">
         <div class="cat-stat-icon"><svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
-        <div class="cat-stat-meta">
-          <span class="cat-stat-num">$1,800+</span>
-          <span class="cat-stat-lab">Starting Price</span>
-        </div>
+        <div class="cat-stat-meta"><span class="cat-stat-num">$1,800+</span><span class="cat-stat-lab">Starting Price</span></div>
       </div>
       <div class="cat-stat">
         <div class="cat-stat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-        <div class="cat-stat-meta">
-          <span class="cat-stat-num">10-14 days</span>
-          <span class="cat-stat-lab">Production Time</span>
-        </div>
+        <div class="cat-stat-meta"><span class="cat-stat-num">10-14 days</span><span class="cat-stat-lab">Production Time</span></div>
       </div>
       <div class="cat-stat">
         <div class="cat-stat-icon"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7l-9-5z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <div class="cat-stat-meta">
-          <span class="cat-stat-num">5-Year</span>
-          <span class="cat-stat-lab">Warranty</span>
-        </div>
+        <div class="cat-stat-meta"><span class="cat-stat-num">5-Year</span><span class="cat-stat-lab">Warranty</span></div>
       </div>
     </div>
   </div>
 
   <section class="cat-variants">
     <div class="sec-head">
-      <span class="sec-label reveal">Storefront Sign Types</span>
-      <h2 class="sec-h reveal reveal-delay-1">Choose Your <em>Storefront Style</em></h2>
-      <p class="sec-sub reveal reveal-delay-2">Eleven proven storefront configurations. Mix faces, lighting, and mounting to match your brand and your budget.</p>
+      <span class="sec-label">Storefront Sign Types</span>
+      <h2 class="sec-h">Choose Your <em>Storefront Style</em></h2>
+      <p class="sec-sub">Eleven proven storefront configurations. Mix faces, lighting, and mounting to match your brand and your budget.</p>
     </div>
     <div class="cat-variants-grid">
-      <article class="var-card reveal">
-        <div class="var-card-img">
-          <img src="https://i.ibb.co/0yr2R8DZ/7ed75f6621c0989e3478f26da0a8cec3-1.jpg" alt="Custom acrylic front-lit backlit and side-lit sign for business storefront – signs.inc" loading="lazy">
-        </div>
+      <article class="var-card">
+        <div class="var-card-img"><img src="https://i.ibb.co/0yr2R8DZ/7ed75f6621c0989e3478f26da0a8cec3-1.jpg" alt="Custom acrylic front-lit backlit and side-lit sign for business storefront – signs.inc" loading="lazy"></div>
         <div class="var-card-body">
           <h3>Acrylic Front Lit, Backlit and SideLit</h3>
           <p>Acrylic channel letters with front, rear, or side LED illumination. Maximum flexibility for high-visibility storefront branding day and night.</p>
           <div class="var-tags"><span class="var-tag">Acrylic</span><span class="var-tag">Front Lit</span><span class="var-tag">Side Lit</span></div>
           <div class="var-card-actions">
-            <button type="button" class="var-card-btn var-card-btn-outline var-card-gallery">View more images</button>
-            <button type="button" class="var-card-btn var-card-quote">Get a Quote</button>
+            <button type="button" class="var-card-btn var-card-btn-outline">View more images</button>
+            <button type="button" class="var-card-btn">Get a Quote</button>
           </div>
         </div>
       </article>
-      <article class="var-card reveal">
-        <div class="var-card-img">
-          <img src="https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg" alt="Custom push-through backlit letter sign for professional business – signs.inc" loading="lazy">
-        </div>
+      <article class="var-card">
+        <div class="var-card-img"><img src="https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg" alt="Custom push-through backlit letter sign for professional business – signs.inc" loading="lazy"></div>
         <div class="var-card-body">
           <h3>Push Thru Sign</h3>
           <p>Acrylic letters pushed through a metal panel face, illuminated from behind for sharp glowing edges and bold daytime presence.</p>
           <div class="var-tags"><span class="var-tag">Push Thru</span><span class="var-tag">Backlit</span><span class="var-tag">Exterior</span></div>
           <div class="var-card-actions">
-            <button type="button" class="var-card-btn var-card-btn-outline var-card-gallery">View more images</button>
-            <button type="button" class="var-card-btn var-card-quote">Get a Quote</button>
+            <button type="button" class="var-card-btn var-card-btn-outline">View more images</button>
+            <button type="button" class="var-card-btn">Get a Quote</button>
           </div>
         </div>
       </article>
-      <article class="var-card reveal">
-        <div class="var-card-img">
-          <img src="https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg" alt="Custom 3D metal backlit halo-lit sign for commercial building – signs.inc" loading="lazy">
-        </div>
+      <article class="var-card">
+        <div class="var-card-img"><img src="https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg" alt="Custom 3D metal backlit halo-lit sign for commercial building – signs.inc" loading="lazy"></div>
         <div class="var-card-body">
           <h3>3D Metal Backlit Signs</h3>
           <p>Fabricated metal channel letters with rear LED halo illumination. The premium American storefront standard, refined day and night.</p>
           <div class="var-tags"><span class="var-tag">3D Metal</span><span class="var-tag">Backlit</span><span class="var-tag">Exterior</span></div>
           <div class="var-card-actions">
-            <button type="button" class="var-card-btn var-card-btn-outline var-card-gallery">View more images</button>
-            <button type="button" class="var-card-btn var-card-quote">Get a Quote</button>
+            <button type="button" class="var-card-btn var-card-btn-outline">View more images</button>
+            <button type="button" class="var-card-btn">Get a Quote</button>
           </div>
         </div>
       </article>
-      <article class="var-card reveal">
-        <div class="var-card-img">
-          <img src="https://i.ibb.co/jPg7D4fQ/6da70f1b76ec7f98ea751fe4fa78205c.jpg" alt="Custom metal backlit sign with backboard and raceway for commercial exterior – signs.inc" loading="lazy">
-        </div>
+      <article class="var-card">
+        <div class="var-card-img"><img src="https://i.ibb.co/jPg7D4fQ/6da70f1b76ec7f98ea751fe4fa78205c.jpg" alt="Custom metal backlit sign with backboard and raceway for commercial exterior – signs.inc" loading="lazy"></div>
         <div class="var-card-body">
           <h3>Metal Backlit with Backboard/Raceway</h3>
           <p>Backlit metal letters mounted on a solid backboard panel or raceway. Premium framed look with streamlined installation and service access.</p>
           <div class="var-tags"><span class="var-tag">Backboard</span><span class="var-tag">Raceway</span><span class="var-tag">Metal</span></div>
           <div class="var-card-actions">
-            <button type="button" class="var-card-btn var-card-btn-outline var-card-gallery">View more images</button>
-            <button type="button" class="var-card-btn var-card-quote">Get a Quote</button>
+            <button type="button" class="var-card-btn var-card-btn-outline">View more images</button>
+            <button type="button" class="var-card-btn">Get a Quote</button>
           </div>
         </div>
       </article>
-      <article class="var-card reveal">
-        <div class="var-card-img">
-          <img src="https://i.ibb.co/Xk7kC7sZ/9bc0a390bd5f595c29ed220f1af96cc1.jpg" alt="Custom single-sided lightbox cabinet sign for retail business – signs.inc" loading="lazy">
-        </div>
+      <article class="var-card">
+        <div class="var-card-img"><img src="https://i.ibb.co/Xk7kC7sZ/9bc0a390bd5f595c29ed220f1af96cc1.jpg" alt="Custom single-sided lightbox cabinet sign for retail business – signs.inc" loading="lazy"></div>
         <div class="var-card-body">
           <h3>Single Sided Light Box</h3>
           <p>Illuminated cabinet with replaceable polycarbonate face. The retail workhorse for seasonal updates and brand refreshes.</p>
           <div class="var-tags"><span class="var-tag">Lightbox</span><span class="var-tag">Single Sided</span><span class="var-tag">Exterior</span></div>
           <div class="var-card-actions">
-            <button type="button" class="var-card-btn var-card-btn-outline var-card-gallery">View more images</button>
-            <button type="button" class="var-card-btn var-card-quote">Get a Quote</button>
+            <button type="button" class="var-card-btn var-card-btn-outline">View more images</button>
+            <button type="button" class="var-card-btn">Get a Quote</button>
           </div>
         </div>
       </article>
-      <article class="var-card reveal">
-        <div class="var-card-img">
-          <img src="https://i.ibb.co/XxBHkQjf/87f166fff9b333d24a15963efac6d657.jpg" alt="Custom 3D metal non-illuminated fabricated sign for professional business – signs.inc" loading="lazy">
-        </div>
+      <article class="var-card">
+        <div class="var-card-img"><img src="https://i.ibb.co/XxBHkQjf/87f166fff9b333d24a15963efac6d657.jpg" alt="Custom 3D metal non-illuminated fabricated sign for professional business – signs.inc" loading="lazy"></div>
         <div class="var-card-body">
           <h3>3D Metal Non Lit Sign</h3>
           <p>Dimensional non-lit metal letters with brushed or polished finish. Premium look without the electrical requirements.</p>
           <div class="var-tags"><span class="var-tag">3D Metal</span><span class="var-tag">Non-Lit</span><span class="var-tag">Exterior</span></div>
           <div class="var-card-actions">
-            <button type="button" class="var-card-btn var-card-btn-outline var-card-gallery">View more images</button>
-            <button type="button" class="var-card-btn var-card-quote">Get a Quote</button>
+            <button type="button" class="var-card-btn var-card-btn-outline">View more images</button>
+            <button type="button" class="var-card-btn">Get a Quote</button>
           </div>
         </div>
       </article>
-      <article class="var-card reveal">
-        <div class="var-card-img">
-          <img src="https://i.ibb.co/zhspw9Zp/e099e6192c61020ed637eaefeee78b12.jpg" alt="Custom acrylic double-lit sign for retail business storefront – signs.inc" loading="lazy">
-        </div>
+      <article class="var-card">
+        <div class="var-card-img"><img src="https://i.ibb.co/zhspw9Zp/e099e6192c61020ed637eaefeee78b12.jpg" alt="Custom acrylic double-lit sign for retail business storefront – signs.inc" loading="lazy"></div>
         <div class="var-card-body">
           <h3>Acrylic Double Lit Sign</h3>
           <p>Front-lit and backlit in one sign. Dual illumination for maximum impact on storefronts that need to stand out after dark.</p>
           <div class="var-tags"><span class="var-tag">Double Lit</span><span class="var-tag">Acrylic</span><span class="var-tag">High Impact</span></div>
           <div class="var-card-actions">
-            <button type="button" class="var-card-btn var-card-btn-outline var-card-gallery">View more images</button>
-            <button type="button" class="var-card-btn var-card-quote">Get a Quote</button>
+            <button type="button" class="var-card-btn var-card-btn-outline">View more images</button>
+            <button type="button" class="var-card-btn">Get a Quote</button>
           </div>
         </div>
       </article>
-      <article class="var-card reveal">
-        <div class="var-card-img">
-          <img src="https://i.ibb.co/84SSsvZf/a7a2eaef0ef4d3d215fba120c6418940.jpg" alt="Custom 3D non-lit metal sign with backboard for business interior – signs.inc" loading="lazy">
-        </div>
+      <article class="var-card">
+        <div class="var-card-img"><img src="https://i.ibb.co/84SSsvZf/a7a2eaef0ef4d3d215fba120c6418940.jpg" alt="Custom 3D non-lit metal sign with backboard for business interior – signs.inc" loading="lazy"></div>
         <div class="var-card-body">
           <h3>3D Non Lit with Backboard</h3>
           <p>Dimensional non-lit letters mounted on a solid backboard panel. Added visual weight and a finished, framed appearance.</p>
           <div class="var-tags"><span class="var-tag">3D</span><span class="var-tag">Non-Lit</span><span class="var-tag">Backboard</span></div>
           <div class="var-card-actions">
-            <button type="button" class="var-card-btn var-card-btn-outline var-card-gallery">View more images</button>
-            <button type="button" class="var-card-btn var-card-quote">Get a Quote</button>
+            <button type="button" class="var-card-btn var-card-btn-outline">View more images</button>
+            <button type="button" class="var-card-btn">Get a Quote</button>
           </div>
         </div>
       </article>
-      <article class="var-card reveal">
-        <div class="var-card-img">
-          <img src="https://i.ibb.co/Xk4qPbsC/1532bdd2ade8d057d4e699a32c975bdf.jpg" alt="Custom open-face LED neon sign for restaurant or bar interior – signs.inc" loading="lazy">
-        </div>
+      <article class="var-card">
+        <div class="var-card-img"><img src="https://i.ibb.co/Xk4qPbsC/1532bdd2ade8d057d4e699a32c975bdf.jpg" alt="Custom open-face LED neon sign for restaurant or bar interior – signs.inc" loading="lazy"></div>
         <div class="var-card-body">
           <h3>Open Face Neon</h3>
           <p>Open-face channel letters with exposed LED tubing for classic neon-style character and high vintage appeal.</p>
           <div class="var-tags"><span class="var-tag">Open Face</span><span class="var-tag">Neon</span><span class="var-tag">Vintage</span></div>
           <div class="var-card-actions">
-            <button type="button" class="var-card-btn var-card-btn-outline var-card-gallery">View more images</button>
-            <button type="button" class="var-card-btn var-card-quote">Get a Quote</button>
+            <button type="button" class="var-card-btn var-card-btn-outline">View more images</button>
+            <button type="button" class="var-card-btn">Get a Quote</button>
           </div>
         </div>
       </article>
-      <article class="var-card reveal">
-        <div class="var-card-img">
-          <img src="https://i.ibb.co/6cJ0BJWF/137e9116-cb1e-46a4-9038-a91dd15b03c9.png" alt="Custom acrylic backlit front-lit and side-lit sign with backboard and raceway – signs.inc" loading="lazy">
-        </div>
+      <article class="var-card">
+        <div class="var-card-img"><img src="https://i.ibb.co/6cJ0BJWF/137e9116-cb1e-46a4-9038-a91dd15b03c9.png" alt="Custom acrylic backlit front-lit and side-lit sign with backboard and raceway – signs.inc" loading="lazy"></div>
         <div class="var-card-body">
           <h3>Acrylic Backlit Front Lit and SideLit with Backboard / Raceway</h3>
           <p>Acrylic letters with front, back, or side illumination on a backboard or raceway mount. Maximum visibility with a clean, finished install.</p>
           <div class="var-tags"><span class="var-tag">Acrylic</span><span class="var-tag">Backboard</span><span class="var-tag">Raceway</span></div>
           <div class="var-card-actions">
-            <button type="button" class="var-card-btn var-card-btn-outline var-card-gallery">View more images</button>
-            <button type="button" class="var-card-btn var-card-quote">Get a Quote</button>
+            <button type="button" class="var-card-btn var-card-btn-outline">View more images</button>
+            <button type="button" class="var-card-btn">Get a Quote</button>
           </div>
         </div>
       </article>
-      <article class="var-card reveal">
-        <div class="var-card-img">
-          <img src="https://i.ibb.co/G48pM6YL/Dmdj017-RZO5ty-KTu-GPv-GOImy-T2-Q2-Hwx-Yz-GMCWi-Gi-LP8dun6bn-XNH8-WKPZg-Kyo3-VIRXq-BUc-W2vp-GE3u-Kic-VJuf.jpg" alt="Custom marquee letter sign with LED illumination for business storefront – signs.inc" loading="lazy">
-        </div>
+      <article class="var-card">
+        <div class="var-card-img"><img src="https://i.ibb.co/G48pM6YL/Dmdj017-RZO5ty-KTu-GPv-GOImy-T2-Q2-Hwx-Yz-GMCWi-Gi-LP8dun6bn-XNH8-WKPZg-Kyo3-VIRXq-BUc-W2vp-GE3u-Kic-VJuf.jpg" alt="Custom marquee letter sign with LED illumination for business storefront – signs.inc" loading="lazy"></div>
         <div class="var-card-body">
           <h3>Marquee Letters</h3>
           <p>Marquee-style letters with bulb lighting for classic theatrical branding. Restaurants, theaters, and entertainment venues.</p>
           <div class="var-tags"><span class="var-tag">Marquee</span><span class="var-tag">Bulb Lit</span><span class="var-tag">Statement</span></div>
           <div class="var-card-actions">
-            <button type="button" class="var-card-btn var-card-btn-outline var-card-gallery">View more images</button>
-            <button type="button" class="var-card-btn var-card-quote">Get a Quote</button>
+            <button type="button" class="var-card-btn var-card-btn-outline">View more images</button>
+            <button type="button" class="var-card-btn">Get a Quote</button>
           </div>
         </div>
       </article>
@@ -258,138 +383,74 @@
 
   <section class="cat-specs">
     <div class="sec-head">
-      <span class="sec-label reveal">Build Specs</span>
-      <h2 class="sec-h reveal reveal-delay-1">Engineered to <em>Last</em></h2>
-      <p class="sec-sub reveal reveal-delay-2">What goes into every sign that leaves our factory floor. UL-listed components, weather-rated materials, and the kind of craftsmanship a permit inspector signs off on the first time.</p>
+      <span class="sec-label">Build Specs</span>
+      <h2 class="sec-h">Engineered to <em>Last</em></h2>
+      <p class="sec-sub">What goes into every sign that leaves our factory floor. UL-listed components, weather-rated materials, and the kind of craftsmanship a permit inspector signs off on the first time.</p>
     </div>
     <div class="specs-inner">
       <div class="specs-grid">
-      <div class="spec-row">
-        <div class="spec-label">Letter Construction</div>
-        <div class="spec-val">0.040" or 0.063" aluminum returns with welded back panels</div>
-      </div>
-      <div class="spec-row">
-        <div class="spec-label">Letter Faces</div>
-        <div class="spec-val">Acrylic, polycarbonate, brushed aluminum, polished stainless, or composite</div>
-      </div>
-      <div class="spec-row">
-        <div class="spec-label">Illumination</div>
-        <div class="spec-val">UL-listed low-voltage LED modules (6500K cool white, 3000K warm white, RGB available)</div>
-      </div>
-      <div class="spec-row">
-        <div class="spec-label">Power Supply</div>
-        <div class="spec-val">UL-recognized class 2 transformer with surge protection</div>
-      </div>
-      <div class="spec-row">
-        <div class="spec-label">Color Options</div>
-        <div class="spec-val">Any RAL, PMS, or custom color match (factory-finish, automotive-grade)</div>
-      </div>
-      <div class="spec-row">
-        <div class="spec-label">Mounting Options</div>
-        <div class="spec-val">Direct stud, raceway, or backboard mount</div>
-      </div>
-      <div class="spec-row">
-        <div class="spec-label">Size Range</div>
-        <div class="spec-val">3 inches to 96 inches per letter height</div>
-      </div>
-      <div class="spec-row">
-        <div class="spec-label">Warranty</div>
-        <div class="spec-val">5 years on LEDs, electrical components, and structural integrity</div>
-      </div>
-      <div class="spec-row">
-        <div class="spec-label">Lead Time</div>
-        <div class="spec-val">10–14 business days from approved mockup to ship</div>
-      </div>
-      <div class="spec-row">
-        <div class="spec-label">Installation</div>
-        <div class="spec-val">Vetted certified installers in all 50 states</div>
-      </div>
+        <div class="spec-row"><div class="spec-label">Letter Construction</div><div class="spec-val">0.040" or 0.063" aluminum returns with welded back panels</div></div>
+        <div class="spec-row"><div class="spec-label">Letter Faces</div><div class="spec-val">Acrylic, polycarbonate, brushed aluminum, polished stainless, or composite</div></div>
+        <div class="spec-row"><div class="spec-label">Illumination</div><div class="spec-val">UL-listed low-voltage LED modules (6500K cool white, 3000K warm white, RGB available)</div></div>
+        <div class="spec-row"><div class="spec-label">Power Supply</div><div class="spec-val">UL-recognized class 2 transformer with surge protection</div></div>
+        <div class="spec-row"><div class="spec-label">Color Options</div><div class="spec-val">Any RAL, PMS, or custom color match (factory-finish, automotive-grade)</div></div>
+        <div class="spec-row"><div class="spec-label">Mounting Options</div><div class="spec-val">Direct stud, raceway, or backboard mount</div></div>
+        <div class="spec-row"><div class="spec-label">Size Range</div><div class="spec-val">3 inches to 96 inches per letter height</div></div>
+        <div class="spec-row"><div class="spec-label">Warranty</div><div class="spec-val">5 years on LEDs, electrical components, and structural integrity</div></div>
+        <div class="spec-row"><div class="spec-label">Lead Time</div><div class="spec-val">10–14 business days from approved mockup to ship</div></div>
+        <div class="spec-row"><div class="spec-label">Installation</div><div class="spec-val">Vetted certified installers in all 50 states</div></div>
       </div>
     </div>
   </section>
 
-  <!-- PORTFOLIO STRIP -->
   <section class="cat-portfolio">
     <div class="sec-head">
-      <span class="sec-label reveal">Storefront Portfolio</span>
-      <h2 class="sec-h reveal reveal-delay-1">Storefront Signs <em>in the Wild</em></h2>
+      <span class="sec-label">Storefront Portfolio</span>
+      <h2 class="sec-h">Storefront Signs <em>in the Wild</em></h2>
     </div>
     <div class="cat-strip-wrap">
       <div class="cat-strip">
-      <div class="cat-strip-item">
-        <img src="https://i.ibb.co/0yr2R8DZ/7ed75f6621c0989e3478f26da0a8cec3-1.jpg" alt="Custom acrylic front-lit backlit and side-lit sign for business storefront – signs.inc" loading="lazy">
-        <div class="cat-strip-cap"><small>Acrylic</small>Acrylic Front Lit, Backlit and SideLit</div>
-      </div>
-      <div class="cat-strip-item">
-        <img src="https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg" alt="Custom push-through backlit letter sign for professional business – signs.inc" loading="lazy">
-        <div class="cat-strip-cap"><small>Push</small>Push Thru Sign</div>
-      </div>
-      <div class="cat-strip-item">
-        <img src="https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg" alt="Custom 3D metal backlit halo-lit sign for commercial building – signs.inc" loading="lazy">
-        <div class="cat-strip-cap"><small>3D</small>3D Metal Backlit Signs</div>
-      </div>
-      <div class="cat-strip-item">
-        <img src="https://i.ibb.co/jPg7D4fQ/6da70f1b76ec7f98ea751fe4fa78205c.jpg" alt="Custom metal backlit sign with backboard and raceway for commercial exterior – signs.inc" loading="lazy">
-        <div class="cat-strip-cap"><small>Metal</small>Metal Backlit with Backboard/Raceway</div>
-      </div>
-      <div class="cat-strip-item">
-        <img src="https://i.ibb.co/Xk7kC7sZ/9bc0a390bd5f595c29ed220f1af96cc1.jpg" alt="Custom single-sided lightbox cabinet sign for retail business – signs.inc" loading="lazy">
-        <div class="cat-strip-cap"><small>Single</small>Single Sided Light Box</div>
-      </div>
-      <div class="cat-strip-item">
-        <img src="https://i.ibb.co/XxBHkQjf/87f166fff9b333d24a15963efac6d657.jpg" alt="Custom 3D metal non-illuminated fabricated sign for professional business – signs.inc" loading="lazy">
-        <div class="cat-strip-cap"><small>3D</small>3D Metal Non Lit Sign</div>
-      </div>
-      <div class="cat-strip-item">
-        <img src="https://i.ibb.co/zhspw9Zp/e099e6192c61020ed637eaefeee78b12.jpg" alt="Custom acrylic double-lit sign for retail business storefront – signs.inc" loading="lazy">
-        <div class="cat-strip-cap"><small>Acrylic</small>Acrylic Double Lit Sign</div>
-      </div>
-      <div class="cat-strip-item">
-        <img src="https://i.ibb.co/84SSsvZf/a7a2eaef0ef4d3d215fba120c6418940.jpg" alt="Custom 3D non-lit metal sign with backboard for business interior – signs.inc" loading="lazy">
-        <div class="cat-strip-cap"><small>3D</small>3D Non Lit with Backboard</div>
-      </div>
-      <div class="cat-strip-item">
-        <img src="https://i.ibb.co/Xk4qPbsC/1532bdd2ade8d057d4e699a32c975bdf.jpg" alt="Custom open-face LED neon sign for restaurant or bar interior – signs.inc" loading="lazy">
-        <div class="cat-strip-cap"><small>Open</small>Open Face Neon</div>
-      </div>
-      <div class="cat-strip-item">
-        <img src="https://i.ibb.co/6cJ0BJWF/137e9116-cb1e-46a4-9038-a91dd15b03c9.png" alt="Custom acrylic backlit front-lit and side-lit sign with backboard and raceway – signs.inc" loading="lazy">
-        <div class="cat-strip-cap"><small>Acrylic</small>Acrylic Backlit Front Lit and SideLit with Backboard / Raceway</div>
-      </div>
-      <div class="cat-strip-item">
-        <img src="https://i.ibb.co/G48pM6YL/Dmdj017-RZO5ty-KTu-GPv-GOImy-T2-Q2-Hwx-Yz-GMCWi-Gi-LP8dun6bn-XNH8-WKPZg-Kyo3-VIRXq-BUc-W2vp-GE3u-Kic-VJuf.jpg" alt="Custom marquee letter sign with LED illumination for business storefront – signs.inc" loading="lazy">
-        <div class="cat-strip-cap"><small>Marquee</small>Marquee Letters</div>
-      </div>
+        <div class="cat-strip-item"><img src="https://i.ibb.co/0yr2R8DZ/7ed75f6621c0989e3478f26da0a8cec3-1.jpg" alt="Custom acrylic front-lit backlit and side-lit sign for business storefront – signs.inc" loading="lazy"><div class="cat-strip-cap"><small>Acrylic</small>Acrylic Front Lit, Backlit and SideLit</div></div>
+        <div class="cat-strip-item"><img src="https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg" alt="Custom push-through backlit letter sign for professional business – signs.inc" loading="lazy"><div class="cat-strip-cap"><small>Push</small>Push Thru Sign</div></div>
+        <div class="cat-strip-item"><img src="https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg" alt="Custom 3D metal backlit halo-lit sign for commercial building – signs.inc" loading="lazy"><div class="cat-strip-cap"><small>3D</small>3D Metal Backlit Signs</div></div>
+        <div class="cat-strip-item"><img src="https://i.ibb.co/jPg7D4fQ/6da70f1b76ec7f98ea751fe4fa78205c.jpg" alt="Custom metal backlit sign with backboard and raceway for commercial exterior – signs.inc" loading="lazy"><div class="cat-strip-cap"><small>Metal</small>Metal Backlit with Backboard/Raceway</div></div>
+        <div class="cat-strip-item"><img src="https://i.ibb.co/Xk7kC7sZ/9bc0a390bd5f595c29ed220f1af96cc1.jpg" alt="Custom single-sided lightbox cabinet sign for retail business – signs.inc" loading="lazy"><div class="cat-strip-cap"><small>Single</small>Single Sided Light Box</div></div>
+        <div class="cat-strip-item"><img src="https://i.ibb.co/XxBHkQjf/87f166fff9b333d24a15963efac6d657.jpg" alt="Custom 3D metal non-illuminated fabricated sign for professional business – signs.inc" loading="lazy"><div class="cat-strip-cap"><small>3D</small>3D Metal Non Lit Sign</div></div>
+        <div class="cat-strip-item"><img src="https://i.ibb.co/zhspw9Zp/e099e6192c61020ed637eaefeee78b12.jpg" alt="Custom acrylic double-lit sign for retail business storefront – signs.inc" loading="lazy"><div class="cat-strip-cap"><small>Acrylic</small>Acrylic Double Lit Sign</div></div>
+        <div class="cat-strip-item"><img src="https://i.ibb.co/84SSsvZf/a7a2eaef0ef4d3d215fba120c6418940.jpg" alt="Custom 3D non-lit metal sign with backboard for business interior – signs.inc" loading="lazy"><div class="cat-strip-cap"><small>3D</small>3D Non Lit with Backboard</div></div>
+        <div class="cat-strip-item"><img src="https://i.ibb.co/Xk4qPbsC/1532bdd2ade8d057d4e699a32c975bdf.jpg" alt="Custom open-face LED neon sign for restaurant or bar interior – signs.inc" loading="lazy"><div class="cat-strip-cap"><small>Open</small>Open Face Neon</div></div>
+        <div class="cat-strip-item"><img src="https://i.ibb.co/6cJ0BJWF/137e9116-cb1e-46a4-9038-a91dd15b03c9.png" alt="Custom acrylic backlit front-lit and side-lit sign with backboard and raceway – signs.inc" loading="lazy"><div class="cat-strip-cap"><small>Acrylic</small>Acrylic Backlit Front Lit and SideLit with Backboard / Raceway</div></div>
+        <div class="cat-strip-item"><img src="https://i.ibb.co/G48pM6YL/Dmdj017-RZO5ty-KTu-GPv-GOImy-T2-Q2-Hwx-Yz-GMCWi-Gi-LP8dun6bn-XNH8-WKPZg-Kyo3-VIRXq-BUc-W2vp-GE3u-Kic-VJuf.jpg" alt="Custom marquee letter sign with LED illumination for business storefront – signs.inc" loading="lazy"><div class="cat-strip-cap"><small>Marquee</small>Marquee Letters</div></div>
       </div>
     </div>
     <div class="cat-portfolio-link">
-      <a href="#" data-page="portfolio">View Full Portfolio <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      <a href="#">View Full Portfolio <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
     </div>
   </section>
 
   <section class="cat-bestfor">
     <div class="sec-head">
-      <span class="sec-label reveal">Built For</span>
-      <h2 class="sec-h reveal reveal-delay-1">The Businesses <em>That Order This Sign</em></h2>
-      <p class="sec-sub reveal reveal-delay-2">A few of the industries we build this category for every week.</p>
+      <span class="sec-label">Built For</span>
+      <h2 class="sec-h">The Businesses <em>That Order This Sign</em></h2>
+      <p class="sec-sub">A few of the industries we build this category for every week.</p>
     </div>
     <div class="bestfor-grid">
-      <div class="bestfor-card reveal">
+      <div class="bestfor-card">
         <div class="bestfor-card-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
         <h4>Restaurants</h4>
         <p>Lit signage that pulls in dinner crowds and reads well at night.</p>
       </div>
-      <div class="bestfor-card reveal">
+      <div class="bestfor-card">
         <div class="bestfor-card-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
         <h4>Retail Stores</h4>
         <p>Premium brand presence that justifies the rent on Main Street.</p>
       </div>
-      <div class="bestfor-card reveal">
+      <div class="bestfor-card">
         <div class="bestfor-card-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg></div>
         <h4>Auto Dealerships</h4>
         <p>Big, bright letters built to be seen from the highway.</p>
       </div>
-      <div class="bestfor-card reveal">
+      <div class="bestfor-card">
         <div class="bestfor-card-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
         <h4>Office & Medical</h4>
         <p>Professional, dignified storefront branding for clinics and offices.</p>
@@ -403,19 +464,13 @@
       <h2>See Your Storefront Signs on Your <em>Building</em>.</h2>
       <p>Send your details and we will design a photo-realistic mockup of this exact sign on your actual building. Free, in two hours, no obligation.</p>
       <div class="final-ctas">
-        <a href="#" data-page="contact" class="btn-primary">
-          Get Your Free Mockup
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </a>
-        <a href="tel:+12059007525" class="btn-ghost">
-          Call +1 205 900 7525
-          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
-        </a>
+        <a href="#" class="btn-primary">Get Your Free Mockup <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
       </div>
     </div>
   </section>
 
 </main>
+
 {% schema %}
 {
   "name": "NT Sign Category Page",
