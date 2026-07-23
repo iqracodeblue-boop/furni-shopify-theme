@@ -1,1258 +1,338 @@
-{% comment %} 
-  Schema for customizer integration 
-{% endcomment %}
+<style>
+:root{
+  --ts-2xs:.68rem; --ts-xs:.78rem; --ts-sm:.88rem; --ts-base:1rem; --ts-md:1.15rem;
+  --ts-lg:1.5rem; --ts-xl:2.2rem; --ts-2xl:clamp(2.4rem,5vw,4.4rem);
+  --navy:#111111; --navy-deep:#0a0a0a; --navy-light:#1a1a1a; --gold:#0188CC;
+  --gold-deep:#0170a8; --gold-soft:rgba(1,136,204,.10); --gold-line:rgba(1,136,204,.24);
+  --red:#0188CC; --red-deep:#016da0; --cream:#ffffff; --cream-deep:#f5f5f5;
+  --cream-warm:#fafafa; --ink:#111111; --body:#333333; --muted:#666666;
+  --ghost:#999999; --line:rgba(0,0,0,.07); --line2:rgba(0,0,0,.12);
+  --line3:rgba(0,0,0,.20); --card:#fff; --white:#fff; --star:#0188CC;
+  --fh:'DM Serif Display',Georgia,serif; --fb:'Inter',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:93%;-webkit-text-size-adjust:100%;text-size-adjust:100%;overflow-x:hidden;overflow-x:clip}
+@media(max-width:480px){html{font-size:100%}}
+body{font-family:var(--fb);background:var(--cream);color:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip;max-width:100%;position:relative;min-height:100dvh;min-height:-webkit-fill-available;line-height:1.6;}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+
+.page{display:block;min-height:100vh;max-width:100%;overflow-x:clip}
+
+.hero{position:relative;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;padding:120px 48px 0;overflow:hidden;isolation:isolate;background:linear-gradient(180deg,#080808 0%,#111111 100%);}
+.hero-main{flex:1;display:flex;align-items:center;justify-content:center;padding-bottom:48px;}
+.hero-bg{position:absolute;inset:0;z-index:-2;background-image:url('https://i.ibb.co/sdnM0Skc/QMva-E.jpg');background-size:cover;background-position:center;filter:brightness(.55) contrast(1.05) saturate(.9);}
+.hero-overlay{position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(0,0,0,.85) 0%,transparent 70%),radial-gradient(ellipse 60% 40% at 80% 20%,rgba(1,136,204,.10) 0%,transparent 60%),linear-gradient(180deg,rgba(5,13,31,.62) 0%,rgba(0,0,0,.78) 100%);}
+.hero-inner{max-width:1180px;width:100%;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:center;position:relative;z-index:1;}
+@media(max-width:980px){.hero-inner{grid-template-columns:1fr;gap:40px;text-align:center}}
+.hero-text{color:#fff}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--fb);font-size:.8rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);padding:8px 14px;border-radius:100px;background:rgba(1,136,204,.10);border:1px solid rgba(1,136,204,.32);margin-bottom:24px;}
+.hero h1{font-family:var(--fh);font-size:var(--ts-2xl);line-height:1.02;letter-spacing:-.02em;color:#fff;margin-bottom:18px;font-weight:400;}
+.hero h1 em{font-style:italic;color:var(--gold);font-family:var(--fh)}
+.hero-tagline{font-family:var(--fh);font-style:italic;font-size:1.18rem;color:var(--gold);margin-bottom:20px;letter-spacing:.005em;}
+.hero-desc{font-family:var(--fb);font-size:1.04rem;line-height:1.65;color:rgba(255,255,255,.78);max-width:560px;margin-bottom:38px;}
+@media(max-width:980px){.hero-desc{margin:0 auto 32px}}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+@media(max-width:980px){.hero-ctas{justify-content:center}}
+.btn-primary{background:var(--gold);color:var(--navy);font-family:var(--fb);font-size:.95rem;font-weight:700;padding:16px 28px;border-radius:10px;display:inline-flex;align-items:center;gap:10px;transition:transform .2s,box-shadow .25s,background .25s;box-shadow:0 8px 24px rgba(1,136,204,.32);letter-spacing:.005em;}
+.btn-primary:hover{background:#02a0eb;transform:translateY(-2px);box-shadow:0 14px 32px rgba(1,136,204,.42)}
+.btn-primary svg{width:16px;height:16px;stroke:var(--navy);stroke-width:2.5;fill:none;transition:transform .2s}
+.btn-primary:hover svg{transform:translateX(3px)}
+.btn-ghost{background:transparent;color:#fff;font-family:var(--fb);font-size:.95rem;font-weight:600;padding:15px 26px;border-radius:10px;border:1.5px solid rgba(255,255,255,.32);display:inline-flex;align-items:center;gap:10px;transition:background .25s,border-color .25s,transform .2s;}
+.btn-ghost:hover{background:rgba(255,255,255,.08);border-color:rgba(1,136,204,.6);transform:translateY(-2px)}
+.btn-ghost svg{width:14px;height:14px;stroke:#fff;stroke-width:2;fill:none}
+
+.hero-visual{position:relative;height:100%;display:flex;align-items:center;justify-content:center}
+.hero-card{position:relative;width:100%;max-width:520px;aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:#0c0c0c;box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(1,136,204,.2);}
+.hero-card img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-card .hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s cubic-bezier(.16,1,.3,1);z-index:0;}
+.hero-card .hero-slide.active{opacity:1;z-index:1}
+.hero-card::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.85) 100%);z-index:2;pointer-events:none;}
+.hero-card-tag{position:absolute;top:18px;left:18px;z-index:3;background:rgba(0,0,0,.75);backdrop-filter:blur(10px);border:1px solid rgba(1,136,204,.4);padding:7px 13px;border-radius:100px;color:var(--gold);font-family:var(--fb);font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;}
+.hero-card-cap{position:absolute;bottom:20px;left:20px;right:20px;z-index:3;color:#fff;font-family:var(--fh);font-size:1.15rem;line-height:1.2;}
+.hero-card-cap small{display:block;font-family:var(--fb);font-size:.72rem;font-weight:500;color:rgba(255,255,255,.66);letter-spacing:.06em;margin-top:6px;}
+.hero-card-dots{position:absolute;bottom:16px;right:18px;z-index:3;display:flex;gap:7px;}
+.hero-card-dots span{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.35);cursor:pointer;transition:background .3s,width .3s;}
+.hero-card-dots span.active{background:var(--gold);width:18px;border-radius:4px}
+
+.trust-bar-merged{background:rgba(0,0,0,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid rgba(1,136,204,.22);border-bottom:none;padding:22px 48px;margin:auto -48px 0;position:relative;z-index:2;width:calc(100% + 96px);}
+.trust-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;align-items:center;}
+.trust-item{display:flex;align-items:center;justify-content:center;gap:10px;color:rgba(255,255,255,.88);font-family:var(--fb);font-size:.82rem;font-weight:500;text-align:left;}
+.trust-item svg{width:18px;height:18px;stroke:var(--gold);stroke-width:2;fill:none;flex-shrink:0}
+.trust-item strong{color:#fff;font-weight:700;margin-right:3px}
+
+.section{padding:88px 48px;position:relative;overflow:hidden}
+.section-alt{background:var(--cream-deep)}
+.section-white{background:#fff}
+.sec-head{text-align:center;max-width:680px;margin:0 auto 56px}
+.sec-label{display:inline-flex;align-items:center;gap:8px;font-family:var(--fb);font-size:.82rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--red);margin-bottom:16px;}
+.sec-label::before{content:"";width:24px;height:1px;background:var(--red);}
+.sec-label::after{content:"";width:24px;height:1px;background:var(--red);}
+.sec-h{font-family:var(--fh);font-size:var(--ts-xl);color:var(--ink);line-height:1.05;letter-spacing:-.02em;margin-bottom:14px;font-weight:400;}
+.sec-h em{font-style:italic;color:var(--red);font-family:var(--fh)}
+.sec-sub{font-family:var(--fb);font-size:1rem;color:var(--muted);line-height:1.65;max-width:580px;margin:0 auto;}
+
+.types-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.type-card{background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--line);transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s,border-color .3s;display:flex;flex-direction:column;cursor:pointer;}
+.type-card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(0,0,0,.14);border-color:var(--gold-line);}
+.type-card-img{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--navy);}
+.type-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1);}
+.type-card:hover .type-card-img img{transform:scale(1.06)}
+.type-badge{position:absolute;top:14px;left:14px;z-index:2;background:var(--red);color:#fff;font-family:var(--fb);font-size:.62rem;font-weight:700;padding:5px 11px;border-radius:100px;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 4px 12px rgba(1,136,204,.32);}
+.type-card-body{padding:24px 24px 26px;display:flex;flex-direction:column;flex:1}
+.type-card h3{font-family:var(--fh);font-size:1.32rem;color:var(--ink);line-height:1.15;margin-bottom:8px;font-weight:400;letter-spacing:-.01em;}
+.type-card p{font-family:var(--fb);font-size:.88rem;color:var(--muted);line-height:1.6;margin-bottom:18px;flex:1;}
+.type-card-foot{display:flex;align-items:center;justify-content:flex-start;padding-top:16px;border-top:1px solid var(--line);}
+.type-card-link{font-family:var(--fb);font-size:.78rem;font-weight:700;color:var(--navy);display:inline-flex;align-items:center;gap:5px;transition:gap .25s,color .2s;}
+.type-card-link:hover{gap:9px;color:var(--red)}
+.type-card-link svg{width:12px;height:12px;stroke:currentColor;stroke-width:2.5;fill:none}
+
+.proc-section{position:relative;background:var(--navy-deep);padding:104px 48px;overflow:hidden;}
+.proc-section .sec-h{color:#fff}
+.proc-section .sec-sub{color:rgba(255,255,255,.55)}
+.proc-section .sec-label{color:var(--gold)}
+.proc-section .sec-label::before,.proc-section .sec-label::after{background:var(--gold)}
+.proc-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:22px;position:relative;z-index:2;}
+.proc-step{position:relative;background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:18px;padding:34px 26px 30px;text-align:left;transition:transform .35s cubic-bezier(.16,1,.3,1),border-color .35s,box-shadow .35s;overflow:hidden;}
+.proc-step:hover{transform:translateY(-6px);border-color:var(--gold-line);box-shadow:0 24px 50px rgba(0,0,0,.4);}
+.proc-step-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;}
+.proc-num{font-family:var(--fh);font-size:2.4rem;line-height:1;color:var(--gold);}
+.proc-icon{width:50px;height:50px;border-radius:13px;background:var(--gold-soft);border:1px solid var(--gold-line);display:flex;align-items:center;justify-content:center;}
+.proc-icon svg{width:23px;height:23px;fill:none;stroke:var(--gold);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.proc-step h4{font-family:var(--fh);font-size:1.24rem;color:var(--ink);margin-bottom:9px;font-weight:400;line-height:1.2;}
+.proc-step p{font-family:var(--fb);font-size:.88rem;color:var(--muted);line-height:1.62;margin:0;}
+
+.why-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.why-card{background:#fff;border-radius:14px;padding:32px 26px;border:1px solid var(--line);transition:transform .3s,box-shadow .3s,border-color .3s;position:relative;overflow:hidden;}
+.why-card:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(0,0,0,.10);border-color:var(--gold-line);}
+.why-icon{width:54px;height:54px;border-radius:12px;background:var(--gold-soft);border:1px solid var(--gold-line);display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+.why-icon svg{width:24px;height:24px;stroke:var(--navy);stroke-width:1.8;fill:none}
+.why-card h4{font-family:var(--fh);font-size:1.22rem;color:var(--ink);margin-bottom:10px;font-weight:400;line-height:1.2;}
+.why-card p{font-family:var(--fb);font-size:.9rem;color:var(--muted);line-height:1.65;}
+
+.gallery-bento{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px;}
+.gal-item{position:relative;overflow:hidden;border-radius:14px;background:var(--navy);cursor:pointer;transition:transform .3s;}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.16,1,.3,1);}
+.gal-item:hover img{transform:scale(1.08)}
+.gal-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.78) 100%);opacity:.85;transition:opacity .3s;}
+.gal-cap{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;color:#fff;font-family:var(--fh);font-size:1.05rem;line-height:1.2;transform:translateY(8px);opacity:0;transition:transform .35s,opacity .35s;}
+.gal-cap small{display:block;font-family:var(--fb);font-size:.7rem;font-weight:500;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px;}
+.gal-item:hover .gal-cap{transform:translateY(0);opacity:1}
+.gal-1{grid-column:span 2;grid-row:span 2} .gal-2{grid-column:span 1;grid-row:span 1} .gal-3{grid-column:span 1;grid-row:span 1} .gal-4{grid-column:span 1;grid-row:span 1} .gal-5{grid-column:span 1;grid-row:span 1} .gal-6{grid-column:span 2;grid-row:span 1}
+
+.final-cta{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-deep) 100%);color:#fff;padding:104px 48px;position:relative;overflow:hidden;text-align:center;}
+.final-inner{max-width:780px;margin:0 auto;position:relative;z-index:1}
+.final-inner .sec-label{color:var(--gold);justify-content:center}
+.final-inner .sec-label::before,.final-inner .sec-label::after{background:var(--gold)}
+.final-inner h2{font-family:var(--fh);font-size:var(--ts-2xl);color:#fff;line-height:1.04;letter-spacing:-.02em;margin-bottom:18px;font-weight:400;}
+.final-inner h2 em{font-style:italic;color:var(--gold)}
+.final-inner p{font-family:var(--fb);font-size:1.08rem;line-height:1.6;color:rgba(255,255,255,.72);max-width:560px;margin:0 auto 36px;}
+
+@media(max-width:980px){
+  .hero{padding:110px 22px 0}
+  .hero-card{max-width:420px;transform:none}
+  .trust-bar-merged{margin:auto -22px 0;width:calc(100% + 44px);padding:18px 22px}
+  .trust-inner{grid-template-columns:repeat(2,1fr);gap:14px 18px}
+  .types-grid{grid-template-columns:repeat(2,1fr);gap:18px}
+  .proc-grid{grid-template-columns:repeat(2,1fr);gap:18px}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
+  .gal-1{grid-column:span 2;grid-row:span 1}
+  .gal-6{grid-column:span 2}
+}
+@media(max-width:480px){
+  .types-grid{grid-template-columns:1fr;gap:16px}
+  .proc-grid{grid-template-columns:1fr;gap:16px}
+  .why-grid{grid-template-columns:1fr;gap:14px}
+  .gallery-bento{grid-template-columns:1fr;grid-auto-rows:200px;gap:10px}
+  .gal-1,.gal-6{grid-column:span 1}
+}
+</style>
+
+<!-- HOME PAGE HTML (Shortened) -->
+<main id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-main">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <span class="hero-eyebrow">Premium Custom Signage, Built to Last</span>
+        <h1>Premium Custom Signs. <em>Built Right.</em></h1>
+        <p class="hero-tagline">Your sign. Built right. Priced right. Delivered fast.</p>
+        <p class="hero-desc">Custom storefront signs, backlit channel letters, 3D metal backlit signs, lightbox signs, monument and pylon signs, LED neon signs and more. From our facility to your storefront. Free mockup in 2 hours. Installed across all 50 states.</p>
+        <div class="hero-ctas">
+          <a href="/pages/get-a-quote" class="btn-primary">Get Your Free Mockup <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+          <a href="/pages/sign-types" class="btn-ghost">Browse Sign Types <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card" id="heroCard">
+          <span class="hero-card-tag">Channel Letters</span>
+          <div class="hero-slide active"><img src="https://i.ibb.co/7Nd52czm/nw-Hr-L.jpg" alt="Halo-lit 3D metal backlit sign installed in corporate lobby reception – signs.inc"></div>
+          <div class="hero-slide"><img src="https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg" alt="Custom illuminated lightbox sign with vibrant LED lighting for retail business storefront – signs.inc"></div>
+          <div class="hero-slide"><img src="https://i.ibb.co/0yr2R8DZ/7ed75f6621c0989e3478f26da0a8cec3-1.jpg" alt="Custom acrylic front-lit channel letter sign installed on commercial storefront – signs.inc"></div>
+          <div class="hero-slide"><img src="https://i.ibb.co/Xk7kC7sZ/9bc0a390bd5f595c29ed220f1af96cc1.jpg" alt="Custom illuminated lightbox sign with vibrant LED lighting for retail business storefront – signs.inc"></div>
+          <div class="hero-slide"><img src="https://i.ibb.co/Fb0JMmQX/a1PDx4Vtw4YF6XfduRwwS6nKZ6sPAC9nCeR.jpg" alt="Exquisite 2D flat cut metal signage for professional business facade – signs.inc"></div>
+          <div class="hero-slide"><img src="https://i.ibb.co/Z1bRvmFX/1a8bfc475f04e41dc4168ddc673f5e30.jpg" alt="Custom face-lit acrylic script sign reading Studio T Transformation Awaits with decorative wood slat wall installation – signs.inc"></div>
+          <div class="hero-card-cap">Your name in lights.<br>Built to last.<small>Installed in 50 states</small></div>
+          <div class="hero-card-dots" id="heroDots">
+            <span class="active"></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- TRUST BAR -->
+    <div class="trust-bar trust-bar-merged">
+      <div class="trust-inner">
+        <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><span><strong>4.9/5</strong> from 450+ businesses</span></div>
+        <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/><circle cx="12" cy="12" r="10"/></svg><span>Installed in <strong>all 50 states</strong></span></div>
+        <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7l-9-5z"/><path d="M9 12l2 2 4-4"/></svg><span><strong>5-year</strong> warranty</span></div>
+        <div class="trust-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Free mockup in <strong>2 hours</strong></span></div>
+        <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg><span><strong>UL listed</strong> components</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPULAR SIGN TYPES -->
+  <section class="section section-white">
+    <div class="sec-head">
+      <span class="sec-label">What We Build</span>
+      <h2 class="sec-h">Popular <em>Sign Types</em> We Build</h2>
+      <p class="sec-sub">From bold storefront channel letters and LED neon signs to refined acrylic backlit lobby displays, every custom business sign is engineered in our factory and built to UL standards. Quality you can count on for a decade and beyond.</p>
+    </div>
+    <div class="types-grid">
+      <a href="/pages/sign-types" class="type-card" style="text-decoration:none;color:inherit;">
+        <div class="type-card-img"><span class="type-badge">Most Popular</span><img src="https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg" alt="Illuminated storefront sign for retail business – signs.inc" loading="lazy"></div>
+        <div class="type-card-body"><h3>Storefront signs</h3><p>Custom-fabricated aluminum channel letter signs with front-lit, halo-lit or combination LED illumination. The gold standard for retail storefront branding.</p><div class="type-card-foot"><span class="type-card-link">Explore <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div></div>
+      </a>
+      <a href="/pages/sign-types" class="type-card" style="text-decoration:none;color:inherit;">
+        <div class="type-card-img"><img src="https://i.ibb.co/Z1bRvmFX/1a8bfc475f04e41dc4168ddc673f5e30.jpg" alt="Custom reception and studio sign for corporate interior – signs.inc" loading="lazy"></div>
+        <div class="type-card-body"><h3>Reception &amp; studio signs</h3><p>Soft, premium halo glow that elevates any brand. Push through signs with acrylic faces and stainless steel returns for a refined, modern look.</p><div class="type-card-foot"><span class="type-card-link">Explore <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div></div>
+      </a>
+      <a href="/pages/sign-types" class="type-card" style="text-decoration:none;color:inherit;">
+        <div class="type-card-img"><img src="https://i.ibb.co/VcjZ4ZBF/000.png" alt="Custom medical and clinic sign for healthcare business – signs.inc" loading="lazy"></div>
+        <div class="type-card-body"><h3>Medical and Clinic signs</h3><p>Ground-level monuments and tall pylon signs engineered for visibility from the road. Stone, masonry and aluminum finishes available.</p><div class="type-card-foot"><span class="type-card-link">Explore <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div></div>
+      </a>
+      <a href="/pages/sign-types" class="type-card" style="text-decoration:none;color:inherit;">
+        <div class="type-card-img"><img src="https://i.ibb.co/jPLvTFk4/Storefronts-2.jpg" alt="Custom lighted storefront sign with LED illumination for retail business – signs.inc" loading="lazy"></div>
+        <div class="type-card-body"><h3>Coffee shops and restaurants</h3><p>Lightbox signs, cabinet signs and face-lit fixtures designed for high-traffic main street visibility. UL listed components throughout.</p><div class="type-card-foot"><span class="type-card-link">Explore <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div></div>
+      </a>
+      <a href="/pages/sign-types" class="type-card" style="text-decoration:none;color:inherit;">
+        <div class="type-card-img"><img src="https://i.ibb.co/tpq229Zx/86e7f4ccec44b08749e3403e5c444a65.jpg" alt="Custom gym spa and salon sign for fitness and wellness business – signs.inc" loading="lazy"></div>
+        <div class="type-card-body"><h3>Gym, Spa &amp; Salon signs</h3><p>Photogenic LED neon signs, acrylic backlit logos and dimensional wall signs built for fitness studios, spas and salons. Designed to earn shares and repeat visits.</p><div class="type-card-foot"><span class="type-card-link">Explore <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div></div>
+      </a>
+      <a href="/pages/sign-types" class="type-card" style="text-decoration:none;color:inherit;">
+        <div class="type-card-img"><img src="https://i.ibb.co/zhspw9Zp/e099e6192c61020ed637eaefeee78b12.jpg" alt="Custom auto services and real estate sign for commercial building – signs.inc" loading="lazy"></div>
+        <div class="type-card-body"><h3>Auto Services &amp; Real Estate Companies</h3><p>Showroom reception walls, dealership outdoor building signs, and property office signage in custom metal signs, acrylic, and illuminated cabinets built for high-traffic commercial locations.</p><div class="type-card-foot"><span class="type-card-link">Explore <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div></div>
+      </a>
+      <a href="/pages/sign-types" class="type-card" style="text-decoration:none;color:inherit;">
+        <div class="type-card-img"><img src="https://i.ibb.co/JFC3PgnK/2d-metal-5mm-image-2.jpg" alt="Custom lobby and interior sign with brushed metal letters for corporate office – signs.inc" loading="lazy"></div>
+        <div class="type-card-body"><h3>Lobby &amp; Interior Signs</h3><p>Reception walls, dimensional logo signs and indoor directional signs in brushed aluminum, backlit metal, acrylic and neon. First impressions, made permanent.</p><div class="type-card-foot"><span class="type-card-link">Explore <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div></div>
+      </a>
+      <a href="/pages/contact-us" class="type-card" style="text-decoration:none;color:inherit;">
+        <div class="type-card-img"><img src="https://i.ibb.co/zhVSVypQ/SKb-Yc.jpg" alt="Custom sign fabrication in progress at signs.inc manufacturing facility" loading="lazy"></div>
+        <div class="type-card-body"><h3>Can't find what you were looking for?</h3><p>Tell us what you have in mind. If you can picture it, we can build it — from marquee signs to custom moss signs. Send your idea, reference photo or rough sketch and we'll come back with a free sign mockup.</p><div class="type-card-foot"><span class="type-card-link">Tell us your idea <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="proc-section">
+    <div class="sec-head">
+      <span class="sec-label">The Process</span>
+      <h2 class="sec-h">How It <em>Works</em></h2>
+      <p class="sec-sub">A clear path from idea to installed sign. No guesswork, no surprises, no inflated markups. Just quality craftsmanship delivered on time.</p>
+    </div>
+    <div class="proc-grid">
+      <div class="proc-step"><div class="proc-step-top"><span class="proc-num">01</span><span class="proc-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></span></div><h4>Submit Details</h4><p>Share your business name, sign type — channel letters, lightbox sign, neon sign, metal sign — size and any reference photos. Takes under two minutes.</p></div>
+      <div class="proc-step"><div class="proc-step-top"><span class="proc-num">02</span><span class="proc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span></div><h4>Free Mockup in 2 Hours</h4><p>Our designers send you a photo-realistic mockup on your actual storefront, with revisions until it feels right.</p></div>
+      <div class="proc-step"><div class="proc-step-top"><span class="proc-num">03</span><span class="proc-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-6 9 6v11a1 1 0 01-1 1H4a1 1 0 01-1-1z"/><path d="M9 22V12h6v10"/></svg></span></div><h4>Approve &amp; We Build</h4><p>Once approved, your custom sign is built in our factory using UL-listed components and commercial-grade materials.</p></div>
+      <div class="proc-step"><div class="proc-step-top"><span class="proc-num">04</span><span class="proc-icon"><svg viewBox="0 0 24 24"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span></div><h4>Nationwide Installation</h4><p>Our certified installers handle delivery, mounting, electrical connection and permit guidance — nationwide sign installation in every state.</p></div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="section section-alt">
+    <div class="sec-head">
+      <span class="sec-label">Why Signs.inc</span>
+      <h2 class="sec-h">Built for the <em>Long Haul</em></h2>
+      <p class="sec-sub">We are not the cheapest sign company. We are the one your custom storefront sign is still standing strong a decade from now.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7l-9-5z"/></svg></div><h4>Built by Craftsmen, Not Brokers</h4><p>You work directly with the people building your sign. That means transparent pricing, faster turnaround and zero middleman markup on every order.</p></div>
+      <div class="why-card"><div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg></div><h4>UL Listed Components</h4><p>Every illuminated sign is built to UL 48 standards using UL-recognized power supplies and commercial-grade LEDs that pass permit inspection nationwide.</p></div>
+      <div class="why-card"><div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/></svg></div><h4>5-Year Warranty</h4><p>We back every sign with a five-year warranty on LEDs, electrical components and structural integrity. If something fails, we fix it.</p></div>
+      <div class="why-card"><div class="why-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div><h4>Flexible Terms for Every Business</h4><p>Flexible deposit terms, transparent estimates and someone who picks up the phone. From single-location shops to multi-state franchises.</p></div>
+      <div class="why-card"><div class="why-icon"><svg viewBox="0 0 24 24"><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/><circle cx="12" cy="12" r="10"/></svg></div><h4>Installed in All 50 States</h4><p>A vetted network of licensed, insured installers in every state. We handle permits guidance, scheduling and post-install support.</p></div>
+      <div class="why-card"><div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg></div><h4>4.9/5 Star Average</h4><p>More than 450 businesses have trusted us with their signage. The reviews speak for themselves and we read every single one.</p></div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section section-white">
+    <div class="sec-head">
+      <span class="sec-label">Our Work</span>
+      <h2 class="sec-h">Our Signs. <em>Installed.</em></h2>
+      <p class="sec-sub">A small selection of recent installs. Every custom sign in our gallery was built in our factory and professionally installed.</p>
+    </div>
+    <div class="gallery-bento">
+      <div class="gal-item gal-1"><img src="https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg" alt="Custom acrylic storefront sign for retail business entrance – signs.inc" loading="lazy"><div class="gal-cap"><small>Sign Type</small>Storefront Signs</div></div>
+      <div class="gal-item gal-2"><img src="https://i.ibb.co/2mRQ7Y0/e0cc8c5e140f122c969efb850e696e44.jpg" alt="Custom UV printed acrylic sign for retail business – signs.inc" loading="lazy"><div class="gal-cap"><small>Sign Type</small>UV Acrylic</div></div>
+      <div class="gal-item gal-3"><img src="https://i.ibb.co/0yr2R8DZ/7ed75f6621c0989e3478f26da0a8cec3-1.jpg" alt="Custom acrylic front-lit and backlit sign for retail storefront – signs.inc" loading="lazy"><div class="gal-cap"><small>Sign Type</small>Acrylic Front Lit &amp; Backlit</div></div>
+      <div class="gal-item gal-4"><img src="https://i.ibb.co/Xk7kC7sZ/9bc0a390bd5f595c29ed220f1af96cc1.jpg" alt="Custom illuminated lightbox cabinet sign for commercial business – signs.inc" loading="lazy"><div class="gal-cap"><small>Sign Type</small>Lightbox Signs</div></div>
+      <div class="gal-item gal-5"><img src="https://i.ibb.co/VcjZ4ZBF/000.png" alt="Custom medical and clinic sign for healthcare professional office – signs.inc" loading="lazy"><div class="gal-cap"><small>Sign Type</small>Medical &amp; Clinic Signs</div></div>
+      <div class="gal-item gal-6"><img src="https://i.ibb.co/Z1bRvmFX/1a8bfc475f04e41dc4168ddc673f5e30.jpg" alt="Custom reception and studio sign for corporate lobby interior – signs.inc" loading="lazy"><div class="gal-cap"><small>Sign Type</small>Reception &amp; Studio Signs</div></div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="final-inner">
+      <span class="sec-label">Ready When You Are</span>
+      <h2>Your Business Deserves a Sign <em>Worth Standing Behind.</em></h2>
+      <p>Free sign mockup in two hours. No obligation, no high-pressure sales call. Just a designed mockup of your custom business sign on your actual storefront so you can see exactly what it will look like.</p>
+      <div class="hero-ctas" style="justify-content:center;">
+        <a href="/pages/get-a-quote" class="btn-primary">Get Your Free Mockup <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const heroCard = document.getElementById('heroCard');
+    if (heroCard) {
+      const slides = heroCard.querySelectorAll('.hero-slide');
+      const dots = document.getElementById('heroDots').querySelectorAll('span');
+      let currentSlide = 0;
+      let slideInterval = setInterval(nextSlide, 4000);
+
+      function goToSlide(n) {
+        slides[currentSlide].classList.remove('active');
+        dots[currentSlide].classList.remove('active');
+        currentSlide = (n + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+      }
+      function nextSlide() { goToSlide(currentSlide + 1); }
+    }
+  });
+</script>
+
 {% schema %}
 {
-  "name": "Home Page",
-  "settings": [
+  "name": "NT Home Page",
+  "presets": [
     {
-      "type": "text",
-      "id": "hero_title",
-      "label": "Hero Title",
-      "default": "Premium Custom Signage, Built to Last"
-    },
-    {
-      "type": "image_picker",
-      "id": "hero_image",
-      "label": "Hero Background Image"
-    },
-    {
-      "type": "text",
-      "id": "subtitle",
-      "label": "Subtitle",
-      "default": "Custom Business Sign That Gets You Noticed"
+      "name": "NT Home Page"
     }
   ]
 }
 {% endschema %}
-
-<div class="home-page-wrapper" id="nt-home-page">
-  
-  {% comment %} ===== HERO SECTION ===== {% endcomment %}
-  <section class="hero-section" style="
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-    padding: 120px 0 80px;
-    position: relative;
-    overflow: hidden;
-  ">
-    
-    <!-- Background Pattern -->
-    <div style="
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      opacity: 0.05;
-      background-image: radial-gradient(circle at 20% 30%, white 1px, transparent 1px),
-                        radial-gradient(circle at 80% 70%, white 1px, transparent 1px);
-      background-size: 60px 60px;
-    "></div>
-    
-    <div style="
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 40px;
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    ">
-      
-      <!-- Hero Content -->
-      <div style="color: white;">
-        
-        <!-- Badge -->
-        <div style="
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          background: rgba(255, 107, 53, 0.15);
-          border: 1px solid rgba(255, 107, 53, 0.3);
-          padding: 10px 20px;
-          border-radius: 50px;
-          font-size: 14px;
-          font-weight: 600;
-          color: #FF6B35;
-          margin-bottom: 25px;
-        ">
-          <i class="fas fa-star"></i>
-          Trusted by 450+ Businesses Nationwide
-        </div>
-        
-        <!-- Title -->
-        <h1 style="
-          font-family: 'Poppins', sans-serif;
-          font-size: 56px;
-          font-weight: 800;
-          line-height: 1.15;
-          margin-bottom: 25px;
-        ">
-          {{ section.settings.hero_title | default: 'Premium Custom Signage, Built to Last' }}
-        </h1>
-        
-        <!-- Subtitle -->
-        <p style="
-          font-size: 19px;
-          line-height: 1.7;
-          margin-bottom: 35px;
-          opacity: 0.85;
-        ">
-          {{ section.settings.subtitle | default: 'Custom business signs that get you noticed. From bold illuminated signage to refined interior displays – we engineer and build to UL standards.' }}
-        </p>
-        
-        <!-- CTA Buttons -->
-        <div style="display: flex; gap: 18px; flex-wrap: wrap;">
-          <a href="{{ pages['get-a-quote'].url }}" style="
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 36px;
-            background: #0066CC;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 15px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
-          " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(0, 102, 204, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0, 102, 204, 0.3)'">
-            <i class="fas fa-magic"></i>
-            Get Your Free Mockup
-          </a>
-          
-          <a href="{{ pages['sign-categories'].url }}" style="
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 36px;
-            background: transparent;
-            color: white;
-            text-decoration: none;
-            border: 2px solid white;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 15px;
-            transition: all 0.3s ease;
-          " onmouseover="this.style.background='white'; this.style.color='#0066CC'" onmouseout="this.style.background='transparent'; this.color='white'">
-            Browse Sign Types
-            <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-        
-        <!-- Trust Badges -->
-        <div style="
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 25px;
-          margin-top: 45px;
-        ">
-          
-          <div style="
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(255,255,255,0.08);
-            padding: 18px;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
-          ">
-            <div style="
-              width: 48px;
-              height: 48px;
-              background: rgba(255,255,255,0.08);
-              border-radius: 10px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-size: 20px;
-              color: #FF6B35;
-            ">
-              <i class="fas fa-star"></i>
-            </div>
-            <div>
-              <h4 style="font-size: 17px; font-weight: 700; margin-bottom: 3px;">4.8/5 Rating</h4>
-              <p style="font-size: 13px; opacity: 0.75;">From 450+ businesses</p>
-            </div>
-          </div>
-          
-          <div style="
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(255,255,255,0.08);
-            padding: 18px;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
-          ">
-            <div style="
-              width: 48px;
-              height: 48px;
-              background: rgba(255,255,255,0.08);
-              border-radius: 10px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-size: 20px;
-              color: #FF6B35;
-            ">
-              <i class="fas fa-map-marker-alt"></i>
-            </div>
-            <div>
-              <h4 style="font-size: 17px; font-weight: 700; margin-bottom: 3px;">All 50 States</h4>
-              <p style="font-size: 13px; opacity: 0.75;">Nationwide service</p>
-            </div>
-          </div>
-          
-          <div style="
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(255,255,255,0.08);
-            padding: 18px;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
-          ">
-            <div style="
-              width: 48px;
-              height: 48px;
-              background: rgba(255,255,255,0.08);
-              border-radius: 10px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-size: 20px;
-              color: #FF6B35;
-            ">
-              <i class="fas fa-shield-alt"></i>
-            </div>
-            <div>
-              <h4 style="font-size: 17px; font-weight: 700; margin-bottom: 3px;">2-Year Warranty</h4>
-              <p style="font-size: 13px; opacity: 0.75;">On all products</p>
-            </div>
-          </div>
-          
-        </div>
-      </div>
-      
-      <!-- Hero Image -->
-      <div>
-        {% if section.settings.hero_image != blank %}
-          <img src="{{ section.settings.hero_image | img_url: '800x600' }}" 
-               alt="Custom Storefront Sign" 
-               style="
-                 width: 100%;
-                 border-radius: 20px;
-                 box-shadow: 0 30px 60px rgba(0,0,0,0.4);
-               ">
-        {% else %}
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=600&fit=crop" 
-               alt="Premium Illuminated Storefront Sign" 
-               style="
-                 width: 100%;
-                 border-radius: 20px;
-                 box-shadow: 0 30px 60px rgba(0,0,0,0.4);
-               ">
-        {% endif %}
-        
-        <!-- Floating Cards -->
-        <div style="
-          position: absolute;
-          bottom: 40px;
-          left: -50px;
-          background: white;
-          padding: 22px 28px;
-          border-radius: 15px;
-          box-shadow: 0 8px 32px rgba(0,0,0,0.16);
-          animation: float 3s ease-in-out infinite;
-        ">
-          <div style="
-            width: 45px;
-            height: 45px;
-            background: linear-gradient(135deg, #0066CC, #004999);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 20px;
-            margin-bottom: 10px;
-          ">
-            <i class="fas fa-clock"></i>
-          </div>
-          <div>
-            <h4 style="font-size: 20px; font-weight: 800; color: #1a1a1a; margin-bottom: 3px;">2 Hours</h4>
-            <p style="font-size: 13px; color: #666;">Free Mockup Delivery</p>
-          </div>
-        </div>
-        
-        <div style="
-          position: absolute;
-          top: 40px;
-          right: -40px;
-          background: white;
-          padding: 22px 28px;
-          border-radius: 15px;
-          box-shadow: 0 8px 32px rgba(0,0,0,0.16);
-          animation: float 3s ease-in-out infinite;
-          animation-delay: 1.5s;
-        ">
-          <div style="
-            width: 45px;
-            height: 45px;
-            background: linear-gradient(135deg, #FF6B35, #ff9a6c);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 20px;
-            margin-bottom: 10px;
-          ">
-            <i class="fas fa-truck"></i>
-          </div>
-          <div>
-            <h4 style="font-size: 20px; font-weight: 800; color: #1a1a1a; margin-bottom: 3px;">10-14 Days</h4>
-            <p style="font-size: 13px; color: #666;">Fast Production Time</p>
-          </div>
-        </div>
-      </div>
-      
-    </div>
-  </section>
-
-  {% comment %} ===== POPULAR SIGN TYPES SECTION ===== {% endcomment %}
-  <section style="padding: 100px 0; background: #f8f9fa;">
-    <div style="max-width: 1400px; margin: 0 auto; padding: 0 40px;">
-      
-      <!-- Section Header -->
-      <div style="text-align: center; margin-bottom: 60px;">
-        <span style="
-          display: inline-block;
-          background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(0, 102, 204, 0.05));
-          color: #0066CC;
-          padding: 8px 20px;
-          border-radius: 50px;
-          font-size: 14px;
-          font-weight: 600;
-          letter-spacing: 0.5px;
-          text-transform: uppercase;
-        ">What We Build</span>
-        
-        <h2 style="
-          font-family: 'Poppins', sans-serif;
-          font-size: 44px;
-          font-weight: 800;
-          color: #1a1a1a;
-          margin-top: 18px;
-          line-height: 1.2;
-        ">Popular Sign Types We Create</h2>
-        
-        <p style="
-          font-size: 17px;
-          color: #666666;
-          max-width: 650px;
-          margin: 18px auto 0;
-          line-height: 1.7;
-        ">From bold storefront channel letters to refined interior displays, every custom business sign is engineered in our factory and built to UL standards.</p>
-      </div>
-      
-      <!-- Sign Types Grid -->
-      <div style="
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-      ">
-        
-        <!-- Card 1: Storefront Signs -->
-        <div style="
-          background: white;
-          border-radius: 16px;
-          overflow: hidden;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-          transition: all 0.3s ease;
-          cursor: pointer;
-        " onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.16)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'">
-          
-          <div style="position: relative; overflow: hidden; height: 260px;">
-            <img src="https://images.unsplash.com/photo-1567359781514-1b0c5e8d0bd7?w=600&h=400&fit=crop" 
-                 alt="Storefront Signs" 
-                 style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;"
-                 onmouseover="this.style.transform='scale(1.05)'"
-                 onmouseout="this.style.transform='scale(1)'">
-            
-            <span style="
-              position: absolute;
-              top: 15px;
-              right: 15px;
-              background: #FF6B35;
-              color: white;
-              padding: 6px 14px;
-              border-radius: 50px;
-              font-size: 11px;
-              font-weight: 700;
-              text-transform: uppercase;
-            ">Most Popular</span>
-          </div>
-          
-          <div style="padding: 28px;">
-            <h3 style="
-              font-family: 'Poppins', sans-serif;
-              font-size: 22px;
-              font-weight: 700;
-              color: #1a1a1a;
-              margin-bottom: 12px;
-            ">Storefront Signs</h3>
-            
-            <p style="
-              font-size: 14px;
-              color: #666666;
-              line-height: 1.7;
-              margin-bottom: 20px;
-            ">Custom-fabricated aluminum channel letter signs with front-lit, halo-lit or combination LED illumination. The gold standard for retail storefront branding.</p>
-            
-            <a href="{{ pages['sign-category'].url }}?category=storefront" style="
-              display: inline-flex;
-              align-items: center;
-              gap: 8px;
-              color: #0066CC;
-              font-weight: 700;
-              font-size: 14px;
-              text-decoration: none;
-              transition: all 0.3s;
-            " onmouseover="this.style.gap='12px'" onmouseout="this.style.gap='8px'">
-              Explore Storefront Signs
-              <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-        
-        <!-- Card 2: Reception & Studio Signs -->
-        <div style="
-          background: white;
-          border-radius: 16px;
-          overflow: hidden;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-          transition: all 0.3s ease;
-          cursor: pointer;
-        " onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.16)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'">
-          
-          <div style="position: relative; overflow: hidden; height: 260px;">
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop" 
-                 alt="Reception Signs" 
-                 style="width: 100%; height: 100%; object-fit: cover;"
-                 onmouseover="this.style.transform='scale(1.05)'"
-                 onmouseout="this.style.transform='scale(1)'">
-            
-            <span style="
-              position: absolute;
-              top: 15px;
-              right: 15px;
-              background: #0066CC;
-              color: white;
-              padding: 6px 14px;
-              border-radius: 50px;
-              font-size: 11px;
-              font-weight: 700;
-              text-transform: uppercase;
-            ">Premium</span>
-          </div>
-          
-          <div style="padding: 28px;">
-            <h3 style="
-              font-family: 'Poppins', sans-serif;
-              font-size: 22px;
-              font-weight: 700;
-              color: #1a1a1a;
-              margin-bottom: 12px;
-            ">Reception & Studio Signs</h3>
-            
-            <p style="
-              font-size: 14px;
-              color: #666666;
-              line-height: 1.7;
-              margin-bottom: 20px;
-            ">Soft, premium halo glow that elevates any brand. Push through signs with acrylic faces and stainless steel returns for a refined, modern look.</p>
-            
-            <a href="{{ pages['sign-category'].url }}?category=reception" style="
-              display: inline-flex;
-              align-items: center;
-              gap: 8px;
-              color: #0066CC;
-              font-weight: 700;
-              font-size: 14px;
-              text-decoration: none;
-            " onmouseover="this.style.gap='12px'" onmouseout="this.style.gap='8px'">
-              Explore Reception Signs
-              <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-        
-        <!-- Card 3: Medical & Clinic Signs -->
-        <div style="
-          background: white;
-          border-radius: 16px;
-          overflow: hidden;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-          transition: all 0.3s ease;
-          cursor: pointer;
-        " onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.16)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'">
-          
-          <div style="overflow: hidden; height: 260px;">
-            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&h=400&fit=crop" 
-                 alt="Medical Signs" 
-                 style="width: 100%; height: 100%; object-fit: cover;"
-                 onmouseover="this.style.transform='scale(1.05)'"
-                 onmouseout="this.style.transform='scale(1)'">
-          </div>
-          
-          <div style="padding: 28px;">
-            <h3 style="
-              font-family: 'Poppins', sans-serif;
-              font-size: 22px;
-              font-weight: 700;
-              color: #1a1a1a;
-              margin-bottom: 12px;
-            ">Medical & Clinic Signs</h3>
-            
-            <p style="
-              font-size: 14px;
-              color: #666666;
-              line-height: 1.7;
-              margin-bottom: 20px;
-            ">Ground-level monuments and tall pylon signs engineered for visibility from the road. Stone, masonry and aluminum finishes available.</p>
-            
-            <a href="{{ pages['sign-category'].url }}?category=medical" style="
-              display: inline-flex;
-              align-items: center;
-              gap: 8px;
-              color: #0066CC;
-              font-weight: 700;
-              font-size: 14px;
-              text-decoration: none;
-            " onmouseover="this.style.gap='12px'" onmouseout="this.style.gap='8px'">
-              Explore Medical Signs
-              <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-        
-        <!-- Card 4: Coffee Shops & Restaurants -->
-        <div style="
-          background: white;
-          border-radius: 16px;
-          overflow: hidden;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-          transition: all 0.3s ease;
-          cursor: pointer;
-        " onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.16)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'">
-          
-          <div style="overflow: hidden; height: 260px;">
-            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop" 
-                 alt="Restaurant Signs" 
-                 style="width: 100%; height: 100%; object-fit: cover;"
-                 onmouseover="this.style.transform='scale(1.05)'"
-                 onmouseout="this.style.transform='scale(1)'">
-          </div>
-          
-          <div style="padding: 28px;">
-            <h3 style="
-              font-family: 'Poppins', sans-serif;
-              font-size: 22px;
-              font-weight: 700;
-              color: #1a1a1a;
-              margin-bottom: 12px;
-            ">Coffee Shops & Restaurants</h3>
-            
-            <p style="
-              font-size: 14px;
-              color: #666666;
-              line-height: 1.7;
-              margin-bottom: 20px;
-            ">Lightbox signs, cabinet signs and face-lit fixtures designed for high-traffic main street visibility. UL listed components throughout.</p>
-            
-            <a href="{{ pages['sign-category'].url }}?category=restaurant" style="
-              display: inline-flex;
-              align-items: center;
-              gap: 8px;
-              color: #0066CC;
-              font-weight: 700;
-              font-size: 14px;
-              text-decoration: none;
-            " onmouseover="this.style.gap='12px'" onmouseout="this.style.gap='8px'">
-              Explore Restaurant Signs
-              <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-        
-        <!-- Card 5: Gym, Spa & Salon Signs -->
-        <div style="
-          background: white;
-          border-radius: 16px;
-          overflow: hidden;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-          transition: all 0.3s ease;
-          cursor: pointer;
-        " onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.16)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'">
-          
-          <div style="overflow: hidden; height: 260px;">
-            <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&h=400&fit=crop" 
-                 alt="Gym Signs" 
-                 style="width: 100%; height: 100%; object-fit: cover;"
-                 onmouseover="this.style.transform='scale(1.05)'"
-                 onmouseout="this.style.transform='scale(1)'">
-          </div>
-          
-          <div style="padding: 28px;">
-            <h3 style="
-              font-family: 'Poppins', sans-serif;
-              font-size: 22px;
-              font-weight: 700;
-              color: #1a1a1a;
-              margin-bottom: 12px;
-            ">Gym, Spa & Salon Signs</h3>
-            
-            <p style="
-              font-size: 14px;
-              color: #666666;
-              line-height: 1.7;
-              margin-bottom: 20px;
-            ">Photogenic LED neon signs, acrylic backlit logos and dimensional wall signs built for fitness studios, spas and salons.</p>
-            
-            <a href="{{ pages['sign-category'].url }}?category=gym" style="
-              display: inline-flex;
-              align-items: center;
-              gap: 8px;
-              color: #0066CC;
-              font-weight: 700;
-              font-size: 14px;
-              text-decoration: none;
-            " onmouseover="this.style.gap='12px'" onmouseout="this.style.gap='8px'">
-              Explore Gym Signs
-              <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-        
-        <!-- Card 6: Auto Services & Real Estate -->
-        <div style="
-          background: white;
-          border-radius: 16px;
-          overflow: hidden;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-          transition: all 0.3s ease;
-          cursor: pointer;
-        " onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.16)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'">
-          
-          <div style="overflow: hidden; height: 260px;">
-            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&h=400&fit=crop" 
-                 alt="Auto Service Signs" 
-                 style="width: 100%; height: 100%; object-fit: cover;"
-                 onmouseover="this.style.transform='scale(1.05)'"
-                 onmouseout="this.style.transform='scale(1)'">
-          </div>
-          
-          <div style="padding: 28px;">
-            <h3 style="
-              font-family: 'Poppins', sans-serif;
-              font-size: 22px;
-              font-weight: 700;
-              color: #1a1a1a;
-              margin-bottom: 12px;
-            ">Auto Services & Real Estate</h3>
-            
-            <p style="
-              font-size: 14px;
-              color: #666666;
-              line-height: 1.7;
-              margin-bottom: 20px;
-            ">Showroom reception walls, dealership outdoor building signage, monument signs and large format displays engineered for maximum impact.</p>
-            
-            <a href="{{ pages['sign-category'].url }}?category=auto" style="
-              display: inline-flex;
-              align-items: center;
-              gap: 8px;
-              color: #0066CC;
-              font-weight: 700;
-              font-size: 14px;
-              text-decoration: none;
-            " onmouseover="this.style.gap='12px'" onmouseout="this.style.gap='8px'">
-              Explore Auto Signs
-              <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-        
-      </div>
-    </div>
-  </section>
-
-  {% comment %} ===== WHY CHOOSE US SECTION ===== {% endcomment %}
-  <section style="padding: 100px 0; background: white;">
-    <div style="max-width: 1400px; margin: 0 auto; padding: 0 40px;">
-      
-      <div style="text-align: center; margin-bottom: 60px;">
-        <span style="
-          display: inline-block;
-          background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(0, 102, 204, 0.05));
-          color: #0066CC;
-          padding: 8px 20px;
-          border-radius: 50px;
-          font-size: 14px;
-          font-weight: 600;
-          letter-spacing: 0.5px;
-          text-transform: uppercase;
-        ">Why Choose Us</span>
-        
-        <h2 style="
-          font-family: 'Poppins', sans-serif;
-          font-size: 44px;
-          font-weight: 800;
-          color: #1a1a1a;
-          margin-top: 18px;
-          line-height: 1.2;
-        ">The SIGNS.inc Difference</h2>
-        
-        <p style="
-          font-size: 17px;
-          color: #666666;
-          max-width: 650px;
-          margin: 18px auto 0;
-          line-height: 1.7;
-        ">Quality craftsmanship, speed, and customer satisfaction are at the core of everything we build.</p>
-      </div>
-      
-      <div style="
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 35px;
-      ">
-        
-        <!-- Feature 1 -->
-        <div style="
-          text-align: center;
-          padding: 40px 25px;
-          border-radius: 16px;
-          background: #f8f9fa;
-          transition: all 0.3s;
-          border: 2px solid transparent;
-        " onmouseover="this.style.borderColor='#0066CC'; this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'">
-          
-          <div style="
-            width: 90px;
-            height: 90px;
-            background: linear-gradient(135deg, #0066CC, #004999);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            transition: transform 0.3s;
-          ">
-            <i class="fas fa-magic" style="font-size: 42px; color: white;"></i>
-          </div>
-          
-          <h3 style="
-            font-family: 'Poppins', sans-serif;
-            font-size: 20px;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 12px;
-          ">Free Mockup in 2 Hours</h3>
-          
-          <p style="
-            font-size: 14px;
-            color: #666666;
-            line-height: 1.7;
-          ">Get a digital proof of your custom sign within 2 hours of submitting your request. See exactly what your sign will look like before production begins.</p>
-        </div>
-        
-        <!-- Feature 2 -->
-        <div style="
-          text-align: center;
-          padding: 40px 25px;
-          border-radius: 16px;
-          background: #f8f9fa;
-          transition: all 0.3s;
-          border: 2px solid transparent;
-        " onmouseover="this.style.borderColor='#0066CC'; this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'">
-          
-          <div style="
-            width: 90px;
-            height: 90px;
-            background: linear-gradient(135deg, #0066CC, #004999);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-          ">
-            <i class="fas fa-certificate" style="font-size: 42px; color: white;"></i>
-          </div>
-          
-          <h3 style="
-            font-family: 'Poppins', sans-serif;
-            font-size: 20px;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 12px;
-          ">UL Listed Components</h3>
-          
-          <p style="
-            font-size: 14px;
-            color: #666666;
-            line-height: 1.7;
-          ">All our electrical components are UL certified for safety and quality. Your sign meets the highest industry standards for electrical safety.</p>
-        </div>
-        
-        <!-- Feature 3 -->
-        <div style="
-          text-align: center;
-          padding: 40px 25px;
-          border-radius: 16px;
-          background: #f8f9fa;
-          transition: all 0.3s;
-          border: 2px solid transparent;
-        " onmouseover="this.style.borderColor='#0066CC'; this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'">
-          
-          <div style="
-            width: 90px;
-            height: 90px;
-            background: linear-gradient(135deg, #0066CC, #004999);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-          ">
-            <i class="fas fa-shipping-fast" style="font-size: 42px; color: white;"></i>
-          </div>
-          
-          <h3 style="
-            font-family: 'Poppins', sans-serif;
-            font-size: 20px;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 12px;
-          ">10-14 Day Delivery</h3>
-          
-          <p style="
-            font-size: 14px;
-            color: #666666;
-            line-height: 1.7;
-          ">Most custom signs are designed, manufactured and shipped within 10 to 14 business days. Rush options available for urgent projects.</p>
-        </div>
-        
-        <!-- Feature 4 -->
-        <div style="
-          text-align: center;
-          padding: 40px 25px;
-          border-radius: 16px;
-          background: #f8f9fa;
-          transition: all 0.3s;
-          border: 2px solid transparent;
-        " onmouseover="this.style.borderColor='#0066CC'; this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'">
-          
-          <div style="
-            width: 90px;
-            height: 90px;
-            background: linear-gradient(135deg, #0066CC, #004999);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-          ">
-            <i class="fas fa-shield-alt" style="font-size: 42px; color: white;"></i>
-          </div>
-          
-          <h3 style="
-            font-family: 'Poppins', sans-serif;
-            font-size: 20px;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 12px;
-          ">2 Years Warranty</h3>
-          
-          <p style="
-            font-size: 14px;
-            color: #666666;
-            line-height: 1.7;
-          ">Every sign comes with a comprehensive 2-year warranty covering materials, workmanship, and electrical components.</p>
-        </div>
-        
-      </div>
-    </div>
-  </section>
-
-  {% comment %} ===== STATS SECTION ===== {% endcomment %}
-  <section style="
-    padding: 80px 0;
-    background: linear-gradient(135deg, #0066CC, #004999);
-    position: relative;
-    overflow: hidden;
-  ">
-    <div style="
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      opacity: 0.05;
-      background-image: radial-gradient(circle at 30% 40%, white 2px, transparent 2px),
-                        radial-gradient(circle at 70% 60%, white 2px, transparent 2px);
-      background-size: 70px 70px;
-    "></div>
-    
-    <div style="
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 40px;
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 40px;
-    ">
-      
-      <div style="text-align: center; color: white;">
-        <div style="
-          font-family: 'Poppins', sans-serif;
-          font-size: 58px;
-          font-weight: 800;
-          margin-bottom: 10px;
-          line-height: 1;
-        ">2500+</div>
-        <div style="font-size: 17px; font-weight: 500; opacity: 0.9;">Projects Completed</div>
-      </div>
-      
-      <div style="text-align: center; color: white;">
-        <div style="
-          font-family: 'Poppins', sans-serif;
-          font-size: 58px;
-          font-weight: 800;
-          margin-bottom: 10px;
-          line-height: 1;
-        ">50</div>
-        <div style="font-size: 17px; font-weight: 500; opacity: 0.9;">States Served</div>
-      </div>
-      
-      <div style="text-align: center; color: white;">
-        <div style="
-          font-family: 'Poppins', sans-serif;
-          font-size: 58px;
-          font-weight: 800;
-          margin-bottom: 10px;
-          line-height: 1;
-        ">98%</div>
-        <div style="font-size: 17px; font-weight: 500; opacity: 0.9;">Client Satisfaction</div>
-      </div>
-      
-      <div style="text-align: center; color: white;">
-        <div style="
-          font-family: 'Poppins', sans-serif;
-          font-size: 58px;
-          font-weight: 800;
-          margin-bottom: 10px;
-          line-height: 1;
-        ">12+</div>
-        <div style="font-size: 17px; font-weight: 500; opacity: 0.9;">Years Experience</div>
-      </div>
-      
-    </div>
-  </section>
-
-  {% comment %} ===== TESTIMONIALS SECTION ===== {% endcomment %}
-  <section style="padding: 100px 0; background: #f8f9fa;">
-    <div style="max-width: 1400px; margin: 0 auto; padding: 0 40px;">
-      
-      <div style="text-align: center; margin-bottom: 60px;">
-        <span style="
-          display: inline-block;
-          background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(0, 102, 204, 0.05));
-          color: #0066CC;
-          padding: 8px 20px;
-          border-radius: 50px;
-          font-size: 14px;
-          font-weight: 600;
-          letter-spacing: 0.5px;
-          text-transform: uppercase;
-        ">Testimonials</span>
-        
-        <h2 style="
-          font-family: 'Poppins', sans-serif;
-          font-size: 44px;
-          font-weight: 800;
-          color: #1a1a1a;
-          margin-top: 18px;
-          line-height: 1.2;
-        ">What Our Clients Say</h2>
-        
-        <p style="
-          font-size: 17px;
-          color: #666666;
-          max-width: 650px;
-          margin: 18px auto 0;
-          line-height: 1.7;
-        ">Don't just take our word for it. Here's what businesses across America are saying about their experience with SIGNS.inc.</p>
-      </div>
-      
-      <div style="
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-      ">
-        
-        <!-- Testimonial 1 -->
-        <div style="
-          background: white;
-          padding: 38px;
-          border-radius: 16px;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-          transition: all 0.3s;
-          position: relative;
-        " onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'">
-          
-          <div style="
-            font-size: 48px;
-            color: #0066CC;
-            opacity: 0.15;
-            position: absolute;
-            top: 20px;
-            right: 25px;
-            font-family: Georgia, serif;
-          ">"</div>
-          
-          <div style="display: flex; gap: 5px; margin-bottom: 18px; color: #FFB800; font-size: 17px;">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          
-          <p style="
-            font-size: 15px;
-            color: #666666;
-            line-height: 1.8;
-            margin-bottom: 25px;
-            font-style: italic;
-          ">"Absolutely incredible work! Our new storefront sign has transformed our business presence. The team was professional, responsive, and delivered exactly what they promised."</p>
-          
-          <div style="display: flex; align-items: center; gap: 15px;">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover;">
-            <div>
-              <h4 style="font-size: 16px; font-weight: 700; color: #1a1a1a; margin-bottom: 3px;">Michael Rodriguez</h4>
-              <p style="font-size: 13px; color: #666666;">Owner, Rodriguez Retail Group</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Testimonial 2 -->
-        <div style="
-          background: white;
-          padding: 38px;
-          border-radius: 16px;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-          transition: all 0.3s;
-          position: relative;
-        " onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'">
-          
-          <div style="
-            font-size: 48px;
-            color: #0066CC;
-            opacity: 0.15;
-            position: absolute;
-            top: 20px;
-            right: 25px;
-            font-family: Georgia, serif;
-          ">"</div>
-          
-          <div style="display: flex; gap: 5px; margin-bottom: 18px; color: #FFB800; font-size: 17px;">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          
-          <p style="
-            font-size: 15px;
-            color: #666666;
-            line-height: 1.8;
-            margin-bottom: 25px;
-            font-style: italic;
-          ">"The free mockup process was seamless. Within 2 hours I had a digital proof that looked amazing. The final product exceeded my expectations. Best investment we've made."</p>
-          
-          <div style="display: flex; align-items: center; gap: 15px;">
-            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover;">
-            <div>
-              <h4 style="font-size: 16px; font-weight: 700; color: #1a1a1a; margin-bottom: 3px;">Dr. Sarah Chen</h4>
-              <p style="font-size: 13px; color: #666666;">Director, Premier Medical Center</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Testimonial 3 -->
-        <div style="
-          background: white;
-          padding: 38px;
-          border-radius: 16px;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-          transition: all 0.3s;
-          position: relative;
-        " onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'">
-          
-          <div style="
-            font-size: 48px;
-            color: #0066CC;
-            opacity: 0.15;
-            position: absolute;
-            top: 20px;
-            right: 25px;
-            font-family: Georgia, serif;
-          ">"</div>
-          
-          <div style="display: flex; gap: 5px; margin-bottom: 18px; color: #FFB800; font-size: 17px;">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-          </div>
-          
-          <p style="
-            font-size: 15px;
-            color: #666666;
-            line-height: 1.8;
-            margin-bottom: 25px;
-            font-style: italic;
-          ">"From design consultation to installation, everything was handled professionally. Our restaurant's new LED neon sign has become an Instagram magnet!"</p>
-          
-          <div style="display: flex; align-items: center; gap: 15px;">
-            <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Customer" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover;">
-            <div>
-              <h4 style="font-size: 16px; font-weight: 700; color: #1a1a1a; margin-bottom: 3px;">James Thompson</h4>
-              <p style="font-size: 13px; color: #666666;">Founder, Urban Kitchen Co.</p>
-            </div>
-          </div>
-        </div>
-        
-      </div>
-    </div>
-  </section>
-
-  {% comment %} ===== CTA BANNER SECTION ===== {% endcomment %}
-  <section style="
-    padding: 100px 0;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    position: relative;
-    overflow: hidden;
-  ">
-    <div style="
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      opacity: 0.03;
-      background-image: radial-gradient(circle at 25% 35%, white 1px, transparent 1px),
-                        radial-gradient(circle at 75% 65%, white 1px, transparent 1px);
-      background-size: 50px 50px;
-    "></div>
-    
-    <div style="
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-      position: relative;
-      z-index: 2;
-    ">
-      
-      <h2 style="
-        font-family: 'Poppins', sans-serif;
-        font-size: 46px;
-        font-weight: 800;
-        color: white;
-        margin-bottom: 20px;
-        line-height: 1.2;
-      ">Ready to Get Started?</h2>
-      
-      <p style="
-        font-size: 18px;
-        color: rgba(255,255,255,0.85);
-        margin-bottom: 40px;
-        line-height: 1.7;
-      ">Transform your business visibility with premium custom signage. Get your free digital mockup within 2 hours and see your vision come to life.</p>
-      
-      <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-        <a href="{{ pages['get-a-quote'].url }}" style="
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          padding: 18px 42px;
-          background: #0066CC;
-          color: white;
-          text-decoration: none;
-          border-radius: 8px;
-          font-weight: 700;
-          font-size: 16px;
-          transition: all 0.3s;
-          box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
-        " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-          <i class="fas fa-file-alt"></i>
-          Get A Free Quote
-        </a>
-        
-        <a href="tel:1888SIGNSNOW" style="
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          padding: 18px 42px;
-          background: transparent;
-          color: white;
-          text-decoration: none;
-          border: 2px solid white;
-          border-radius: 8px;
-          font-weight: 700;
-          font-size: 16px;
-          transition: all 0.3s;
-        " onmouseover="this.style.background='white'; this.style.color='#0066CC'" onmouseout="this.style.background='transparent'; this.color='white'">
-          <i class="fas fa-phone"></i>
-          Call Us Now
-        </a>
-      </div>
-    </div>
-  </section>
-
-</div>
-
-<style>
-/* CSS Styles embedded in liquid file */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-}
-
-/* Responsive Design */
-@media (max-width: 992px) {
-  .home-page-wrapper .hero-section .hero-container {
-    grid-template-columns: 1fr !important;
-    gap: 40px !important;
-  }
-  
-  .home-page-wrapper [style*="grid-template-columns: repeat(3"] {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-  
-  .home-page-wrapper [style*="grid-template-columns: repeat(4"] {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .home-page-wrapper [style*="grid-template-columns: repeat(2"],
-  .home-page-wrapper [style*="grid-template-columns: repeat(3"],
-  .home-page-wrapper [style*="grid-template-columns: repeat(4"] {
-    grid-template-columns: 1fr !important;
-  }
-}
-</style>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Custom Signage Company - Premium Business Signs | SIGNS.inc",
-  "description": "Premium custom signage solutions for businesses nationwide. From concept to installation, we deliver quality signs built to last.",
-  "url": "{{ shop.url }}",
-  "publisher": {
-    "@type": "Organization",
-    "name": "{{ shop.name }}",
-    "logo": "{{ shop.logo | img_url: '200x200' }}"
-  }
-}
-</script>
