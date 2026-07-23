@@ -164,6 +164,16 @@
       "type": "nt-portfolio-page-v1",
       "name": "NT Portfolio Page",
       "settings": {}
+    },
+    "nt_home_page_v1_zrL3HB": {
+      "type": "nt-home-page-v1",
+      "name": "NT Home Page",
+      "settings": {}
+    },
+    "nt_about_us_page_v1_AQnMrf": {
+      "type": "nt-about-us-page-v1",
+      "name": "NT About Us Page",
+      "settings": {}
     }
   },
   "order": [
@@ -181,6 +191,8 @@
     "nt_about_us_page_v1_rdTdyE",
     "nt_contact_us_page_v1_VCJjNH",
     "nt_get_a_quote_page_v1_bmyk6F",
-    "nt_portfolio_page_v1_4JAkBn"
+    "nt_portfolio_page_v1_4JAkBn",
+    "nt_home_page_v1_zrL3HB",
+    "nt_about_us_page_v1_AQnMrf"
   ]
 }
