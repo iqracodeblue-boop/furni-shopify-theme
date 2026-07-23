@@ -18,7 +18,6 @@ a{text-decoration:none;color:inherit}
 img{display:block;max-width:100%}
 button{cursor:pointer;border:none;background:none;font-family:inherit}
 
-/* Home Page Specific CSS */
 .page{display:block;min-height:100vh;max-width:100%;overflow-x:clip}
 
 .hero{position:relative;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;padding:120px 48px 0;overflow:hidden;isolation:isolate;background:linear-gradient(180deg,#080808 0%,#111111 100%);}
@@ -54,6 +53,16 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .hero-card-tag{position:absolute;top:18px;left:18px;z-index:3;background:rgba(0,0,0,.75);backdrop-filter:blur(10px);border:1px solid rgba(1,136,204,.4);padding:7px 13px;border-radius:100px;color:var(--gold);font-family:var(--fb);font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;}
 .hero-card-cap{position:absolute;bottom:20px;left:20px;right:20px;z-index:3;color:#fff;font-family:var(--fh);font-size:1.15rem;line-height:1.2;}
 .hero-card-cap small{display:block;font-family:var(--fb);font-size:.72rem;font-weight:500;color:rgba(255,255,255,.66);letter-spacing:.06em;margin-top:6px;}
+.hero-card-dots{position:absolute;bottom:16px;right:18px;z-index:3;display:flex;gap:7px;}
+.hero-card-dots span{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.35);cursor:pointer;transition:background .3s,width .3s;}
+.hero-card-dots span.active{background:var(--gold);width:18px;border-radius:4px}
+.hero-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:4;width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:opacity .3s,background .25s,border-color .25s,transform .25s;}
+.hero-card:hover .hero-arrow{opacity:1}
+.hero-arrow:hover{background:var(--gold);border-color:var(--gold)}
+.hero-arrow svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.hero-arrow-prev{left:14px}
+.hero-arrow-next{right:14px}
+@media(max-width:768px){.hero-arrow{opacity:1;width:38px;height:38px;background:rgba(0,0,0,.5)}.hero-arrow svg{width:17px;height:17px}}
 
 .trust-bar-merged{background:rgba(0,0,0,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid rgba(1,136,204,.22);border-bottom:none;padding:22px 48px;margin:auto -48px 0;position:relative;z-index:2;width:calc(100% + 96px);}
 .trust-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;align-items:center;}
@@ -226,10 +235,24 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
         </div>
       </div>
       <div class="hero-visual">
-        <div class="hero-card">
+        <div class="hero-card" id="heroCard">
           <span class="hero-card-tag">Channel Letters</span>
           <div class="hero-slide active"><img src="https://i.ibb.co/7Nd52czm/nw-Hr-L.jpg" alt="Halo-lit 3D metal backlit sign installed in corporate lobby reception – signs.inc"></div>
+          <div class="hero-slide"><img src="https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg" alt="Custom illuminated lightbox sign with vibrant LED lighting for retail business storefront – signs.inc"></div>
+          <div class="hero-slide"><img src="https://i.ibb.co/0yr2R8DZ/7ed75f6621c0989e3478f26da0a8cec3-1.jpg" alt="Custom acrylic front-lit channel letter sign installed on commercial storefront – signs.inc"></div>
+          <div class="hero-slide"><img src="https://i.ibb.co/Xk7kC7sZ/9bc0a390bd5f595c29ed220f1af96cc1.jpg" alt="Custom illuminated lightbox sign with vibrant LED lighting for retail business storefront – signs.inc"></div>
+          <div class="hero-slide"><img src="https://i.ibb.co/Fb0JMmQX/a1PDx4Vtw4YF6XfduRwwS6nKZ6sPAC9nCeR.jpg" alt="Exquisite 2D flat cut metal signage for professional business facade – signs.inc"></div>
+          <div class="hero-slide"><img src="https://i.ibb.co/Z1bRvmFX/1a8bfc475f04e41dc4168ddc673f5e30.jpg" alt="Custom face-lit acrylic script sign reading Studio T Transformation Awaits with decorative wood slat wall installation – signs.inc"></div>
           <div class="hero-card-cap">Your name in lights.<br>Built to last.<small>Installed in 50 states</small></div>
+          <div class="hero-card-dots" id="heroDots">
+            <span class="active"></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <button type="button" class="hero-arrow hero-arrow-prev" id="heroPrev" aria-label="Previous slide">
+            <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button type="button" class="hero-arrow hero-arrow-next" id="heroNext" aria-label="Next slide">
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
         </div>
       </div>
     </div>
@@ -455,13 +478,43 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 </main>
 
 <script>
-  // Simple FAQ toggle script
-  document.querySelectorAll('.faq-q').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.parentElement;
-      const open = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      if (!open) item.classList.add('open');
+  // Hero Slideshow & FAQ Toggle
+  document.addEventListener('DOMContentLoaded', function() {
+    // Hero Slider
+    const heroCard = document.getElementById('heroCard');
+    if (heroCard) {
+      const slides = heroCard.querySelectorAll('.hero-slide');
+      const dots = document.getElementById('heroDots').querySelectorAll('span');
+      const prevBtn = document.getElementById('heroPrev');
+      const nextBtn = document.getElementById('heroNext');
+      let currentSlide = 0;
+      let slideInterval = setInterval(nextSlide, 4000); // Change image every 4 seconds
+
+      function goToSlide(n) {
+        slides[currentSlide].classList.remove('active');
+        dots[currentSlide].classList.remove('active');
+        currentSlide = (n + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+      }
+      function nextSlide() { goToSlide(currentSlide + 1); }
+      function prevSlide() { goToSlide(currentSlide - 1); }
+
+      nextBtn.addEventListener('click', () => { clearInterval(slideInterval); nextSlide(); slideInterval = setInterval(nextSlide, 4000); });
+      prevBtn.addEventListener('click', () => { clearInterval(slideInterval); prevSlide(); slideInterval = setInterval(nextSlide, 4000); });
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => { clearInterval(slideInterval); goToSlide(index); slideInterval = setInterval(nextSlide, 4000); });
+      });
+    }
+
+    // FAQ Toggle
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const open = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!open) item.classList.add('open');
+      });
     });
   });
 </script>
