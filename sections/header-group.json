@@ -95,14 +95,14 @@
         "text_color_transparent_collection": ""
       }
     },
-    "nt_sign_categories_page_v1_tgycej": {
-      "type": "nt-sign-categories-page-v1",
-      "name": "NT Sign Categories Page",
+    "nt_contact_us_page_v1_pmKUAD": {
+      "type": "nt-contact-us-page-v1",
+      "name": "NT Contact Us Page",
       "settings": {}
     }
   },
   "order": [
     "header_section",
-    "nt_sign_categories_page_v1_tgycej"
+    "nt_contact_us_page_v1_pmKUAD"
   ]
 }
