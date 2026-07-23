@@ -130,11 +130,17 @@
       "type": "nt-about-us-page-v1",
       "name": "NT About Us Page",
       "settings": {}
+    },
+    "nt_sign_categories_page_v1_khW3kL": {
+      "type": "nt-sign-categories-page-v1",
+      "name": "NT Sign Categories Page",
+      "settings": {}
     }
   },
   "order": [
     "header_announcements_9jGBFp",
     "header_section",
-    "nt_about_us_page_v1_4d4fRK"
+    "nt_about_us_page_v1_4d4fRK",
+    "nt_sign_categories_page_v1_khW3kL"
   ]
 }
