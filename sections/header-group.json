@@ -11,6 +11,16 @@
   "type": "header",
   "name": "Header",
   "sections": {
+    "nt_header_v1_4HLfFt": {
+      "type": "nt-header-v1",
+      "name": "NT Header",
+      "settings": {}
+    },
+    "nt_about_us_page_v1_4d4fRK": {
+      "type": "nt-about-us-page-v1",
+      "name": "NT About Us Page",
+      "settings": {}
+    },
     "header_section": {
       "type": "header",
       "blocks": {
@@ -97,6 +107,8 @@
     }
   },
   "order": [
+    "nt_header_v1_4HLfFt",
+    "nt_about_us_page_v1_4d4fRK",
     "header_section"
   ]
 }
