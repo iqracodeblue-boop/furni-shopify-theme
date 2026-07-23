@@ -126,6 +126,11 @@
         "text_color_transparent_collection": ""
       }
     },
+    "nt_home_page_v1_zUAjG9": {
+      "type": "nt-home-page-v1",
+      "name": "NT Home Page",
+      "settings": {}
+    },
     "nt_about_us_page_v1_4d4fRK": {
       "type": "nt-about-us-page-v1",
       "name": "NT About Us Page",
@@ -155,22 +160,17 @@
       "type": "nt-get-a-quote-page-v1",
       "name": "NT Get A Quote Page",
       "settings": {}
-    },
-    "nt_home_page_v1_zUAjG9": {
-      "type": "nt-home-page-v1",
-      "name": "NT Home Page",
-      "settings": {}
     }
   },
   "order": [
     "header_announcements_9jGBFp",
     "header_section",
-    "nt_about_us_page_v1_4d4fRK",
+    "nt_home_page_v1_zUAjG9",
     "nt_sign_categories_page_v1_khW3kL",
     "nt_sign_category_page_v1_tNqyLq",
     "nt_portfolio_page_v1_4L9HC3",
+    "nt_about_us_page_v1_4d4fRK",
     "nt_contact_us_page_v1_fKKkVG",
-    "nt_get_a_quote_page_v1_A3Gz6T",
-    "nt_home_page_v1_zUAjG9"
+    "nt_get_a_quote_page_v1_A3Gz6T"
   ]
 }
