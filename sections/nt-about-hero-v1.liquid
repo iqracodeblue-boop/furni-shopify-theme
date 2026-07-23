@@ -1,0 +1,60 @@
+<style>
+:root{
+  --ts-2xl:clamp(2.4rem,5vw,4.4rem);
+  --navy:#111111; --navy-deep:#0a0a0a; --gold:#0188CC;
+  --cream:#ffffff; --fh:'DM Serif Display',Georgia,serif; --fb:'Inter',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:93%;-webkit-text-size-adjust:100%;text-size-adjust:100%;overflow-x:hidden}
+body{font-family:var(--fb);background:var(--cream);color:#333;overflow-x:hidden;line-height:1.6;}
+
+.about-hero{
+  position:relative;padding:160px 48px 90px;
+  background:linear-gradient(180deg,var(--navy-deep) 0%,var(--navy) 100%);
+  color:#fff;text-align:center;overflow:hidden;
+}
+.about-hero::after{
+  content:"";position:absolute;inset:0;z-index:0;
+  background-image:url('https://i.ibb.co/0jx4KyLd/j-Jkst.jpg');
+  background-size:cover;background-position:center 30%;opacity:.25;
+}
+.about-hero::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 50% at 50% 30%,rgba(1,136,204,.14) 0%,transparent 65%),radial-gradient(ellipse 40% 30% at 50% 100%,rgba(1,136,204,.10) 0%,transparent 70%);
+}
+.about-hero-inner{max-width:780px;margin:0 auto;position:relative;z-index:1}
+.sec-label{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--fb);font-size:.82rem;font-weight:700;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;
+}
+.about-hero h1{
+  font-family:var(--fh);font-size:var(--ts-2xl);color:#fff;
+  line-height:1.04;letter-spacing:-.02em;margin-bottom:18px;font-weight:400;
+}
+.about-hero h1 em{font-style:italic;color:var(--gold)}
+.about-hero p{font-family:var(--fb);font-size:1.1rem;line-height:1.65;color:rgba(255,255,255,.72);}
+
+@media(max-width:880px){
+  .about-hero{padding:130px 22px 70px}
+}
+</style>
+
+<section class="about-hero">
+  <div class="about-hero-inner">
+    <span class="sec-label" style="justify-content:center;display:inline-flex">Our Story</span>
+    <h1>Built by Hand. <em>Backed by Results.</em></h1>
+    <p>How a small workshop became the sign manufacturer hundreds of business owners trust for their most visible asset.</p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NT About Hero",
+  "presets": [
+    {
+      "name": "NT About Hero"
+    }
+  ]
+}
+{% endschema %}
