@@ -11,11 +11,6 @@
   "type": "header",
   "name": "Header",
   "sections": {
-    "nt_header_v1_4HLfFt": {
-      "type": "nt-header-v1",
-      "name": "NT Header",
-      "settings": {}
-    },
     "header_section": {
       "type": "header",
       "blocks": {
@@ -100,15 +95,14 @@
         "text_color_transparent_collection": ""
       }
     },
-    "nt_home_page_v1_LqMUPX": {
-      "type": "nt-home-page-v1",
-      "name": "NT Home Page",
+    "nt_about_us_page_v1_9d9HtL": {
+      "type": "nt-about-us-page-v1",
+      "name": "NT About Us Page",
       "settings": {}
     }
   },
   "order": [
-    "nt_header_v1_4HLfFt",
     "header_section",
-    "nt_home_page_v1_LqMUPX"
+    "nt_about_us_page_v1_9d9HtL"
   ]
 }
