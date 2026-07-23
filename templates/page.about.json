@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -12,10 +21,12 @@
             "alignment": "left",
             "type_preset": "h2",
             "font": "var(--font-primary--family)",
+            "font_size": "1rem",
             "line_height": "normal",
             "letter_spacing": "normal",
             "case": "none",
             "wrap": "pretty",
+            "text_color": "",
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
@@ -23,11 +34,15 @@
             "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0
-          }
+          },
+          "blocks": {}
         },
         "page-content": {
           "type": "page-content",
-          "settings": {}
+          "settings": {
+            "text_color": ""
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -42,15 +57,50 @@
         "padding-block-end": 80
       }
     },
-    "our_team": {
-      "type": "our-team",
-      "settings": {
-        "heading": "Our Team"
-      }
+    "nt_about_hero_v1_QRUAGB": {
+      "type": "nt-about-hero-v1",
+      "name": "NT About Hero",
+      "settings": {}
+    },
+    "nt_about_story_v1_QXk6VH": {
+      "type": "nt-about-story-v1",
+      "name": "NT About Story",
+      "settings": {}
+    },
+    "nt_about_factory_v1_PQDPwd": {
+      "type": "nt-about-factory-v1",
+      "name": "NT About Factory",
+      "settings": {}
+    },
+    "nt_about_numbers_v1_c6T7jk": {
+      "type": "nt-about-numbers-v1",
+      "name": "NT About Numbers",
+      "settings": {}
+    },
+    "nt_about_team_v1_JQqJit": {
+      "type": "nt-about-team-v1",
+      "name": "NT About Team",
+      "settings": {}
+    },
+    "nt_about_values_v1_ajckqP": {
+      "type": "nt-about-values-v1",
+      "name": "NT About Values",
+      "settings": {}
+    },
+    "nt_final_cta_v1_LV9pe3": {
+      "type": "nt-final-cta-v1",
+      "name": "NT Final CTA",
+      "settings": {}
     }
   },
   "order": [
     "main",
-    "our_team"
+    "nt_about_hero_v1_QRUAGB",
+    "nt_about_story_v1_QXk6VH",
+    "nt_about_factory_v1_PQDPwd",
+    "nt_about_numbers_v1_c6T7jk",
+    "nt_about_team_v1_JQqJit",
+    "nt_about_values_v1_ajckqP",
+    "nt_final_cta_v1_LV9pe3"
   ]
 }
