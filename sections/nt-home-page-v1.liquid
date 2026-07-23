@@ -48,7 +48,6 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .hero-card img{width:100%;height:100%;object-fit:cover;display:block}
 .hero-card .hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s cubic-bezier(.16,1,.3,1);z-index:0;}
 .hero-card .hero-slide.active{opacity:1;z-index:1}
-.hero-card .hero-slide img{width:100%;height:100%;object-fit:cover;display:block}
 .hero-card::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.85) 100%);z-index:2;pointer-events:none;}
 .hero-card-tag{position:absolute;top:18px;left:18px;z-index:3;background:rgba(0,0,0,.75);backdrop-filter:blur(10px);border:1px solid rgba(1,136,204,.4);padding:7px 13px;border-radius:100px;color:var(--gold);font-family:var(--fb);font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;}
 .hero-card-cap{position:absolute;bottom:20px;left:20px;right:20px;z-index:3;color:#fff;font-family:var(--fh);font-size:1.15rem;line-height:1.2;}
@@ -56,13 +55,6 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .hero-card-dots{position:absolute;bottom:16px;right:18px;z-index:3;display:flex;gap:7px;}
 .hero-card-dots span{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.35);cursor:pointer;transition:background .3s,width .3s;}
 .hero-card-dots span.active{background:var(--gold);width:18px;border-radius:4px}
-.hero-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:4;width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:opacity .3s,background .25s,border-color .25s,transform .25s;}
-.hero-card:hover .hero-arrow{opacity:1}
-.hero-arrow:hover{background:var(--gold);border-color:var(--gold)}
-.hero-arrow svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-.hero-arrow-prev{left:14px}
-.hero-arrow-next{right:14px}
-@media(max-width:768px){.hero-arrow{opacity:1;width:38px;height:38px;background:rgba(0,0,0,.5)}.hero-arrow svg{width:17px;height:17px}}
 
 .trust-bar-merged{background:rgba(0,0,0,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid rgba(1,136,204,.22);border-bottom:none;padding:22px 48px;margin:auto -48px 0;position:relative;z-index:2;width:calc(100% + 96px);}
 .trust-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;align-items:center;}
@@ -129,60 +121,6 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .gal-item:hover .gal-cap{transform:translateY(0);opacity:1}
 .gal-1{grid-column:span 2;grid-row:span 2} .gal-2{grid-column:span 1;grid-row:span 1} .gal-3{grid-column:span 1;grid-row:span 1} .gal-4{grid-column:span 1;grid-row:span 1} .gal-5{grid-column:span 1;grid-row:span 1} .gal-6{grid-column:span 2;grid-row:span 1}
 
-.about-section{background:var(--cream);padding:96px 48px;position:relative;overflow:hidden;}
-.about-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:center;}
-.about-text .sec-label{justify-content:flex-start}
-.about-text .sec-label::before,.about-text .sec-label::after{display:none}
-.about-text .sec-h{margin-bottom:22px}
-.about-text p{font-family:var(--fb);font-size:1rem;line-height:1.75;color:var(--body);margin-bottom:18px;}
-.about-text p strong{color:var(--ink);font-weight:700}
-.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:34px;padding-top:30px;border-top:1px solid var(--line2);}
-.about-stat-num{font-family:var(--fh);font-size:2.4rem;color:var(--red);line-height:1;margin-bottom:4px;font-weight:400;}
-.about-stat-lab{font-family:var(--fb);font-size:.74rem;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;font-weight:600;}
-.about-visual{position:relative;aspect-ratio:4/5;border-radius:18px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.22);}
-.about-visual img{width:100%;height:100%;object-fit:cover}
-.about-badge{position:absolute;bottom:-22px;right:-22px;width:140px;height:140px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--fh);text-align:center;box-shadow:0 14px 36px rgba(1,136,204,.4);border:4px solid var(--cream);z-index:3;}
-.about-badge strong{font-size:2rem;line-height:1;display:block;font-weight:400}
-.about-badge span{font-family:var(--fb);font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-top:4px}
-
-.testi-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
-.testi{background:#fff;border-radius:14px;padding:30px 28px;border:1px solid var(--line);position:relative;transition:transform .3s,box-shadow .3s;}
-.testi:hover{transform:translateY(-3px);box-shadow:0 18px 34px rgba(0,0,0,.08)}
-.testi-stars{display:flex;gap:3px;margin-bottom:16px}
-.testi-stars svg{width:16px;height:16px;fill:var(--gold)}
-.testi-quote{font-family:var(--fb);font-size:.96rem;line-height:1.7;color:var(--body);margin-bottom:24px;font-weight:400;}
-.testi-quote::before{content:"\201C";font-family:var(--fh);font-size:3.4rem;color:var(--gold);line-height:0;display:block;margin-bottom:18px;opacity:.4;}
-.testi-author{display:flex;align-items:center;gap:14px;padding-top:18px;border-top:1px solid var(--line);}
-.testi-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);color:var(--gold);font-family:var(--fh);font-size:1.1rem;display:flex;align-items:center;justify-content:center;border:1px solid var(--gold-line);flex-shrink:0;}
-.testi-meta{display:flex;flex-direction:column;line-height:1.3}
-.testi-name{font-family:var(--fb);font-size:.88rem;font-weight:700;color:var(--ink)}
-.testi-role{font-family:var(--fb);font-size:.76rem;color:var(--muted);margin-top:2px}
-
-.quote-section{background:var(--cream-deep);padding:96px 48px;position:relative;}
-.quote-inner{max-width:980px;margin:0 auto;background:#fff;border-radius:20px;overflow:hidden;display:grid;grid-template-columns:.85fr 1fr;box-shadow:0 24px 60px rgba(0,0,0,.14);border:1px solid var(--line);}
-.quote-side{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-deep) 100%);color:#fff;padding:48px 40px;position:relative;overflow:hidden;}
-.quote-side h3{font-family:var(--fh);font-size:2rem;color:#fff;line-height:1.1;margin-bottom:14px;font-weight:400;}
-.quote-side h3 em{font-style:italic;color:var(--gold)}
-.quote-form{padding:48px 40px;background:#fff}
-.qf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
-.qf-field{display:flex;flex-direction:column}
-.qf-field.full{grid-column:span 2}
-.qf-label{font-family:var(--fb);font-size:.74rem;font-weight:700;color:var(--ink);letter-spacing:.06em;text-transform:uppercase;margin-bottom:7px;}
-.qf-input,.qf-select,.qf-textarea{font-family:var(--fb);font-size:.92rem;padding:13px 14px;border-radius:9px;border:1.5px solid var(--line2);background:var(--cream);color:var(--ink);transition:border-color .2s,background .2s,box-shadow .2s;width:100%;outline:none;}
-.qf-input:focus,.qf-select:focus,.qf-textarea:focus{border-color:var(--gold);background:#fff;box-shadow:0 0 0 4px rgba(1,136,204,.14);}
-.qf-textarea{resize:vertical;min-height:90px;font-family:var(--fb)}
-.qf-submit{width:100%;background:var(--navy);color:#fff;font-family:var(--fb);font-size:.95rem;font-weight:700;padding:16px;border-radius:10px;margin-top:6px;display:inline-flex;align-items:center;justify-content:center;gap:10px;transition:background .25s,transform .2s,box-shadow .25s;cursor:pointer;}
-.qf-submit:hover{background:var(--navy-deep);transform:translateY(-1px);box-shadow:0 10px 26px rgba(0,0,0,.28)}
-.qf-submit svg{width:16px;height:16px;stroke:#fff;stroke-width:2.5;fill:none}
-
-.faq-section{background:#fff;padding:88px 48px}
-.faq-inner{max-width:780px;margin:0 auto}
-.faq-item{border-bottom:1px solid var(--line2);padding:6px 0;}
-.faq-q{width:100%;text-align:left;padding:22px 0;font-family:var(--fh);font-size:1.18rem;color:var(--ink);display:flex;align-items:center;justify-content:space-between;gap:18px;line-height:1.3;font-weight:400;cursor:pointer;}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.16,1,.3,1);}
-.faq-a-inner{padding:0 0 22px;font-family:var(--fb);font-size:.95rem;line-height:1.7;color:var(--body);}
-.faq-item.open .faq-a{max-height:400px}
-
 .final-cta{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-deep) 100%);color:#fff;padding:104px 48px;position:relative;overflow:hidden;text-align:center;}
 .final-inner{max-width:780px;margin:0 auto;position:relative;z-index:1}
 .final-inner .sec-label{color:var(--gold);justify-content:center}
@@ -202,9 +140,6 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   .gallery-bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
   .gal-1{grid-column:span 2;grid-row:span 1}
   .gal-6{grid-column:span 2}
-  .about-inner{grid-template-columns:1fr;gap:48px}
-  .testi-grid{grid-template-columns:1fr;gap:16px}
-  .quote-inner{grid-template-columns:1fr}
 }
 @media(max-width:480px){
   .types-grid{grid-template-columns:1fr;gap:16px}
@@ -215,7 +150,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 }
 </style>
 
-<!-- HOME PAGE HTML -->
+<!-- HOME PAGE HTML (Shortened) -->
 <main id="page-home" class="page active">
 
   <!-- HERO -->
@@ -230,8 +165,8 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
         <p class="hero-tagline">Your sign. Built right. Priced right. Delivered fast.</p>
         <p class="hero-desc">Custom storefront signs, backlit channel letters, 3D metal backlit signs, lightbox signs, monument and pylon signs, LED neon signs and more. From our facility to your storefront. Free mockup in 2 hours. Installed across all 50 states.</p>
         <div class="hero-ctas">
-          <a href="#" class="btn-primary">Get Your Free Mockup <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-          <a href="#" class="btn-ghost">Browse Sign Types <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></a>
+          <a href="/pages/get-a-quote" class="btn-primary">Get Your Free Mockup <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+          <a href="/pages/sign-types" class="btn-ghost">Browse Sign Types <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></a>
         </div>
       </div>
       <div class="hero-visual">
@@ -247,12 +182,6 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
           <div class="hero-card-dots" id="heroDots">
             <span class="active"></span><span></span><span></span><span></span><span></span><span></span>
           </div>
-          <button type="button" class="hero-arrow hero-arrow-prev" id="heroPrev" aria-label="Previous slide">
-            <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
-          </button>
-          <button type="button" class="hero-arrow hero-arrow-next" id="heroNext" aria-label="Next slide">
-            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-          </button>
         </div>
       </div>
     </div>
@@ -278,42 +207,38 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
       <p class="sec-sub">From bold storefront channel letters and LED neon signs to refined acrylic backlit lobby displays, every custom business sign is engineered in our factory and built to UL standards. Quality you can count on for a decade and beyond.</p>
     </div>
     <div class="types-grid">
-      <article class="type-card">
+      <a href="/pages/sign-types" class="type-card" style="text-decoration:none;color:inherit;">
         <div class="type-card-img"><span class="type-badge">Most Popular</span><img src="https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg" alt="Illuminated storefront sign for retail business – signs.inc" loading="lazy"></div>
-        <div class="type-card-body"><h3>Storefront signs</h3><p>Custom-fabricated aluminum channel letter signs with front-lit, halo-lit or combination LED illumination. The gold standard for retail storefront branding.</p><div class="type-card-foot"><a href="#" class="type-card-link">Explore <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div></div>
-      </article>
-      <article class="type-card">
+        <div class="type-card-body"><h3>Storefront signs</h3><p>Custom-fabricated aluminum channel letter signs with front-lit, halo-lit or combination LED illumination. The gold standard for retail storefront branding.</p><div class="type-card-foot"><span class="type-card-link">Explore <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div></div>
+      </a>
+      <a href="/pages/sign-types" class="type-card" style="text-decoration:none;color:inherit;">
         <div class="type-card-img"><img src="https://i.ibb.co/Z1bRvmFX/1a8bfc475f04e41dc4168ddc673f5e30.jpg" alt="Custom reception and studio sign for corporate interior – signs.inc" loading="lazy"></div>
-        <div class="type-card-body"><h3>Reception &amp; studio signs</h3><p>Soft, premium halo glow that elevates any brand. Push through signs with acrylic faces and stainless steel returns for a refined, modern look.</p><div class="type-card-foot"><a href="#" class="type-card-link">Explore <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div></div>
-      </article>
-      <article class="type-card">
+        <div class="type-card-body"><h3>Reception &amp; studio signs</h3><p>Soft, premium halo glow that elevates any brand. Push through signs with acrylic faces and stainless steel returns for a refined, modern look.</p><div class="type-card-foot"><span class="type-card-link">Explore <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div></div>
+      </a>
+      <a href="/pages/sign-types" class="type-card" style="text-decoration:none;color:inherit;">
         <div class="type-card-img"><img src="https://i.ibb.co/VcjZ4ZBF/000.png" alt="Custom medical and clinic sign for healthcare business – signs.inc" loading="lazy"></div>
-        <div class="type-card-body"><h3>Medical and Clinic signs</h3><p>Ground-level monuments and tall pylon signs engineered for visibility from the road. Stone, masonry and aluminum finishes available.</p><div class="type-card-foot"><a href="#" class="type-card-link">Explore <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div></div>
-      </article>
-      <article class="type-card">
+        <div class="type-card-body"><h3>Medical and Clinic signs</h3><p>Ground-level monuments and tall pylon signs engineered for visibility from the road. Stone, masonry and aluminum finishes available.</p><div class="type-card-foot"><span class="type-card-link">Explore <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div></div>
+      </a>
+      <a href="/pages/sign-types" class="type-card" style="text-decoration:none;color:inherit;">
         <div class="type-card-img"><img src="https://i.ibb.co/jPLvTFk4/Storefronts-2.jpg" alt="Custom lighted storefront sign with LED illumination for retail business – signs.inc" loading="lazy"></div>
-        <div class="type-card-body"><h3>Coffee shops and restaurants</h3><p>Lightbox signs, cabinet signs and face-lit fixtures designed for high-traffic main street visibility. UL listed components throughout.</p><div class="type-card-foot"><a href="#" class="type-card-link">Explore <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div></div>
-      </article>
-      <article class="type-card">
+        <div class="type-card-body"><h3>Coffee shops and restaurants</h3><p>Lightbox signs, cabinet signs and face-lit fixtures designed for high-traffic main street visibility. UL listed components throughout.</p><div class="type-card-foot"><span class="type-card-link">Explore <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div></div>
+      </a>
+      <a href="/pages/sign-types" class="type-card" style="text-decoration:none;color:inherit;">
         <div class="type-card-img"><img src="https://i.ibb.co/tpq229Zx/86e7f4ccec44b08749e3403e5c444a65.jpg" alt="Custom gym spa and salon sign for fitness and wellness business – signs.inc" loading="lazy"></div>
-        <div class="type-card-body"><h3>Gym, Spa &amp; Salon signs</h3><p>Photogenic LED neon signs, acrylic backlit logos and dimensional wall signs built for fitness studios, spas and salons. Designed to earn shares and repeat visits.</p><div class="type-card-foot"><a href="#" class="type-card-link">Explore <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div></div>
-      </article>
-      <article class="type-card">
+        <div class="type-card-body"><h3>Gym, Spa &amp; Salon signs</h3><p>Photogenic LED neon signs, acrylic backlit logos and dimensional wall signs built for fitness studios, spas and salons. Designed to earn shares and repeat visits.</p><div class="type-card-foot"><span class="type-card-link">Explore <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div></div>
+      </a>
+      <a href="/pages/sign-types" class="type-card" style="text-decoration:none;color:inherit;">
         <div class="type-card-img"><img src="https://i.ibb.co/zhspw9Zp/e099e6192c61020ed637eaefeee78b12.jpg" alt="Custom auto services and real estate sign for commercial building – signs.inc" loading="lazy"></div>
-        <div class="type-card-body"><h3>Auto Services &amp; Real Estate Companies</h3><p>Showroom reception walls, dealership outdoor building signs, and property office signage in custom metal signs, acrylic, and illuminated cabinets built for high-traffic commercial locations.</p><div class="type-card-foot"><a href="#" class="type-card-link">Explore <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div></div>
-      </article>
-      <article class="type-card">
+        <div class="type-card-body"><h3>Auto Services &amp; Real Estate Companies</h3><p>Showroom reception walls, dealership outdoor building signs, and property office signage in custom metal signs, acrylic, and illuminated cabinets built for high-traffic commercial locations.</p><div class="type-card-foot"><span class="type-card-link">Explore <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div></div>
+      </a>
+      <a href="/pages/sign-types" class="type-card" style="text-decoration:none;color:inherit;">
         <div class="type-card-img"><img src="https://i.ibb.co/JFC3PgnK/2d-metal-5mm-image-2.jpg" alt="Custom lobby and interior sign with brushed metal letters for corporate office – signs.inc" loading="lazy"></div>
-        <div class="type-card-body"><h3>Lobby &amp; Interior Signs</h3><p>Reception walls, dimensional logo signs and indoor directional signs in brushed aluminum, backlit metal, acrylic and neon. First impressions, made permanent.</p><div class="type-card-foot"><a href="#" class="type-card-link">Explore <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div></div>
-      </article>
-      <article class="type-card">
-        <div class="type-card-img"><img src="https://i.ibb.co/7N8bHhdP/049f32df91de07cae41e89653d849a51.jpg" alt="Custom business sign collection showcasing all sign types – signs.inc" loading="lazy"></div>
-        <div class="type-card-body"><h3>All Signs Collection</h3><p>Browse every indoor and outdoor sign we build in one place. Channel letter signs, lightbox signs, lobby signs, pylon signs, LED neon signs, 3D blade signs and more.</p><div class="type-card-foot"><a href="#" class="type-card-link">Explore <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div></div>
-      </article>
-      <article class="type-card">
+        <div class="type-card-body"><h3>Lobby &amp; Interior Signs</h3><p>Reception walls, dimensional logo signs and indoor directional signs in brushed aluminum, backlit metal, acrylic and neon. First impressions, made permanent.</p><div class="type-card-foot"><span class="type-card-link">Explore <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div></div>
+      </a>
+      <a href="/pages/contact-us" class="type-card" style="text-decoration:none;color:inherit;">
         <div class="type-card-img"><img src="https://i.ibb.co/zhVSVypQ/SKb-Yc.jpg" alt="Custom sign fabrication in progress at signs.inc manufacturing facility" loading="lazy"></div>
-        <div class="type-card-body"><h3>Can't find what you were looking for?</h3><p>Tell us what you have in mind. If you can picture it, we can build it — from marquee signs to custom moss signs. Send your idea, reference photo or rough sketch and we'll come back with a free sign mockup.</p><div class="type-card-foot"><a href="#" class="type-card-link">Tell us your idea <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div></div>
-      </article>
+        <div class="type-card-body"><h3>Can't find what you were looking for?</h3><p>Tell us what you have in mind. If you can picture it, we can build it — from marquee signs to custom moss signs. Send your idea, reference photo or rough sketch and we'll come back with a free sign mockup.</p><div class="type-card-foot"><span class="type-card-link">Tell us your idea <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div></div>
+      </a>
     </div>
   </section>
 
@@ -366,103 +291,6 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
     </div>
   </section>
 
-  <!-- ABOUT (HOME SECTION) -->
-  <section class="about-section">
-    <div class="about-inner">
-      <div class="about-text">
-        <span class="sec-label">Our Story</span>
-        <h2 class="sec-h">Built on <em>Trust.</em></h2>
-        <p>Signs.inc was founded on one belief: your storefront deserves a custom business sign worthy of the business behind it. Not a cheap placeholder. Not a generic vinyl banner. A built-to-last storefront sign that will outlive the lease and carry your name with pride.</p>
-        <p>From our factory floor to your storefront, every sign is engineered by craftsmen who treat your name like their own. We work with the bakers, the barbers, the family restaurants and the growing brands raising the bar in their towns. <strong>No middleman, no markup, no mystery.</strong></p>
-        <div class="about-stats">
-          <div><div class="about-stat-num">450+</div><div class="about-stat-lab">Businesses Served</div></div>
-          <div><div class="about-stat-num">50</div><div class="about-stat-lab">States Installed</div></div>
-          <div><div class="about-stat-num">10<small style="font-size:1.2rem">yr</small></div><div class="about-stat-lab">In Business</div></div>
-        </div>
-      </div>
-      <div class="about-visual">
-        <img src="https://i.ibb.co/3YTRYzxC/SHv-H0.jpg" alt="Signs INC founders standing in custom business sign manufacturing workshop – signs.inc" loading="lazy">
-        <div class="about-badge"><strong>5yr</strong><span>Warranty</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="section section-alt">
-    <div class="sec-head">
-      <span class="sec-label">From Our Clients</span>
-      <h2 class="sec-h">Trusted by <em>450+ Businesses</em></h2>
-      <p class="sec-sub">A 4.9-star average is built one custom business sign at a time. Here is what business owners across all 50 states say about working with Signs.inc.</p>
-    </div>
-    <div class="testi-grid">
-      <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg></div><p class="testi-quote">The mockup landed in my inbox the same morning I asked. Two weeks later my channel letters were lit up over the door. Every customer who walks in mentions the sign. Worth every penny.</p><div class="testi-author"><div class="testi-avatar">JM</div><div class="testi-meta"><span class="testi-name">Joseph Marchetti</span><span class="testi-role">Owner, Marchetti's Pizzeria &middot; Trenton, NJ</span></div></div></div>
-      <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg></div><p class="testi-quote">I have ordered signs from three different companies over the years. Signs.inc is the only one that walked me through the permit, the install and the wiring without making me feel like I was bothering them. Pros from start to finish.</p><div class="testi-author"><div class="testi-avatar">RB</div><div class="testi-meta"><span class="testi-name">Rebecca Banks</span><span class="testi-role">Co-Founder, Banks &amp; Co. Apparel &middot; Nashville, TN</span></div></div></div>
-      <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg></div><p class="testi-quote">We needed a monument sign for a new dealership location and the timeline was tight. They hit the deadline, the granite finish looks exactly like the mockup and the lighting is gorgeous at night. Highly recommend.</p><div class="testi-author"><div class="testi-avatar">DC</div><div class="testi-meta"><span class="testi-name">David Carter</span><span class="testi-role">GM, Carter Motors &middot; Tulsa, OK</span></div></div></div>
-    </div>
-  </section>
-
-  <!-- QUOTE FORM -->
-  <section class="quote-section">
-    <div class="quote-inner">
-      <div class="quote-side">
-        <span class="sec-label">Free Mockup</span>
-        <h3>Get a Free <em>Mockup in 2 Hours.</em></h3>
-        <p>Tell us a little about your business and the sign you have in mind. We will send a designed mockup on your actual storefront, with no obligation.</p>
-        <ul class="quote-side-list" style="list-style:none;display:flex;flex-direction:column;gap:14px">
-          <li style="display:flex;align-items:flex-start;gap:11px;font-size:.88rem;color:rgba(255,255,255,.88);"><svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--gold);stroke-width:2.5;fill:none;flex-shrink:0;margin-top:2px;"><path d="M20 7L9 18l-5-5"/></svg>Free mockup, no commitment</li>
-          <li style="display:flex;align-items:flex-start;gap:11px;font-size:.88rem;color:rgba(255,255,255,.88);"><svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--gold);stroke-width:2.5;fill:none;flex-shrink:0;margin-top:2px;"><path d="M20 7L9 18l-5-5"/></svg>Designed by hand, not a template</li>
-          <li style="display:flex;align-items:flex-start;gap:11px;font-size:.88rem;color:rgba(255,255,255,.88);"><svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--gold);stroke-width:2.5;fill:none;flex-shrink:0;margin-top:2px;"><path d="M20 7L9 18l-5-5"/></svg>Transparent pricing up front</li>
-        </ul>
-      </div>
-      <form class="quote-form" onsubmit="event.preventDefault();alert('Request Sent! We will send your mockup within 2 hours.');this.reset();">
-        <div class="qf-row">
-          <div class="qf-field"><label class="qf-label">Full Name <span style="color:var(--red)">*</span></label><input type="text" class="qf-input" placeholder="John Carter" required></div>
-          <div class="qf-field"><label class="qf-label">Phone <span style="color:var(--red)">*</span></label><input type="tel" class="qf-input" placeholder="(555) 123-4567" required></div>
-        </div>
-        <div class="qf-row">
-          <div class="qf-field"><label class="qf-label">Email <span style="color:var(--red)">*</span></label><input type="email" class="qf-input" placeholder="you@business.com" required></div>
-          <div class="qf-field"><label class="qf-label">Business Name</label><input type="text" class="qf-input" placeholder="Your business"></div>
-        </div>
-        <div class="qf-row">
-          <div class="qf-field"><label class="qf-label">Sign Type <span style="color:var(--red)">*</span></label>
-            <select class="qf-select" required>
-              <option value="">Select sign type</option>
-              <option>Storefront signs</option>
-              <option>Reception &amp; studio signs</option>
-              <option>Medical and Clinic signs</option>
-              <option>Coffee shops and restaurants</option>
-              <option>Gym, Spa &amp; Salon signs</option>
-              <option>Auto Services &amp; Real Estate</option>
-              <option>Lobby &amp; Interior Signs</option>
-              <option>Not sure yet</option>
-            </select>
-          </div>
-          <div class="qf-field"><label class="qf-label">State</label><input type="text" class="qf-input" placeholder="e.g. Texas"></div>
-        </div>
-        <div class="qf-row">
-          <div class="qf-field full"><label class="qf-label">Project Details</label><textarea class="qf-textarea" placeholder="Approximate size, dimensions, timeline, or any reference images you have..."></textarea></div>
-        </div>
-        <button type="submit" class="qf-submit">Send Me My Free Mockup <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
-      </form>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="faq-section">
-    <div class="sec-head">
-      <span class="sec-label">Common Questions</span>
-      <h2 class="sec-h">Frequently <em>Asked</em></h2>
-      <p class="sec-sub">Everything business owners ask before placing their first order with us.</p>
-    </div>
-    <div class="faq-inner">
-      <div class="faq-item"><div class="faq-q">How long does it take to get a custom sign made?</div><div class="faq-a"><div class="faq-a-inner">Most custom signs are designed, manufactured and shipped within 10 to 14 business days. You will receive a free digital mockup within 2 hours of submitting your details.</div></div></div>
-      <div class="faq-item"><div class="faq-q">Do you install signs across all 50 states?</div><div class="faq-a"><div class="faq-a-inner">Yes. Signs.inc has a vetted network of licensed, insured professional installers in all 50 states. We handle site surveys, permit guidance, installation and post-install support nationwide.</div></div></div>
-      <div class="faq-item"><div class="faq-q">What kind of warranty do you offer?</div><div class="faq-a"><div class="faq-a-inner">Every sign we manufacture is covered by a 5-year warranty on electrical components, LED modules and structural integrity.</div></div></div>
-      <div class="faq-item"><div class="faq-q">Are your signs UL listed?</div><div class="faq-a"><div class="faq-a-inner">Yes. Our illuminated signs are built to UL 48 standards using UL-recognized components, which is required for most commercial sign permits in the United States.</div></div></div>
-      <div class="faq-item"><div class="faq-q">How much does a custom storefront sign cost?</div><div class="faq-a"><div class="faq-a-inner">Pricing depends on size, lighting type, materials and installation requirements. Most storefront channel letter signs fall between $1,800 and $6,500 including installation.</div></div></div>
-    </div>
-  </section>
-
   <!-- FINAL CTA -->
   <section class="final-cta">
     <div class="final-inner">
@@ -470,7 +298,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
       <h2>Your Business Deserves a Sign <em>Worth Standing Behind.</em></h2>
       <p>Free sign mockup in two hours. No obligation, no high-pressure sales call. Just a designed mockup of your custom business sign on your actual storefront so you can see exactly what it will look like.</p>
       <div class="hero-ctas" style="justify-content:center;">
-        <a href="#" class="btn-primary">Get Your Free Mockup <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a href="/pages/get-a-quote" class="btn-primary">Get Your Free Mockup <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
       </div>
     </div>
   </section>
@@ -478,17 +306,13 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 </main>
 
 <script>
-  // Hero Slideshow & FAQ Toggle
   document.addEventListener('DOMContentLoaded', function() {
-    // Hero Slider
     const heroCard = document.getElementById('heroCard');
     if (heroCard) {
       const slides = heroCard.querySelectorAll('.hero-slide');
       const dots = document.getElementById('heroDots').querySelectorAll('span');
-      const prevBtn = document.getElementById('heroPrev');
-      const nextBtn = document.getElementById('heroNext');
       let currentSlide = 0;
-      let slideInterval = setInterval(nextSlide, 4000); // Change image every 4 seconds
+      let slideInterval = setInterval(nextSlide, 4000);
 
       function goToSlide(n) {
         slides[currentSlide].classList.remove('active');
@@ -498,24 +322,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
         dots[currentSlide].classList.add('active');
       }
       function nextSlide() { goToSlide(currentSlide + 1); }
-      function prevSlide() { goToSlide(currentSlide - 1); }
-
-      nextBtn.addEventListener('click', () => { clearInterval(slideInterval); nextSlide(); slideInterval = setInterval(nextSlide, 4000); });
-      prevBtn.addEventListener('click', () => { clearInterval(slideInterval); prevSlide(); slideInterval = setInterval(nextSlide, 4000); });
-      dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => { clearInterval(slideInterval); goToSlide(index); slideInterval = setInterval(nextSlide, 4000); });
-      });
     }
-
-    // FAQ Toggle
-    document.querySelectorAll('.faq-q').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.parentElement;
-        const open = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-        if (!open) item.classList.add('open');
-      });
-    });
   });
 </script>
 
