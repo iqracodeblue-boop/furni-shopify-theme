@@ -1,0 +1,172 @@
+<style>
+:root{
+  --ts-xl:2.2rem; --navy:#111111; --gold:#0188CC; --red:#0188CC;
+  --cream:#ffffff; --cream-deep:#f5f5f5; --ink:#111111; --body:#333333; --muted:#666666;
+  --line:rgba(0,0,0,.07); --line2:rgba(0,0,0,.12); --gold-line:rgba(1,136,204,.24); --gold-soft:rgba(1,136,204,.10);
+  --fh:'DM Serif Display',Georgia,serif; --fb:'Inter',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:93%}
+body{font-family:var(--fb);background:#fff;color:#333;line-height:1.6;}
+
+.cat-variants{padding:88px 48px;background:#fff}
+.sec-head{text-align:center;max-width:680px;margin:0 auto 56px}
+.sec-label{display:inline-flex;align-items:center;gap:8px;font-family:var(--fb);font-size:.82rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--red);margin-bottom:16px;}
+.sec-label::before{content:"";width:24px;height:1px;background:var(--red);}
+.sec-label::after{content:"";width:24px;height:1px;background:var(--red);}
+.sec-h{font-family:var(--fh);font-size:var(--ts-xl);color:var(--ink);line-height:1.05;letter-spacing:-.02em;margin-bottom:14px;font-weight:400;}
+.sec-h em{font-style:italic;color:var(--red)}
+.sec-sub{font-family:var(--fb);font-size:1rem;color:var(--muted);line-height:1.65;max-width:580px;margin:0 auto;}
+
+.cat-var-filters{max-width:1180px;margin:0 auto 32px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;}
+.cat-var-filter{font-family:var(--fb);font-size:.82rem;font-weight:600;color:var(--muted);padding:9px 22px;border-radius:100px;border:1px solid var(--line2);background:#fff;white-space:nowrap;transition:all .25s;cursor:pointer;}
+.cat-var-filter:hover{color:var(--ink);border-color:var(--gold-line)}
+.cat-var-filter.active{background:var(--gold);color:#fff;border-color:var(--gold);}
+.cat-variants-grid .var-card.hidden{display:none}
+.cat-variants-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.var-card{background:#fff;border-radius:14px;overflow:hidden;border:1px solid var(--line);transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .25s;display:flex;flex-direction:column;}
+.var-card:hover{transform:translateY(-5px);box-shadow:0 22px 44px rgba(0,0,0,.12);border-color:var(--gold-line);}
+.var-card-img{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--navy);}
+.var-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.var-card:hover .var-card-img img{transform:scale(1.06)}
+.var-card-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+.var-card h3{font-family:var(--fh);font-size:1.22rem;color:var(--ink);margin-bottom:7px;font-weight:400;line-height:1.18;}
+.var-card p{font-family:var(--fb);font-size:.86rem;color:var(--muted);line-height:1.6;margin-bottom:14px;flex:1;}
+.var-tags{display:flex;flex-wrap:wrap;gap:6px}
+.var-tag{background:var(--cream);color:var(--body);font-family:var(--fb);font-size:.68rem;font-weight:600;padding:4px 10px;border-radius:100px;border:1px solid var(--line2);}
+.var-card-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.var-card-btn{flex:1;min-width:calc(50% - 4px);font-family:var(--fb);font-size:.72rem;font-weight:700;padding:10px 10px;border-radius:8px;border:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s,color .2s;text-align:center;line-height:1.25;}
+.var-card-btn:not(.var-card-btn-outline){background:var(--gold);color:var(--navy);box-shadow:0 4px 12px rgba(1,136,204,.22);}
+.var-card-btn:not(.var-card-btn-outline):hover{background:#02a0eb;transform:translateY(-1px);box-shadow:0 6px 16px rgba(1,136,204,.3);}
+.var-card-btn-outline{background:#fff;color:var(--ink);border:1.5px solid var(--line2);}
+.var-card-btn-outline:hover{border-color:var(--gold);color:var(--navy);transform:translateY(-1px);}
+
+@media(max-width:880px){
+  .cat-variants{padding:64px 22px}
+  .cat-var-filters{padding:0 4px;margin-bottom:24px}
+  .cat-variants-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+}
+@media(max-width:560px){.cat-variants-grid{grid-template-columns:1fr}}
+</style>
+
+<section class="cat-variants">
+  <div class="sec-head">
+    <span class="sec-label">Storefront Sign Types</span>
+    <h2 class="sec-h">Choose Your <em>Storefront Style</em></h2>
+    <p class="sec-sub">Eleven proven storefront configurations. Mix faces, lighting, and mounting to match your brand and your budget.</p>
+  </div>
+  <div class="cat-var-filters">
+    <button class="cat-var-filter active" data-filter="all">All</button>
+    <button class="cat-var-filter" data-filter="front">Front Lit</button>
+    <button class="cat-var-filter" data-filter="back">Backlit</button>
+    <button class="cat-var-filter" data-filter="neon">Neon</button>
+  </div>
+  <div class="cat-variants-grid">
+    <article class="var-card" data-cat="front back">
+      <div class="var-card-img"><img src="https://i.ibb.co/0yr2R8DZ/7ed75f6621c0989e3478f26da0a8cec3-1.jpg" alt="Acrylic Front Lit" loading="lazy"></div>
+      <div class="var-card-body">
+        <h3>Acrylic Front Lit, Backlit and SideLit</h3>
+        <p>Acrylic channel letters with front, rear, or side LED illumination. Maximum flexibility for high-visibility storefront branding day and night.</p>
+        <div class="var-tags"><span class="var-tag">Acrylic</span><span class="var-tag">Front Lit</span></div>
+        <div class="var-card-actions">
+          <button class="var-card-btn var-card-btn-outline">View Images</button>
+          <button class="var-card-btn">Get a Quote</button>
+        </div>
+      </div>
+    </article>
+    <article class="var-card" data-cat="back">
+      <div class="var-card-img"><img src="https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg" alt="Push Thru Sign" loading="lazy"></div>
+      <div class="var-card-body">
+        <h3>Push Thru Sign</h3>
+        <p>Acrylic letters pushed through a metal panel face, illuminated from behind for sharp glowing edges and bold daytime presence.</p>
+        <div class="var-tags"><span class="var-tag">Push Thru</span><span class="var-tag">Backlit</span></div>
+        <div class="var-card-actions">
+          <button class="var-card-btn var-card-btn-outline">View Images</button>
+          <button class="var-card-btn">Get a Quote</button>
+        </div>
+      </div>
+    </article>
+    <article class="var-card" data-cat="back">
+      <div class="var-card-img"><img src="https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg" alt="3D Metal Backlit" loading="lazy"></div>
+      <div class="var-card-body">
+        <h3>3D Metal Backlit Signs</h3>
+        <p>Fabricated metal channel letters with rear LED halo illumination. The premium American storefront standard, refined day and night.</p>
+        <div class="var-tags"><span class="var-tag">3D Metal</span><span class="var-tag">Backlit</span></div>
+        <div class="var-card-actions">
+          <button class="var-card-btn var-card-btn-outline">View Images</button>
+          <button class="var-card-btn">Get a Quote</button>
+        </div>
+      </div>
+    </article>
+    <article class="var-card" data-cat="front">
+      <div class="var-card-img"><img src="https://i.ibb.co/Xk7kC7sZ/9bc0a390bd5f595c29ed220f1af96cc1.jpg" alt="Single Sided Light Box" loading="lazy"></div>
+      <div class="var-card-body">
+        <h3>Single Sided Light Box</h3>
+        <p>Illuminated cabinet with replaceable polycarbonate face. The retail workhorse for seasonal updates and brand refreshes.</p>
+        <div class="var-tags"><span class="var-tag">Lightbox</span><span class="var-tag">Front Lit</span></div>
+        <div class="var-card-actions">
+          <button class="var-card-btn var-card-btn-outline">View Images</button>
+          <button class="var-card-btn">Get a Quote</button>
+        </div>
+      </div>
+    </article>
+    <article class="var-card" data-cat="neon">
+      <div class="var-card-img"><img src="https://i.ibb.co/Xk4qPbsC/1532bdd2ade8d057d4e699a32c975bdf.jpg" alt="Open Face Neon" loading="lazy"></div>
+      <div class="var-card-body">
+        <h3>Open Face Neon</h3>
+        <p>Open-face channel letters with exposed LED tubing for classic neon-style character and high vintage appeal.</p>
+        <div class="var-tags"><span class="var-tag">Open Face</span><span class="var-tag">Neon</span></div>
+        <div class="var-card-actions">
+          <button class="var-card-btn var-card-btn-outline">View Images</button>
+          <button class="var-card-btn">Get a Quote</button>
+        </div>
+      </div>
+    </article>
+    <article class="var-card" data-cat="front back">
+      <div class="var-card-img"><img src="https://i.ibb.co/zhspw9Zp/e099e6192c61020ed637eaefeee78b12.jpg" alt="Acrylic Double Lit" loading="lazy"></div>
+      <div class="var-card-body">
+        <h3>Acrylic Double Lit Sign</h3>
+        <p>Front-lit and backlit in one sign. Dual illumination for maximum impact on storefronts that need to stand out after dark.</p>
+        <div class="var-tags"><span class="var-tag">Double Lit</span><span class="var-tag">Acrylic</span></div>
+        <div class="var-card-actions">
+          <button class="var-card-btn var-card-btn-outline">View Images</button>
+          <button class="var-card-btn">Get a Quote</button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const filters = document.querySelectorAll('.cat-var-filter');
+    const items = document.querySelectorAll('.var-card');
+    
+    filters.forEach(filter => {
+      filter.addEventListener('click', () => {
+        filters.forEach(f => f.classList.remove('active'));
+        filter.classList.add('active');
+        const filterValue = filter.getAttribute('data-filter');
+        
+        items.forEach(item => {
+          if (filterValue === 'all' || item.getAttribute('data-cat').includes(filterValue)) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "NT Cat Variants",
+  "presets": [
+    {
+      "name": "NT Cat Variants"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,74 @@
+<style>
+:root{
+  --ts-xl:2.2rem; --navy:#111111; --red:#0188CC; --ink:#111111; --muted:#666666;
+  --cream:#ffffff; --cream-deep:#f5f5f5; --line:rgba(0,0,0,.07);
+  --gold-soft:rgba(1,136,204,.10); --gold-line:rgba(1,136,204,.24);
+  --fh:'DM Serif Display',Georgia,serif; --fb:'Inter',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:93%}
+body{font-family:var(--fb);background:#fff;color:#333;line-height:1.6;}
+
+.cat-bestfor{padding:88px 48px;background:#fff}
+.sec-head{text-align:center;max-width:680px;margin:0 auto 56px}
+.sec-label{display:inline-flex;align-items:center;gap:8px;font-family:var(--fb);font-size:.82rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--red);margin-bottom:16px;}
+.sec-label::before{content:"";width:24px;height:1px;background:var(--red);}
+.sec-label::after{content:"";width:24px;height:1px;background:var(--red);}
+.sec-h{font-family:var(--fh);font-size:var(--ts-xl);color:var(--ink);line-height:1.05;letter-spacing:-.02em;margin-bottom:14px;font-weight:400;}
+.sec-h em{font-style:italic;color:var(--red)}
+.sec-sub{font-family:var(--fb);font-size:1rem;color:var(--muted);line-height:1.65;max-width:580px;margin:0 auto;}
+
+.bestfor-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.bestfor-card{background:var(--cream);padding:28px 22px;border-radius:14px;border:1px solid var(--line);text-align:center;transition:transform .25s,box-shadow .25s;}
+.bestfor-card:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(0,0,0,.08)}
+.bestfor-card-icon{width:50px;height:50px;border-radius:50%;background:var(--gold-soft);border:1px solid var(--gold-line);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;}
+.bestfor-card-icon svg{width:22px;height:22px;stroke:var(--navy);stroke-width:1.8;fill:none}
+.bestfor-card h4{font-family:var(--fh);font-size:1.05rem;color:var(--ink);margin-bottom:6px;font-weight:400;}
+.bestfor-card p{font-family:var(--fb);font-size:.82rem;color:var(--muted);line-height:1.55;}
+
+@media(max-width:880px){
+  .cat-bestfor{padding:64px 22px}
+  .bestfor-grid{grid-template-columns:1fr 1fr;gap:14px}
+}
+</style>
+
+<section class="cat-bestfor">
+  <div class="sec-head">
+    <span class="sec-label">Built For</span>
+    <h2 class="sec-h">The Businesses <em>That Order This Sign</em></h2>
+    <p class="sec-sub">A few of the industries we build this category for every week.</p>
+  </div>
+  <div class="bestfor-grid">
+    <div class="bestfor-card">
+      <div class="bestfor-card-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <h4>Restaurants</h4>
+      <p>Lit signage that pulls in dinner crowds and reads well at night.</p>
+    </div>
+    <div class="bestfor-card">
+      <div class="bestfor-card-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+      <h4>Retail Stores</h4>
+      <p>Premium brand presence that justifies the rent on Main Street.</p>
+    </div>
+    <div class="bestfor-card">
+      <div class="bestfor-card-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg></div>
+      <h4>Auto Dealerships</h4>
+      <p>Big, bright letters built to be seen from the highway.</p>
+    </div>
+    <div class="bestfor-card">
+      <div class="bestfor-card-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <h4>Office & Medical</h4>
+      <p>Professional, dignified storefront branding for clinics and offices.</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NT Cat BestFor",
+  "presets": [
+    {
+      "name": "NT Cat BestFor"
+    }
+  ]
+}
+{% endschema %}
