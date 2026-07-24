@@ -57,9 +57,21 @@
         "padding-block-start": 40,
         "padding-block-end": 80
       }
+    },
+    "nt_quote_main_v1_gcT9mm": {
+      "type": "nt-quote-main-v1",
+      "name": "NT Quote Main",
+      "settings": {}
+    },
+    "nt_final_cta_v1_eXMGBM": {
+      "type": "nt-final-cta-v1",
+      "name": "NT Final CTA",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "nt_quote_main_v1_gcT9mm",
+    "nt_final_cta_v1_eXMGBM"
   ]
 }
