@@ -1,0 +1,58 @@
+<style>
+:root{
+  --ts-2xl:clamp(2.4rem,5vw,4.4rem); --navy:#111111; --navy-deep:#0a0a0a; --gold:#0188CC;
+  --cream:#ffffff; --fh:'DM Serif Display',Georgia,serif; --fb:'Inter',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:93%}
+body{font-family:var(--fb);background:var(--cream);color:#333;line-height:1.6;}
+
+.port-hero{
+  position:relative;padding:150px 48px 70px;
+  background:linear-gradient(180deg,var(--navy-deep) 0%,var(--navy) 100%);
+  color:#fff;text-align:center;overflow:hidden;
+}
+.port-hero::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 50% at 50% 30%,rgba(1,136,204,.14) 0%,transparent 65%);
+}
+.port-hero-inner{max-width:720px;margin:0 auto;position:relative;z-index:1}
+.sec-label{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--fb);font-size:.82rem;font-weight:700;
+  letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:16px;
+}
+.sec-label::before{content:"";width:24px;height:1px;background:var(--gold);}
+.sec-label::after{content:"";width:24px;height:1px;background:var(--gold);}
+.port-hero h1{
+  font-family:var(--fh);font-size:var(--ts-2xl);color:#fff;
+  line-height:1.04;letter-spacing:-.02em;margin-bottom:16px;font-weight:400;
+}
+.port-hero h1 em{font-style:italic;color:var(--gold)}
+.port-hero p{
+  font-family:var(--fb);font-size:1.06rem;line-height:1.65;
+  color:rgba(255,255,255,.65);max-width:560px;margin:0 auto;
+}
+
+@media(max-width:980px){.port-hero{padding:130px 22px 56px}}
+</style>
+
+<section class="port-hero">
+  <div class="port-hero-inner">
+    <span class="sec-label">Our Work</span>
+    <h1>Signs We Have <em>Built &amp; Installed.</em></h1>
+    <p>Every project in this gallery was custom-manufactured in our factory and professionally installed. Browse by category or scroll through all 36 projects.</p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NT Portfolio Hero",
+  "presets": [
+    {
+      "name": "NT Portfolio Hero"
+    }
+  ]
+}
+{% endschema %}
