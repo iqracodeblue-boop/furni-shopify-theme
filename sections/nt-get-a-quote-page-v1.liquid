@@ -1,133 +1,41 @@
 <style>
 :root{
-  --navy:#111111; --navy-deep:#0a0a0a; --gold:#0188CC; --cream:#ffffff; --ink:#111111; --muted:#666666;
-  --line2:rgba(0,0,0,.12); --red:#0188CC; --gold-line:rgba(1,136,204,.24);
+  --ts-xl:2.2rem; --ts-2xl:clamp(2.4rem,5vw,4.4rem);
+  --navy:#111111; --navy-deep:#0a0a0a; --gold:#0188CC; --cream:#ffffff; --cream-deep:#f5f5f5;
+  --ink:#111111; --body:#333333; --muted:#666666; --line:rgba(0,0,0,.07); --line2:rgba(0,0,0,.12);
+  --red:#0188CC; --gold-line:rgba(1,136,204,.24); --gold-soft:rgba(1,136,204,.10);
   --fh:'DM Serif Display',Georgia,serif; --fb:'Inter',system-ui,sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:93%}
-body{font-family:var(--fb);background:var(--cream);color:#333;line-height:1.6;}
+body{font-family:var(--fb);background:var(--cream);color:var(--body);line-height:1.6;}
 
-/* Split Layout */
-.quote-page-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  min-height: 100vh;
-}
-@media(max-width: 880px) {
-  .quote-page-wrapper { grid-template-columns: 1fr; }
-}
-
-/* Left Side (Clean Dark) */
+/* 1. Split Layout (Form Section) */
+.quote-page-wrapper { display: grid; grid-template-columns: 1fr 1.2fr; min-height: 100vh; }
+@media(max-width: 880px) { .quote-page-wrapper { grid-template-columns: 1fr; } }
 .quote-left {
   background-color: #0a0a0a;
   background-image: radial-gradient(ellipse 60% 40% at 20% 20%, rgba(1,136,204,0.15) 0%, transparent 60%);
-  color: #fff;
-  padding: 60px 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  color: #fff; padding: 60px 50px; display: flex; flex-direction: column; justify-content: center;
 }
 .top-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(1,136,204,.12);
-  border: 1px solid rgba(1,136,204,.3);
-  padding: 8px 14px;
-  border-radius: 50px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 30px;
-  width: fit-content;
+  display: inline-flex; align-items: center; gap: 8px; background: rgba(1,136,204,.12);
+  border: 1px solid rgba(1,136,204,.3); padding: 8px 14px; border-radius: 50px;
+  font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--gold); margin-bottom: 30px; width: fit-content;
 }
-.quote-left h1 {
-  font-family: var(--fh);
-  font-size: 2.4rem;
-  line-height: 1.1;
-  margin-bottom: 20px;
-  font-weight: 400;
-}
+.quote-left h1 { font-family: var(--fh); font-size: 2.4rem; line-height: 1.1; margin-bottom: 20px; font-weight: 400; }
 .quote-left h1 em { color: var(--gold); font-style: italic; }
-.left-desc {
-  font-size: 1rem;
-  color: rgba(255,255,255,0.7);
-  margin-bottom: 30px;
-  line-height: 1.6;
-  max-width: 90%;
-}
-
-.sign-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-}
-.sign-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(255,255,255,0.03);
-  padding: 8px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.08);
-}
-.sign-item img {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-.sign-item span {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #fff;
-}
-
-/* Right Side (Clean White Form) */
-.quote-right {
-  background: #f4f7fa;
-  padding: 50px 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-}
-.ship-badge {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: var(--gold);
-  color: #fff;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-/* Form Card */
-.form-card {
-  background: #fff;
-  padding: 40px;
-  border-radius: 16px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-  border: 1px solid rgba(0,0,0,0.05);
-}
-.form-header h2 {
-  font-family: var(--fh);
-  font-size: 2rem;
-  margin-bottom: 8px;
-  font-weight: 400;
-}
+.left-desc { font-size: 1rem; color: rgba(255,255,255,0.7); margin-bottom: 30px; line-height: 1.6; max-width: 90%; }
+.sign-list { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.sign-item { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.03); padding: 8px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); }
+.sign-item img { width: 50px; height: 50px; object-fit: cover; border-radius: 8px; }
+.sign-item span { font-size: 0.85rem; font-weight: 600; color: #fff; }
+.quote-right { background: #f4f7fa; padding: 50px 40px; display: flex; flex-direction: column; justify-content: center; position: relative; }
+.ship-badge { position: absolute; top: 20px; right: 20px; background: var(--gold); color: #fff; padding: 6px 14px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+.form-card { background: #fff; padding: 40px; border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05); }
+.form-header h2 { font-family: var(--fh); font-size: 2rem; margin-bottom: 8px; font-weight: 400; }
 .form-header h2 em { color: var(--gold); font-style: italic; }
-.form-header p {
-  font-size: 0.9rem;
-  color: var(--muted);
-  margin-bottom: 25px;
-}
-
+.form-header p { font-size: 0.9rem; color: var(--muted); margin-bottom: 25px; }
 .qf-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px }
 .qf-field { display:flex; flex-direction:column }
 .qf-field.full { grid-column:span 2 }
@@ -136,177 +44,347 @@ body{font-family:var(--fb);background:var(--cream);color:#333;line-height:1.6;}
 .qf-input, .qf-select, .qf-textarea { font-family:var(--fb); font-size:.92rem; padding:13px 14px; border-radius:9px; border:1.5px solid var(--line2); background:#f9f9f9; color:var(--ink); width:100%; outline:none; transition: border-color 0.2s; }
 .qf-input:focus, .qf-select:focus, .qf-textarea:focus { border-color:var(--gold); background:#fff; box-shadow:0 0 0 4px rgba(1,136,204,.14); }
 .qf-textarea { resize:vertical; min-height:80px; font-family:var(--fb) }
-
-/* File Upload Styling */
-.qf-file-wrap {
-  position: relative;
-  border: 1.5px dashed var(--line2);
-  border-radius: 9px;
-  padding: 14px;
-  text-align: center;
-  background: #f9f9f9;
-  cursor: pointer;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+.qf-file-wrap { position: relative; border: 1.5px dashed var(--line2); border-radius: 9px; padding: 14px; text-align: center; background: #f9f9f9; cursor: pointer; height: 100%; display: flex; align-items: center; justify-content: center; }
 .qf-file-wrap:hover { border-color: var(--gold); }
-.qf-file-wrap input[type="file"] {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  cursor: pointer;
-  width: 100%;
-  height: 100%;
-}
-.qf-file-label {
-  font-size: 0.85rem;
-  color: var(--muted);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-.qf-file-label svg {
-  width: 18px;
-  height: 18px;
-  stroke: var(--gold);
-  fill: none;
-  stroke-width: 2;
-}
-
+.qf-file-wrap input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.qf-file-label { font-size: 0.85rem; color: var(--muted); display: flex; align-items: center; justify-content: center; gap: 8px; }
+.qf-file-label svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; stroke-width: 2; }
 .qf-submit { width:100%; background:var(--navy); color:#fff; font-family:var(--fb); font-size:.95rem; font-weight:700; padding:16px; border-radius:10px; margin-top:10px; display:inline-flex; align-items:center; justify-content:center; gap:10px; cursor:pointer; border:none; transition: background 0.2s; }
 .qf-submit:hover { background:var(--navy-deep); }
 .qf-submit svg { width:16px; height:16px; stroke:#fff; stroke-width:2.5; fill:none }
 .qf-note { font-size:.72rem; color:var(--muted); text-align:center; margin-top:14px; line-height: 1.5; }
+
+/* Common Section Styles */
+.section { padding:88px 48px; position:relative; overflow:hidden; background:#fff; }
+.section-alt { background: var(--cream-deep); }
+.sec-head { text-align:center; max-width:680px; margin:0 auto 56px }
+.sec-label { display:inline-flex; align-items:center; gap:8px; font-family:var(--fb); font-size:.82rem; font-weight:700; letter-spacing:.28em; text-transform:uppercase; color:var(--red); margin-bottom:16px; }
+.sec-label::before { content:""; width:24px; height:1px; background:var(--red); }
+.sec-label::after { content:""; width:24px; height:1px; background:var(--red); }
+.sec-h { font-family:var(--fh); font-size:var(--ts-xl); color:var(--ink); line-height:1.05; letter-spacing:-.02em; margin-bottom:14px; font-weight:400; }
+.sec-h em { font-style:italic; color:var(--red) }
+.sec-sub { font-family:var(--fb); font-size:1rem; color:var(--muted); line-height:1.65; max-width:580px; margin:0 auto; }
+
+/* 2. Sign Types Cards */
+.types-grid { max-width:1280px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.type-card { background:#fff; border-radius:16px; overflow:hidden; border:1px solid var(--line); transition:transform .35s, box-shadow .35s, border-color .3s; display:flex; flex-direction:column; text-decoration:none; color:inherit; }
+.type-card:hover { transform:translateY(-6px); box-shadow:0 24px 48px rgba(0,0,0,.14); border-color:var(--gold-line); }
+.type-card-img { position:relative; aspect-ratio:16/10; overflow:hidden; background:var(--navy); }
+.type-card-img img { width:100%; height:100%; object-fit:cover; transition:transform .8s }
+.type-card:hover .type-card-img img { transform:scale(1.06) }
+.type-card-body { padding:24px 24px 26px; display:flex; flex-direction:column; flex:1 }
+.type-card h3 { font-family:var(--fh); font-size:1.32rem; color:var(--ink); line-height:1.15; margin-bottom:8px; font-weight:400; }
+.type-card p { font-family:var(--fb); font-size:.88rem; color:var(--muted); line-height:1.6; margin-bottom:18px; flex:1; }
+.type-card-foot { display:flex; align-items:center; padding-top:16px; border-top:1px solid var(--line); }
+.type-card-link { font-family:var(--fb); font-size:.78rem; font-weight:700; color:var(--navy); display:inline-flex; align-items:center; gap:5px; }
+
+/* 3. Gallery (Sliding) */
+.gallery-bento { max-width:1280px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:200px; gap:14px; }
+.gal-item { position:relative; overflow:hidden; border-radius:14px; background:#111; cursor:pointer; }
+.gal-cycle { position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; transition:opacity 1.1s cubic-bezier(.16,1,.3,1); z-index:1; }
+.gal-cycle.active { opacity:1; z-index:2 }
+.gal-cycle img { max-width:100%; width:100%; height:100%; object-fit:cover; display:block; }
+.gal-item::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.78) 100%); opacity:.85; z-index:3; pointer-events:none; }
+.gal-cap { position:absolute; left:18px; right:18px; bottom:16px; z-index:4; color:#fff; font-family:var(--fh); font-size:1.05rem; line-height:1.2; }
+.gal-cap small { display:block; font-family:var(--fb); font-size:.7rem; font-weight:500; color:var(--gold); letter-spacing:.14em; text-transform:uppercase; margin-bottom:4px; }
+.gal-1 { grid-column:span 2; grid-row:span 2 } .gal-2 { grid-column:span 1; grid-row:span 1 } .gal-3 { grid-column:span 1; grid-row:span 1 } .gal-4 { grid-column:span 1; grid-row:span 1 } .gal-5 { grid-column:span 1; grid-row:span 1 } .gal-6 { grid-column:span 2; grid-row:span 1 }
+
+/* 4. Process */
+.proc-section { position:relative; background:var(--navy-deep); padding:104px 48px; overflow:hidden; }
+.proc-section .sec-h { color:#fff } .proc-section .sec-sub { color:rgba(255,255,255,.55) } .proc-section .sec-label { color:var(--gold) } .proc-section .sec-label::before, .proc-section .sec-label::after { background:var(--gold) }
+.proc-grid { max-width:1180px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:22px; position:relative; z-index:2; }
+.proc-step { position:relative; background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:18px; padding:34px 26px 30px; text-align:left; overflow:hidden; }
+.proc-step-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:22px; }
+.proc-num { font-family:var(--fh); font-size:2.4rem; line-height:1; color:var(--gold); }
+.proc-icon { width:50px; height:50px; border-radius:13px; background:var(--gold-soft); border:1px solid var(--gold-line); display:flex; align-items:center; justify-content:center; }
+.proc-icon svg { width:23px; height:23px; fill:none; stroke:var(--gold); stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.proc-step h4 { font-family:var(--fh); font-size:1.24rem; color:var(--ink); margin-bottom:9px; font-weight:400; line-height:1.2; }
+.proc-step p { font-family:var(--fb); font-size:.88rem; color:var(--muted); line-height:1.62; }
+
+/* 5. Why Us */
+.why-grid { max-width:1180px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+.why-card { background:#fff; border-radius:14px; padding:32px 26px; border:1px solid var(--line); }
+.why-icon { width:54px; height:54px; border-radius:12px; background:var(--gold-soft); border:1px solid var(--gold-line); display:flex; align-items:center; justify-content:center; margin-bottom:18px; }
+.why-icon svg { width:24px; height:24px; stroke:var(--navy); stroke-width:1.8; fill:none }
+.why-card h4 { font-family:var(--fh); font-size:1.22rem; color:var(--ink); margin-bottom:10px; font-weight:400; line-height:1.2; }
+.why-card p { font-family:var(--fb); font-size:.9rem; color:var(--muted); line-height:1.65; }
+
+/* 6. Testimonials */
+.testi-grid { max-width:1180px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+.testi { background:#fff; border-radius:14px; padding:30px 28px; border:1px solid var(--line); }
+.testi-stars { display:flex; gap:3px; margin-bottom:16px } .testi-stars svg { width:16px; height:16px; fill:var(--gold) }
+.testi-quote { font-family:var(--fb); font-size:.96rem; line-height:1.7; color:var(--body); margin-bottom:24px; }
+.testi-quote::before { content:"\201C"; font-family:var(--fh); font-size:3.4rem; color:var(--gold); line-height:0; display:block; margin-bottom:18px; opacity:.4; }
+.testi-author { display:flex; align-items:center; gap:14px; padding-top:18px; border-top:1px solid var(--line); }
+.testi-avatar { width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg,var(--navy) 0%,#1a1a1a 100%); color:var(--gold); font-family:var(--fh); font-size:1.1rem; display:flex; align-items:center; justify-content:center; border:1px solid var(--gold-line); flex-shrink:0; }
+.testi-name { font-family:var(--fb); font-size:.88rem; font-weight:700; color:var(--ink) } .testi-role { font-family:var(--fb); font-size:.76rem; color:var(--muted); margin-top:2px }
+
+/* 7. Story */
+.about-section { background:var(--cream); padding:96px 48px; overflow:hidden; }
+.about-inner { max-width:1180px; margin:0 auto; display:grid; grid-template-columns:1.05fr 1fr; gap:64px; align-items:center; }
+.about-text .sec-label { justify-content:flex-start } .about-text .sec-label::before, .about-text .sec-label::after { display:none }
+.about-text .sec-h { margin-bottom:22px }
+.about-text p { font-family:var(--fb); font-size:1rem; line-height:1.75; color:var(--body); margin-bottom:18px; }
+.about-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:34px; padding-top:30px; border-top:1px solid var(--line2); }
+.about-stat-num { font-family:var(--fh); font-size:2.4rem; color:var(--red); line-height:1; margin-bottom:4px; font-weight:400; }
+.about-stat-lab { font-family:var(--fb); font-size:.74rem; color:var(--muted); letter-spacing:.14em; text-transform:uppercase; font-weight:600; }
+.about-visual { position:relative; aspect-ratio:4/5; border-radius:18px; overflow:hidden; box-shadow:0 30px 70px rgba(0,0,0,.22); }
+.about-visual img { width:100%; height:100%; object-fit:cover }
+.about-badge { position:absolute; bottom:-22px; right:-22px; width:140px; height:140px; border-radius:50%; background:var(--gold); color:var(--navy); display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:var(--fh); text-align:center; box-shadow:0 14px 36px rgba(1,136,204,.4); border:4px solid var(--cream); z-index:3; }
+.about-badge strong { font-size:2rem; line-height:1; display:block; font-weight:400 } .about-badge span { font-family:var(--fb); font-size:.62rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; margin-top:4px }
+
+/* 8. FAQ */
+.faq-section { background:#fff; padding:88px 48px }
+.faq-inner { max-width:780px; margin:0 auto }
+.faq-item { border-bottom:1px solid var(--line2); padding:6px 0; }
+.faq-q { width:100%; text-align:left; padding:22px 0; font-family:var(--fh); font-size:1.18rem; color:var(--ink); display:flex; align-items:center; justify-content:space-between; gap:18px; line-height:1.3; font-weight:400; cursor:pointer; background:none; border:none; }
+.faq-q-icon { width:28px; height:28px; border-radius:50%; border:1px solid rgba(0,0,0,0.2); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:transform .3s,background .3s,border-color .3s; }
+.faq-q-icon svg { width:12px; height:12px; stroke:var(--ink); stroke-width:2.5; fill:none; transition:transform .3s }
+.faq-item.open .faq-q-icon { background:var(--gold); border-color:var(--gold) } .faq-item.open .faq-q-icon svg { transform:rotate(45deg); stroke:#fff; }
+.faq-a { max-height:0; overflow:hidden; transition:max-height .4s cubic-bezier(.16,1,.3,1); }
+.faq-a-inner { padding:0 0 22px; font-family:var(--fb); font-size:.95rem; line-height:1.7; color:var(--body); }
+.faq-item.open .faq-a { max-height:400px }
+
+/* 9. Final CTA */
+.final-cta { background:linear-gradient(180deg,var(--navy) 0%,var(--navy-deep) 100%); color:#fff; padding:104px 48px; position:relative; overflow:hidden; text-align:center; }
+.final-inner { max-width:780px; margin:0 auto; position:relative; z-index:1 }
+.final-inner .sec-label { color:var(--gold); justify-content:center } .final-inner .sec-label::before, .final-inner .sec-label::after { background:var(--gold) }
+.final-inner h2 { font-family:var(--fh); font-size:var(--ts-2xl); color:#fff; line-height:1.04; letter-spacing:-.02em; margin-bottom:18px; font-weight:400; }
+.final-inner h2 em { font-style:italic; color:var(--gold) }
+.final-inner p { font-family:var(--fb); font-size:1.08rem; line-height:1.6; color:rgba(255,255,255,.72); max-width:560px; margin:0 auto 36px; }
+.btn-primary { background:var(--gold); color:var(--navy); font-family:var(--fb); font-size:.95rem; font-weight:700; padding:16px 28px; border-radius:10px; display:inline-flex; align-items:center; gap:10px; transition:transform .2s, box-shadow .25s, background .25s; box-shadow:0 8px 24px rgba(1,136,204,.32); text-decoration:none; }
+.btn-primary:hover { background:#02a0eb; transform:translateY(-2px) }
+.btn-primary svg { width:16px; height:16px; stroke:var(--navy); stroke-width:2.5; fill:none }
+
+@media(max-width: 980px) {
+  .types-grid { grid-template-columns:repeat(2,1fr) } .proc-grid { grid-template-columns:repeat(2,1fr) }
+  .why-grid { grid-template-columns:repeat(2,1fr) } .testi-grid { grid-template-columns:1fr }
+  .about-inner { grid-template-columns:1fr; gap:48px } .gallery-bento { grid-template-columns:repeat(2,1fr) }
+}
 </style>
 
+<!-- 1. SPLIT FORM SECTION -->
 <div class="quote-page-wrapper">
-  <!-- Left Side with Text & Images -->
   <div class="quote-left">
     <div class="top-badge">
       <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:2.5;"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg>
       Free mockup in 2 hours - No obligation
     </div>
     <h1>Custom 3D business signs. <em>Free quote & mockup.</em></h1>
-    <p class="left-desc">We build premium custom 3D signs tailored to your brand. From storefront channel letters to illuminated monuments, we deliver quality signage for indoor and outdoor use. Upload your logo for a free mockup & quote.</p>
-    
+    <p class="left-desc">We build premium custom 3D signs tailored to your brand. From storefront channel letters to illuminated monuments, we deliver quality signage for indoor and outdoor use.</p>
     <div class="sign-list">
-      <div class="sign-item">
-        <img src="https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg" alt="3D Metal Backlit">
-        <span>3D Metal Backlit</span>
-      </div>
-      <div class="sign-item">
-        <img src="https://i.ibb.co/0yr2R8DZ/7ed75f6621c0989e3478f26da0a8cec3-1.jpg" alt="Acrylic Front Lit">
-        <span>Acrylic Front Lit</span>
-      </div>
-      <div class="sign-item">
-        <img src="https://i.ibb.co/Xk7kC7sZ/9bc0a390bd5f595c29ed220f1af96cc1.jpg" alt="Lightbox Signs">
-        <span>Lightbox Signs</span>
-      </div>
-      <div class="sign-item">
-        <img src="https://i.ibb.co/Z1bRvmFX/1a8bfc475f04e41dc4168ddc673f5e30.jpg" alt="Halo Lit Letters">
-        <span>Halo Lit Letters</span>
-      </div>
-      <div class="sign-item">
-        <img src="https://i.ibb.co/7Nd52czm/nw-Hr-L.jpg" alt="Channel Letters">
-        <span>Channel Letters</span>
-      </div>
-      <div class="sign-item">
-        <img src="https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg" alt="Push Thru Signs">
-        <span>Push Thru Signs</span>
-      </div>
+      <div class="sign-item"><img src="https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg" alt="3D Metal Backlit"><span>3D Metal Backlit</span></div>
+      <div class="sign-item"><img src="https://i.ibb.co/0yr2R8DZ/7ed75f6621c0989e3478f26da0a8cec3-1.jpg" alt="Acrylic Front Lit"><span>Acrylic Front Lit</span></div>
+      <div class="sign-item"><img src="https://i.ibb.co/Xk7kC7sZ/9bc0a390bd5f595c29ed220f1af96cc1.jpg" alt="Lightbox Signs"><span>Lightbox Signs</span></div>
+      <div class="sign-item"><img src="https://i.ibb.co/Z1bRvmFX/1a8bfc475f04e41dc4168ddc673f5e30.jpg" alt="Halo Lit Letters"><span>Halo Lit Letters</span></div>
+      <div class="sign-item"><img src="https://i.ibb.co/7Nd52czm/nw-Hr-L.jpg" alt="Channel Letters"><span>Channel Letters</span></div>
+      <div class="sign-item"><img src="https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg" alt="Push Thru Signs"><span>Push Thru Signs</span></div>
     </div>
   </div>
-
-  <!-- Right Side Clean White Form -->
   <div class="quote-right">
     <div class="ship-badge">FREE SHIPPING to all 50 States</div>
-    
     <div class="form-card">
       <div class="form-header">
         <h2>Get a Free <em>Mockup in 2 Hours.</em></h2>
         <p>Tell us a little about your business and the sign you have in mind.</p>
       </div>
-      
-      <form class="quote-form" id="quoteForm" onsubmit="event.preventDefault();alert('Request Sent! We will send your mockup within 2 hours.');this.reset();">
-        
+      <form class="quote-form" onsubmit="event.preventDefault();alert('Request Sent! We will send your mockup within 2 hours.');this.reset();">
         <div class="qf-row">
-          <div class="qf-field">
-            <label class="qf-label" for="qf-name">Full Name <span class="req">*</span></label>
-            <input type="text" id="qf-name" class="qf-input" placeholder="John Carter" required>
-          </div>
-          <div class="qf-field">
-            <label class="qf-label" for="qf-phone">Phone <span class="req">*</span></label>
-            <input type="tel" id="qf-phone" class="qf-input" placeholder="(555) 123-4567" required>
-          </div>
+          <div class="qf-field"><label class="qf-label">Full Name <span class="req">*</span></label><input type="text" class="qf-input" placeholder="John Carter" required></div>
+          <div class="qf-field"><label class="qf-label">Phone <span class="req">*</span></label><input type="tel" class="qf-input" placeholder="(555) 123-4567" required></div>
         </div>
-
         <div class="qf-row">
-          <div class="qf-field">
-            <label class="qf-label" for="qf-email">Email <span class="req">*</span></label>
-            <input type="email" id="qf-email" class="qf-input" placeholder="you@business.com" required>
-          </div>
-          <div class="qf-field">
-            <label class="qf-label" for="qf-business">Business Name</label>
-            <input type="text" id="qf-business" class="qf-input" placeholder="Your business">
-          </div>
+          <div class="qf-field"><label class="qf-label">Email <span class="req">*</span></label><input type="email" class="qf-input" placeholder="you@business.com" required></div>
+          <div class="qf-field"><label class="qf-label">Business Name</label><input type="text" class="qf-input" placeholder="Your business"></div>
         </div>
-
         <div class="qf-row">
-          <div class="qf-field">
-            <label class="qf-label" for="qf-upload">Upload Logo</label>
-            <div class="qf-file-wrap">
-              <input type="file" id="qf-upload" accept="image/*">
-              <div class="qf-file-label">
-                <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                Click to upload
-              </div>
-            </div>
-          </div>
-          <div class="qf-field">
-            <label class="qf-label" for="qf-usage">Sign Usage <span class="req">*</span></label>
-            <select id="qf-usage" class="qf-input" required>
-              <option value="">Select usage</option>
-              <option>Indoor</option>
-              <option>Outdoor</option>
-              <option>Both</option>
-            </select>
-          </div>
+          <div class="qf-field"><label class="qf-label">Upload Logo</label><div class="qf-file-wrap"><input type="file" accept="image/*"><div class="qf-file-label"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Click to upload</div></div></div>
+          <div class="qf-field"><label class="qf-label">Sign Usage <span class="req">*</span></label><select class="qf-input" required><option value="">Select usage</option><option>Indoor</option><option>Outdoor</option><option>Both</option></select></div>
         </div>
-
         <div class="qf-row">
-          <div class="qf-field">
-            <label class="qf-label" for="qf-type">Mockup Type <span class="req">*</span></label>
-            <select id="qf-type" class="qf-input" required>
-              <option value="">Select sign type</option>
-              <option>3D Metal Backlit</option>
-              <option>Acrylic Front Lit</option>
-              <option>Lightbox Signs</option>
-              <option>Halo Lit Letters</option>
-              <option>Channel Letters</option>
-              <option>Not sure yet</option>
-            </select>
-          </div>
-          <div class="qf-field">
-            <label class="qf-label" for="qf-state">State</label>
-            <input type="text" id="qf-state" class="qf-input" placeholder="e.g. Texas">
-          </div>
+          <div class="qf-field"><label class="qf-label">Mockup Type <span class="req">*</span></label><select class="qf-input" required><option value="">Select sign type</option><option>3D Metal Backlit</option><option>Acrylic Front Lit</option><option>Lightbox Signs</option><option>Halo Lit Letters</option><option>Channel Letters</option></select></div>
+          <div class="qf-field"><label class="qf-label">State</label><input type="text" class="qf-input" placeholder="e.g. Texas"></div>
         </div>
-
-        <button type="submit" class="qf-submit">
-          Send Me My Free Mockup
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </button>
-        <p class="qf-note">
-          <svg viewBox="0 0 24 24" style="width:11px;height:11px;stroke:var(--gold);fill:none;stroke-width:2;vertical-align:-1px;margin-right:3px;"><path d="M12 2L3 7v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7l-9-5z"/></svg>
-          Your information is private. We never sell, share or spam.
-        </p>
+        <button type="submit" class="qf-submit">Send Me My Free Mockup <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+        <p class="qf-note"><svg viewBox="0 0 24 24" style="width:11px;height:11px;stroke:var(--gold);fill:none;stroke-width:2;vertical-align:-1px;margin-right:3px;"><path d="M12 2L3 7v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7l-9-5z"/></svg> Your information is private. We never sell, share or spam.</p>
       </form>
     </div>
   </div>
 </div>
+
+<!-- 2. SIGN TYPES CARDS -->
+<section class="section">
+  <div class="sec-head">
+    <span class="sec-label">What We Build</span>
+    <h2 class="sec-h">Popular <em>Sign Types</em> We Build</h2>
+    <p class="sec-sub">From bold storefront channel letters and LED neon signs to refined acrylic backlit lobby displays, every custom business sign is engineered in our factory.</p>
+  </div>
+  <div class="types-grid">
+    <a href="/pages/sign-types" class="type-card"><div class="type-card-img"><img src="https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg" alt="Storefront"></div><div class="type-card-body"><h3>Storefront signs</h3><p>Custom-fabricated aluminum channel letter signs with front-lit, halo-lit or combination LED illumination.</p><div class="type-card-foot"><span class="type-card-link">Explore Types</span></div></div></a>
+    <a href="/pages/sign-types" class="type-card"><div class="type-card-img"><img src="https://i.ibb.co/Z1bRvmFX/1a8bfc475f04e41dc4168ddc673f5e30.jpg" alt="Reception"></div><div class="type-card-body"><h3>Reception &amp; studio signs</h3><p>Soft, premium halo glow that elevates any brand. Push through signs with acrylic faces and stainless steel returns.</p><div class="type-card-foot"><span class="type-card-link">Explore Types</span></div></div></a>
+    <a href="/pages/sign-types" class="type-card"><div class="type-card-img"><img src="https://i.ibb.co/VcjZ4ZBF/000.png" alt="Medical"></div><div class="type-card-body"><h3>Medical and Clinic signs</h3><p>Ground-level monuments and tall pylon signs engineered for visibility from the road. Stone, masonry and aluminum finishes.</p><div class="type-card-foot"><span class="type-card-link">Explore Types</span></div></div></a>
+  </div>
+</section>
+
+<!-- 3. GALLERY (SLIDING) -->
+<section class="section section-alt">
+  <div class="sec-head">
+    <span class="sec-label">Our Work</span>
+    <h2 class="sec-h">Our Most <em>Recent Projects.</em></h2>
+    <p class="sec-sub">All of our signs are built in our factory and professionally installed. No stock photos.</p>
+  </div>
+  <div class="gallery-bento">
+    <div class="gal-item gal-1">
+      <div class="gal-cycle active"><img src="https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg" alt="HotRocks Grill"></div>
+      <div class="gal-cycle"><img src="https://i.ibb.co/wZJPVMTC/IMG-1229.jpg" alt="Warm White Halo"></div>
+      <div class="gal-cap"><small>Brooklyn, NY</small>HotRocks Grill</div>
+    </div>
+    <div class="gal-item gal-2">
+      <div class="gal-cycle active"><img src="https://i.ibb.co/fLZ1FSz/3d-metal-nonlit-1.jpg" alt="PRAY LOVE"></div>
+      <div class="gal-cap"><small>Seattle, WA</small>PRAY LOVE</div>
+    </div>
+    <div class="gal-item gal-3">
+      <div class="gal-cycle active"><img src="https://i.ibb.co/27R8x8DX/3d-acrylic-frontlit-image-1-1.png" alt="Fessler's Cafe"></div>
+      <div class="gal-cycle"><img src="https://i.ibb.co/B2JQnr6N/74d052ff-c4ee-4cb5-ac7e-183dcb40f0e2.png" alt="Front-Lit"></div>
+      <div class="gal-cap"><small>Tampa, FL</small>Fessler's Cafe</div>
+    </div>
+    <div class="gal-item gal-4">
+      <div class="gal-cycle active"><img src="https://i.ibb.co/ymwCTPF0/3d-metal-backlit-2.jpg" alt="Camp Ground Kitchen"></div>
+      <div class="gal-cycle"><img src="https://i.ibb.co/DH0FFQCd/66793f20edb71e28c00f7e453b711b46.jpg" alt="Backlit"></div>
+      <div class="gal-cap"><small>Nashville, TN</small>Camp Ground Kitchen</div>
+    </div>
+    <div class="gal-item gal-5">
+      <div class="gal-cycle active"><img src="https://i.ibb.co/1fX1Jpsn/uv-acrylic-1.jpg" alt="Rausa Tattoo"></div>
+      <div class="gal-cap"><small>San Diego, CA</small>Rausa Tattoo</div>
+    </div>
+    <div class="gal-item gal-6">
+      <div class="gal-cycle active"><img src="https://i.ibb.co/yBP4T6Qn/3-D-blade-sign-1.jpg" alt="The DUTCH"></div>
+      <div class="gal-cycle"><img src="https://i.ibb.co/KtbtvFN/2d-blade-sign-image-1.jpg" alt="Blade Sign"></div>
+      <div class="gal-cap"><small>Savannah, GA</small>The DUTCH</div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. PROCESS -->
+<section class="proc-section">
+  <div class="sec-head">
+    <span class="sec-label">The Process</span>
+    <h2 class="sec-h">How It <em>Works</em></h2>
+    <p class="sec-sub">A clear path from idea to installed sign. No guesswork, no surprises, no inflated markups. Just quality craftsmanship delivered on time.</p>
+  </div>
+  <div class="proc-grid">
+    <div class="proc-step"><div class="proc-step-top"><span class="proc-num">01</span><span class="proc-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></span></div><h4>Submit Details</h4><p>Share your business name, sign type, size and any reference photos. Takes under two minutes.</p></div>
+    <div class="proc-step"><div class="proc-step-top"><span class="proc-num">02</span><span class="proc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span></div><h4>Free Mockup in 2 Hours</h4><p>Our designers send you a photo-realistic mockup on your actual storefront, with revisions until it feels right.</p></div>
+    <div class="proc-step"><div class="proc-step-top"><span class="proc-num">03</span><span class="proc-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-6 9 6v11a1 1 0 01-1 1H4a1 1 0 01-1-1z"/><path d="M9 22V12h6v10"/></svg></span></div><h4>Approve &amp; We Build</h4><p>Once approved, your custom sign is built in our factory using UL-listed components and commercial-grade materials.</p></div>
+    <div class="proc-step"><div class="proc-step-top"><span class="proc-num">04</span><span class="proc-icon"><svg viewBox="0 0 24 24"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span></div><h4>Nationwide Installation</h4><p>Our certified installers handle delivery, mounting, electrical connection and permit guidance nationwide.</p></div>
+  </div>
+</section>
+
+<!-- 5. WHY US -->
+<section class="section section-alt">
+  <div class="sec-head">
+    <span class="sec-label">Why Signs.inc</span>
+    <h2 class="sec-h">Built for the <em>Long Haul</em></h2>
+    <p class="sec-sub">We are not the cheapest sign company. We are the one your custom storefront sign is still standing strong a decade from now.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card"><div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7l-9-5z"/></svg></div><h4>Built by Craftsmen</h4><p>You work directly with the people building your sign. That means transparent pricing, faster turnaround and zero middleman markup.</p></div>
+    <div class="why-card"><div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg></div><h4>UL Listed Components</h4><p>Every illuminated sign is built to UL 48 standards using UL-recognized power supplies and commercial-grade LEDs.</p></div>
+    <div class="why-card"><div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/></svg></div><h4>5-Year Warranty</h4><p>We back every sign with a five-year warranty on LEDs, electrical components and structural integrity.</p></div>
+    <div class="why-card"><div class="why-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div><h4>Flexible Terms</h4><p>Flexible deposit terms, transparent estimates and someone who picks up the phone.</p></div>
+    <div class="why-card"><div class="why-icon"><svg viewBox="0 0 24 24"><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/><circle cx="12" cy="12" r="10"/></svg></div><h4>Installed in All 50 States</h4><p>A vetted network of licensed, insured installers in every state. We handle permits guidance, scheduling and post-install support.</p></div>
+    <div class="why-card"><div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg></div><h4>4.9/5 Star Average</h4><p>More than 450 businesses have trusted us with their signage. The reviews speak for themselves.</p></div>
+  </div>
+</section>
+
+<!-- 6. TESTIMONIALS -->
+<section class="section">
+  <div class="sec-head">
+    <span class="sec-label">From Our Clients</span>
+    <h2 class="sec-h">Trusted by <em>450+ Businesses</em></h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg></div><p class="testi-quote">The mockup landed in my inbox the same morning I asked. Two weeks later my channel letters were lit up over the door.</p><div class="testi-author"><div class="testi-avatar">JM</div><div><div class="testi-name">Joseph Marchetti</div><div class="testi-role">Owner, Marchetti's Pizzeria</div></div></div></div>
+    <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg></div><p class="testi-quote">Signs.inc is the only one that walked me through the permit, the install and the wiring without making me feel like I was bothering them.</p><div class="testi-author"><div class="testi-avatar">RB</div><div><div class="testi-name">Rebecca Banks</div><div class="testi-role">Co-Founder, Banks &amp; Co. Apparel</div></div></div></div>
+    <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg></div><p class="testi-quote">We needed a monument sign for a new dealership location and the timeline was tight. They hit the deadline and the lighting is gorgeous at night.</p><div class="testi-author"><div class="testi-avatar">DC</div><div><div class="testi-name">David Carter</div><div class="testi-role">GM, Carter Motors</div></div></div></div>
+  </div>
+</section>
+
+<!-- 7. OUR STORY -->
+<section class="about-section">
+  <div class="about-inner">
+    <div class="about-text">
+      <span class="sec-label">Our Story</span>
+      <h2 class="sec-h">Built on <em>Trust.</em></h2>
+      <p>Signs.inc was founded on one belief: your storefront deserves a custom business sign worthy of the business behind it. Not a cheap placeholder. Not a generic vinyl banner. A built-to-last storefront sign that will outlive the lease and carry your name with pride.</p>
+      <div class="about-stats">
+        <div><div class="about-stat-num">3,200+</div><div class="about-stat-lab">Signs Shipped</div></div>
+        <div><div class="about-stat-num">50</div><div class="about-stat-lab">States Installed</div></div>
+        <div><div class="about-stat-num">10<small style="font-size:1.2rem">yr</small></div><div class="about-stat-lab">In Business</div></div>
+      </div>
+    </div>
+    <div class="about-visual">
+      <img src="https://i.ibb.co/3YTRYzxC/SHv-H0.jpg" alt="Signs INC founders">
+      <div class="about-badge"><strong>10yr</strong><span>Warranty</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. FAQ -->
+<section class="faq-section">
+  <div class="sec-head">
+    <span class="sec-label">Common Questions</span>
+    <h2 class="sec-h">Frequently <em>Asked</em></h2>
+    <p class="sec-sub">Everything business owners ask before placing their first order with us.</p>
+  </div>
+  <div class="faq-inner">
+    <div class="faq-item"><button class="faq-q">How long does it take to get a custom sign made?<span class="faq-q-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Most custom signs are designed, manufactured and shipped within 10 to 14 business days. You will receive a free digital mockup within 2 hours of submitting your details.</div></div></div>
+    <div class="faq-item"><button class="faq-q">Do you install signs across all 50 states?<span class="faq-q-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Yes. Signs.inc has a vetted network of licensed, insured professional installers in all 50 states.</div></div></div>
+    <div class="faq-item"><button class="faq-q">What kind of warranty do you offer?<span class="faq-q-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Every sign we manufacture is covered by a 5-year warranty on electrical components, LED modules and structural integrity.</div></div></div>
+    <div class="faq-item"><button class="faq-q">Are your signs UL listed?<span class="faq-q-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Yes. Our illuminated signs are built to UL 48 standards using UL-recognized components.</div></div></div>
+    <div class="faq-item"><button class="faq-q">How much does a custom storefront sign cost?<span class="faq-q-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Pricing depends on size, lighting type, materials and installation requirements. Most storefront channel letter signs fall between $1,800 and $6,500 including installation.</div></div></div>
+    <div class="faq-item"><button class="faq-q">Can you help with permits?<span class="faq-q-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Yes. While the property owner is typically the permit holder, we provide engineered drawings, UL documentation and installer support so your local sign permit application moves smoothly.</div></div></div>
+    <div class="faq-item"><button class="faq-q">What sign types and materials do you offer?<span class="faq-q-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">We offer channel letters, lightboxes, neon signs, metal signs, acrylic signs, monument signs, and more. Materials include brushed aluminum, polished stainless, acrylic, and wood.</div></div></div>
+  </div>
+</section>
+
+<!-- 9. FINAL CTA -->
+<section class="final-cta">
+  <div class="final-inner">
+    <span class="sec-label">Ready When You Are</span>
+    <h2>Your Business Deserves a Sign <em>Worth Standing Behind.</em></h2>
+    <p>Free sign mockup in two hours. No obligation, no high-pressure sales call. Just a designed mockup of your custom business sign on your actual storefront so you can see exactly what it will look like.</p>
+    <a href="/pages/get-a-quote" class="btn-primary">Get Your Free Mockup <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+  </div>
+</section>
+
+<!-- JAVASCRIPT FOR GALLERY AND FAQ -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Gallery Slider
+    document.querySelectorAll('.gal-item').forEach(item => {
+      const cycles = item.querySelectorAll('.gal-cycle');
+      if (cycles.length > 1) {
+        let current = 0;
+        setInterval(() => {
+          cycles[current].classList.remove('active');
+          current = (current + 1) % cycles.length;
+          cycles[current].classList.add('active');
+        }, 3000);
+      }
+    });
+
+    // FAQ Toggle
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const open = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!open) item.classList.add('open');
+      });
+    });
+  });
+</script>
 
 {% schema %}
 {
