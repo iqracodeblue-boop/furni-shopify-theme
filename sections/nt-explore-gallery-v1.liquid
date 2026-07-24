@@ -1,0 +1,182 @@
+<style>
+:root{
+  --ts-xl:2.2rem; --navy:#111111; --gold:#0188CC; --red:#0188CC;
+  --cream:#ffffff; --cream-deep:#f5f5f5; --ink:#111111; --body:#333333; --muted:#666666;
+  --line:rgba(0,0,0,.07); --line2:rgba(0,0,0,.12); --gold-line:rgba(1,136,204,.24); --gold-soft:rgba(1,136,204,.10);
+  --fh:'DM Serif Display',Georgia,serif; --fb:'Inter',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:93%}
+body{font-family:var(--fb);background:var(--cream);color:var(--body);line-height:1.6;}
+
+.section{padding:88px 48px;position:relative;overflow:hidden}
+.section-white{background:#fff}
+.sec-head{text-align:center;max-width:680px;margin:0 auto 56px}
+.sec-label{display:inline-flex;align-items:center;gap:8px;font-family:var(--fb);font-size:.82rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--red);margin-bottom:16px;}
+.sec-label::before{content:"";width:24px;height:1px;background:var(--red);}
+.sec-label::after{content:"";width:24px;height:1px;background:var(--red);}
+.sec-h{font-family:var(--fh);font-size:var(--ts-xl);color:var(--ink);line-height:1.05;letter-spacing:-.02em;margin-bottom:14px;font-weight:400;}
+.sec-h em{font-style:italic;color:var(--red)}
+.sec-sub{font-family:var(--fb);font-size:1rem;color:var(--muted);line-height:1.65;max-width:580px;margin:0 auto;}
+
+.types-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.type-card{background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--line);transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s,border-color .3s;display:flex;flex-direction:column;cursor:pointer;}
+.type-card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(0,0,0,.14);border-color:var(--gold-line);}
+.type-card-img{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--navy);}
+.type-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1);}
+.type-card:hover .type-card-img img{transform:scale(1.06)}
+.type-badge{position:absolute;top:14px;left:14px;z-index:2;background:var(--red);color:#fff;font-family:var(--fb);font-size:.62rem;font-weight:700;padding:5px 11px;border-radius:100px;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 4px 12px rgba(1,136,204,.32);}
+.type-card-body{padding:24px 24px 26px;display:flex;flex-direction:column;flex:1}
+.type-card h3{font-family:var(--fh);font-size:1.32rem;color:var(--ink);line-height:1.15;margin-bottom:8px;font-weight:400;letter-spacing:-.01em;}
+.type-card p{font-family:var(--fb);font-size:.88rem;color:var(--muted);line-height:1.6;margin-bottom:18px;flex:1;}
+.type-card-foot{display:flex;align-items:center;justify-content:flex-start;padding-top:16px;border-top:1px solid var(--line);}
+.type-card-link{font-family:var(--fb);font-size:.78rem;font-weight:700;color:var(--navy);display:inline-flex;align-items:center;gap:5px;transition:gap .25s,color .2s;background:none;border:none;cursor:pointer;}
+.type-card-link:hover{gap:9px;color:var(--red)}
+.type-card-link svg{width:12px;height:12px;stroke:currentColor;stroke-width:2.5;fill:none}
+
+/* Gallery Modal */
+.var-gallery-modal{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s;}
+.var-gallery-modal.open{opacity:1;visibility:visible}
+.var-gallery-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(4px);}
+.var-gallery-dialog{position:relative;z-index:1;width:min(920px,100%);max-height:88vh;overflow:auto;background:#fff;border-radius:16px;padding:28px;box-shadow:0 28px 64px rgba(0,0,0,.35);transform:translateY(12px);transition:transform .25s;}
+.var-gallery-modal.open .var-gallery-dialog{transform:translateY(0)}
+.var-gallery-close{position:absolute;top:14px;right:14px;width:36px;height:36px;border:none;border-radius:50%;background:var(--cream-deep);color:var(--ink);font-size:1.4rem;line-height:1;cursor:pointer;transition:background .2s,color .2s;}
+.var-gallery-close:hover{background:var(--navy);color:#fff}
+.var-gallery-dialog h3{font-family:var(--fh);font-size:1.35rem;color:var(--ink);margin:0 40px 18px 0;font-weight:400;line-height:1.2;}
+.var-gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+.var-gallery-grid img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;border:1px solid var(--line);background:var(--navy);}
+
+@media(max-width:980px){.types-grid{grid-template-columns:repeat(2,1fr);gap:18px}}
+@media(max-width:560px){.types-grid{grid-template-columns:1fr;gap:16px}}
+</style>
+
+<section class="section section-white">
+  <div class="sec-head">
+    <span class="sec-label">What We Build</span>
+    <h2 class="sec-h">Popular <em>Sign Types</em> We Build</h2>
+    <p class="sec-sub">From bold storefront channel letters and LED neon signs to refined acrylic backlit lobby displays, every custom business sign is engineered in our factory.</p>
+  </div>
+  <div class="types-grid">
+    
+    <!-- Card 1 -->
+    <div class="type-card" data-gallery="storefront">
+      <div class="type-card-img"><span class="type-badge">Most Popular</span><img src="https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg" alt="Storefront signs" loading="lazy"></div>
+      <div class="type-card-body">
+        <h3>Storefront signs</h3>
+        <p>Custom-fabricated aluminum channel letter signs with front-lit, halo-lit or combination LED illumination.</p>
+        <div class="type-card-foot">
+          <button class="type-card-link var-card-gallery">Explore Types <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="type-card" data-gallery="reception">
+      <div class="type-card-img"><img src="https://i.ibb.co/Z1bRvmFX/1a8bfc475f04e41dc4168ddc673f5e30.jpg" alt="Reception signs" loading="lazy"></div>
+      <div class="type-card-body">
+        <h3>Reception &amp; studio signs</h3>
+        <p>Soft, premium halo glow that elevates any brand. Push through signs with acrylic faces and stainless steel returns.</p>
+        <div class="type-card-foot">
+          <button class="type-card-link var-card-gallery">Explore Types <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="type-card" data-gallery="medical">
+      <div class="type-card-img"><img src="https://i.ibb.co/VcjZ4ZBF/000.png" alt="Medical signs" loading="lazy"></div>
+      <div class="type-card-body">
+        <h3>Medical and Clinic signs</h3>
+        <p>Ground-level monuments and tall pylon signs engineered for visibility from the road. Stone, masonry and aluminum finishes.</p>
+        <div class="type-card-foot">
+          <button class="type-card-link var-card-gallery">Explore Types <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Gallery Modal Structure -->
+<div class="var-gallery-modal" id="varGalleryModal">
+  <div class="var-gallery-backdrop"></div>
+  <div class="var-gallery-dialog">
+    <button class="var-gallery-close" id="varGalleryClose">&times;</button>
+    <h3 id="varGalleryTitle">Sign Gallery</h3>
+    <div class="var-gallery-grid" id="varGalleryGrid"></div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const galleryData = {
+      storefront: {
+        title: "Storefront Signs Gallery",
+        images: [
+          "https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg",
+          "https://i.ibb.co/0yr2R8DZ/7ed75f6621c0989e3478f26da0a8cec3-1.jpg",
+          "https://i.ibb.co/Xk7kC7sZ/9bc0a390bd5f595c29ed220f1af96cc1.jpg",
+          "https://i.ibb.co/jPLvTFk4/Storefronts-2.jpg"
+        ]
+      },
+      reception: {
+        title: "Reception & Studio Signs Gallery",
+        images: [
+          "https://i.ibb.co/Z1bRvmFX/1a8bfc475f04e41dc4168ddc673f5e30.jpg",
+          "https://i.ibb.co/6RbfyDF0/lobby-and-reception.jpg",
+          "https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg",
+          "https://i.ibb.co/JFC3PgnK/2d-metal-5mm-image-2.jpg"
+        ]
+      },
+      medical: {
+        title: "Medical & Clinic Signs Gallery",
+        images: [
+          "https://i.ibb.co/VcjZ4ZBF/000.png",
+          "https://i.ibb.co/1fXKdw52/Monument-sign-2.jpg",
+          "https://i.ibb.co/G4btMhWm/Monument-sign-3.jpg",
+          "https://i.ibb.co/SXNv5mwS/directional-and-monument-1.jpg"
+        ]
+      }
+    };
+
+    const modal = document.getElementById('varGalleryModal');
+    const modalTitle = document.getElementById('varGalleryTitle');
+    const modalGrid = document.getElementById('varGalleryGrid');
+    const closeBtn = document.getElementById('varGalleryClose');
+
+    document.querySelectorAll('.var-card-gallery').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const card = btn.closest('.type-card');
+        const galleryKey = card.getAttribute('data-gallery');
+        const data = galleryData[galleryKey];
+
+        if (data) {
+          modalTitle.innerText = data.title;
+          modalGrid.innerHTML = '';
+          data.images.forEach(src => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.loading = 'lazy';
+            modalGrid.appendChild(img);
+          });
+          modal.classList.add('open');
+        }
+      });
+    });
+
+    closeBtn.addEventListener('click', () => modal.classList.remove('open'));
+    modal.querySelector('.var-gallery-backdrop').addEventListener('click', () => modal.classList.remove('open'));
+  });
+</script>
+
+{% schema %}
+{
+  "name": "NT Explore Gallery",
+  "presets": [
+    {
+      "name": "NT Explore Gallery"
+    }
+  ]
+}
+{% endschema %}
