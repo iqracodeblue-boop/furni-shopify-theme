@@ -58,9 +58,27 @@
         "padding-block-start": 40,
         "padding-block-end": 80
       }
+    },
+    "nt_portfolio_hero_v1_8TfAtL": {
+      "type": "nt-portfolio-hero-v1",
+      "name": "NT Portfolio Hero",
+      "settings": {}
+    },
+    "nt_portfolio_grid_v1_DcDjfT": {
+      "type": "nt-portfolio-grid-v1",
+      "name": "NT Portfolio Grid",
+      "settings": {}
+    },
+    "nt_final_cta_v1_4i7xBA": {
+      "type": "nt-final-cta-v1",
+      "name": "NT Final CTA",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "nt_portfolio_hero_v1_8TfAtL",
+    "nt_portfolio_grid_v1_DcDjfT",
+    "nt_final_cta_v1_4i7xBA"
   ]
 }
