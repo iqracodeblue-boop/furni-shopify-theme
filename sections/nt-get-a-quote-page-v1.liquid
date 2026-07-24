@@ -1,7 +1,7 @@
 <style>
 :root{
   --navy:#111111; --navy-deep:#0a0a0a; --gold:#0188CC; --cream:#ffffff; --ink:#111111; --muted:#666666;
-  --line2:rgba(0,0,0,.12); --red:#0188CC; --gold-line:rgba(1,136,204,.24); --gold-soft:rgba(1,136,204,.10);
+  --line2:rgba(0,0,0,.12); --red:#0188CC; --gold-line:rgba(1,136,204,.24);
   --fh:'DM Serif Display',Georgia,serif; --fb:'Inter',system-ui,sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -18,22 +18,15 @@ body{font-family:var(--fb);background:var(--cream);color:#333;line-height:1.6;}
   .quote-page-wrapper { grid-template-columns: 1fr; }
 }
 
-/* Left Side (Dark with Pattern) */
+/* Left Side (Clean Dark) */
 .quote-left {
-  background-color: #080808;
-  background-image: 
-    radial-gradient(ellipse 60% 40% at 20% 20%, rgba(1,136,204,0.15) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 50% at 80% 80%, rgba(1,136,204,0.08) 0%, transparent 60%),
-    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 52px 52px, 52px 52px;
+  background-color: #0a0a0a;
+  background-image: radial-gradient(ellipse 60% 40% at 20% 20%, rgba(1,136,204,0.15) 0%, transparent 60%);
   color: #fff;
   padding: 60px 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  position: relative;
-  overflow: hidden;
 }
 .top-badge {
   display: inline-flex;
@@ -79,15 +72,12 @@ body{font-family:var(--fb);background:var(--cream);color:#333;line-height:1.6;}
   padding: 8px;
   border-radius: 10px;
   border: 1px solid rgba(255,255,255,0.08);
-  transition: border-color 0.2s;
 }
-.sign-item:hover { border-color: var(--gold-line); }
 .sign-item img {
   width: 50px;
   height: 50px;
   object-fit: cover;
   border-radius: 8px;
-  border: 1px solid rgba(1,136,204,0.3);
 }
 .sign-item span {
   font-size: 0.85rem;
@@ -95,13 +85,9 @@ body{font-family:var(--fb);background:var(--cream);color:#333;line-height:1.6;}
   color: #fff;
 }
 
-/* Right Side (Form with Pattern Background) */
+/* Right Side (Clean White Form) */
 .quote-right {
-  background-color: #f4f7fa;
-  background-image: 
-    linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
-  background-size: 52px 52px;
+  background: #f4f7fa;
   padding: 50px 40px;
   display: flex;
   flex-direction: column;
@@ -119,7 +105,6 @@ body{font-family:var(--fb);background:var(--cream);color:#333;line-height:1.6;}
   font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
-  box-shadow: 0 4px 12px rgba(1,136,204,0.3);
 }
 
 /* Form Card */
@@ -128,7 +113,7 @@ body{font-family:var(--fb);background:var(--cream);color:#333;line-height:1.6;}
   padding: 40px;
   border-radius: 16px;
   box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-  border: 1px solid rgba(255,255,255,0.5);
+  border: 1px solid rgba(0,0,0,0.05);
 }
 .form-header h2 {
   font-family: var(--fh);
@@ -161,7 +146,6 @@ body{font-family:var(--fb);background:var(--cream);color:#333;line-height:1.6;}
   text-align: center;
   background: #f9f9f9;
   cursor: pointer;
-  transition: border-color 0.2s;
   height: 100%;
   display: flex;
   align-items: center;
@@ -236,7 +220,7 @@ body{font-family:var(--fb);background:var(--cream);color:#333;line-height:1.6;}
     </div>
   </div>
 
-  <!-- Right Side Form with Pattern Background -->
+  <!-- Right Side Clean White Form -->
   <div class="quote-right">
     <div class="ship-badge">FREE SHIPPING to all 50 States</div>
     
