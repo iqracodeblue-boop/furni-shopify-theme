@@ -1,0 +1,95 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "nt_portfolio_page_v1_Byg3cw": {
+      "type": "nt-portfolio-page-v1",
+      "name": "NT Portfolio Page",
+      "settings": {}
+    },
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "name": "Title",
+          "settings": {
+            "text": "<h1>{{ closest.page.title }}</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-primary--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "page-content": {
+          "type": "page-content",
+          "settings": {
+            "text_color": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "background_color": "{{ settings.color_palette.background }}",
+        "padding-block-start": 40,
+        "padding-block-end": 80
+      }
+    },
+    "nt_sign_categories_page_v1_NBBW4a": {
+      "type": "nt-sign-categories-page-v1",
+      "name": "NT Sign Categories Page",
+      "settings": {}
+    },
+    "nt_get_a_quote_page_v1_9QDCTk": {
+      "type": "nt-get-a-quote-page-v1",
+      "name": "NT Get A Quote Page",
+      "settings": {}
+    },
+    "nt_home_page_v1_NkeUcW": {
+      "type": "nt-home-page-v1",
+      "name": "NT Home Page",
+      "settings": {}
+    },
+    "nt_sign_category_page_v1_UBxheK": {
+      "type": "nt-sign-category-page-v1",
+      "name": "NT Sign Category Page",
+      "settings": {}
+    }
+  },
+  "order": [
+    "nt_portfolio_page_v1_Byg3cw",
+    "main",
+    "nt_home_page_v1_NkeUcW",
+    "nt_sign_categories_page_v1_NBBW4a",
+    "nt_get_a_quote_page_v1_9QDCTk",
+    "nt_sign_category_page_v1_UBxheK"
+  ]
+}
