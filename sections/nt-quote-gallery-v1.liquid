@@ -1,0 +1,106 @@
+<style>
+:root{
+  --ts-xl:2.2rem; --red:#0188CC; --gold:#0188CC; --navy:#111111; --ink:#111111; --muted:#666666;
+  --fh:'DM Serif Display',Georgia,serif; --fb:'Inter',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:93%}
+body{font-family:var(--fb);background:#fff;color:#333;line-height:1.6;}
+
+.section{padding:88px 48px;background:#fff}
+.sec-head{text-align:center;max-width:680px;margin:0 auto 56px}
+.sec-label{display:inline-flex;align-items:center;gap:8px;font-family:var(--fb);font-size:.82rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--red);margin-bottom:16px;}
+.sec-label::before{content:"";width:24px;height:1px;background:var(--red);}
+.sec-label::after{content:"";width:24px;height:1px;background:var(--red);}
+.sec-h{font-family:var(--fh);font-size:var(--ts-xl);color:var(--ink);line-height:1.05;letter-spacing:-.02em;margin-bottom:14px;font-weight:400;}
+.sec-h em{font-style:italic;color:var(--red)}
+.sec-sub{font-family:var(--fb);font-size:1rem;color:var(--muted);line-height:1.65;max-width:580px;margin:0 auto;}
+
+.gallery-bento{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px;}
+.gal-item{position:relative;overflow:hidden;border-radius:14px;background:var(--navy);cursor:pointer;}
+.gal-cycle{position:absolute;inset:0;opacity:0;transition:opacity 1.1s cubic-bezier(.16,1,.3,1);z-index:0;}
+.gal-cycle.active{opacity:1;z-index:1}
+.gal-cycle img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 6s ease;}
+.gal-cycle.active img{transform:scale(1.04)}
+.gal-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.78) 100%);opacity:.85;z-index:2;}
+.gal-cap{position:absolute;left:18px;right:18px;bottom:16px;z-index:3;color:#fff;font-family:var(--fh);font-size:1.05rem;line-height:1.2;}
+.gal-cap small{display:block;font-family:var(--fb);font-size:.7rem;font-weight:500;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px;}
+
+.gal-1{grid-column:span 2;grid-row:span 2} 
+.gal-2{grid-column:span 1;grid-row:span 1} 
+.gal-3{grid-column:span 1;grid-row:span 1} 
+.gal-4{grid-column:span 1;grid-row:span 1} 
+.gal-5{grid-column:span 1;grid-row:span 1} 
+.gal-6{grid-column:span 2;grid-row:span 1}
+
+@media(max-width:880px){.gallery-bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}.gal-1{grid-column:span 2;grid-row:span 1}.gal-6{grid-column:span 2}}
+@media(max-width:480px){.gallery-bento{grid-template-columns:1fr;grid-auto-rows:200px;gap:10px}.gal-1,.gal-6{grid-column:span 1}}
+</style>
+
+<section class="section">
+  <div class="sec-head">
+    <span class="sec-label">Our Work</span>
+    <h2 class="sec-h">Our Signs. <em>Installed.</em></h2>
+    <p class="sec-sub">A small selection of recent installs. Every custom sign in our gallery was built in our factory and professionally installed.</p>
+  </div>
+  <div class="gallery-bento">
+    <div class="gal-item gal-1">
+      <div class="gal-cycle active"><img src="https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg" alt="Storefront"></div>
+      <div class="gal-cycle"><img src="https://i.ibb.co/7Nd52czm/nw-Hr-L.jpg" alt="Halo Lit"></div>
+      <div class="gal-cycle"><img src="https://i.ibb.co/6RbfyDF0/lobby-and-reception.jpg" alt="Lobby"></div>
+      <div class="gal-cap"><small>Sign Type</small>Storefront Signs</div>
+    </div>
+    <div class="gal-item gal-2">
+      <div class="gal-cycle active"><img src="https://i.ibb.co/2mRQ7Y0/e0cc8c5e140f122c969efb850e696e44.jpg" alt="UV Acrylic"></div>
+      <div class="gal-cycle"><img src="https://i.ibb.co/1Gp76c58/cb25442aad4c8435bb11a509ccc4b132.jpg" alt="Brushed Metal"></div>
+      <div class="gal-cap"><small>Sign Type</small>UV Acrylic</div>
+    </div>
+    <div class="gal-item gal-3">
+      <div class="gal-cycle active"><img src="https://i.ibb.co/0yr2R8DZ/7ed75f6621c0989e3478f26da0a8cec3-1.jpg" alt="Front Lit"></div>
+      <div class="gal-cycle"><img src="https://i.ibb.co/B2JQnr6N/74d052ff-c4ee-4cb5-ac7e-183dcb40f0e2.png" alt="Raceway"></div>
+      <div class="gal-cap"><small>Sign Type</small>Acrylic Front Lit</div>
+    </div>
+    <div class="gal-item gal-4">
+      <div class="gal-cycle active"><img src="https://i.ibb.co/Xk7kC7sZ/9bc0a390bd5f595c29ed220f1af96cc1.jpg" alt="Lightbox"></div>
+      <div class="gal-cycle"><img src="https://i.ibb.co/Kcxh3wsG/open-face-neon.png" alt="Neon"></div>
+      <div class="gal-cap"><small>Sign Type</small>Lightbox Signs</div>
+    </div>
+    <div class="gal-item gal-5">
+      <div class="gal-cycle active"><img src="https://i.ibb.co/VcjZ4ZBF/000.png" alt="Medical"></div>
+      <div class="gal-cycle"><img src="https://i.ibb.co/SXNv5mwS/directional-and-monument-1.jpg" alt="Directional"></div>
+      <div class="gal-cap"><small>Sign Type</small>Medical Signs</div>
+    </div>
+    <div class="gal-item gal-6">
+      <div class="gal-cycle active"><img src="https://i.ibb.co/Z1bRvmFX/1a8bfc475f04e41dc4168ddc673f5e30.jpg" alt="Reception"></div>
+      <div class="gal-cycle"><img src="https://i.ibb.co/tpq229Zx/86e7f4ccec44b08749e3403e5c444a65.jpg" alt="Gym Spa"></div>
+      <div class="gal-cap"><small>Sign Type</small>Reception & Studio</div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.gal-item').forEach(item => {
+      const cycles = item.querySelectorAll('.gal-cycle');
+      if (cycles.length > 1) {
+        let current = 0;
+        setInterval(() => {
+          cycles[current].classList.remove('active');
+          current = (current + 1) % cycles.length;
+          cycles[current].classList.add('active');
+        }, 3000); // Changes image every 3 seconds
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "NT Quote Gallery",
+  "presets": [
+    {
+      "name": "NT Quote Gallery"
+    }
+  ]
+}
+{% endschema %}
