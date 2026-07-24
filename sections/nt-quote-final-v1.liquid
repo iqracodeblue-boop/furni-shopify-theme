@@ -1,149 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>signs.inc — Custom 3D Business Signs. Free Quote & Mockup.</title>
 <style>
-/* Bulletproof CSS to prevent Shopify theme overrides */
-#shopify-section-nt-quote-final-v1, #shopify-section-nt-quote-final {
-  margin: 0 !important; padding: 0 !important; max-width: 100% !important; width: 100% !important;
-}
-.ntq-wrap {
-  display: grid !important;
-  grid-template-columns: 1fr 1.2fr !important;
-  min-height: 90vh !important;
-  width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-@media(max-width: 880px) {
-  .ntq-wrap { grid-template-columns: 1fr !important; min-height: auto !important; }
-}
+  :root{
+    --bg-dark:#12181f;
+    --bg-dark-2:#0b0f14;
+    --accent:#3aa0ff;
+    --accent-2:#2f8ee0;
+    --white:#ffffff;
+    --muted:#c7d0da;
+    --card-bg:#ffffff;
+    --line:#e3e7ec;
+    --recommend:#e8f7ee;
+    --recommend-text:#1c8a4a;
+    --radius:10px;
+    --shadow:0 20px 50px rgba(0,0,0,0.35);
+    font-family: "Inter","Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg-dark);color:var(--white);}
+  body{
+    min-height:100vh;
+    position:relative;
+    overflow-x:hidden;
+  }
+  .bg-photo{
+    position:fixed;
+    inset:0;
+    background:
+      linear-gradient(100deg, rgba(10,14,20,0.94) 0%, rgba(10,14,20,0.78) 38%, rgba(10,14,20,0.35) 62%, rgba(10,14,20,0.05) 100%),
+      radial-gradient(circle at 30% 20%, #1c2733, #05070a 70%);
+    background-size:cover;
+    z-index:0;
+  }
+  .bg-photo::after{
+    content:"";
+    position:absolute;inset:0;
+    background-image:url('https://picsum.photos/seed/warehousefacade/1800/1200');
+    background-size:cover;
+    background-position:center;
+    mix-blend-mode:luminosity;
+    opacity:0.35;
+  }
+  .topbar{
+    position:relative;z-index:2;
+    text-align:center;
+    padding:22px 0 10px;
+  }
+  .topbar .logo{
+    font-size:1.4rem;
+    font-weight:800;
+    letter-spacing:0.5px;
+  }
+  .topbar .logo span.brand{color:var(--accent);}
+  .topbar .logo span.suffix{color:var(--white);font-weight:700;}
 
-/* Left Side */
-.ntq-left {
-  background-color: #0a0a0a !important;
-  background-image: radial-gradient(ellipse 60% 40% at 20% 20%, rgba(1,136,204,0.15) 0%, transparent 60%) !important;
-  color: #fff !important;
-  padding: 60px 50px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  box-sizing: border-box !important;
-}
-.ntq-badge {
-  display: inline-flex !important; align-items: center !important; gap: 8px !important; background: rgba(1,136,204,.12) !important;
-  border: 1px solid rgba(1,136,204,.3) !important; padding: 8px 14px !important; border-radius: 50px !important;
-  font-size: 0.75rem !important; font-weight: 700 !important; text-transform: uppercase !important; color: #0188CC !important; margin-bottom: 30px !important; width: fit-content !important;
-}
-.ntq-left h1 { font-family: 'DM Serif Display', serif !important; font-size: 2.4rem !important; line-height: 1.1 !important; margin-bottom: 20px !important; font-weight: 400 !important; color: #fff !important; }
-.ntq-left h1 em { color: #0188CC !important; font-style: italic !important; }
-.ntq-desc { font-size: 1rem !important; color: rgba(255,255,255,0.7) !important; margin-bottom: 30px !important; line-height: 1.6 !important; max-width: 90% !important; }
-.ntq-sign-list { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 15px !important; }
-.ntq-sign-item { display: flex !important; align-items: center !important; gap: 10px !important; background: rgba(255,255,255,0.03) !important; padding: 8px !important; border-radius: 10px !important; border: 1px solid rgba(255,255,255,0.08) !important; }
-.ntq-sign-item img { width: 50px !important; height: 50px !important; object-fit: cover !important; border-radius: 8px !important; }
-.ntq-sign-item span { font-size: 0.85rem !important; font-weight: 600 !important; color: #fff !important; }
+  .wrapper{
+    position:relative;z-index:2;
+    max-width:1600px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:40px;
+    padding:30px 60px 80px;
+  }
+  @media (max-width:1100px){
+    .wrapper{grid-template-columns:1fr;padding:20px 20px 60px;}
+  }
 
-/* Right Side */
-.ntq-right { background: #f4f7fa !important; padding: 50px 40px !important; display: flex !important; flex-direction: column !important; justify-content: center !important; position: relative !important; box-sizing: border-box !important; }
-.ntq-ship-badge { position: absolute !important; top: 20px !important; right: 20px !important; background: #0188CC !important; color: #fff !important; padding: 6px 14px !important; border-radius: 20px !important; font-size: 0.7rem !important; font-weight: 700 !important; text-transform: uppercase !important; }
-.ntq-form-card { background: #fff !important; padding: 40px !important; border-radius: 16px !important; box-shadow: 0 20px 50px rgba(0,0,0,0.08) !important; border: 1px solid rgba(0,0,0,0.05) !important; box-sizing: border-box !important; }
-.ntq-form-header h2 { font-family: 'DM Serif Display', serif !important; font-size: 2rem !important; margin-bottom: 8px !important; font-weight: 400 !important; color: #111 !important; }
-.ntq-form-header h2 em { color: #0188CC !important; font-style: italic !important; }
-.ntq-form-header p { font-size: 0.9rem !important; color: #666 !important; margin-bottom: 25px !important; }
+  /* LEFT COLUMN */
+  .left-col{padding-top:30px;}
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.18);
+    padding:8px 16px;
+    border-radius:30px;
+    font-size:0.8rem;
+    color:var(--muted);
+    margin-bottom:26px;
+  }
+  .badge .dot{width:8px;height:8px;border-radius:50%;background:#39d97a;display:inline-block;}
 
-.ntq-row { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 14px !important; margin-bottom: 14px !important; }
-.ntq-field { display: flex !important; flex-direction: column !important; }
-.ntq-field.full { grid-column: span 2 !important; }
-.ntq-label { font-family: 'Inter', sans-serif !important; font-size: 0.74rem !important; font-weight: 700 !important; color: #111 !important; letter-spacing: 0.06em !important; text-transform: uppercase !important; margin-bottom: 7px !important; }
-.ntq-label .req { color: #0188CC !important; }
-.ntq-input, .ntq-select, .ntq-textarea { font-family: 'Inter', sans-serif !important; font-size: 0.92rem !important; padding: 13px 14px !important; border-radius: 9px !important; border: 1.5px solid rgba(0,0,0,.12) !important; background: #f9f9f9 !important; color: #111 !important; width: 100% !important; outline: none !important; box-sizing: border-box !important; transition: border-color 0.2s !important; }
-.ntq-input:focus, .ntq-select:focus, .ntq-textarea:focus { border-color: #0188CC !important; background: #fff !important; box-shadow: 0 0 0 4px rgba(1,136,204,.14) !important; }
-.ntq-textarea { resize: vertical !important; min-height: 80px !important; }
-.ntq-file-wrap { position: relative !important; border: 1.5px dashed rgba(0,0,0,.12) !important; border-radius: 9px !important; padding: 14px !important; text-align: center !important; background: #f9f9f9 !important; cursor: pointer !important; height: 100% !important; box-sizing: border-box !important; display: flex !important; align-items: center !important; justify-content: center !important; }
-.ntq-file-wrap:hover { border-color: #0188CC !important; }
-.ntq-file-wrap input[type="file"] { position: absolute !important; inset: 0 !important; opacity: 0 !important; cursor: pointer !important; width: 100% !important; height: 100% !important; }
-.ntq-file-label { font-size: 0.85rem !important; color: #666 !important; display: flex !important; align-items: center !important; justify-content: center !important; gap: 8px !important; }
-.ntq-file-label svg { width: 18px !important; height: 18px !important; stroke: #0188CC !important; fill: none !important; stroke-width: 2 !important; }
+  h1.hero-title{
+    font-family:"Georgia","Times New Roman",serif;
+    font-size:3.1rem;
+    line-height:1.15;
+    margin:0 0 6px;
+    font-weight:700;
+  }
+  h1.hero-title .accent-line{
+    display:block;
+    color:var(--accent);
+    font-style:italic;
+  }
+  .hero-sub{
+    color:var(--muted);
+    font-size:1.02rem;
+    line-height:1.6;
+    max-width:520px;
+    margin:22px 0 34px;
+  }
 
-.ntq-submit { width: 100% !important; background: #0188CC !important; color: #fff !important; font-family: 'Inter', sans-serif !important; font-size: 0.95rem !important; font-weight: 700 !important; padding: 16px !important; border-radius: 10px !important; margin-top: 10px !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; gap: 10px !important; cursor: pointer !important; border: none !important; transition: background 0.2s !important; text-transform: uppercase !important; letter-spacing: 0.02em !important; }
-.ntq-submit:hover { background: #0170a8 !important; }
-.ntq-submit svg { width: 16px !important; height: 16px !important; stroke: #fff !important; stroke-width: 2.5 !important; fill: none !important; }
+  .what-we-build-label{
+    font-size:0.78rem;
+    letter-spacing:1.5px;
+    color:#8fa0b3;
+    margin-bottom:14px;
+    font-weight:600;
+  }
 
-.ntq-trust { margin-top: 25px !important; text-align: center !important; }
-.ntq-trust p { font-size: 0.8rem !important; color: #666 !important; margin-bottom: 5px !important; display: flex !important; align-items: center !important; justify-content: center !important; gap: 6px !important; }
-.ntq-trust p strong { color: #111 !important; }
-.ntq-trust p svg { width: 14px !important; height: 14px !important; stroke: #0188CC !important; fill: none !important; stroke-width: 2 !important; }
+  .gallery{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1fr;
+    grid-template-rows:1fr 1fr;
+    gap:8px;
+    max-width:640px;
+  }
+  .gallery figure{
+    position:relative;
+    margin:0;
+    border-radius:6px;
+    overflow:hidden;
+    background:#1a222c;
+    min-height:110px;
+  }
+  .gallery figure:first-child{grid-row:span 2;min-height:236px;}
+  .gallery img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    filter:brightness(0.92);
+  }
+  .gallery figcaption{
+    position:absolute;left:8px;right:8px;bottom:6px;
+    font-size:0.62rem;
+    letter-spacing:0.5px;
+    font-weight:700;
+    color:#fff;
+    text-shadow:0 1px 4px rgba(0,0,0,0.8);
+  }
+  .gallery figure.big figcaption{
+    font-size:0.85rem;
+  }
+  .gallery figure.big .sub{
+    display:block;
+    font-size:0.68rem;
+    font-weight:400;
+    opacity:0.85;
+    margin-top:2px;
+  }
+
+  .pills{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-top:28px;
+  }
+  .pill{
+    display:flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.14);
+    padding:9px 16px;
+    border-radius:8px;
+    font-size:0.82rem;
+    color:#dbe2e9;
+  }
+
+  /* RIGHT COLUMN - FORM CARD */
+  .form-card{
+    background:var(--card-bg);
+    color:#1b2530;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    max-width:520px;
+    width:100%;
+    justify-self:end;
+  }
+  .form-topbar{
+    background:var(--bg-dark-2);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 22px;
+    font-size:0.85rem;
+  }
+  .form-topbar .ship{
+    display:flex;align-items:center;gap:8px;
+  }
+  .form-topbar .ship b{color:var(--accent);font-weight:700;}
+  .form-topbar .phone{
+    display:flex;align-items:center;gap:6px;
+    color:#e7ebef;
+    font-weight:600;
+  }
+
+  .form-body{padding:26px 26px 30px;}
+  .form-title{
+    font-family:Georgia, serif;
+    font-size:1.35rem;
+    letter-spacing:0.5px;
+    margin:0 0 20px;
+    text-transform:uppercase;
+  }
+
+  .section-header{
+    background:var(--accent);
+    color:#fff;
+    font-size:0.78rem;
+    font-weight:700;
+    letter-spacing:0.6px;
+    text-transform:uppercase;
+    padding:9px 14px;
+    border-radius:6px 6px 0 0;
+  }
+  .section-header .req{color:#ffe9a8;margin-left:4px;}
+  .section-box{
+    border:1px solid var(--line);
+    border-top:none;
+    border-radius:0 0 8px 8px;
+    padding:18px 16px 20px;
+    margin-bottom:22px;
+  }
+
+  .field-row{display:flex;gap:14px;margin-bottom:14px;}
+  .field{flex:1;display:flex;flex-direction:column;gap:6px;}
+  .field label{
+    font-size:0.68rem;
+    font-weight:700;
+    letter-spacing:0.5px;
+    color:#4a5866;
+    text-transform:uppercase;
+  }
+  .input-wrap{
+    position:relative;
+  }
+  .input-wrap svg{
+    position:absolute;left:10px;top:50%;transform:translateY(-50%);
+    width:15px;height:15px;color:#9aa7b3;
+  }
+  .field input{
+    width:100%;
+    padding:11px 12px 11px 32px;
+    border:1px solid var(--line);
+    border-radius:7px;
+    font-size:0.9rem;
+    background:#fff;
+    color:#1b2530;
+  }
+  .field input.error{border-color:#e2544a;background:#fff8f7;}
+  .field input:focus{outline:2px solid var(--accent);outline-offset:1px;}
+  .error-msg{color:#e2544a;font-size:0.72rem;margin-top:-8px;margin-bottom:10px;}
+
+  .upload-box{
+    border:1.5px dashed #b9c3cd;
+    border-radius:8px;
+    padding:22px 16px;
+    text-align:center;
+    color:#5c6b78;
+    font-size:0.85rem;
+    background:#fafbfc;
+    cursor:pointer;
+  }
+  .upload-box svg{width:20px;height:20px;display:block;margin:0 auto 8px;color:var(--accent);}
+  .upload-box a{color:var(--accent);text-decoration:underline;font-weight:600;}
+  .upload-box small{display:block;margin-top:6px;color:#98a4af;font-size:0.72rem;}
+
+  .toggle-row{display:flex;gap:12px;margin-bottom:20px;}
+  .toggle-btn{
+    flex:1;
+    padding:12px;
+    border:1.5px solid var(--line);
+    border-radius:8px;
+    background:#fff;
+    font-size:0.88rem;
+    font-weight:600;
+    color:#3a4753;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    cursor:pointer;
+    transition:border-color .15s, background .15s;
+  }
+  .toggle-btn.active{border-color:var(--accent);background:#eef7ff;color:var(--accent-2);}
+
+  .field-label{
+    font-size:0.72rem;
+    font-weight:700;
+    letter-spacing:0.6px;
+    text-transform:uppercase;
+    color:#4a5866;
+    margin:4px 0 10px;
+  }
+
+  .mockup-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-bottom:6px;
+  }
+  .mockup-card{
+    border:1.5px solid var(--line);
+    border-radius:8px;
+    overflow:hidden;
+    cursor:pointer;
+    background:#fff;
+    transition:border-color .15s, transform .1s;
+  }
+  .mockup-card:hover{transform:translateY(-2px);}
+  .mockup-card.selected{border-color:var(--accent);box-shadow:0 0 0 2px rgba(58,160,255,0.25);}
+  .mockup-card img{width:100%;height:70px;object-fit:cover;display:block;}
+  .mockup-meta{padding:8px 8px 10px;}
+  .mockup-meta .name{font-size:0.8rem;font-weight:700;color:#1b2530;}
+  .mockup-meta .tag{
+    display:inline-block;
+    margin-top:5px;
+    background:var(--recommend);
+    color:var(--recommend-text);
+    font-size:0.6rem;
+    font-weight:700;
+    letter-spacing:0.4px;
+    padding:2px 6px;
+    border-radius:4px;
+  }
+
+  .estimated-size{
+    font-size:0.72rem;
+    font-weight:700;
+    letter-spacing:0.6px;
+    text-transform:uppercase;
+    color:#4a5866;
+    margin-top:20px;
+  }
+  .size-inputs{display:flex;gap:14px;margin-top:10px;}
+
+  .submit-btn{
+    width:100%;
+    margin-top:22px;
+    padding:14px;
+    border:none;
+    border-radius:8px;
+    background:var(--accent);
+    color:#fff;
+    font-weight:700;
+    font-size:0.95rem;
+    cursor:pointer;
+    transition:background .15s;
+  }
+  .submit-btn:hover{background:var(--accent-2);}
+
+  @media (max-width:1100px){
+    .form-card{justify-self:stretch;max-width:100%;}
+    h1.hero-title{font-size:2.2rem;}
+  }
 </style>
+</head>
+<body>
 
-<div class="ntq-wrap">
-  <!-- Left Side -->
-  <div class="ntq-left">
-    <div class="ntq-badge">
-      <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#0188CC;fill:none;stroke-width:2.5;"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg>
-      Free mockup in 2 hours - No obligation
-    </div>
-    <h1>Custom 3D business signs. <em>Free quote & mockup.</em></h1>
-    <p class="ntq-desc">We build premium custom 3D signs tailored to your brand. From storefront channel letters to illuminated monuments, we deliver quality signage for indoor and outdoor use. Upload your logo for a free mockup & quote.</p>
-    
-    <div class="ntq-sign-list">
-      <div class="ntq-sign-item"><img src="https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg" alt="3D Metal Backlit"><span>3D Metal Backlit</span></div>
-      <div class="ntq-sign-item"><img src="https://i.ibb.co/0yr2R8DZ/7ed75f6621c0989e3478f26da0a8cec3-1.jpg" alt="Acrylic Front Lit"><span>Acrylic Front Lit</span></div>
-      <div class="ntq-sign-item"><img src="https://i.ibb.co/Xk7kC7sZ/9bc0a390bd5f595c29ed220f1af96cc1.jpg" alt="Lightbox Signs"><span>Lightbox Signs</span></div>
-      <div class="ntq-sign-item"><img src="https://i.ibb.co/Z1bRvmFX/1a8bfc475f04e41dc4168ddc673f5e30.jpg" alt="Halo Lit Letters"><span>Halo Lit Letters</span></div>
-      <div class="ntq-sign-item"><img src="https://i.ibb.co/7Nd52czm/nw-Hr-L.jpg" alt="Channel Letters"><span>Channel Letters</span></div>
-      <div class="ntq-sign-item"><img src="https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg" alt="Push Thru Signs"><span>Push Thru Signs</span></div>
-    </div>
-  </div>
+<div class="bg-photo"></div>
 
-  <!-- Right Side -->
-  <div class="ntq-right">
-    <div class="ntq-ship-badge">FREE SHIPPING to all 50 States</div>
-    
-    <div class="ntq-form-card">
-      <div class="ntq-form-header">
-        <h2>Get a Free <em>Mockup in 2 Hours.</em></h2>
-        <p>Tell us a little about your business and the sign you have in mind.</p>
-      </div>
-      
-      <form onsubmit="event.preventDefault();alert('Request Sent! We will send your mockup within 2 hours.');this.reset();">
-        <div class="ntq-row">
-          <div class="ntq-field"><label class="ntq-label">Full Name <span class="req">*</span></label><input type="text" class="ntq-input" placeholder="John Carter" required></div>
-          <div class="ntq-field"><label class="ntq-label">Phone <span class="req">*</span></label><input type="tel" class="ntq-input" placeholder="(555) 123-4567" required></div>
-        </div>
-        
-        <div class="ntq-row">
-          <div class="ntq-field"><label class="ntq-label">Email <span class="req">*</span></label><input type="email" class="ntq-input" placeholder="you@business.com" required></div>
-          <div class="ntq-field"><label class="ntq-label">Business Name</label><input type="text" class="ntq-input" placeholder="Your business"></div>
-        </div>
-
-        <div class="ntq-row">
-          <div class="ntq-field"><label class="ntq-label">Upload Logo</label><div class="ntq-file-wrap"><input type="file" accept="image/*"><div class="ntq-file-label"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Click to upload</div></div></div>
-          <div class="ntq-field"><label class="ntq-label">Sign Usage <span class="req">*</span></label><select class="ntq-input" required><option value="">Select usage</option><option>Indoor</option><option>Outdoor</option><option>Both</option></select></div>
-        </div>
-
-        <div class="ntq-row">
-          <div class="ntq-field"><label class="ntq-label">Mockup Type <span class="req">*</span></label><select class="ntq-input" required><option value="">Select sign type</option><option>Lightbox Signs (Recommended)</option><option>Halo Lit Letters (Recommended)</option><option>3D Metal Backlit</option><option>Acrylic Front Lit</option><option>Channel Letters</option></select></div>
-          <div class="ntq-field"><label class="ntq-label">Estimated Size</label><input type="text" class="ntq-input" placeholder="e.g. 5ft x 2ft"></div>
-        </div>
-
-        <div class="ntq-row">
-          <div class="ntq-field full"><label class="ntq-label">Project Details</label><textarea class="ntq-textarea" placeholder="Tell us about your project timeline or specific needs..."></textarea></div>
-        </div>
-
-        <button type="submit" class="ntq-submit">GET MY FREE MOCKUP <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
-      </form>
-
-      <div class="ntq-trust">
-        <p><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg> <strong>4.9/5</strong> from 450+ businesses</p>
-        <p><svg viewBox="0 0 24 24"><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/><circle cx="12" cy="12" r="10"/></svg> Installed in <strong>all 50 states</strong></p>
-      </div>
-    </div>
-  </div>
+<div class="topbar">
+  <div class="logo"><span class="brand">signs</span><span class="suffix">.inc</span></div>
 </div>
 
-{% schema %}
-{
-  "name": "NT Quote Final Form",
-  "presets": [
-    {
-      "name": "NT Quote Final Form"
-    }
-  ]
+<div class="wrapper">
+
+  <!-- LEFT COLUMN -->
+  <div class="left-col">
+    <div class="badge"><span class="dot"></span> Free mockup in 2 hours · No obligation</div>
+
+    <h1 class="hero-title">
+      Custom 3D business signs.
+      <span class="accent-line">Free quote &amp; mockup.</span>
+    </h1>
+
+    <p class="hero-sub">
+      Looking for custom storefront signs, illuminated business signage, backlit signs, or dimensional logo signs?
+      Upload your logo for a free mockup and quote on premium indoor and outdoor signage, built to last and shipped fast.
+    </p>
+
+    <div class="what-we-build-label">WHAT WE BUILD</div>
+    <div class="gallery">
+      <figure class="big">
+        <img src="https://picsum.photos/seed/drinksign/420/480" alt="3D metal backlit storefront sign at night">
+        <figcaption>3D Metal Backlit<span class="sub">Our most-ordered storefront sign</span></figcaption>
+      </figure>
+      <figure>
+        <img src="https://picsum.photos/seed/halolit/260/230" alt="Halo lit dimensional letters">
+        <figcaption>HALO LIT</figcaption>
+      </figure>
+      <figure>
+        <img src="https://picsum.photos/seed/pushthru/260/230" alt="Push thru illuminated sign">
+        <figcaption>PUSH THRU SIGN</figcaption>
+      </figure>
+      <figure>
+        <img src="https://picsum.photos/seed/bladesign/260/230" alt="3D blade sign mounted on building">
+        <figcaption>3D BLADE SIGN</figcaption>
+      </figure>
+      <figure>
+        <img src="https://picsum.photos/seed/acrylicfront/260/230" alt="Acrylic front lit sign">
+        <figcaption>ACRYLIC FRONT LIT</figcaption>
+      </figure>
+      <figure>
+        <img src="https://picsum.photos/seed/backboard/260/230" alt="Backlit sign with backboard">
+        <figcaption>BACKLIT W/ BACKBOARD</figcaption>
+      </figure>
+      <figure>
+        <img src="https://picsum.photos/seed/uvacrylic/260/230" alt="UV printed acrylic circular sign">
+        <figcaption>UV ACRYLIC</figcaption>
+      </figure>
+    </div>
+
+    <div class="pills">
+      <div class="pill">🚚 Free shipping, all 50 states</div>
+      <div class="pill">🕑 Mockup in 2 hours</div>
+      <div class="pill">📍 Factory direct pricing</div>
+    </div>
+  </div>
+
+  <!-- RIGHT COLUMN -->
+  <div class="right-col">
+    <div class="form-card">
+      <div class="form-topbar">
+        <div class="ship">🚚 <b>FREE SHIPPING</b> to all 50 States 🇺🇸</div>
+        <div class="phone">📞 +1 205 900 7525</div>
+      </div>
+
+      <form class="form-body" id="signForm">
+        <div class="form-title">Tell us about your sign.</div>
+
+        <div class="section-header">CONTACT INFORMATION <span class="req">*</span></div>
+        <div class="section-box">
+          <div class="field-row">
+            <div class="field">
+              <label>Your Name</label>
+              <div class="input-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+                <input type="text" id="name" placeholder="First and last name" class="error" required>
+              </div>
+              <div class="error-msg" id="nameError">Please enter your name.</div>
+            </div>
+            <div class="field">
+              <label>Phone</label>
+              <div class="input-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg>
+                <input type="tel" id="phone" placeholder="(555) 123-4567">
+              </div>
+            </div>
+          </div>
+
+          <div class="field" style="margin-bottom:16px;">
+            <label>Email</label>
+            <div class="input-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>
+              <input type="email" id="email" placeholder="you@yourbusiness.com">
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Upload Your Logo</label>
+            <div class="upload-box" id="uploadBox">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12"/><path d="M7 8l5-5 5 5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+              Logo &amp; site photo — drop or <a href="#" onclick="return false;">browse</a>
+              <small>PNG, JPG, PDF, AI, EPS, SVG — Max 20 MB each</small>
+              <input type="file" id="fileInput" style="display:none" multiple>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-header">SIGN DETAILS</div>
+        <div class="section-box">
+          <div class="field-label">Sign Usage</div>
+          <div class="toggle-row">
+            <div class="toggle-btn" data-usage="indoor" onclick="selectUsage(this)">🏠 Indoor</div>
+            <div class="toggle-btn" data-usage="outdoor" onclick="selectUsage(this)">☀️ Outdoor</div>
+          </div>
+
+          <div class="field-label">Select Mockup Type(s)</div>
+          <div class="mockup-grid" id="mockupGrid">
+            <div class="mockup-card" data-type="lightbox" onclick="toggleMockup(this)">
+              <img src="https://picsum.photos/seed/lightbox/200/140" alt="Lightbox sign">
+              <div class="mockup-meta"><div class="name">Lightbox</div><span class="tag">RECOMMENDED</span></div>
+            </div>
+            <div class="mockup-card" data-type="halolit2" onclick="toggleMockup(this)">
+              <img src="https://picsum.photos/seed/halolit2/200/140" alt="Halo lit sign">
+              <div class="mockup-meta"><div class="name">Halo Lit</div><span class="tag">RECOMMENDED</span></div>
+            </div>
+            <div class="mockup-card" data-type="facelit" onclick="toggleMockup(this)">
+              <img src="https://picsum.photos/seed/facelit/200/140" alt="Face lit sign">
+              <div class="mockup-meta"><div class="name">Face Lit</div><span class="tag">RECOMMENDED</span></div>
+            </div>
+            <div class="mockup-card" data-type="flatcut" onclick="toggleMockup(this)">
+              <img src="https://picsum.photos/seed/flatcut/200/140" alt="Flat cut letters sign">
+              <div class="mockup-meta"><div class="name">Flat Cut</div></div>
+            </div>
+            <div class="mockup-card" data-type="fabricated" onclick="toggleMockup(this)">
+              <img src="https://picsum.photos/seed/fabricated/200/140" alt="Fabricated dimensional letters">
+              <div class="mockup-meta"><div class="name">Fabricated</div></div>
+            </div>
+            <div class="mockup-card" data-type="pushthrough" onclick="toggleMockup(this)">
+              <img src="https://picsum.photos/seed/pushthrough/200/140" alt="Push through letters sign">
+              <div class="mockup-meta"><div class="name">Push Through</div></div>
+            </div>
+          </div>
+
+          <div class="estimated-size">Estimated Size</div>
+          <div class="size-inputs">
+            <div class="field">
+              <label>Width (ft)</label>
+              <div class="input-wrap" style="position:static;">
+                <input type="number" id="width" placeholder="e.g. 6" style="padding-left:12px;">
+              </div>
+            </div>
+            <div class="field">
+              <label>Height (ft)</label>
+              <div class="input-wrap" style="position:static;">
+                <input type="number" id="height" placeholder="e.g. 2" style="padding-left:12px;">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn">Get My Free Mockup &amp; Quote →</button>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function selectUsage(el){
+  document.querySelectorAll('.toggle-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
 }
-{% endschema %}
+function toggleMockup(el){
+  el.classList.toggle('selected');
+}
+document.getElementById('uploadBox').addEventListener('click', ()=>document.getElementById('fileInput').click());
+document.getElementById('uploadBox').addEventListener('dragover', e=>{e.preventDefault(); e.currentTarget.style.background='#eef7ff';});
+document.getElementById('uploadBox').addEventListener('dragleave', e=>{e.currentTarget.style.background='#fafbfc';});
+document.getElementById('uploadBox').addEventListener('drop', e=>{
+  e.preventDefault();
+  e.currentTarget.style.background='#fafbfc';
+  const files = e.dataTransfer.files;
+  if(files.length){
+    e.currentTarget.querySelector('small').textContent = files.length + ' file(s) selected';
+  }
+});
+document.getElementById('fileInput').addEventListener('change', e=>{
+  const files = e.target.files;
+  if(files.length){
+    document.getElementById('uploadBox').querySelector('small').textContent = files.length + ' file(s) selected';
+  }
+});
+
+const nameInput = document.getElementById('name');
+const nameError = document.getElementById('nameError');
+nameError.style.display = 'block';
+
+document.getElementById('signForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  if(!nameInput.value.trim()){
+    nameInput.classList.add('error');
+    nameError.style.display = 'block';
+    nameInput.focus();
+    return;
+  }
+  nameInput.classList.remove('error');
+  nameError.style.display = 'none';
+  alert('Thanks! This is a front-end demo — no data was actually submitted.');
+});
+nameInput.addEventListener('input', ()=>{
+  if(nameInput.value.trim()){
+    nameInput.classList.remove('error');
+    nameError.style.display = 'none';
+  }
+});
+</script>
+
+</body>
+</html>
