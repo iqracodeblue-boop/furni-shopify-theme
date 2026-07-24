@@ -58,14 +58,20 @@
         "padding-block-end": 80
       }
     },
-    "nt_get_a_quote_page_v1_wQKLqK": {
-      "type": "nt-get-a-quote-page-v1",
-      "name": "NT Get A Quote Page",
+    "nt_quote_form_split_v1_EdYkwk": {
+      "type": "nt-quote-form-split-v1",
+      "name": "NT Quote Form Split",
+      "settings": {}
+    },
+    "nt_quote_gallery_fixed_v1_7gfMkd": {
+      "type": "nt-quote-gallery-fixed-v1",
+      "name": "NT Quote Gallery Fixed",
       "settings": {}
     }
   },
   "order": [
     "main",
-    "nt_get_a_quote_page_v1_wQKLqK"
+    "nt_quote_form_split_v1_EdYkwk",
+    "nt_quote_gallery_fixed_v1_7gfMkd"
   ]
 }
