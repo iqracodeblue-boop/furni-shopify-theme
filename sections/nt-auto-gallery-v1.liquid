@@ -1,0 +1,151 @@
+<style>
+:root{
+  --ts-xl:2.2rem; --red:#0188CC; --gold:#0188CC; --navy:#111111; --ink:#111111; --muted:#666666;
+  --fh:'DM Serif Display',Georgia,serif; --fb:'Inter',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:93%}
+body{font-family:var(--fb);background:#fff;color:#333;line-height:1.6;}
+
+.nt-gallery-section{padding:88px 48px;background:#fff}
+.nt-sec-head{text-align:center;max-width:680px;margin:0 auto 56px}
+.nt-sec-label{display:inline-flex;align-items:center;gap:8px;font-family:var(--fb);font-size:.82rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--red);margin-bottom:16px;}
+.nt-sec-label::before{content:"";width:24px;height:1px;background:var(--red);}
+.nt-sec-label::after{content:"";width:24px;height:1px;background:var(--red);}
+.nt-sec-h{font-family:var(--fh);font-size:var(--ts-xl);color:var(--ink);line-height:1.05;letter-spacing:-.02em;margin-bottom:14px;font-weight:400;}
+.nt-sec-h em{font-style:italic;color:var(--red)}
+.nt-sec-sub{font-family:var(--fb);font-size:1rem;color:var(--muted);line-height:1.65;max-width:580px;margin:0 auto;}
+
+/* Uniform Grid (3 Columns, Same Size) */
+.nt-uniform-grid{
+  max-width:1100px;margin:0 auto;
+  display:grid !important;
+  grid-template-columns:repeat(3, 1fr) !important;
+  gap:20px !important;
+}
+.nt-gal-item{
+  position:relative !important;
+  overflow:hidden !important;
+  border-radius:12px !important;
+  background:#111 !important;
+  cursor:pointer !important;
+  aspect-ratio: 4/3 !important; /* Yeh sab images ka size same rakhega */
+}
+
+/* Image Sliding CSS */
+.nt-gal-cycle{position:absolute !important;top:0 !important;left:0 !important;width:100% !important;height:100% !important;opacity:0;transition:opacity 1s ease;z-index:1;}
+.nt-gal-cycle.active{opacity:1;z-index:2}
+.nt-gal-cycle img{max-width:100% !important;width:100% !important;height:100% !important;object-fit:cover !important;display:block !important;}
+
+.nt-gal-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.85) 100%);opacity:.9;z-index:3;pointer-events:none;}
+.nt-gal-cap{position:absolute;left:15px;right:15px;bottom:15px;z-index:4;color:#fff;font-family:var(--fh);font-size:1.1rem;line-height:1.2;}
+.nt-gal-cap small{display:block;font-family:var(--fb);font-size:.7rem;font-weight:500;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;}
+
+/* Bottom CTA Button */
+.nt-cta-wrap{text-align:center;margin-top:48px;}
+.nt-cta-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--gold);color:#fff !important;
+  font-family:var(--fb);font-size:.95rem;font-weight:700;
+  padding:14px 28px;border-radius:8px;
+  text-decoration:none;
+  transition:transform .2s,background .2s;
+}
+.nt-cta-btn:hover{background:#0170a8;transform:translateY(-2px);}
+.nt-cta-btn svg{width:16px;height:16px;stroke:#fff;stroke-width:2.5;fill:none}
+
+@media(max-width:880px){
+  .nt-uniform-grid{grid-template-columns:repeat(2, 1fr) !important;}
+}
+@media(max-width:560px){
+  .nt-uniform-grid{grid-template-columns:1fr !important;}
+}
+</style>
+
+<section class="nt-gallery-section">
+  <div class="nt-sec-head">
+    <span class="nt-sec-label">Our Work</span>
+    <h2 class="nt-sec-h">Our Most <em>Recent Projects.</em></h2>
+    <p class="nt-sec-sub">All of our signs are built in our factory and professionally installed. No stock photos.</p>
+  </div>
+  <div class="nt-uniform-grid">
+    
+    <!-- 1. HotRocks Grill -->
+    <div class="nt-gal-item">
+      <div class="nt-gal-cycle active"><img src="https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg" alt="HotRocks Grill 1"></div>
+      <div class="nt-gal-cycle"><img src="https://i.ibb.co/wZJPVMTC/IMG-1229.jpg" alt="HotRocks Grill 2"></div>
+      <div class="nt-gal-cap"><small>Halo-Lit Channel Letters</small>HotRocks Grill</div>
+    </div>
+    
+    <!-- 2. una -->
+    <div class="nt-gal-item">
+      <div class="nt-gal-cycle active"><img src="https://i.ibb.co/1fX1Jpsn/uv-acrylic-1.jpg" alt="una 1"></div>
+      <div class="nt-gal-cycle"><img src="https://i.ibb.co/hFCfRXYg/uv-neon-acrylic-1.jpg" alt="una 2"></div>
+      <div class="nt-gal-cap"><small>UV Acrylic Sign</small>una cosmetology clinic</div>
+    </div>
+    
+    <!-- 3. Lynne -->
+    <div class="nt-gal-item">
+      <div class="nt-gal-cycle active"><img src="https://i.ibb.co/fLZ1FSz/3d-metal-nonlit-1.jpg" alt="Lynne 1"></div>
+      <div class="nt-gal-cycle"><img src="https://i.ibb.co/8LCWzbdF/dc5ad4413068e1428de033d30ef822c0.jpg" alt="Lynne 2"></div>
+      <div class="nt-gal-cap"><small>2D Metal Sign</small>Lynne</div>
+    </div>
+    
+    <!-- 4. NTREPID -->
+    <div class="nt-gal-item">
+      <div class="nt-gal-cycle active"><img src="https://i.ibb.co/ymwCTPF0/3d-metal-backlit-2.jpg" alt="NTREPID 1"></div>
+      <div class="nt-gal-cycle"><img src="https://i.ibb.co/DH0FFQCd/66793f20edb71e28c00f7e453b711b46.jpg" alt="NTREPID 2"></div>
+      <div class="nt-gal-cap"><small>Backlit Channel Letters</small>NTREPID</div>
+    </div>
+    
+    <!-- 5. Ermenegildo Zegna -->
+    <div class="nt-gal-item">
+      <div class="nt-gal-cycle active"><img src="https://i.ibb.co/Z1bRvmFX/1a8bfc475f04e41dc4168ddc673f5e30.jpg" alt="Zegna 1"></div>
+      <div class="nt-gal-cycle"><img src="https://i.ibb.co/6RbfyDF0/lobby-and-reception.jpg" alt="Zegna 2"></div>
+      <div class="nt-gal-cap"><small>3D Metal Backlit</small>Ermenegildo Zegna</div>
+    </div>
+    
+    <!-- 6. The DUTCH -->
+    <div class="nt-gal-item">
+      <div class="nt-gal-cycle active"><img src="https://i.ibb.co/yBP4T6Qn/3-D-blade-sign-1.jpg" alt="The DUTCH 1"></div>
+      <div class="nt-gal-cycle"><img src="https://i.ibb.co/KtbtvFN/2d-blade-sign-image-1.jpg" alt="The DUTCH 2"></div>
+      <div class="nt-gal-cap"><small>3D Blade Sign</small>The DUTCH</div>
+    </div>
+    
+  </div>
+
+  <!-- Bottom CTA Button -->
+  <div class="nt-cta-wrap">
+    <a href="/pages/get-a-quote" class="nt-cta-btn">
+      Get a Free Mockup on Your Building
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.nt-gal-item').forEach(item => {
+      const cycles = item.querySelectorAll('.nt-gal-cycle');
+      if (cycles.length > 1) {
+        let current = 0;
+        setInterval(() => {
+          cycles[current].classList.remove('active');
+          current = (current + 1) % cycles.length;
+          cycles[current].classList.add('active');
+        }, 3000); // Changes image every 3 seconds automatically
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "NT Auto Slide Gallery",
+  "presets": [
+    {
+      "name": "NT Auto Slide Gallery"
+    }
+  ]
+}
+{% endschema %}
