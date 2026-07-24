@@ -94,9 +94,21 @@
         "collection_inverse_logo": false,
         "text_color_transparent_collection": ""
       }
+    },
+    "nt_header_v1_VJbtEM": {
+      "type": "nt-header-v1",
+      "name": "NT Header",
+      "settings": {}
+    },
+    "nt_home_page_v1_MnKE98": {
+      "type": "nt-home-page-v1",
+      "name": "NT Home Page",
+      "settings": {}
     }
   },
   "order": [
-    "header_section"
+    "header_section",
+    "nt_header_v1_VJbtEM",
+    "nt_home_page_v1_MnKE98"
   ]
 }
