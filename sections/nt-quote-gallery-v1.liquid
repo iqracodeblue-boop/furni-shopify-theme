@@ -19,10 +19,9 @@ body{font-family:var(--fb);background:#fff;color:#333;line-height:1.6;}
 .gallery-bento{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px;}
 .gal-item{position:relative;overflow:hidden;border-radius:14px;background:#111;cursor:pointer;}
 
-/* Bulletproof Image Cycle CSS */
 .gal-cycle{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1.1s cubic-bezier(.16,1,.3,1);z-index:1;}
 .gal-cycle.active{opacity:1;z-index:2}
-.gal-cycle img{width:100%;height:100%;object-fit:cover;display:block;}
+.gal-cycle img{max-width:100%;width:100%;height:100%;object-fit:cover;display:block;}
   
 .gal-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.78) 100%);opacity:.85;z-index:3;pointer-events:none;}
 .gal-cap{position:absolute;left:18px;right:18px;bottom:16px;z-index:4;color:#fff;font-family:var(--fh);font-size:1.05rem;line-height:1.2;}
@@ -50,37 +49,34 @@ body{font-family:var(--fb);background:#fff;color:#333;line-height:1.6;}
     <div class="gal-item gal-1">
       <div class="gal-cycle active"><img src="https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg" alt="HotRocks Grill"></div>
       <div class="gal-cycle"><img src="https://i.ibb.co/wZJPVMTC/IMG-1229.jpg" alt="Warm White Halo"></div>
-      <div class="gal-cycle"><img src="https://i.ibb.co/6RbfyDF0/lobby-and-reception.jpg" alt="Lobby"></div>
       <div class="gal-cap"><small>Brooklyn, NY</small>HotRocks Grill</div>
     </div>
     
     <div class="gal-item gal-2">
       <div class="gal-cycle active"><img src="https://i.ibb.co/fLZ1FSz/3d-metal-nonlit-1.jpg" alt="PRAY LOVE"></div>
-      <div class="gal-cycle"><img src="https://i.ibb.co/8LCWzbdF/dc5ad4413068e1428de033d30ef822c0.jpg" alt="2mm Flat-Cut"></div>
       <div class="gal-cap"><small>Seattle, WA</small>PRAY LOVE</div>
     </div>
     
     <div class="gal-item gal-3">
-      <div class="gal-cycle active"><img src="https://i.ibb.co/27R8x8DX/3d-acrylic-frontlit-image-1-1.png" alt="CAFE"></div>
-      <div class="gal-cycle"><img src="https://i.ibb.co/B2JQnr6N/74d052ff-c4ee-4cb5-ac7e-183dcb40f0e2.png" alt="Front-Lit with Raceway"></div>
-      <div class="gal-cap"><small>Tampa, FL</small>CAFE</div>
+      <div class="gal-cycle active"><img src="https://i.ibb.co/27R8x8DX/3d-acrylic-frontlit-image-1-1.png" alt="Fessler's Cafe"></div>
+      <div class="gal-cycle"><img src="https://i.ibb.co/B2JQnr6N/74d052ff-c4ee-4cb5-ac7e-183dcb40f0e2.png" alt="Front-Lit"></div>
+      <div class="gal-cap"><small>Tampa, FL</small>Fessler's Cafe</div>
     </div>
     
     <div class="gal-item gal-4">
-      <div class="gal-cycle active"><img src="https://i.ibb.co/ymwCTPF0/3d-metal-backlit-2.jpg" alt="NTREPID"></div>
-      <div class="gal-cycle"><img src="https://i.ibb.co/DH0FFQCd/66793f20edb71e28c00f7e453b711b46.jpg" alt="Backlit with Backboard"></div>
-      <div class="gal-cap"><small>Nashville, TN</small>NTREPID</div>
+      <div class="gal-cycle active"><img src="https://i.ibb.co/ymwCTPF0/3d-metal-backlit-2.jpg" alt="Camp Ground Kitchen"></div>
+      <div class="gal-cycle"><img src="https://i.ibb.co/DH0FFQCd/66793f20edb71e28c00f7e453b711b46.jpg" alt="Backlit"></div>
+      <div class="gal-cap"><small>Nashville, TN</small>Camp Ground Kitchen</div>
     </div>
     
     <div class="gal-item gal-5">
-      <div class="gal-cycle active"><img src="https://i.ibb.co/1fX1Jpsn/uv-acrylic-1.jpg" alt="toptooth"></div>
-      <div class="gal-cycle"><img src="https://i.ibb.co/hFCfRXYg/uv-neon-acrylic-1.jpg" alt="UV Neon Acrylic"></div>
-      <div class="gal-cap"><small>San Diego, CA</small>toptooth</div>
+      <div class="gal-cycle active"><img src="https://i.ibb.co/1fX1Jpsn/uv-acrylic-1.jpg" alt="Rausa Tattoo"></div>
+      <div class="gal-cap"><small>San Diego, CA</small>Rausa Tattoo</div>
     </div>
     
     <div class="gal-item gal-6">
       <div class="gal-cycle active"><img src="https://i.ibb.co/yBP4T6Qn/3-D-blade-sign-1.jpg" alt="The DUTCH"></div>
-      <div class="gal-cycle"><img src="https://i.ibb.co/KtbtvFN/2d-blade-sign-image-1.jpg" alt="2D Flat Blade"></div>
+      <div class="gal-cycle"><img src="https://i.ibb.co/KtbtvFN/2d-blade-sign-image-1.jpg" alt="Blade Sign"></div>
       <div class="gal-cap"><small>Savannah, GA</small>The DUTCH</div>
     </div>
     
@@ -97,7 +93,7 @@ body{font-family:var(--fb);background:#fff;color:#333;line-height:1.6;}
           cycles[current].classList.remove('active');
           current = (current + 1) % cycles.length;
           cycles[current].classList.add('active');
-        }, 3000); // Changes image every 3 seconds
+        }, 3000);
       }
     });
   });
