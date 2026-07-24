@@ -58,11 +58,6 @@
         "padding-block-end": 80
       }
     },
-    "nt_quote_sign_types_v1_LEVAtc": {
-      "type": "nt-quote-sign-types-v1",
-      "name": "NT Quote Sign Types",
-      "settings": {}
-    },
     "nt_quote_bottom_content_v1_LQQhpB": {
       "type": "nt-quote-bottom-content-v1",
       "name": "NT Quote Bottom Content",
@@ -85,17 +80,29 @@
     },
     "nt_quote_final_v1_tVFKa7": {
       "type": "nt-quote-final-v1",
+      "disabled": true,
+      "name": "NT Quote Final Form",
+      "settings": {}
+    },
+    "nt_quote_sign_types_v1_XVkN6y": {
+      "type": "nt-quote-sign-types-v1",
+      "name": "NT Quote Sign Types",
+      "settings": {}
+    },
+    "nt_quote_final_v1_UBJ4rW": {
+      "type": "nt-quote-final-v1",
       "name": "NT Quote Final Form",
       "settings": {}
     }
   },
   "order": [
     "main",
-    "nt_quote_sign_types_v1_LEVAtc",
     "nt_quote_bottom_content_v1_LQQhpB",
     "nt_auto_gallery_v1_zKGXDk",
     "nt_quote_faq_v1_3x8jLq",
     "nt_final_cta_v1_bU6M6D",
-    "nt_quote_final_v1_tVFKa7"
+    "nt_quote_final_v1_tVFKa7",
+    "nt_quote_sign_types_v1_XVkN6y",
+    "nt_quote_final_v1_UBJ4rW"
   ]
 }
