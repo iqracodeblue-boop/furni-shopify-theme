@@ -1,0 +1,162 @@
+<style>
+:root{
+  --ts-xl:2.2rem; --navy:#111111; --navy-deep:#0a0a0a; --gold:#0188CC; --red:#0188CC;
+  --cream:#ffffff; --cream-deep:#f5f5f5; --ink:#111111; --body:#333333; --muted:#666666;
+  --line:rgba(0,0,0,.07); --line2:rgba(0,0,0,.12); --gold-line:rgba(1,136,204,.24); --gold-soft:rgba(1,136,204,.10);
+  --fh:'DM Serif Display',Georgia,serif; --fb:'Inter',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:93%}
+body{font-family:var(--fb);background:#fff;color:#333;line-height:1.6;}
+
+.sec-head{text-align:center;max-width:680px;margin:0 auto 56px}
+.sec-label{display:inline-flex;align-items:center;gap:8px;font-family:var(--fb);font-size:.82rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--red);margin-bottom:16px;}
+.sec-label::before{content:"";width:24px;height:1px;background:var(--red);}
+.sec-label::after{content:"";width:24px;height:1px;background:var(--red);}
+.sec-h{font-family:var(--fh);font-size:var(--ts-xl);color:var(--ink);line-height:1.05;letter-spacing:-.02em;margin-bottom:14px;font-weight:400;}
+.sec-h em{font-style:italic;color:var(--red)}
+.sec-sub{font-family:var(--fb);font-size:1rem;color:var(--muted);line-height:1.65;max-width:580px;margin:0 auto;}
+
+/* Process */
+.proc-section{position:relative;background:var(--navy-deep);padding:104px 48px;overflow:hidden;}
+.proc-section .sec-h{color:#fff}
+.proc-section .sec-sub{color:rgba(255,255,255,.55)}
+.proc-section .sec-label{color:var(--gold)}
+.proc-section .sec-label::before,.proc-section .sec-label::after{background:var(--gold)}
+.proc-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:22px;position:relative;z-index:2;}
+.proc-step{position:relative;background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:18px;padding:34px 26px 30px;text-align:left;overflow:hidden;}
+.proc-step-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;}
+.proc-num{font-family:var(--fh);font-size:2.4rem;line-height:1;color:var(--gold);}
+.proc-icon{width:50px;height:50px;border-radius:13px;background:var(--gold-soft);border:1px solid var(--gold-line);display:flex;align-items:center;justify-content:center;}
+.proc-icon svg{width:23px;height:23px;fill:none;stroke:var(--gold);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.proc-step h4{font-family:var(--fh);font-size:1.24rem;color:var(--ink);margin-bottom:9px;font-weight:400;line-height:1.2;}
+.proc-step p{font-family:var(--fb);font-size:.88rem;color:var(--muted);line-height:1.62;}
+
+/* Why Us */
+.why-section{padding:88px 48px;background:var(--cream-deep)}
+.why-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.why-card{background:#fff;border-radius:14px;padding:32px 26px;border:1px solid var(--line);}
+.why-icon{width:54px;height:54px;border-radius:12px;background:var(--gold-soft);border:1px solid var(--gold-line);display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+.why-icon svg{width:24px;height:24px;stroke:var(--navy);stroke-width:1.8;fill:none}
+.why-card h4{font-family:var(--fh);font-size:1.22rem;color:var(--ink);margin-bottom:10px;font-weight:400;}
+.why-card p{font-family:var(--fb);font-size:.9rem;color:var(--muted);line-height:1.65;}
+
+/* Testimonials */
+.testi-section{padding:88px 48px;background:#fff}
+.testi-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.testi{background:#fff;border-radius:14px;padding:30px 28px;border:1px solid var(--line);}
+.testi-stars{display:flex;gap:3px;margin-bottom:16px}
+.testi-stars svg{width:16px;height:16px;fill:var(--gold)}
+.testi-quote{font-family:var(--fb);font-size:.96rem;line-height:1.7;color:var(--body);margin-bottom:24px;}
+.testi-quote::before{content:"\201C";font-family:var(--fh);font-size:3.4rem;color:var(--gold);line-height:0;display:block;margin-bottom:18px;opacity:.4;}
+.testi-author{display:flex;align-items:center;gap:14px;padding-top:18px;border-top:1px solid var(--line);}
+.testi-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--navy) 0%,#1a1a1a 100%);color:var(--gold);font-family:var(--fh);font-size:1.1rem;display:flex;align-items:center;justify-content:center;border:1px solid var(--gold-line);}
+.testi-name{font-family:var(--fb);font-size:.88rem;font-weight:700;color:var(--ink)}
+.testi-role{font-family:var(--fb);font-size:.76rem;color:var(--muted);margin-top:2px}
+
+/* Story */
+.about-section{background:var(--cream);padding:96px 48px;overflow:hidden;}
+.about-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:center;}
+.about-text .sec-label{justify-content:flex-start}
+.about-text .sec-label::before,.about-text .sec-label::after{display:none}
+.about-text .sec-h{margin-bottom:22px}
+.about-text p{font-family:var(--fb);font-size:1rem;line-height:1.75;color:var(--body);margin-bottom:18px;}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:34px;padding-top:30px;border-top:1px solid var(--line2);}
+.about-stat-num{font-family:var(--fh);font-size:2.4rem;color:var(--red);line-height:1;margin-bottom:4px;font-weight:400;}
+.about-stat-lab{font-family:var(--fb);font-size:.74rem;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;font-weight:600;}
+.about-visual{position:relative;aspect-ratio:4/5;border-radius:18px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.22);}
+.about-visual img{width:100%;height:100%;object-fit:cover}
+.about-badge{position:absolute;bottom:-22px;right:-22px;width:140px;height:140px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--fh);text-align:center;box-shadow:0 14px 36px rgba(1,136,204,.4);border:4px solid var(--cream);z-index:3;}
+.about-badge strong{font-size:2rem;line-height:1;display:block;font-weight:400}
+.about-badge span{font-family:var(--fb);font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-top:4px}
+
+@media(max-width:980px){
+  .proc-grid{grid-template-columns:repeat(2,1fr);gap:18px}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .testi-grid{grid-template-columns:1fr;gap:16px}
+  .about-inner{grid-template-columns:1fr;gap:48px}
+}
+@media(max-width:480px){
+  .proc-grid{grid-template-columns:1fr;gap:16px}
+  .why-grid{grid-template-columns:1fr;gap:14px}
+  .about-stats{grid-template-columns:1fr 1fr;gap:18px}
+}
+</style>
+
+<!-- OUR PROCESS -->
+<section class="proc-section">
+  <div class="sec-head">
+    <span class="sec-label">The Process</span>
+    <h2 class="sec-h">How It <em>Works</em></h2>
+    <p class="sec-sub">A clear path from idea to installed sign. No guesswork, no surprises, no inflated markups. Just quality craftsmanship delivered on time.</p>
+  </div>
+  <div class="proc-grid">
+    <div class="proc-step"><div class="proc-step-top"><span class="proc-num">01</span><span class="proc-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></span></div><h4>Submit Details</h4><p>Share your business name, sign type, size and any reference photos. Takes under two minutes.</p></div>
+    <div class="proc-step"><div class="proc-step-top"><span class="proc-num">02</span><span class="proc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span></div><h4>Free Mockup in 2 Hours</h4><p>Our designers send you a photo-realistic mockup on your actual storefront, with revisions until it feels right.</p></div>
+    <div class="proc-step"><div class="proc-step-top"><span class="proc-num">03</span><span class="proc-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-6 9 6v11a1 1 0 01-1 1H4a1 1 0 01-1-1z"/><path d="M9 22V12h6v10"/></svg></span></div><h4>Approve &amp; We Build</h4><p>Once approved, your custom sign is built in our factory using UL-listed components and commercial-grade materials.</p></div>
+    <div class="proc-step"><div class="proc-step-top"><span class="proc-num">04</span><span class="proc-icon"><svg viewBox="0 0 24 24"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span></div><h4>Nationwide Installation</h4><p>Our certified installers handle delivery, mounting, electrical connection and permit guidance nationwide.</p></div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-section">
+  <div class="sec-head">
+    <span class="sec-label">Why Signs.inc</span>
+    <h2 class="sec-h">Built for the <em>Long Haul</em></h2>
+    <p class="sec-sub">We are not the cheapest sign company. We are the one your custom storefront sign is still standing strong a decade from now.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card"><div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7l-9-5z"/></svg></div><h4>Built by Craftsmen, Not Brokers</h4><p>You work directly with the people building your sign. That means transparent pricing, faster turnaround and zero middleman markup.</p></div>
+    <div class="why-card"><div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg></div><h4>UL Listed Components</h4><p>Every illuminated sign is built to UL 48 standards using UL-recognized power supplies and commercial-grade LEDs.</p></div>
+    <div class="why-card"><div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/></svg></div><h4>5-Year Warranty</h4><p>We back every sign with a five-year warranty on LEDs, electrical components and structural integrity.</p></div>
+    <div class="why-card"><div class="why-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div><h4>Flexible Terms</h4><p>Flexible deposit terms, transparent estimates and someone who picks up the phone.</p></div>
+    <div class="why-card"><div class="why-icon"><svg viewBox="0 0 24 24"><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/><circle cx="12" cy="12" r="10"/></svg></div><h4>Installed in All 50 States</h4><p>A vetted network of licensed, insured installers in every state. We handle permits guidance, scheduling and post-install support.</p></div>
+    <div class="why-card"><div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg></div><h4>4.9/5 Star Average</h4><p>More than 450 businesses have trusted us with their signage. The reviews speak for themselves.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-section">
+  <div class="sec-head">
+    <span class="sec-label">From Our Clients</span>
+    <h2 class="sec-h">Trusted by <em>450+ Businesses</em></h2>
+    <p class="sec-sub">A 4.9-star average is built one custom business sign at a time. Here is what business owners say about working with us.</p>
+  </div>
+  <div class="testi-grid">
+    <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg></div><p class="testi-quote">The mockup landed in my inbox the same morning I asked. Two weeks later my channel letters were lit up over the door. Every customer who walks in mentions the sign.</p><div class="testi-author"><div class="testi-avatar">JM</div><div><div class="testi-name">Joseph Marchetti</div><div class="testi-role">Owner, Marchetti's Pizzeria</div></div></div></div>
+    <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg></div><p class="testi-quote">I have ordered signs from three different companies. Signs.inc is the only one that walked me through the permit, the install and the wiring without making me feel like I was bothering them.</p><div class="testi-author"><div class="testi-avatar">RB</div><div><div class="testi-name">Rebecca Banks</div><div class="testi-role">Co-Founder, Banks &amp; Co. Apparel</div></div></div></div>
+    <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg></div><p class="testi-quote">We needed a monument sign for a new dealership location and the timeline was tight. They hit the deadline, the granite finish looks exactly like the mockup and the lighting is gorgeous at night.</p><div class="testi-author"><div class="testi-avatar">DC</div><div><div class="testi-name">David Carter</div><div class="testi-role">GM, Carter Motors</div></div></div></div>
+  </div>
+</section>
+
+<!-- OUR STORY -->
+<section class="about-section">
+  <div class="about-inner">
+    <div class="about-text">
+      <span class="sec-label">Our Story</span>
+      <h2 class="sec-h">Built on <em>Trust.</em></h2>
+      <p>Signs.inc was founded on one belief: your storefront deserves a custom business sign worthy of the business behind it. Not a cheap placeholder. Not a generic vinyl banner. A built-to-last storefront sign that will outlive the lease and carry your name with pride.</p>
+      <p>From our factory floor to your storefront, every sign is engineered by craftsmen who treat your name like their own. <strong>No middleman, no markup, no mystery.</strong></p>
+      <div class="about-stats">
+        <div><div class="about-stat-num">3,200+</div><div class="about-stat-lab">Signs Shipped</div></div>
+        <div><div class="about-stat-num">50</div><div class="about-stat-lab">States Installed</div></div>
+        <div><div class="about-stat-num">10<small style="font-size:1.2rem">yr</small></div><div class="about-stat-lab">In Business</div></div>
+      </div>
+    </div>
+    <div class="about-visual">
+      <img src="https://i.ibb.co/3YTRYzxC/SHv-H0.jpg" alt="Signs INC founders standing in custom business sign manufacturing workshop" loading="lazy">
+      <div class="about-badge"><strong>10yr</strong><span>Warranty</span></div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NT Quote Bottom Content",
+  "presets": [
+    {
+      "name": "NT Quote Bottom Content"
+    }
+  ]
+}
+{% endschema %}
