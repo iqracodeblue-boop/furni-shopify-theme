@@ -58,16 +58,6 @@
         "padding-block-end": 80
       }
     },
-    "nt_quote_main_v1_gcT9mm": {
-      "type": "nt-quote-main-v1",
-      "name": "NT Quote Main",
-      "settings": {}
-    },
-    "nt_final_cta_v1_eXMGBM": {
-      "type": "nt-final-cta-v1",
-      "name": "NT Final CTA",
-      "settings": {}
-    },
     "nt_quote_sign_types_v1_mnPhEf": {
       "type": "nt-quote-sign-types-v1",
       "name": "NT Quote Sign Types",
@@ -77,11 +67,15 @@
       "type": "nt-quote-bottom-content-v1",
       "name": "NT Quote Bottom Content",
       "settings": {}
+    },
+    "nt_final_cta_v1_eXMGBM": {
+      "type": "nt-final-cta-v1",
+      "name": "NT Final CTA",
+      "settings": {}
     }
   },
   "order": [
     "main",
-    "nt_quote_main_v1_gcT9mm",
     "nt_quote_sign_types_v1_mnPhEf",
     "nt_quote_bottom_content_v1_rxaXkq",
     "nt_final_cta_v1_eXMGBM"
