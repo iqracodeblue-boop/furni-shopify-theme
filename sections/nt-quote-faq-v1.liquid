@@ -1,0 +1,92 @@
+<style>
+:root{
+  --ts-xl:2.2rem; --red:#0188CC; --gold:#0188CC; --ink:#111111; --body:#333333; --muted:#666666; --line2:rgba(0,0,0,.12);
+  --fh:'DM Serif Display',Georgia,serif; --fb:'Inter',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:93%}
+body{font-family:var(--fb);background:#fff;color:#333;line-height:1.6;}
+
+.faq-section{background:#fff;padding:88px 48px}
+.faq-inner{max-width:780px;margin:0 auto}
+.sec-head{text-align:center;max-width:680px;margin:0 auto 56px}
+.sec-label{display:inline-flex;align-items:center;gap:8px;font-family:var(--fb);font-size:.82rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--red);margin-bottom:16px;}
+.sec-label::before{content:"";width:24px;height:1px;background:var(--red);}
+.sec-label::after{content:"";width:24px;height:1px;background:var(--red);}
+.sec-h{font-family:var(--fh);font-size:var(--ts-xl);color:var(--ink);line-height:1.05;letter-spacing:-.02em;margin-bottom:14px;font-weight:400;}
+.sec-h em{font-style:italic;color:var(--red)}
+.sec-sub{font-family:var(--fb);font-size:1rem;color:var(--muted);line-height:1.65;max-width:580px;margin:0 auto;}
+
+.faq-item{border-bottom:1px solid var(--line2);padding:6px 0;}
+.faq-q{width:100%;text-align:left;padding:22px 0;font-family:var(--fh);font-size:1.18rem;color:var(--ink);display:flex;align-items:center;justify-content:space-between;gap:18px;line-height:1.3;font-weight:400;cursor:pointer;background:none;border:none;}
+.faq-q-icon{width:28px;height:28px;border-radius:50%;border:1px solid rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s,background .3s,border-color .3s;}
+.faq-q-icon svg{width:12px;height:12px;stroke:var(--ink);stroke-width:2.5;fill:none;transition:transform .3s}
+.faq-item.open .faq-q-icon{background:var(--gold);border-color:var(--gold)}
+.faq-item.open .faq-q-icon svg{transform:rotate(45deg);stroke:#fff;}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.16,1,.3,1);}
+.faq-a-inner{padding:0 0 22px;font-family:var(--fb);font-size:.95rem;line-height:1.7;color:var(--body);}
+.faq-item.open .faq-a{max-height:400px}
+@media(max-width:480px){.faq-section{padding:62px 22px}.faq-q{font-size:1.05rem;padding:18px 0}}
+</style>
+
+<section class="faq-section">
+  <div class="sec-head">
+    <span class="sec-label">Common Questions</span>
+    <h2 class="sec-h">Frequently <em>Asked</em></h2>
+    <p class="sec-sub">Everything business owners ask before placing their first order with us.</p>
+  </div>
+  <div class="faq-inner">
+    <div class="faq-item">
+      <button class="faq-q">How long does it take to get a custom sign made?<span class="faq-q-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></button>
+      <div class="faq-a"><div class="faq-a-inner">Most custom signs are designed, manufactured and shipped within 10 to 14 business days. You will receive a free digital mockup within 2 hours of submitting your details.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Do you install signs across all 50 states?<span class="faq-q-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></button>
+      <div class="faq-a"><div class="faq-a-inner">Yes. Signs.inc has a vetted network of licensed, insured professional installers in all 50 states. We handle site surveys, permit guidance, installation and post-install support nationwide.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">What kind of warranty do you offer?<span class="faq-q-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></button>
+      <div class="faq-a"><div class="faq-a-inner">Every sign we manufacture is covered by a 5-year warranty on electrical components, LED modules and structural integrity.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Are your signs UL listed?<span class="faq-q-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></button>
+      <div class="faq-a"><div class="faq-a-inner">Yes. Our illuminated signs are built to UL 48 standards using UL-recognized components, which is required for most commercial sign permits in the United States.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">How much does a custom storefront sign cost?<span class="faq-q-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></button>
+      <div class="faq-a"><div class="faq-a-inner">Pricing depends on size, lighting type, materials and installation requirements. Most storefront channel letter signs fall between $1,800 and $6,500 including installation.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Can you help with permits?<span class="faq-q-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></button>
+      <div class="faq-a"><div class="faq-a-inner">Yes. While the property owner is typically the permit holder, we provide engineered drawings, UL documentation and installer support so your local sign permit application moves smoothly.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">What sign types and materials do you offer?<span class="faq-q-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></button>
+      <div class="faq-a"><div class="faq-a-inner">We offer channel letters, lightboxes, neon signs, metal signs, acrylic signs, monument signs, and more. Materials include brushed aluminum, polished stainless, acrylic, and wood.</div></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const open = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!open) item.classList.add('open');
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "NT Quote FAQ",
+  "presets": [
+    {
+      "name": "NT Quote FAQ"
+    }
+  ]
+}
+{% endschema %}
