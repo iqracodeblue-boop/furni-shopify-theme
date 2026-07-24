@@ -50,6 +50,7 @@
         "heading",
         "page-content"
       ],
+      "disabled": true,
       "settings": {
         "content_direction": "column",
         "gap": 32,
@@ -57,9 +58,21 @@
         "padding-block-start": 40,
         "padding-block-end": 80
       }
+    },
+    "nt_header_v1_KtDp3J": {
+      "type": "nt-header-v1",
+      "name": "NT Header",
+      "settings": {}
+    },
+    "nt_home_page_v1_jttqwV": {
+      "type": "nt-home-page-v1",
+      "name": "NT Home Page",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "nt_header_v1_KtDp3J",
+    "nt_home_page_v1_jttqwV"
   ]
 }
