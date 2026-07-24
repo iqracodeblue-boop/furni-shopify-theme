@@ -1,0 +1,125 @@
+<style>
+:root{
+  --navy:#111111; --navy-deep:#0a0a0a; --gold:#0188CC; --cream:#ffffff; --ink:#111111; --muted:#666666;
+  --line2:rgba(0,0,0,.12); --red:#0188CC; --gold-line:rgba(1,136,204,.24);
+  --fh:'DM Serif Display',Georgia,serif; --fb:'Inter',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:93%}
+body{font-family:var(--fb);background:var(--cream);color:#333;line-height:1.6;}
+
+.quote-page-wrapper {
+  display: grid !important;
+  grid-template-columns: 1fr 1.2fr !important;
+  min-height: 90vh !important;
+}
+@media(max-width: 880px) {
+  .quote-page-wrapper { grid-template-columns: 1fr !important; }
+}
+
+.quote-left {
+  background-color: #0a0a0a !important;
+  background-image: radial-gradient(ellipse 60% 40% at 20% 20%, rgba(1,136,204,0.15) 0%, transparent 60%) !important;
+  color: #fff !important;
+  padding: 60px 50px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+.top-badge {
+  display: inline-flex; align-items: center; gap: 8px; background: rgba(1,136,204,.12);
+  border: 1px solid rgba(1,136,204,.3); padding: 8px 14px; border-radius: 50px;
+  font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--gold); margin-bottom: 30px; width: fit-content;
+}
+.quote-left h1 { font-family: var(--fh); font-size: 2.4rem; line-height: 1.1; margin-bottom: 20px; font-weight: 400; }
+.quote-left h1 em { color: var(--gold); font-style: italic; }
+.left-desc { font-size: 1rem; color: rgba(255,255,255,0.7); margin-bottom: 30px; line-height: 1.6; max-width: 90%; }
+.sign-list { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 15px !important; }
+.sign-item { display: flex !important; align-items: center !important; gap: 10px !important; background: rgba(255,255,255,0.03) !important; padding: 8px !important; border-radius: 10px !important; border: 1px solid rgba(255,255,255,0.08) !important; }
+.sign-item img { width: 50px !important; height: 50px !important; object-fit: cover !important; border-radius: 8px !important; }
+.sign-item span { font-size: 0.85rem; font-weight: 600; color: #fff; }
+
+.quote-right { background: #f4f7fa !important; padding: 50px 40px !important; display: flex !important; flex-direction: column !important; justify-content: center !important; position: relative !important; }
+.ship-badge { position: absolute; top: 20px; right: 20px; background: var(--gold); color: #fff; padding: 6px 14px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+.form-card { background: #fff !important; padding: 40px !important; border-radius: 16px !important; box-shadow: 0 20px 50px rgba(0,0,0,0.08) !important; border: 1px solid rgba(0,0,0,0.05) !important; }
+.form-header h2 { font-family: var(--fh); font-size: 2rem; margin-bottom: 8px; font-weight: 400; }
+.form-header h2 em { color: var(--gold); font-style: italic; }
+.form-header p { font-size: 0.9rem; color: var(--muted); margin-bottom: 25px; }
+
+.qf-row { display:grid !important; grid-template-columns:1fr 1fr !important; gap:14px !important; margin-bottom:14px !important; }
+.qf-field { display:flex !important; flex-direction:column !important; }
+.qf-field.full { grid-column:span 2 !important; }
+.qf-label { font-family:var(--fb); font-size:.74rem; font-weight:700; color:var(--ink); letter-spacing:.06em; text-transform:uppercase; margin-bottom:7px; }
+.qf-label .req { color:var(--red) }
+.qf-input, .qf-select, .qf-textarea { font-family:var(--fb); font-size:.92rem; padding:13px 14px; border-radius:9px; border:1.5px solid var(--line2); background:#f9f9f9; color:var(--ink); width:100%; outline:none; transition: border-color 0.2s; }
+.qf-input:focus, .qf-select:focus, .qf-textarea:focus { border-color:var(--gold); background:#fff; box-shadow:0 0 0 4px rgba(1,136,204,.14); }
+.qf-textarea { resize:vertical; min-height:80px; font-family:var(--fb); }
+.qf-file-wrap { position: relative; border: 1.5px dashed var(--line2); border-radius: 9px; padding: 14px; text-align: center; background: #f9f9f9; cursor: pointer; height: 100%; display: flex; align-items: center; justify-content: center; }
+.qf-file-wrap:hover { border-color: var(--gold); }
+.qf-file-wrap input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.qf-file-label { font-size: 0.85rem; color: var(--muted); display: flex; align-items: center; justify-content: center; gap: 8px; }
+.qf-file-label svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; stroke-width: 2; }
+.qf-submit { width:100%; background:var(--navy); color:#fff; font-family:var(--fb); font-size:.95rem; font-weight:700; padding:16px; border-radius:10px; margin-top:10px; display:inline-flex; align-items:center; justify-content:center; gap:10px; cursor:pointer; border:none; transition: background 0.2s; }
+.qf-submit:hover { background:var(--navy-deep); }
+.qf-submit svg { width:16px; height:16px; stroke:#fff; stroke-width:2.5; fill:none }
+.qf-note { font-size:.72rem; color:var(--muted); text-align:center; margin-top:14px; line-height: 1.5; }
+</style>
+
+<div class="quote-page-wrapper">
+  <div class="quote-left">
+    <div class="top-badge">
+      <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:2.5;"><path d="M12 2l3 7h7l-6 4.5L18 22l-6-4-6 4 2-8.5L2 9h7z"/></svg>
+      Free mockup in 2 hours - No obligation
+    </div>
+    <h1>Custom 3D business signs. <em>Free quote & mockup.</em></h1>
+    <p class="left-desc">We build premium custom 3D signs tailored to your brand. From storefront channel letters to illuminated monuments, we deliver quality signage for indoor and outdoor use.</p>
+    <div class="sign-list">
+      <div class="sign-item"><img src="https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg" alt="3D Metal Backlit"><span>3D Metal Backlit</span></div>
+      <div class="sign-item"><img src="https://i.ibb.co/0yr2R8DZ/7ed75f6621c0989e3478f26da0a8cec3-1.jpg" alt="Acrylic Front Lit"><span>Acrylic Front Lit</span></div>
+      <div class="sign-item"><img src="https://i.ibb.co/Xk7kC7sZ/9bc0a390bd5f595c29ed220f1af96cc1.jpg" alt="Lightbox Signs"><span>Lightbox Signs</span></div>
+      <div class="sign-item"><img src="https://i.ibb.co/Z1bRvmFX/1a8bfc475f04e41dc4168ddc673f5e30.jpg" alt="Halo Lit Letters"><span>Halo Lit Letters</span></div>
+      <div class="sign-item"><img src="https://i.ibb.co/7Nd52czm/nw-Hr-L.jpg" alt="Channel Letters"><span>Channel Letters</span></div>
+      <div class="sign-item"><img src="https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg" alt="Push Thru Signs"><span>Push Thru Signs</span></div>
+    </div>
+  </div>
+  <div class="quote-right">
+    <div class="ship-badge">FREE SHIPPING to all 50 States</div>
+    <div class="form-card">
+      <div class="form-header">
+        <h2>Get a Free <em>Mockup in 2 Hours.</em></h2>
+        <p>Tell us a little about your business and the sign you have in mind.</p>
+      </div>
+      <form class="quote-form" onsubmit="event.preventDefault();alert('Request Sent! We will send your mockup within 2 hours.');this.reset();">
+        <div class="qf-row">
+          <div class="qf-field"><label class="qf-label">Full Name <span class="req">*</span></label><input type="text" class="qf-input" placeholder="John Carter" required></div>
+          <div class="qf-field"><label class="qf-label">Phone <span class="req">*</span></label><input type="tel" class="qf-input" placeholder="(555) 123-4567" required></div>
+        </div>
+        <div class="qf-row">
+          <div class="qf-field"><label class="qf-label">Email <span class="req">*</span></label><input type="email" class="qf-input" placeholder="you@business.com" required></div>
+          <div class="qf-field"><label class="qf-label">Business Name</label><input type="text" class="qf-input" placeholder="Your business"></div>
+        </div>
+        <div class="qf-row">
+          <div class="qf-field"><label class="qf-label">Upload Logo</label><div class="qf-file-wrap"><input type="file" accept="image/*"><div class="qf-file-label"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Click to upload</div></div></div>
+          <div class="qf-field"><label class="qf-label">Sign Usage <span class="req">*</span></label><select class="qf-input" required><option value="">Select usage</option><option>Indoor</option><option>Outdoor</option><option>Both</option></select></div>
+        </div>
+        <div class="qf-row">
+          <div class="qf-field"><label class="qf-label">Mockup Type <span class="req">*</span></label><select class="qf-input" required><option value="">Select sign type</option><option>3D Metal Backlit</option><option>Acrylic Front Lit</option><option>Lightbox Signs</option><option>Halo Lit Letters</option><option>Channel Letters</option></select></div>
+          <div class="qf-field"><label class="qf-label">State</label><input type="text" class="qf-input" placeholder="e.g. Texas"></div>
+        </div>
+        <button type="submit" class="qf-submit">Send Me My Free Mockup <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+        <p class="qf-note"><svg viewBox="0 0 24 24" style="width:11px;height:11px;stroke:var(--gold);fill:none;stroke-width:2;vertical-align:-1px;margin-right:3px;"><path d="M12 2L3 7v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7l-9-5z"/></svg> Your information is private. We never sell, share or spam.</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "NT Quote Form Split",
+  "presets": [
+    {
+      "name": "NT Quote Form Split"
+    }
+  ]
+}
+{% endschema %}
