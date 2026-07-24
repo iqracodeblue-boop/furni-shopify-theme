@@ -77,6 +77,11 @@
       "type": "nt-final-cta-v1",
       "name": "NT Final CTA",
       "settings": {}
+    },
+    "nt_quote_gallery_v1_9n7dji": {
+      "type": "nt-quote-gallery-v1",
+      "name": "NT Quote Gallery",
+      "settings": {}
     }
   },
   "order": [
@@ -84,6 +89,7 @@
     "nt_quote_sign_types_v1_mnPhEf",
     "nt_quote_bottom_content_v1_rxaXkq",
     "nt_quote_faq_v1_FyJNXX",
-    "nt_final_cta_v1_eXMGBM"
+    "nt_final_cta_v1_eXMGBM",
+    "nt_quote_gallery_v1_9n7dji"
   ]
 }
