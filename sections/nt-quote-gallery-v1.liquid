@@ -17,10 +17,10 @@ body{font-family:var(--fb);background:#fff;color:#333;line-height:1.6;}
 .sec-sub{font-family:var(--fb);font-size:1rem;color:var(--muted);line-height:1.65;max-width:580px;margin:0 auto;}
 
 .gallery-bento{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px;}
-.gal-item{position:relative;overflow:hidden;border-radius:14px;background:#f5f5f5;cursor:pointer;}
+.gal-item{position:relative;overflow:hidden;border-radius:14px;background:#111;cursor:pointer;}
 
-/* Fixed Image Cycle CSS */
-.gal-cycle{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease;z-index:1;}
+/* Bulletproof Image Cycle CSS */
+.gal-cycle{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1.1s cubic-bezier(.16,1,.3,1);z-index:1;}
 .gal-cycle.active{opacity:1;z-index:2}
 .gal-cycle img{width:100%;height:100%;object-fit:cover;display:block;}
   
@@ -42,41 +42,48 @@ body{font-family:var(--fb);background:#fff;color:#333;line-height:1.6;}
 <section class="section">
   <div class="sec-head">
     <span class="sec-label">Our Work</span>
-    <h2 class="sec-h">Our Signs. <em>Installed.</em></h2>
-    <p class="sec-sub">A small selection of recent installs. Every custom sign in our gallery was built in our factory and professionally installed.</p>
+    <h2 class="sec-h">Our Most <em>Recent Projects.</em></h2>
+    <p class="sec-sub">All of our signs are built in our factory and professionally installed. No stock photos.</p>
   </div>
   <div class="gallery-bento">
+    
     <div class="gal-item gal-1">
-      <div class="gal-cycle active"><img src="https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg" alt="Storefront"></div>
-      <div class="gal-cycle"><img src="https://i.ibb.co/7Nd52czm/nw-Hr-L.jpg" alt="Halo Lit"></div>
+      <div class="gal-cycle active"><img src="https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg" alt="HotRocks Grill"></div>
+      <div class="gal-cycle"><img src="https://i.ibb.co/wZJPVMTC/IMG-1229.jpg" alt="Warm White Halo"></div>
       <div class="gal-cycle"><img src="https://i.ibb.co/6RbfyDF0/lobby-and-reception.jpg" alt="Lobby"></div>
-      <div class="gal-cap"><small>Sign Type</small>Storefront Signs</div>
+      <div class="gal-cap"><small>Brooklyn, NY</small>HotRocks Grill</div>
     </div>
+    
     <div class="gal-item gal-2">
-      <div class="gal-cycle active"><img src="https://i.ibb.co/2mRQ7Y0/e0cc8c5e140f122c969efb850e696e44.jpg" alt="UV Acrylic"></div>
-      <div class="gal-cycle"><img src="https://i.ibb.co/1Gp76c58/cb25442aad4c8435bb11a509ccc4b132.jpg" alt="Brushed Metal"></div>
-      <div class="gal-cap"><small>Sign Type</small>UV Acrylic</div>
+      <div class="gal-cycle active"><img src="https://i.ibb.co/fLZ1FSz/3d-metal-nonlit-1.jpg" alt="PRAY LOVE"></div>
+      <div class="gal-cycle"><img src="https://i.ibb.co/8LCWzbdF/dc5ad4413068e1428de033d30ef822c0.jpg" alt="2mm Flat-Cut"></div>
+      <div class="gal-cap"><small>Seattle, WA</small>PRAY LOVE</div>
     </div>
+    
     <div class="gal-item gal-3">
-      <div class="gal-cycle active"><img src="https://i.ibb.co/0yr2R8DZ/7ed75f6621c0989e3478f26da0a8cec3-1.jpg" alt="Front Lit"></div>
-      <div class="gal-cycle"><img src="https://i.ibb.co/B2JQnr6N/74d052ff-c4ee-4cb5-ac7e-183dcb40f0e2.png" alt="Raceway"></div>
-      <div class="gal-cap"><small>Sign Type</small>Acrylic Front Lit</div>
+      <div class="gal-cycle active"><img src="https://i.ibb.co/27R8x8DX/3d-acrylic-frontlit-image-1-1.png" alt="CAFE"></div>
+      <div class="gal-cycle"><img src="https://i.ibb.co/B2JQnr6N/74d052ff-c4ee-4cb5-ac7e-183dcb40f0e2.png" alt="Front-Lit with Raceway"></div>
+      <div class="gal-cap"><small>Tampa, FL</small>CAFE</div>
     </div>
+    
     <div class="gal-item gal-4">
-      <div class="gal-cycle active"><img src="https://i.ibb.co/Xk7kC7sZ/9bc0a390bd5f595c29ed220f1af96cc1.jpg" alt="Lightbox"></div>
-      <div class="gal-cycle"><img src="https://i.ibb.co/Kcxh3wsG/open-face-neon.png" alt="Neon"></div>
-      <div class="gal-cap"><small>Sign Type</small>Lightbox Signs</div>
+      <div class="gal-cycle active"><img src="https://i.ibb.co/ymwCTPF0/3d-metal-backlit-2.jpg" alt="NTREPID"></div>
+      <div class="gal-cycle"><img src="https://i.ibb.co/DH0FFQCd/66793f20edb71e28c00f7e453b711b46.jpg" alt="Backlit with Backboard"></div>
+      <div class="gal-cap"><small>Nashville, TN</small>NTREPID</div>
     </div>
+    
     <div class="gal-item gal-5">
-      <div class="gal-cycle active"><img src="https://i.ibb.co/VcjZ4ZBF/000.png" alt="Medical"></div>
-      <div class="gal-cycle"><img src="https://i.ibb.co/SXNv5mwS/directional-and-monument-1.jpg" alt="Directional"></div>
-      <div class="gal-cap"><small>Sign Type</small>Medical Signs</div>
+      <div class="gal-cycle active"><img src="https://i.ibb.co/1fX1Jpsn/uv-acrylic-1.jpg" alt="toptooth"></div>
+      <div class="gal-cycle"><img src="https://i.ibb.co/hFCfRXYg/uv-neon-acrylic-1.jpg" alt="UV Neon Acrylic"></div>
+      <div class="gal-cap"><small>San Diego, CA</small>toptooth</div>
     </div>
+    
     <div class="gal-item gal-6">
-      <div class="gal-cycle active"><img src="https://i.ibb.co/Z1bRvmFX/1a8bfc475f04e41dc4168ddc673f5e30.jpg" alt="Reception"></div>
-      <div class="gal-cycle"><img src="https://i.ibb.co/tpq229Zx/86e7f4ccec44b08749e3403e5c444a65.jpg" alt="Gym Spa"></div>
-      <div class="gal-cap"><small>Sign Type</small>Reception & Studio</div>
+      <div class="gal-cycle active"><img src="https://i.ibb.co/yBP4T6Qn/3-D-blade-sign-1.jpg" alt="The DUTCH"></div>
+      <div class="gal-cycle"><img src="https://i.ibb.co/KtbtvFN/2d-blade-sign-image-1.jpg" alt="2D Flat Blade"></div>
+      <div class="gal-cap"><small>Savannah, GA</small>The DUTCH</div>
     </div>
+    
   </div>
 </section>
 
