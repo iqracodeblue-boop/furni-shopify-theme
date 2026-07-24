@@ -1,134 +1,138 @@
 <style>
 :root{
-  --ts-2xl:clamp(2.4rem,5vw,4.4rem); --navy:#111111; --navy-deep:#0a0a0a; --gold:#0188CC;
-  --cream:#ffffff; --cream-deep:#f5f5f5; --ink:#111111; --body:#333333; --muted:#666666;
-  --line:rgba(0,0,0,.07); --line2:rgba(0,0,0,.12); --red:#0188CC; --gold-line:rgba(1,136,204,.24);
+  --navy:#111111; --navy-deep:#0a0a0a; --gold:#0188CC; --cream:#ffffff; --ink:#111111; --muted:#666666;
+  --line2:rgba(0,0,0,.12); --red:#0188CC;
   --fh:'DM Serif Display',Georgia,serif; --fb:'Inter',system-ui,sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:93%}
-body{font-family:var(--fb);background:var(--cream);color:var(--body);line-height:1.6;}
+body{font-family:var(--fb);background:var(--cream);color:#333;line-height:1.6;}
 
-.quote-section{
-  background:var(--cream-deep);
-  padding:96px 48px;
-  position:relative;
+.quote-page-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Split screen layout */
+  min-height: 100vh;
 }
-.quote-inner{
-  max-width:980px;margin:0 auto;
-  background:#fff;
-  border-radius:20px;
-  overflow:hidden;
-  display:grid;grid-template-columns:.85fr 1fr;
-  box-shadow:0 24px 60px rgba(0,0,0,.14);
-  border:1px solid var(--line);
-}
-.quote-side{
-  background:linear-gradient(180deg,var(--navy) 0%,var(--navy-deep) 100%);
-  color:#fff;padding:48px 40px;
-  position:relative;overflow:hidden;
-}
-.quote-side::before{
-  content:"";position:absolute;inset:0;
-  background:radial-gradient(ellipse 70% 50% at 0% 100%,rgba(1,136,204,.16) 0%,transparent 70%);
-}
-.quote-side-inner{position:relative;z-index:1}
-.sec-label{
-  display:inline-flex;align-items:center;gap:8px;
-  font-family:var(--fb);font-size:.82rem;font-weight:700;
-  letter-spacing:.28em;text-transform:uppercase;
-  color:var(--red);margin-bottom:16px;
-}
-.sec-label::before{content:"";width:24px;height:1px;background:var(--red);}
-.sec-label::after{content:"";width:24px;height:1px;background:var(--red);}
-.quote-side .sec-label{color:var(--gold)}
-.quote-side .sec-label::before,.quote-side .sec-label::after{background:var(--gold)}
-.quote-side h3{
-  font-family:var(--fh);font-size:2rem;color:#fff;
-  line-height:1.1;margin-bottom:14px;font-weight:400;letter-spacing:-.01em;
-}
-.quote-side h3 em{font-style:italic;color:var(--gold)}
-.quote-side p{
-  font-family:var(--fb);font-size:.95rem;line-height:1.65;
-  color:rgba(255,255,255,.72);margin-bottom:28px;
-}
-.quote-side-list{list-style:none;display:flex;flex-direction:column;gap:14px}
-.quote-side-list li{
-  display:flex;align-items:flex-start;gap:11px;
-  font-family:var(--fb);font-size:.88rem;color:rgba(255,255,255,.88);line-height:1.5;
-}
-.quote-side-list li svg{
-  width:18px;height:18px;stroke:var(--gold);stroke-width:2.5;fill:none;
-  flex-shrink:0;margin-top:2px;
+@media(max-width: 880px) {
+  .quote-page-wrapper { grid-template-columns: 1fr; }
 }
 
-.quote-form{padding:48px 40px;background:#fff}
-.qf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
-.qf-field{display:flex;flex-direction:column}
-.qf-field.full{grid-column:span 2}
-.qf-label{
-  font-family:var(--fb);font-size:.74rem;font-weight:700;
-  color:var(--ink);letter-spacing:.06em;text-transform:uppercase;
-  margin-bottom:7px;
+/* Left Side (Dark with image) */
+.quote-left {
+  background: linear-gradient(rgba(10,10,10,0.85), rgba(10,10,10,0.95)), url('https://i.ibb.co/sdnM0Skc/QMva-E.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.qf-label .req{color:var(--red)}
-.qf-input,.qf-select,.qf-textarea{
-  font-family:var(--fb);font-size:.92rem;
-  padding:13px 14px;border-radius:9px;
-  border:1.5px solid var(--line2);
-  background:var(--cream);color:var(--ink);
-  transition:border-color .2s,background .2s,box-shadow .2s;
-  width:100%;outline:none;
+.quote-left-content {
+  max-width: 500px;
 }
-.qf-input:focus,.qf-select:focus,.qf-textarea:focus{
-  border-color:var(--gold);background:#fff;
-  box-shadow:0 0 0 4px rgba(1,136,204,.14);
+.quote-left h1 {
+  font-family: var(--fh);
+  font-size: 2.5rem;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  font-weight: 400;
 }
-.qf-textarea{resize:vertical;min-height:90px;font-family:var(--fb)}
-.qf-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23111111'%3E%3Cpath d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:16px;padding-right:38px}
-.qf-submit{
-  width:100%;background:var(--navy);color:#fff;
-  font-family:var(--fb);font-size:.95rem;font-weight:700;
-  padding:16px;border-radius:10px;
-  margin-top:6px;
-  display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  transition:background .25s,transform .2s,box-shadow .25s;
-  letter-spacing:.01em;cursor:pointer;
+.quote-left h1 em { color: var(--gold); font-style: italic; }
+.quote-left p {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 30px;
+  line-height: 1.6;
 }
-.qf-submit:hover{background:var(--navy-deep);transform:translateY(-1px);box-shadow:0 10px 26px rgba(0,0,0,.28)}
-.qf-submit svg{width:16px;height:16px;stroke:#fff;stroke-width:2.5;fill:none}
-.qf-note{
-  font-family:var(--fb);font-size:.72rem;color:var(--muted);
-  text-align:center;margin-top:14px;line-height:1.5;
+.quote-left ul {
+  list-style: none;
 }
-.qf-note svg{width:11px;height:11px;stroke:var(--gold);stroke-width:2;fill:none;display:inline-block;vertical-align:-1px;margin-right:3px}
+.quote-left ul li {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255,255,255,0.9);
+}
+.quote-left ul li svg {
+  width: 20px; height: 20px; stroke: var(--gold); fill: none; stroke-width: 2.5; flex-shrink: 0;
+}
 
-@media(max-width:880px){
-  .quote-inner{grid-template-columns:1fr}
-  .quote-side{padding:36px 28px}
-  .quote-form{padding:36px 28px}
-  .quote-section{padding:64px 22px}
-  .qf-row{grid-template-columns:1fr;gap:14px}
-  .qf-field.full{grid-column:span 1}
+/* Right Side (Form) */
+.quote-right {
+  background: #fff;
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
 }
+.ship-badge {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background: var(--gold);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.form-header h2 {
+  font-family: var(--fh);
+  font-size: 2rem;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+.form-header h2 em { color: var(--gold); font-style: italic; }
+.form-header p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+.qf-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px }
+.qf-field { display:flex; flex-direction:column }
+.qf-field.full { grid-column:span 2 }
+.qf-label { font-family:var(--fb); font-size:.74rem; font-weight:700; color:var(--ink); letter-spacing:.06em; text-transform:uppercase; margin-bottom:7px; }
+.qf-label .req { color:var(--red) }
+.qf-input, .qf-select, .qf-textarea { font-family:var(--fb); font-size:.92rem; padding:13px 14px; border-radius:9px; border:1.5px solid var(--line2); background:#f9f9f9; color:var(--ink); width:100%; outline:none; transition: border-color 0.2s; }
+.qf-input:focus, .qf-select:focus, .qf-textarea:focus { border-color:var(--gold); background:#fff; box-shadow:0 0 0 4px rgba(1,136,204,.14); }
+.qf-textarea { resize:vertical; min-height:90px; font-family:var(--fb) }
+.qf-submit { width:100%; background:var(--navy); color:#fff; font-family:var(--fb); font-size:.95rem; font-weight:700; padding:16px; border-radius:10px; margin-top:10px; display:inline-flex; align-items:center; justify-content:center; gap:10px; cursor:pointer; border:none; transition: background 0.2s; }
+.qf-submit:hover { background:var(--navy-deep); }
+.qf-submit svg { width:16px; height:16px; stroke:#fff; stroke-width:2.5; fill:none }
+.qf-note { font-size:.72rem; color:var(--muted); text-align:center; margin-top:14px; line-height: 1.5; }
+.qf-note svg { width:11px; height:11px; stroke:var(--gold); fill:none; stroke-width:2; vertical-align:-1px; margin-right:3px; }
 </style>
 
-<section class="quote-section" id="quote">
-  <div class="quote-inner">
-    <div class="quote-side">
-      <div class="quote-side-inner">
-        <span class="sec-label">Free Mockup</span>
-        <h3>Get a Free <em>Mockup in 2 Hours.</em></h3>
-        <p>Tell us a little about your business and the sign you have in mind. We will send a designed mockup on your actual storefront, with no obligation.</p>
-        <ul class="quote-side-list">
-          <li><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg>Free mockup, no commitment</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg>Designed by hand, not a template</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg>Transparent pricing up front</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg>Permit and install guidance included</li>
-        </ul>
-      </div>
+<div class="quote-page-wrapper">
+  <!-- Left Side -->
+  <div class="quote-left">
+    <div class="quote-left-content">
+      <h1>Custom 3D business signs. <em>Free quote & mockup.</em></h1>
+      <p>From storefront channel letters to illuminated monuments, we build premium signage tailored to your brand.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> 3D Metal Backlit</li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Acrylic Front Lit</li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Lightbox Signs</li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Halo Lit Letters</li>
+      </ul>
     </div>
+  </div>
 
+  <!-- Right Side -->
+  <div class="quote-right">
+    <div class="ship-badge">FREE SHIPPING to all 50 States</div>
+    <div class="form-header">
+      <h2>Get a Free <em>Mockup in 2 Hours.</em></h2>
+      <p>Tell us a little about your business and the sign you have in mind. We will send a designed mockup on your actual storefront, with no obligation.</p>
+    </div>
+    
     <form class="quote-form" id="quoteForm" onsubmit="event.preventDefault();alert('Request Sent! We will send your mockup within 2 hours.');this.reset();">
       <div class="qf-row">
         <div class="qf-field">
@@ -162,7 +166,6 @@ body{font-family:var(--fb);background:var(--cream);color:var(--body);line-height
             <option>Gym, Spa &amp; Salon signs</option>
             <option>Auto Services &amp; Real Estate</option>
             <option>Lobby &amp; Interior Signs</option>
-            <option>Other / Browse All Signs</option>
             <option>Not sure yet</option>
           </select>
         </div>
@@ -187,7 +190,7 @@ body{font-family:var(--fb);background:var(--cream);color:var(--body);line-height
       </p>
     </form>
   </div>
-</section>
+</div>
 
 {% schema %}
 {
