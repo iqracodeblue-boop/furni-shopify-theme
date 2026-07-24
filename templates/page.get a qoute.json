@@ -58,38 +58,14 @@
         "padding-block-end": 80
       }
     },
-    "nt_quote_sign_types_v1_mnPhEf": {
-      "type": "nt-quote-sign-types-v1",
-      "name": "NT Quote Sign Types",
-      "settings": {}
-    },
-    "nt_quote_bottom_content_v1_rxaXkq": {
-      "type": "nt-quote-bottom-content-v1",
-      "name": "NT Quote Bottom Content",
-      "settings": {}
-    },
-    "nt_quote_faq_v1_FyJNXX": {
-      "type": "nt-quote-faq-v1",
-      "name": "NT Quote FAQ",
-      "settings": {}
-    },
-    "nt_final_cta_v1_eXMGBM": {
-      "type": "nt-final-cta-v1",
-      "name": "NT Final CTA",
-      "settings": {}
-    },
-    "nt_quote_gallery_v1_RbHxnd": {
-      "type": "nt-quote-gallery-v1",
-      "name": "NT Quote Gallery",
+    "nt_get_a_quote_page_v1_qHqUxR": {
+      "type": "nt-get-a-quote-page-v1",
+      "name": "NT Get A Quote Page",
       "settings": {}
     }
   },
   "order": [
     "main",
-    "nt_quote_sign_types_v1_mnPhEf",
-    "nt_quote_bottom_content_v1_rxaXkq",
-    "nt_quote_faq_v1_FyJNXX",
-    "nt_final_cta_v1_eXMGBM",
-    "nt_quote_gallery_v1_RbHxnd"
+    "nt_get_a_quote_page_v1_qHqUxR"
   ]
 }
