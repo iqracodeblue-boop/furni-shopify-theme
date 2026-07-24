@@ -59,14 +59,20 @@
         "padding-block-end": 80
       }
     },
-    "nt_quote_bottom_content_v1_JgbCEC": {
-      "type": "nt-quote-bottom-content-v1",
-      "name": "NT Quote Bottom Content",
+    "nt_home_page_v1_z6DPre": {
+      "type": "nt-home-page-v1",
+      "name": "NT Home Page",
+      "settings": {}
+    },
+    "nt_header_v1_E33E6m": {
+      "type": "nt-header-v1",
+      "name": "NT Header",
       "settings": {}
     }
   },
   "order": [
     "main",
-    "nt_quote_bottom_content_v1_JgbCEC"
+    "nt_home_page_v1_z6DPre",
+    "nt_header_v1_E33E6m"
   ]
 }
