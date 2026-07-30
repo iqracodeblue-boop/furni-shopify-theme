@@ -1,0 +1,230 @@
+<!-- sections/nt-about-v1.liquid -->
+<style>
+  .nt-about-section {
+    background: #ffffff;
+    padding: 72px 24px;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .nt-about-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  /* LEFT COLUMN */
+  .nt-about-left { display: flex; flex-direction: column; }
+
+  .nt-about-eyebrow {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #0188cc;
+    margin-bottom: 12px;
+  }
+
+  .nt-about-heading {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: clamp(1.9rem, 3vw, 2.6rem);
+    font-weight: 400;
+    color: #111111;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+  .nt-about-heading em {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-style: italic;
+    color: #0188cc;
+  }
+
+  .nt-about-text {
+    font-size: 0.95rem;
+    color: #333333;
+    line-height: 1.75;
+    margin-bottom: 14px;
+  }
+  .nt-about-text strong {
+    color: #111111;
+    font-weight: 700;
+  }
+
+  .nt-about-divider {
+    height: 1px;
+    background: rgba(0, 0, 0, 0.12);
+    margin: 24px 0;
+  }
+
+  /* STATS ROW */
+  .nt-about-stats {
+    display: flex;
+    gap: 36px;
+  }
+  .nt-about-stat-num {
+    display: block;
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 1.9rem;
+    font-weight: 400;
+    color: #0188cc;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .nt-about-stat-label {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #666666;
+  }
+
+  /* RIGHT COLUMN — image */
+  .nt-about-right {
+    position: relative;
+  }
+  .nt-about-img-wrap {
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    background: #111111;
+  }
+  .nt-about-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Warranty badge */
+  .nt-about-badge {
+    position: absolute;
+    bottom: -16px;
+    right: -16px;
+    width: 80px;
+    height: 80px;
+    background: #0188cc;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(1, 136, 204, 0.35);
+    border: 4px solid #ffffff;
+  }
+  .nt-about-badge-num {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1;
+  }
+  .nt-about-badge-text {
+    font-size: 0.5rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    margin-top: 2px;
+  }
+
+  /* TABLET */
+  @media (max-width: 800px) {
+    .nt-about-inner {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .nt-about-section {
+      padding: 52px 20px;
+    }
+    .nt-about-right { order: -1; }
+    .nt-about-badge { bottom: -12px; right: -8px; width: 68px; height: 68px; }
+    .nt-about-badge-num { font-size: 1.05rem; }
+  }
+
+  /* MOBILE */
+  @media (max-width: 520px) {
+    .nt-about-section { padding: 32px 16px 36px; }
+    .nt-about-inner { gap: 22px; }
+
+    .nt-about-heading { margin-bottom: 14px; }
+
+    .nt-about-img-wrap {
+      aspect-ratio: 16/7;
+      border-radius: 12px;
+    }
+
+    .nt-about-badge {
+      width: 56px;
+      height: 56px;
+      bottom: -10px;
+      right: -6px;
+    }
+    .nt-about-badge-num { font-size: 0.85rem; }
+    .nt-about-badge-text { font-size: 0.42rem; }
+
+    .nt-about-text { font-size: 0.85rem; line-height: 1.65; margin-bottom: 10px; }
+
+    .nt-about-divider { margin: 16px 0; }
+
+    .nt-about-stats { gap: 24px; }
+    .nt-about-stat-num { font-size: 1.4rem; }
+    .nt-about-stat-label { font-size: 0.62rem; }
+  }
+</style>
+
+<section class="nt-about-section">
+  <div class="nt-about-inner">
+
+    <!-- LEFT -->
+    <div class="nt-about-left">
+      <p class="nt-about-eyebrow">Our Story</p>
+      <h2 class="nt-about-heading">Built on <em>Trust.</em></h2>
+
+      <div class="nt-about-text"><p>Founded on one belief: your storefront deserves a sign worthy of the business behind it. Not a placeholder. <strong>A built-to-last sign that carries your name with pride.</strong></p></div>
+      <div class="nt-about-text"><p>Every sign is engineered by craftsmen from our factory floor to your storefront. <strong>Factory-direct means no middleman, no markup, no mystery.</strong></p></div>
+
+      <div class="nt-about-divider"></div>
+
+      <div class="nt-about-stats">
+        <div>
+          <span class="nt-about-stat-num">3,200+</span>
+          <span class="nt-about-stat-label">Signs Shipped</span>
+        </div>
+        <div>
+          <span class="nt-about-stat-num">50</span>
+          <span class="nt-about-stat-label">States Installed</span>
+        </div>
+        <div>
+          <span class="nt-about-stat-num">5yr</span>
+          <span class="nt-about-stat-label">In Business</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="nt-about-right">
+      <div class="nt-about-img-wrap">
+        <img src="https://i.ibb.co/3YTRYzxC/SHv-H0.jpg" alt="Signs INC founders standing in custom business sign manufacturing workshop – signs.inc" loading="lazy">
+      </div>
+      <div class="nt-about-badge">
+        <span class="nt-about-badge-num">5yr</span>
+        <span class="nt-about-badge-text">Warranty</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NT About v1",
+  "settings": [],
+  "presets": [{"name": "NT About v1"}]
+}
+{% endschema %}
