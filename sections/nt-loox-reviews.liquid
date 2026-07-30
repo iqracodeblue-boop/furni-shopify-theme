@@ -1,0 +1,247 @@
+<!-- sections/nt-loox-reviews.liquid -->
+<style>
+  :root {
+    --fh: 'DM Serif Display', Georgia, serif;
+    --fb: 'Inter', system-ui, sans-serif;
+    --accent: #0188cc;
+    --star: #f5a623;
+  }
+  .nt-loox-section { background: #f5f5f5; padding: 88px 24px; font-family: var(--fb); }
+  .nt-loox-container { max-width: 1180px; margin: 0 auto; }
+  
+  .nt-loox-head { text-align: center; max-width: 680px; margin: 0 auto 56px; }
+  .nt-loox-label { display: inline-flex; align-items: center; gap: 8px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+  .nt-loox-label::before, .nt-loox-label::after { content: ''; width: 24px; height: 1px; background: var(--accent); }
+  .nt-loox-head h2 { font-family: var(--fh); font-size: 2.2rem; color: #111; line-height: 1.05; margin-bottom: 14px; font-weight: 400; }
+  .nt-loox-head h2 em { color: var(--accent); font-style: italic; }
+  .nt-loox-head p { font-size: 1rem; color: #666; line-height: 1.65; }
+
+  .nt-loox-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  @media (max-width: 880px) { .nt-loox-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .nt-loox-grid { grid-template-columns: 1fr; } }
+
+  .nt-loox-card { background: #fff; border-radius: 14px; border: 1px solid rgba(0,0,0,0.07); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; }
+  .nt-loox-card:hover { transform: translateY(-3px); box-shadow: 0 18px 34px rgba(0,0,0,0.08); }
+  
+  .nt-loox-media { position: relative; aspect-ratio: 4/3; background: #111; overflow: hidden; cursor: pointer; }
+  .nt-loox-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+  .nt-loox-card:hover .nt-loox-media img { transform: scale(1.04); }
+  
+  /* Video Play Button */
+  .nt-play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 54px; height: 54px; background: rgba(255,255,255,0.85); border-radius: 50%; display: flex; align-items: center; justify-content: center; pointer-events: none; }
+  .nt-play-btn::after { content: ''; border-style: solid; border-width: 8px 0 8px 14px; border-color: transparent transparent transparent var(--accent); margin-left: 4px; }
+
+  .nt-loox-content { padding: 24px 28px; display: flex; flex-direction: column; flex: 1; }
+  .nt-loox-stars { display: flex; gap: 2px; margin-bottom: 16px; }
+  .nt-loox-stars svg { width: 16px; height: 16px; fill: var(--star); }
+  
+  .nt-loox-quote { font-size: 0.96rem; line-height: 1.7; color: #333; margin-bottom: 24px; font-weight: 400; flex: 1; }
+
+  .nt-loox-author { display: flex; align-items: center; gap: 14px; padding-top: 18px; border-top: 1px solid rgba(0,0,0,0.07); }
+  .nt-loox-avatar { width: 44px; height: 44px; border-radius: 50%; background: #111; color: var(--accent); font-family: var(--fh); font-size: 1.1rem; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(1,136,204,0.24); flex-shrink: 0; }
+  .nt-loox-meta { display: flex; flex-direction: column; line-height: 1.3; }
+  .nt-loox-name { font-size: 0.88rem; font-weight: 700; color: #111; display: flex; align-items: center; gap: 6px; }
+  .nt-loox-verified { width: 14px; height: 14px; fill: var(--accent); }
+  .nt-loox-date { font-size: 0.76rem; color: #666; margin-top: 2px; }
+
+  .nt-loox-prod { margin-top: 16px; padding-top: 16px; border-top: 1px dashed #e0e0e0; font-size: 0.8rem; color: #666; }
+  .nt-loox-prod strong { text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.05em; color: #111; display: block; margin-bottom: 4px; }
+  .nt-loox-prod a { color: var(--accent); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; margin-top: 6px; font-size: 0.85rem; }
+  .nt-loox-prod a:hover { text-decoration: underline; }
+
+  .nt-loox-more { display: flex; justify-content: center; margin-top: 44px; }
+  .nt-show-more-btn { background: #111; color: #fff; border: none; padding: 16px 32px; border-radius: 8px; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: background 0.2s; text-transform: uppercase; letter-spacing: 0.05em; }
+  .nt-show-more-btn:hover { background: var(--accent); }
+  
+  .nt-loox-card.hidden { display: none; }
+
+  /* Popup Modal (Lightbox) */
+  .nt-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center; padding: 20px; }
+  .nt-modal-overlay.active { display: flex; }
+  .nt-modal-box { background: #fff; max-width: 800px; width: 100%; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; max-height: 90vh; }
+  @media (min-width: 768px) { .nt-modal-box { flex-direction: row; } }
+  
+  .nt-modal-img-side { flex: 1; background: #000; display: flex; align-items: center; justify-content: center; position: relative; }
+  .nt-modal-img-side img { width: 100%; height: 100%; object-fit: cover; }
+  .nt-modal-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: rgba(255,255,255,0.85); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .nt-modal-play::after { content: ''; border-style: solid; border-width: 10px 0 10px 16px; border-color: transparent transparent transparent var(--accent); margin-left: 4px; }
+
+  .nt-modal-text-side { flex: 1; padding: 30px; display: flex; flex-direction: column; overflow-y: auto; }
+  .nt-modal-close { position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 2rem; color: #fff; cursor: pointer; z-index: 10; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+  .nt-modal-stars { display: flex; gap: 2px; margin-bottom: 16px; }
+  .nt-modal-stars svg { width: 18px; height: 18px; fill: var(--star); }
+  .nt-modal-quote { font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 24px; font-weight: 500; }
+  .nt-modal-author { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+  .nt-modal-prod { margin-top: auto; padding-top: 20px; border-top: 1px solid #eee; }
+  .nt-modal-prod strong { text-transform: uppercase; font-size: 0.8rem; color: #111; display: block; margin-bottom: 6px; }
+  .nt-modal-prod a { display: inline-block; background: var(--accent); color: #fff; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.9rem; margin-top: 8px; }
+</style>
+
+<section class="nt-loox-section">
+  <div class="nt-loox-container">
+    <div class="nt-loox-head">
+      <span class="nt-loox-label">WHO WE'VE WORKED WITH</span>
+      <h2>The Businesses Behind the <em>Signs</em></h2>
+      <p>We could tell you why Signs.inc is different. Or you could hear it from the businesses who've already found out.</p>
+    </div>
+
+    <div class="nt-loox-grid" id="ntLooxGrid"></div>
+
+    <div class="nt-loox-more">
+      <button class="nt-show-more-btn" id="ntShowMoreBtn" onclick="ntShowMore()">Show more reviews</button>
+    </div>
+  </div>
+</section>
+
+<!-- Popup Modal Structure -->
+<div class="nt-modal-overlay" id="ntLooxModal" onclick="ntCloseModal(event)">
+  <button class="nt-modal-close" onclick="ntCloseModalDirect()">&times;</button>
+  <div class="nt-modal-box" onclick="event.stopPropagation()">
+    <div class="nt-modal-img-side">
+      <img id="ntModalImg" src="" alt="Review Image">
+      <div class="nt-modal-play" id="ntModalPlay" style="display:none;"></div>
+    </div>
+    <div class="nt-modal-text-side">
+      <div class="nt-modal-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+      </div>
+      <p class="nt-modal-quote" id="ntModalText"></p>
+      
+      <div class="nt-modal-author">
+        <div class="nt-loox-avatar" id="ntModalAvatar">M</div>
+        <div class="nt-loox-meta">
+          <span class="nt-loox-name" id="ntModalName">
+            Matthew M.
+            <svg class="nt-loox-verified" viewBox="0 0 24 24"><path d="M9.5 16.5l-4-4 1.4-1.4 2.6 2.6 6.6-6.6 1.4 1.4z"/></svg>
+          </span>
+          <span class="nt-loox-date" id="ntModalDate">06/21/2026</span>
+        </div>
+      </div>
+
+      <div class="nt-modal-prod">
+        <strong>Custom Mockup Sign for <span id="ntModalProdName">Matthew Mitchell</span></strong>
+        <a href="#">View product →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 1. Hardcoded Data (24 Reviews with exact details)
+  const ntReviews = [
+    {name:"Matthew M.", date:"06/21/2026", text:"Unbelievable! Fast and extremely professional!", img:"https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg", prod:"Matthew Mitchell", video:false},
+    {name:"Saskia V.", date:"06/18/2026", text:"The design service was very helpful!", img:"https://i.ibb.co/Z1bRvmFX/1a8bfc475f04e41dc4168ddc673f5e30.jpg", prod:"Saskia Vance", video:false},
+    {name:"Jaclyn D.", date:"06/15/2026", text:"The sign looks very professional and high quality!", img:"https://i.ibb.co/VcjZ4ZBF/000.png", prod:"Jaclyn Doe", video:true},
+    {name:"Tony M.", date:"06/12/2026", text:"Best marketing money we ever spent.", img:"https://i.ibb.co/jPLvTFk4/Storefronts-2.jpg", prod:"Tony Morris", video:false},
+    {name:"Sarah L.", date:"06/10/2026", text:"Filled out the form on a Tuesday. Mockup back before lunch.", img:"https://i.ibb.co/tpq229Zx/86e7f4ccec44b08749e3403e5c444a65.jpg", prod:"Sarah Lewis", video:false},
+    {name:"Mike G.", date:"06/05/2026", text:"The backlit logo changed the whole feel of the office.", img:"https://i.ibb.co/zhspw9Zp/e099e6192c61020ed637eaefeee78b12.jpg", prod:"Mike Geller", video:true},
+    {name:"Lisa S.", date:"06/01/2026", text:"Walk-in oil changes went up 40%!", img:"https://i.ibb.co/JFC3PgnK/2d-metal-5mm-image-2.jpg", prod:"Lisa Stone", video:false},
+    {name:"David T.", date:"05/28/2026", text:"Seamless coordination across multiple locations.", img:"https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg", prod:"David Thompson", video:false},
+    {name:"Amanda M.", date:"05/25/2026", text:"They handled zoning, permits, and HOA. I didn't make a single call.", img:"https://i.ibb.co/B2JQnr6N/74d052ff-c4ee-4cb5-ac7e-183dcb40f0e2.png", prod:"Amanda Miller", video:true},
+    {name:"Jason R.", date:"05/20/2026", text:"Revenue went up 22% the first month.", img:"https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg", prod:"Jason Reed", video:false},
+    {name:"Karen N.", date:"05/18/2026", text:"Membership inquiries doubled in 60 days.", img:"https://i.ibb.co/DH0FFQCd/66793f20edb71e28c00f7e453b711b46.jpg", prod:"Karen Nolen", video:false},
+    {name:"Robert J.", date:"05/15/2026", text:"The neon wall has been in hundreds of Instagram posts.", img:"https://i.ibb.co/VcjZ4ZBF/000.png", prod:"Robert James", video:true},
+    {name:"Paul T.", date:"05/12/2026", text:"Consistent quality every time. We use them for all our franchises.", img:"https://i.ibb.co/Z1bRvmFX/1a8bfc475f04e41dc4168ddc673f5e30.jpg", prod:"Paul Trent", video:false},
+    {name:"Rachel L.", date:"05/10/2026", text:"Zero surprises. The price quoted was the price paid.", img:"https://i.ibb.co/tpq229Zx/86e7f4ccec44b08749e3403e5c444a65.jpg", prod:"Rachel Lin", video:false},
+    {name:"Marcus R.", date:"05/05/2026", text:"Installed in under three weeks. Fast turnaround.", img:"https://i.ibb.co/jPLvTFk4/Storefronts-2.jpg", prod:"Marcus Reid", video:true},
+    {name:"Jamie K.", date:"05/01/2026", text:"Exactly what we needed for our boutique.", img:"https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg", prod:"Jamie Kim", video:false},
+    {name:"Emily B.", date:"04/28/2026", text:"Both interior and exterior signs were installed the same week.", img:"https://i.ibb.co/zhspw9Zp/e099e6192c61020ed637eaefeee78b12.jpg", prod:"Emily Brown", video:false},
+    {name:"Chris P.", date:"04/25/2026", text:"Looks incredible at night. The halo lighting is perfect.", img:"https://i.ibb.co/JFC3PgnK/2d-metal-5mm-image-2.jpg", prod:"Chris Pratt", video:true},
+    {name:"Nina S.", date:"04/20/2026", text:"Mockup matched the final product perfectly.", img:"https://i.ibb.co/B2JQnr6N/74d052ff-c4ee-4cb5-ac7e-183dcb40f0e2.png", prod:"Nina Silva", video:false},
+    {name:"Omar F.", date:"04/18/2026", text:"Highly recommend! Great communication throughout.", img:"https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg", prod:"Omar Farouk", video:false},
+    {name:"Lucy H.", date:"04/15/2026", text:"Top notch service from start to finish.", img:"https://i.ibb.co/DH0FFQCd/66793f20edb71e28c00f7e453b711b46.jpg", prod:"Lucy Hill", video:true},
+    {name:"Sam K.", date:"04/12/2026", text:"Will use them again for our second location.", img:"https://i.ibb.co/VcjZ4ZBF/000.png", prod:"Sam Klein", video:false},
+    {name:"David W.", date:"04/10/2026", text:"The team was amazing. Quality is unmatched!", img:"https://i.ibb.co/Z1bRvmFX/1a8bfc475f04e41dc4168ddc673f5e30.jpg", prod:"David Wright", video:false},
+    {name:"Alex G.", date:"04/05/2026", text:"Better than we imagined. Worth every penny.", img:"https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg", prod:"Alex Grey", video:false}
+  ];
+
+  // 2. Render Logic
+  function renderReviews() {
+    let html = '';
+    ntReviews.forEach((r, index) => {
+      let hiddenClass = index >= 20 ? 'hidden' : ''; // First 20 visible, rest hidden
+      let videoBtn = r.video ? '<div class="nt-play-btn"></div>' : '';
+      
+      html += `
+        <div class="nt-loox-card ${hiddenClass}" onclick="ntOpenModal(${index})">
+          <div class="nt-loox-media">
+            <img src="${r.img}" alt="Review by ${r.name}" loading="lazy">
+            ${videoBtn}
+          </div>
+          <div class="nt-loox-content">
+            <div class="nt-loox-stars">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+            </div>
+            <p class="nt-loox-quote">${r.text}</p>
+            <div class="nt-loox-author">
+              <div class="nt-loox-avatar">${r.name.charAt(0)}</div>
+              <div class="nt-loox-meta">
+                <span class="nt-loox-name">${r.name} <svg class="nt-loox-verified" viewBox="0 0 24 24"><path d="M9.5 16.5l-4-4 1.4-1.4 2.6 2.6 6.6-6.6 1.4 1.4z"/></svg></span>
+                <span class="nt-loox-date">${r.date}</span>
+              </div>
+            </div>
+            <div class="nt-loox-prod">
+              <strong>Custom Mockup Sign for ${r.prod}</strong>
+              <a href="#">View product <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+    document.getElementById('ntLooxGrid').innerHTML = html;
+  }
+
+  // 3. Show More Logic
+  function ntShowMore() {
+    document.querySelectorAll('.nt-loox-card.hidden').forEach(c => c.classList.remove('hidden'));
+    document.getElementById('ntShowMoreBtn').style.display = 'none';
+  }
+
+  // 4. Modal Logic (Image Click Popup)
+  function ntOpenModal(index) {
+    const r = ntReviews[index];
+    document.getElementById('ntModalImg').src = r.img;
+    document.getElementById('ntModalText').innerText = r.text;
+    document.getElementById('ntModalName').innerHTML = `${r.name} <svg class="nt-loox-verified" viewBox="0 0 24 24"><path d="M9.5 16.5l-4-4 1.4-1.4 2.6 2.6 6.6-6.6 1.4 1.4z"/></svg>`;
+    document.getElementById('ntModalDate').innerText = r.date;
+    document.getElementById('ntModalProdName').innerText = r.prod;
+    document.getElementById('ntModalAvatar').innerText = r.name.charAt(0);
+    
+    // Show/hide video play button in modal
+    document.getElementById('ntModalPlay').style.display = r.video ? 'flex' : 'none';
+
+    document.getElementById('ntLooxModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function ntCloseModal(event) {
+    if (event.target.id === 'ntLooxModal') {
+      document.getElementById('ntLooxModal').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+  }
+  function ntCloseModalDirect() {
+    document.getElementById('ntLooxModal').classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', renderReviews);
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') ntCloseModalDirect(); });
+</script>
+
+{% schema %}
+{
+  "name": "NT Loox Reviews",
+  "settings": [],
+  "presets": [{"name": "NT Loox Reviews"}]
+}
+{% endschema %}
