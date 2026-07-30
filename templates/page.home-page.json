@@ -64,15 +64,21 @@
       "name": "NT Header",
       "settings": {}
     },
-    "nt_categories_grid_wtAiQi": {
-      "type": "nt-categories-grid",
-      "name": "NT Categories Grid",
+    "nt_home_page_v1_YrRGdN": {
+      "type": "nt-home-page-v1",
+      "name": "NT Home Page",
+      "settings": {}
+    },
+    "nt_contact_form_v1_n7Tr4C": {
+      "type": "nt-contact-form-v1",
+      "name": "NT Contact Form",
       "settings": {}
     }
   },
   "order": [
     "main",
     "nt_header_v1_E33E6m",
-    "nt_categories_grid_wtAiQi"
+    "nt_home_page_v1_YrRGdN",
+    "nt_contact_form_v1_n7Tr4C"
   ]
 }
