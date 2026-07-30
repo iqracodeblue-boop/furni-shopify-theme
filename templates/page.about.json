@@ -91,6 +91,11 @@
       "type": "nt-final-cta-v1",
       "name": "NT Final CTA",
       "settings": {}
+    },
+    "nt_lead_hero_v1_QTHJ3C": {
+      "type": "nt-lead-hero-v1",
+      "name": "NT Lead Hero v1",
+      "settings": {}
     }
   },
   "order": [
@@ -101,6 +106,7 @@
     "nt_about_numbers_v1_c6T7jk",
     "nt_about_team_v1_JQqJit",
     "nt_about_values_v1_ajckqP",
-    "nt_final_cta_v1_LV9pe3"
+    "nt_final_cta_v1_LV9pe3",
+    "nt_lead_hero_v1_QTHJ3C"
   ]
 }
