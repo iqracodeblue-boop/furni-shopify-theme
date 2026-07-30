@@ -1,0 +1,141 @@
+<!-- sections/nt-why-us-v1.liquid -->
+<style>
+  .nt-why-section {
+    background: linear-gradient(165deg, #1a1a1a 0%, #111111 55%, #0a0a0a 100%) !important;
+    padding: 80px 20px;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  .nt-why-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse 60% 50% at 18% 12%, rgba(1, 136, 204, 0.18), transparent 60%),
+                radial-gradient(ellipse 50% 50% at 88% 88%, rgba(1, 136, 204, 0.12), transparent 60%);
+  }
+  
+  .nt-why-container { max-width: 1180px; margin: 0 auto; position: relative; z-index: 1; }
+  
+  .nt-why-head { text-align: center; max-width: 680px; margin: 0 auto 44px; }
+  .nt-sec-label { display: inline-flex; align-items: center; gap: 8px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: #0188cc; margin-bottom: 16px; }
+  .nt-sec-label::before, .nt-sec-label::after { content: ''; width: 24px; height: 1px; background: #0188cc; }
+  .nt-why-head h2 { font-family: 'DM Serif Display', serif; font-size: clamp(2.2rem, 5vw, 3rem); color: #fff; line-height: 1.05; margin-bottom: 14px; font-weight: 400; }
+  .nt-why-head h2 em { color: #0188cc; font-style: italic; }
+  .nt-why-head p { font-size: 1rem; color: rgba(255,255,255,0.62); line-height: 1.65; max-width: 580px; margin: 0 auto; }
+
+  .nt-why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; grid-auto-rows: 1fr; }
+  @media (max-width: 900px) { .nt-why-grid { grid-template-columns: 1fr 1fr; } .nt-why-card.is-feature { grid-column: span 2; } }
+  @media (max-width: 560px) { .nt-why-grid { grid-template-columns: 1fr; } .nt-why-card.is-feature { grid-column: span 1; } }
+
+  .nt-why-card { position: relative; display: flex; flex-direction: column; gap: 12px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 24px 22px; transition: transform 0.3s, border-color 0.25s, background 0.25s; overflow: hidden; }
+  .nt-why-card::after { content: ''; position: absolute; left: 0; top: 18px; bottom: 18px; width: 3px; border-radius: 3px; background: linear-gradient(180deg, #3aa8e0, #0188cc); transform: scaleY(0); transform-origin: top; transition: transform 0.42s; }
+  .nt-why-card:hover { transform: translateY(-4px); border-color: rgba(1,136,204,0.5); background: rgba(255,255,255,0.065); }
+  .nt-why-card:hover::after { transform: scaleY(1); }
+  
+  .nt-why-card.is-feature { grid-column: span 2; background: linear-gradient(150deg, rgba(1,136,204,0.2), rgba(255,255,255,0.03)); }
+  
+  .nt-why-ico { width: 46px; height: 46px; border-radius: 12px; flex-shrink: 0; background: linear-gradient(135deg, rgba(1,136,204,0.28), rgba(1,136,204,0.1)); border: 1px solid rgba(1,136,204,0.4); display: flex; align-items: center; justify-content: center; transition: 0.25s; }
+  .nt-why-ico svg { width: 22px; height: 22px; stroke: #5cbef0; stroke-width: 1.7; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .nt-why-card:hover .nt-why-ico { background: #0188cc; transform: rotate(-4deg) scale(1.05); }
+  .nt-why-card:hover .nt-why-ico svg { stroke: #fff; }
+
+  .nt-why-h { font-family: 'DM Serif Display', serif; font-size: 19px; color: #fff; line-height: 1.18; }
+  .nt-why-h em { font-style: italic; color: #5cbef0; }
+  .nt-why-card.is-feature .nt-why-h { font-size: 24px; }
+  
+  .nt-why-text { font-size: 13.5px; color: rgba(255,255,255,0.66); line-height: 1.6; flex: 1; }
+  .nt-why-card.is-feature .nt-why-text { font-size: 15px; color: rgba(255,255,255,0.78); }
+  
+  .nt-why-stat { display: flex; align-items: flex-start; gap: 8px; padding-top: 13px; margin-top: 2px; border-top: 1px solid rgba(255,255,255,0.12); }
+  .nt-stat-num { font-family: 'DM Serif Display', serif; font-size: 26px; color: #fff; letter-spacing: 0.02em; line-height: 1; }
+  .nt-why-card.is-feature .nt-stat-num { font-size: 40px; }
+  .nt-stat-num em { font-style: normal; color: #3aa8e0; }
+  .nt-stat-lbl { font-size: 10.5px; font-weight: 600; color: rgba(255,255,255,0.52); letter-spacing: 0.07em; text-transform: uppercase; }
+</style>
+
+<section class="nt-why-section">
+  <div class="nt-why-container">
+    <div class="nt-why-head">
+      <span class="nt-sec-label">Why Us</span>
+      <h2>Built by makers, <em>not middlemen.</em></h2>
+      <p>We don't outsource and slap a markup on it. Every custom business sign — 3D metal backlit signs, acrylic storefront signs, LED neon signs, and more — is cut, bent, welded, and packed in our Birmingham AL workshop, then shipped straight to your door.</p>
+    </div>
+
+    <div class="nt-why-grid">
+      <!-- Feature Card -->
+      <div class="nt-why-card is-feature">
+        <div class="nt-why-ico">
+          <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
+        </div>
+        <div class="nt-why-h">Wholesale Pricing.</div>
+        <div class="nt-why-text">No reseller, no middleman, no markup. Talk to the people actually building your sign and pay 30 to 40% less than retail.</div>
+        <div class="nt-why-stat">
+          <span class="nt-stat-num"><em>-38%</em></span>
+          <span class="nt-stat-lbl">vs middleman avg.</span>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="nt-why-card">
+        <div class="nt-why-ico">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="nt-why-h">2-hour <em>mockup.</em></div>
+        <div class="nt-why-text">A senior designer drafts a photoreal render of your sign on your actual wall before you commit a dime. Daytime, dimmed, lit.</div>
+        <div class="nt-why-stat">
+          <span class="nt-stat-num">2<em>hr</em></span>
+          <span class="nt-stat-lbl">business-hour median</span>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="nt-why-card">
+        <div class="nt-why-ico">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        </div>
+        <div class="nt-why-h">Fixed quote, <em>locked.</em></div>
+        <div class="nt-why-text">The price you approve is the price you pay. No "freight ran higher", no "permits cost more", no end-of-project surprise invoices.</div>
+        <div class="nt-why-stat">
+          <span class="nt-stat-num">$0</span>
+          <span class="nt-stat-lbl">change orders billed</span>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="nt-why-card">
+        <div class="nt-why-ico">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="nt-why-h"><em>2-years</em> warranty.</div>
+        <div class="nt-why-text">Every illuminated sign comes with a decade of coverage on LEDs, power supplies, and fabrication. Even shipping damage. We make it right.</div>
+        <div class="nt-why-stat">
+          <span class="nt-stat-num">2<em>yr</em></span>
+          <span class="nt-stat-lbl">on illuminated signs</span>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="nt-why-card">
+        <div class="nt-why-ico">
+          <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div class="nt-why-h">All 50 <em>states.</em></div>
+        <div class="nt-why-text">Crated, palletized, and freight-shipped with installation guides and template kits. Tracking texted to your phone the moment it leaves.</div>
+        <div class="nt-why-stat">
+          <span class="nt-stat-num">3,200<em>+</em></span>
+          <span class="nt-stat-lbl">signs shipped</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NT Why Us v1",
+  "settings": [],
+  "presets": [{"name": "NT Why Us v1"}]
+}
+{% endschema %}
