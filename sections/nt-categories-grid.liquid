@@ -64,7 +64,7 @@
   /* Modal Form */
   .nt-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 9999; justify-content: center; align-items: flex-start; padding: 40px 20px; overflow-y: auto; }
   .nt-modal-overlay.active { display: flex; }
-  .nt-modal-box { background: #fff; max-width: 500px; width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.3); animation: slideDown 0.3s ease; }
+  .nt-modal-box { background: #fff; max-width: 500px; width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.3); animation: slideDown 0.3s ease; position: relative; }
   @keyframes slideDown { from { transform: translateY(-30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
   .nt-modal-head { background: var(--accent); color: #fff; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; }
   .nt-modal-head h3 { font-size: 1.1rem; font-weight: 700; margin: 0; }
@@ -76,6 +76,17 @@
   .nt-form-group input:focus, .nt-form-group textarea:focus { border-color: var(--accent); outline: none; }
   .nt-submit-btn { width: 100%; background: var(--accent); color: #fff; border: none; padding: 14px; border-radius: 8px; font-size: 1rem; font-weight: 700; text-transform: uppercase; cursor: pointer; }
   .nt-submit-btn:hover { background: var(--acch); }
+
+  /* Success State */
+  .nt-success-state { display: none; background: var(--accent); margin: -24px; padding: 40px 24px; color: #fff; text-align: center; min-height: 400px; }
+  .nt-success-ico { width: 58px; height: 58px; border-radius: 50%; background: #fff; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+  .nt-success-ico svg { width: 28px; height: 28px; stroke: var(--accent); stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .nt-success-title { font-family: var(--fh); font-size: 1.6rem; color: #fff; margin-bottom: 8px; }
+  .nt-success-sub { font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-bottom: 30px; }
+  .nt-verify-row { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2); padding: 12px; border-radius: 8px; margin-bottom: 10px; text-align: left; }
+  .nt-verify-lbl { display: block; font-size: 10px; text-transform: uppercase; opacity: 0.7; margin-bottom: 4px; }
+  .nt-verify-val { font-size: 14px; font-weight: 600; }
+  .nt-success-reset { margin-top: 30px; background: #fff; color: var(--accent); border: none; padding: 12px 30px; border-radius: 8px; font-weight: 700; cursor: pointer; width: 100%; }
 </style>
 
 <section class="nt-cats-section">
@@ -107,42 +118,70 @@
       <button class="nt-modal-close" onclick="closeSignModalDirect()">&times;</button>
     </div>
     <div class="nt-modal-body">
-      <!-- Updated Form Tag with novalidate and js-lead-form -->
-      <form class="js-lead-form" action="javascript:void(0)" novalidate>
-        <input type="hidden" id="ntSignNameInput" name="Sign Type">
-        <input type="hidden" name="uuid" class="form-uuid">
+      
+      <!-- Form Container -->
+      <div id="ntModalForm">
+        <form class="js-lead-form" action="javascript:void(0)" novalidate>
+          <input type="hidden" id="ntSignNameInput" name="Sign Type">
+          <input type="hidden" name="uuid" class="form-uuid">
+          
+          <div class="nt-form-group">
+            <label>Your Name *</label>
+            <input type="text" name="name" class="form-input" placeholder="John Doe" required>
+            <span class="error-text" data-error="name" style="color: red; font-size: 12px; display: block; margin-top: 4px;"></span>
+          </div>
+          
+          <div class="nt-form-group">
+            <label>Email Address *</label>
+            <input type="email" name="email" class="form-input" placeholder="you@example.com" required>
+            <span class="error-text" data-error="email" style="color: red; font-size: 12px; display: block; margin-top: 4px;"></span>
+          </div>
+          
+          <div class="nt-form-group">
+            <label>Phone Number *</label>
+            <input type="tel" name="phone" class="form-input" placeholder="(555) 123-4567" required>
+            <span class="error-text" data-error="phone" style="color: red; font-size: 12px; display: block; margin-top: 4px;"></span>
+          </div>
+          
+          <div class="nt-form-group">
+            <label>Sign Details</label>
+            <textarea name="details" rows="3" placeholder="Size, color, installation location..."></textarea>
+          </div>
+          
+          <div class="nt-form-group">
+            <label>Upload Logo *</label>
+            <input type="file" name="image" class="form-image" accept="image/*,.pdf,.ai,.eps" required>
+            <span class="error-text" data-error="image" style="color: red; font-size: 12px; display: block; margin-top: 4px;"></span>
+          </div>
+          
+          <button type="submit" class="nt-submit-btn">Submit Request</button>
+        </form>
+      </div>
+
+      <!-- Success Container (Hidden by default) -->
+      <div class="nt-success-state" id="ntSuccessState">
+        <div class="nt-success-ico">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3 class="nt-success-title">We're already on it.</h3>
+        <p class="nt-success-sub">Your request is in. Expect a call within the hour.</p>
         
-        <div class="nt-form-group">
-          <label>Your Name *</label>
-          <input type="text" name="name" class="form-input" placeholder="John Doe" required>
-          <span class="error-text" data-error="name" style="color: red; font-size: 12px; display: block; margin-top: 4px;"></span>
+        <div class="nt-verify-row">
+          <span class="nt-verify-lbl">Name</span>
+          <span class="nt-verify-val" id="ntSuccessName">-</span>
+        </div>
+        <div class="nt-verify-row">
+          <span class="nt-verify-lbl">Email</span>
+          <span class="nt-verify-val" id="ntSuccessEmail">-</span>
+        </div>
+        <div class="nt-verify-row">
+          <span class="nt-verify-lbl">Phone</span>
+          <span class="nt-verify-val" id="ntSuccessPhone">-</span>
         </div>
         
-        <div class="nt-form-group">
-          <label>Email Address *</label>
-          <input type="email" name="email" class="form-input" placeholder="you@example.com" required>
-          <span class="error-text" data-error="email" style="color: red; font-size: 12px; display: block; margin-top: 4px;"></span>
-        </div>
-        
-        <div class="nt-form-group">
-          <label>Phone Number *</label>
-          <input type="tel" name="phone" class="form-input" placeholder="(555) 123-4567" required>
-          <span class="error-text" data-error="phone" style="color: red; font-size: 12px; display: block; margin-top: 4px;"></span>
-        </div>
-        
-        <div class="nt-form-group">
-          <label>Sign Details</label>
-          <textarea name="details" rows="3" placeholder="Size, color, installation location..."></textarea>
-        </div>
-        
-        <div class="nt-form-group">
-          <label>Upload Logo *</label>
-          <input type="file" name="image" class="form-image" accept="image/*,.pdf,.ai,.eps" required>
-          <span class="error-text" data-error="image" style="color: red; font-size: 12px; display: block; margin-top: 4px;"></span>
-        </div>
-        
-        <button type="submit" class="nt-submit-btn">Submit Request</button>
-      </form>
+        <button class="nt-success-reset" onclick="closeSignModalDirect()">Submit another request</button>
+      </div>
+
     </div>
   </div>
 </div>
@@ -353,17 +392,26 @@
     var modal = document.getElementById('ntSignModal');
     document.getElementById('ntModalSignName').textContent = signName;
     document.getElementById('ntSignNameInput').value = signName;
+    
+    // Reset form and success state before opening
+    document.getElementById('ntModalForm').style.display = 'block';
+    document.getElementById('ntSuccessState').style.display = 'none';
+    var form = modal.querySelector('.js-lead-form');
+    if(form) form.reset();
+    
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
+  
   function closeSignModal(event) {
     if (event.target.id === 'ntSignModal') {
-      document.getElementById('ntSignModal').classList.remove('active');
-      document.body.style.overflow = 'auto';
+      closeSignModalDirect();
     }
   }
+  
   function closeSignModalDirect() {
-    document.getElementById('ntSignModal').classList.remove('active');
+    var modal = document.getElementById('ntSignModal');
+    modal.classList.remove('active');
     document.body.style.overflow = 'auto';
   }
 
@@ -375,7 +423,7 @@
     });
   });
 
-  // --- TASK 1: Form Validation & UUID Generation (Guarded to prevent double binding) ---
+  // --- TASK 1: Form Validation & UUID Generation ---
   if (!window.ntFormValidationLoaded) {
     window.ntFormValidationLoaded = true;
     
@@ -459,8 +507,21 @@
           if (uuidInput) {
             uuidInput.value = makeUuid();
           }
-          console.log('Sign Type Form Validated! UUID:', uuidInput ? uuidInput.value : 'No UUID field');
-          alert('Validation Passed! Form is ready to submit to backend.');
+          
+          // Check if we are inside the Sign Type Modal
+          var modalFormWrapper = document.getElementById('ntModalForm');
+          if (modalFormWrapper && modalFormWrapper.contains(form)) {
+             // Show Success Screen
+             document.getElementById('ntModalForm').style.display = 'none';
+             document.getElementById('ntSuccessState').style.display = 'block';
+             document.getElementById('ntSuccessName').innerText = nameValue;
+             document.getElementById('ntSuccessEmail').innerText = emailValue;
+             document.getElementById('ntSuccessPhone').innerText = phoneValue;
+             form.reset(); // Clear form for next use
+          } else {
+             // For Hero form (Free Mockup), keep the alert for now or add a custom success later
+             alert('Validation Passed! Form is ready to submit to backend.');
+          }
         }
       });
     });
