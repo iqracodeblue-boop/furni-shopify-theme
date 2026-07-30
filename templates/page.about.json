@@ -97,9 +97,9 @@
       "name": "NT Lead Hero v1",
       "settings": {}
     },
-    "nt_sign_types_grid_rbdbyK": {
-      "type": "nt-sign-types-grid",
-      "name": "NT Sign Types Grid",
+    "nt_categories_grid_xnQdwW": {
+      "type": "nt-categories-grid",
+      "name": "NT Categories Grid",
       "settings": {}
     }
   },
@@ -113,6 +113,6 @@
     "nt_about_values_v1_ajckqP",
     "nt_final_cta_v1_LV9pe3",
     "nt_lead_hero_v1_QTHJ3C",
-    "nt_sign_types_grid_rbdbyK"
+    "nt_categories_grid_xnQdwW"
   ]
 }
