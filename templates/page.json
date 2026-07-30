@@ -82,6 +82,21 @@
       "type": "nt-loox-reviews",
       "name": "NT Loox Reviews",
       "settings": {}
+    },
+    "nt_about_v1_F9TkNC": {
+      "type": "nt-about-v1",
+      "name": "NT About v1",
+      "settings": {}
+    },
+    "nt_fax_v1_mrrinH": {
+      "type": "nt-fax-v1",
+      "name": "NT FAQ v1",
+      "settings": {}
+    },
+    "nt_final_ct_v1_TDaWbH": {
+      "type": "nt-final-ct-v1",
+      "name": "NT Final CTA v1",
+      "settings": {}
     }
   },
   "order": [
@@ -90,6 +105,9 @@
     "nt_categories_grid_krf4j3",
     "nt_process_v1_3emNLm",
     "nt_why_us_v1_ByxJWr",
-    "nt_loox_reviews_eyWKND"
+    "nt_loox_reviews_eyWKND",
+    "nt_about_v1_F9TkNC",
+    "nt_fax_v1_mrrinH",
+    "nt_final_ct_v1_TDaWbH"
   ]
 }
