@@ -126,6 +126,11 @@
       "type": "nt-fax-v1",
       "name": "NT FAQ v1",
       "settings": {}
+    },
+    "nt_final_ct_v1_mdmbdU": {
+      "type": "nt-final-ct-v1",
+      "name": "NT Final CTA v1",
+      "settings": {}
     }
   },
   "order": [
@@ -143,6 +148,7 @@
     "nt_why_us_v1_wPUXWT",
     "nt_loox_reviews_WDHaTg",
     "nt_about_v1_K6enEN",
-    "nt_fax_v1_M7jXGQ"
+    "nt_fax_v1_M7jXGQ",
+    "nt_final_ct_v1_mdmbdU"
   ]
 }
