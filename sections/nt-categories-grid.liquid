@@ -107,13 +107,40 @@
       <button class="nt-modal-close" onclick="closeSignModalDirect()">&times;</button>
     </div>
     <div class="nt-modal-body">
-      <form action="/contact#ContactForm" method="post">
+      <!-- Updated Form Tag with novalidate and js-lead-form -->
+      <form class="js-lead-form" action="javascript:void(0)" novalidate>
         <input type="hidden" id="ntSignNameInput" name="Sign Type">
-        <div class="nt-form-group"><label>Your Name *</label><input type="text" name="name" placeholder="John Doe" required></div>
-        <div class="nt-form-group"><label>Email Address *</label><input type="email" name="email" placeholder="you@example.com" required></div>
-        <div class="nt-form-group"><label>Phone Number</label><input type="tel" name="phone" placeholder="(555) 123-4567"></div>
-        <div class="nt-form-group"><label>Sign Details</label><textarea name="details" rows="3" placeholder="Size, color, installation location..."></textarea></div>
-        <div class="nt-form-group"><label>Upload Logo (Optional)</label><input type="file" name="logo" accept="image/*,.pdf,.ai,.eps"></div>
+        <input type="hidden" name="uuid" class="form-uuid">
+        
+        <div class="nt-form-group">
+          <label>Your Name *</label>
+          <input type="text" name="name" class="form-input" placeholder="John Doe" required>
+          <span class="error-text" data-error="name" style="color: red; font-size: 12px; display: block; margin-top: 4px;"></span>
+        </div>
+        
+        <div class="nt-form-group">
+          <label>Email Address *</label>
+          <input type="email" name="email" class="form-input" placeholder="you@example.com" required>
+          <span class="error-text" data-error="email" style="color: red; font-size: 12px; display: block; margin-top: 4px;"></span>
+        </div>
+        
+        <div class="nt-form-group">
+          <label>Phone Number *</label>
+          <input type="tel" name="phone" class="form-input" placeholder="(555) 123-4567" required>
+          <span class="error-text" data-error="phone" style="color: red; font-size: 12px; display: block; margin-top: 4px;"></span>
+        </div>
+        
+        <div class="nt-form-group">
+          <label>Sign Details</label>
+          <textarea name="details" rows="3" placeholder="Size, color, installation location..."></textarea>
+        </div>
+        
+        <div class="nt-form-group">
+          <label>Upload Logo *</label>
+          <input type="file" name="image" class="form-image" accept="image/*,.pdf,.ai,.eps" required>
+          <span class="error-text" data-error="image" style="color: red; font-size: 12px; display: block; margin-top: 4px;"></span>
+        </div>
+        
         <button type="submit" class="nt-submit-btn">Submit Request</button>
       </form>
     </div>
@@ -121,7 +148,7 @@
 </div>
 
 <script>
-  // All Categories and Signs Data (Exact Counts Matching)
+  // All Categories and Signs Data
   const NT_CATS = [
     {
       id: 'storefront', name: 'Storefront Signs', count: 11, img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg',
@@ -347,6 +374,105 @@
       if(event.key === "Escape") closeSignModalDirect();
     });
   });
+
+  // --- TASK 1: Form Validation & UUID Generation (Guarded to prevent double binding) ---
+  if (!window.ntFormValidationLoaded) {
+    window.ntFormValidationLoaded = true;
+    
+    function makeUuid() {
+      return window.crypto && window.crypto.randomUUID
+        ? window.crypto.randomUUID()
+        : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            var r = (Math.random() * 16) | 0;
+            return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
+          });
+    }
+
+    document.querySelectorAll('.js-lead-form').forEach((form) => {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        let isValid = true;
+        
+        form.querySelectorAll('.error-text').forEach((span) => {
+          span.innerText = '';
+        });
+
+        const nameInput = form.querySelector('[name="name"]');
+        const emailInput = form.querySelector('[name="email"]');
+        const phoneInput = form.querySelector('[name="phone"]');
+        const imageInput = form.querySelector('[name="image"]');
+
+        const nameValue = nameInput ? nameInput.value.trim() : '';
+        const emailValue = emailInput ? emailInput.value.trim() : '';
+        const phoneValue = phoneInput ? phoneInput.value.trim() : '';
+
+        // Name Validation
+        const nameRegex = /^[a-zA-Z\s]+$/;
+        if (nameValue === '') {
+          displayError(form, 'name', 'Name cannot be empty.');
+          isValid = false;
+        } else if (!nameRegex.test(nameValue)) {
+          displayError(form, 'name', 'Name can only contain letters and spaces.');
+          isValid = false;
+        }
+
+        // Email Validation
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (emailValue === '') {
+          displayError(form, 'email', 'Email cannot be empty.');
+          isValid = false;
+        } else if (!emailRegex.test(emailValue)) {
+          displayError(form, 'email', 'Please enter a valid email format (must include @).');
+          isValid = false;
+        }
+
+        // Phone Validation
+        const phoneRegex = /^[0-9+\-\s()]+$/;
+        if (phoneValue === '') {
+          displayError(form, 'phone', 'Phone number cannot be empty.');
+          isValid = false;
+        } else if (!phoneRegex.test(phoneValue)) {
+          displayError(form, 'phone', 'Only valid phone number characters are allowed.');
+          isValid = false;
+        }
+
+        // Image Upload Validation
+        if (imageInput) {
+          const file = imageInput.files[0];
+          if (!file) {
+            displayError(form, 'image', 'Image upload is required.');
+            isValid = false;
+          } else {
+            if (!file.type.startsWith('image/')) {
+              displayError(form, 'image', 'Only image files are accepted.');
+              isValid = false;
+            }
+            if (file.size > 20971520) {
+              displayError(form, 'image', 'File size exceeds 20 MB limit.');
+              isValid = false;
+            }
+          }
+        }
+
+        if (isValid) {
+          const uuidInput = form.querySelector('.form-uuid');
+          if (uuidInput) {
+            uuidInput.value = makeUuid();
+          }
+          console.log('Sign Type Form Validated! UUID:', uuidInput ? uuidInput.value : 'No UUID field');
+          alert('Validation Passed! Form is ready to submit to backend.');
+        }
+      });
+    });
+
+    function displayError(form, fieldName, message) {
+      const errorSpan = form.querySelector(`[data-error="${fieldName}"]`);
+      if (errorSpan) {
+        errorSpan.innerText = message;
+        errorSpan.style.display = 'block';
+      }
+    }
+  }
 </script>
 
 {% schema %}
