@@ -204,9 +204,12 @@
         </a>
       </div>
 
-      <form class="qf-wrap" action="/contact#ContactForm" method="post">
+      <form class="qf-wrap js-lead-form" action="javascript:void(0)">
         <h2 class="qf-title">Tell us about your sign.</h2>
         
+        <!-- Hidden UUID Field for JS -->
+        <input type="hidden" name="uuid" class="form-uuid">
+
         <!-- Section 1 -->
         <div class="qf-section">
           <div class="qf-section-label">Contact Information <span class="qf-section-req">*</span></div>
@@ -216,23 +219,26 @@
                 <label class="qf-label">Your name</label>
                 <div class="qf-input-wrap">
                   <svg class="qf-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                  <input class="qf-input" type="text" name="name" placeholder="First and last name" required>
+                  <input class="qf-input form-input" type="text" name="name" required>
                 </div>
+                <span class="error-text" data-error="name" style="color: red; font-size: 12px; display: block; margin-top: 4px;"></span>
               </div>
               <div class="qf-field">
                 <label class="qf-label">Phone</label>
                 <div class="qf-input-wrap">
                   <svg class="qf-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
-                  <input class="qf-input" type="tel" name="phone" placeholder="(555) 123-4567">
+                  <input class="qf-input form-input" type="tel" name="phone" required>
                 </div>
+                <span class="error-text" data-error="phone" style="color: red; font-size: 12px; display: block; margin-top: 4px;"></span>
               </div>
             </div>
             <div class="qf-field">
               <label class="qf-label">Email</label>
               <div class="qf-input-wrap">
                 <svg class="qf-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m2 7 10 7 10-7"/></svg>
-                <input class="qf-input" type="email" name="email" placeholder="you@yourbusiness.com" required>
+                <input class="qf-input form-input" type="email" name="email" required>
               </div>
+              <span class="error-text" data-error="email" style="color: red; font-size: 12px; display: block; margin-top: 4px;"></span>
             </div>
             <div class="qf-field">
               <label class="qf-label">Upload your logo <span class="opt">Recommended</span></label>
@@ -242,8 +248,9 @@
                   <span class="qf-file-main">Logo &amp; site photo — drop or <a href="#" onclick="return false">browse</a></span>
                   <span class="qf-file-hint">PNG, JPG, PDF, AI, EPS, SVG — Max 20 MB each</span>
                 </span>
-                <input type="file" name="logo" accept="image/*,.pdf,.ai,.eps" multiple>
+                <input type="file" name="image" class="form-image" accept="image/*,.pdf,.ai,.eps" required>
               </label>
+              <span class="error-text" data-error="image" style="color: red; font-size: 12px; display: block; margin-top: 4px;"></span>
             </div>
           </div>
         </div>
@@ -320,12 +327,13 @@
   </div>
 </section>
 
-<!-- Lightbox JS -->
+<!-- Lightbox JS (Existing) -->
 <div id="nt-lightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; justify-content:center; align-items:center;" onclick="closeLightbox()">
   <img id="nt-lightbox-img" src="" style="max-width:90%; max-height:90%; border-radius:8px;">
 </div>
 
 <script>
+  // Existing Lightbox functions
   function openLightbox(src) {
     var lb = document.getElementById('nt-lightbox');
     var img = document.getElementById('nt-lightbox-img');
