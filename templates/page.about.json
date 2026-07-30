@@ -111,6 +111,11 @@
       "type": "nt-why-us-v1",
       "name": "NT Why Us v1",
       "settings": {}
+    },
+    "nt_loox_reviews_WDHaTg": {
+      "type": "nt-loox-reviews",
+      "name": "NT Loox Reviews",
+      "settings": {}
     }
   },
   "order": [
@@ -125,6 +130,7 @@
     "nt_lead_hero_v1_jgTg7a",
     "nt_categories_grid_GLAR3U",
     "nt_process_v1_9e99FQ",
-    "nt_why_us_v1_wPUXWT"
+    "nt_why_us_v1_wPUXWT",
+    "nt_loox_reviews_WDHaTg"
   ]
 }
