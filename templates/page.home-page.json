@@ -73,12 +73,24 @@
       "type": "nt-contact-form-v1",
       "name": "NT Contact Form",
       "settings": {}
+    },
+    "nt_fax_v1_nR78xY": {
+      "type": "nt-fax-v1",
+      "name": "NT FAQ v1",
+      "settings": {}
+    },
+    "nt_final_ct_v1_qftWnQ": {
+      "type": "nt-final-ct-v1",
+      "name": "NT Final CTA v1",
+      "settings": {}
     }
   },
   "order": [
     "main",
     "nt_header_v1_E33E6m",
     "nt_home_page_v1_YrRGdN",
-    "nt_contact_form_v1_n7Tr4C"
+    "nt_contact_form_v1_n7Tr4C",
+    "nt_fax_v1_nR78xY",
+    "nt_final_ct_v1_qftWnQ"
   ]
 }
