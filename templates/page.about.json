@@ -91,46 +91,6 @@
       "type": "nt-final-cta-v1",
       "name": "NT Final CTA",
       "settings": {}
-    },
-    "nt_lead_hero_v1_jgTg7a": {
-      "type": "nt-lead-hero-v1",
-      "name": "NT Lead Hero v1",
-      "settings": {}
-    },
-    "nt_categories_grid_GLAR3U": {
-      "type": "nt-categories-grid",
-      "name": "NT Categories Grid",
-      "settings": {}
-    },
-    "nt_process_v1_9e99FQ": {
-      "type": "nt-process-v1",
-      "name": "NT Process v1",
-      "settings": {}
-    },
-    "nt_why_us_v1_wPUXWT": {
-      "type": "nt-why-us-v1",
-      "name": "NT Why Us v1",
-      "settings": {}
-    },
-    "nt_loox_reviews_WDHaTg": {
-      "type": "nt-loox-reviews",
-      "name": "NT Loox Reviews",
-      "settings": {}
-    },
-    "nt_about_v1_K6enEN": {
-      "type": "nt-about-v1",
-      "name": "NT About v1",
-      "settings": {}
-    },
-    "nt_fax_v1_M7jXGQ": {
-      "type": "nt-fax-v1",
-      "name": "NT FAQ v1",
-      "settings": {}
-    },
-    "nt_final_ct_v1_mdmbdU": {
-      "type": "nt-final-ct-v1",
-      "name": "NT Final CTA v1",
-      "settings": {}
     }
   },
   "order": [
@@ -141,14 +101,6 @@
     "nt_about_numbers_v1_c6T7jk",
     "nt_about_team_v1_JQqJit",
     "nt_about_values_v1_ajckqP",
-    "nt_final_cta_v1_LV9pe3",
-    "nt_lead_hero_v1_jgTg7a",
-    "nt_categories_grid_GLAR3U",
-    "nt_process_v1_9e99FQ",
-    "nt_why_us_v1_wPUXWT",
-    "nt_loox_reviews_WDHaTg",
-    "nt_about_v1_K6enEN",
-    "nt_fax_v1_M7jXGQ",
-    "nt_final_ct_v1_mdmbdU"
+    "nt_final_cta_v1_LV9pe3"
   ]
 }

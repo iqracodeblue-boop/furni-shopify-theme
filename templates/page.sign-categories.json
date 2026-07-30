@@ -68,11 +68,6 @@
       "name": "NT Cat Stats",
       "settings": {}
     },
-    "nt_cat_variants_v1_aKcRKY": {
-      "type": "nt-cat-variants-v1",
-      "name": "NT Cat Variants",
-      "settings": {}
-    },
     "nt_cat_specs_v1_UbEwWG": {
       "type": "nt-cat-specs-v1",
       "name": "NT Cat Specs",
@@ -87,13 +82,18 @@
       "type": "nt-final-cta-v1",
       "name": "NT Final CTA",
       "settings": {}
+    },
+    "nt_categories_grid_9qDb4w": {
+      "type": "nt-categories-grid",
+      "name": "NT Categories Grid",
+      "settings": {}
     }
   },
   "order": [
     "main",
     "nt_cat_hero_v1_WkQiwm",
     "nt_cat_stats_v1_EeQbVK",
-    "nt_cat_variants_v1_aKcRKY",
+    "nt_categories_grid_9qDb4w",
     "nt_cat_specs_v1_UbEwWG",
     "nt_cat_bestfor_v1_LWWGd3",
     "nt_final_cta_v1_jTaPcK"
