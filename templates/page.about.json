@@ -92,14 +92,19 @@
       "name": "NT Final CTA",
       "settings": {}
     },
-    "nt_lead_hero_v1_QTHJ3C": {
+    "nt_categories_grid_GLAR3U": {
+      "type": "nt-categories-grid",
+      "name": "NT Categories Grid",
+      "settings": {}
+    },
+    "nt_lead_hero_v1_jgTg7a": {
       "type": "nt-lead-hero-v1",
       "name": "NT Lead Hero v1",
       "settings": {}
     },
-    "nt_categories_grid_GLAR3U": {
-      "type": "nt-categories-grid",
-      "name": "NT Categories Grid",
+    "nt_process_v1_9e99FQ": {
+      "type": "nt-process-v1",
+      "name": "NT Process v1",
       "settings": {}
     }
   },
@@ -112,7 +117,8 @@
     "nt_about_team_v1_JQqJit",
     "nt_about_values_v1_ajckqP",
     "nt_final_cta_v1_LV9pe3",
-    "nt_lead_hero_v1_QTHJ3C",
-    "nt_categories_grid_GLAR3U"
+    "nt_lead_hero_v1_jgTg7a",
+    "nt_categories_grid_GLAR3U",
+    "nt_process_v1_9e99FQ"
   ]
 }
