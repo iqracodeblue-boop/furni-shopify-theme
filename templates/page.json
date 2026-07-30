@@ -67,11 +67,29 @@
       "type": "nt-categories-grid",
       "name": "NT Categories Grid",
       "settings": {}
+    },
+    "nt_process_v1_3emNLm": {
+      "type": "nt-process-v1",
+      "name": "NT Process v1",
+      "settings": {}
+    },
+    "nt_why_us_v1_ByxJWr": {
+      "type": "nt-why-us-v1",
+      "name": "NT Why Us v1",
+      "settings": {}
+    },
+    "nt_loox_reviews_eyWKND": {
+      "type": "nt-loox-reviews",
+      "name": "NT Loox Reviews",
+      "settings": {}
     }
   },
   "order": [
     "main",
     "nt_lead_hero_v1_hRMGim",
-    "nt_categories_grid_krf4j3"
+    "nt_categories_grid_krf4j3",
+    "nt_process_v1_3emNLm",
+    "nt_why_us_v1_ByxJWr",
+    "nt_loox_reviews_eyWKND"
   ]
 }
