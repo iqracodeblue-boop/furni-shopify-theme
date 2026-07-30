@@ -1,0 +1,43 @@
+<!-- sections/nt-final-cta-v1.liquid -->
+<style>
+  .nt-final-cta {
+    background: linear-gradient(180deg, #111 0%, #0a0a0a 100%);
+    color: #fff;
+    padding: 104px 48px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .nt-final-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 50% at 0% 100%, rgba(1, 136, 204, 0.16) 0%, transparent 70%);
+  }
+  .nt-final-inner { max-width: 780px; margin: 0 auto; position: relative; z-index: 1; }
+  .nt-final-inner h2 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 5vw, 3.4rem); color: #fff; line-height: 1.04; margin-bottom: 18px; font-weight: 400; }
+  .nt-final-inner h2 em { font-style: italic; color: #0188cc; }
+  .nt-final-inner p { font-family: 'Inter', sans-serif; font-size: 1.08rem; color: rgba(255,255,255,0.72); max-width: 540px; margin: 0 auto 36px; }
+  .nt-btn-primary { background: #0188cc; color: #111; font-weight: 700; padding: 16px 28px; border-radius: 10px; text-decoration: none; display: inline-flex; gap: 10px; align-items: center; transition: 0.2s; }
+  .nt-btn-primary:hover { background: #0170a8; transform: translateY(-2px); }
+  @media (max-width: 768px) { .nt-final-cta { padding: 72px 24px; } }
+</style>
+
+<section class="nt-final-cta">
+  <div class="nt-final-inner">
+    <h2>Your Business Deserves a Sign <em>Worth Standing Behind.</em></h2>
+    <p>Free sign mockup in two hours. No obligation, no high-pressure sales call. Just a designed mockup of your custom business sign on your actual storefront.</p>
+    <a href="#hero" class="nt-btn-primary">
+      Get Your Free Mockup
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NT Final CTA v1",
+  "settings": [],
+  "presets": [{"name": "NT Final CTA v1"}]
+}
+{% endschema %}
