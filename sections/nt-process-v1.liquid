@@ -1,0 +1,119 @@
+<!-- sections/nt-process-v1.liquid -->
+<style>
+  .pw-section {
+    background: radial-gradient(900px 340px at 50% 0%, rgba(1,136,204,.1) 0%, rgba(1,136,204,0) 65%), linear-gradient(180deg, #ffffff 0%, #f6fbfb 100%);
+    padding: 80px 20px;
+    font-family: 'Inter', system-ui, sans-serif;
+    text-align: center;
+  }
+  .pw-wrap { max-width: 1000px; margin: 0 auto; }
+  .pw-header { margin-bottom: 50px; }
+  
+  .pw-eyebrow {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: #016DA0; margin: 0 0 12px;
+  }
+  .pw-eyebrow::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: #016DA0; }
+  
+  .pw-title {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: clamp(2.2rem, 5vw, 2.8rem);
+    color: #111; font-weight: 400;
+    line-height: 1.05; letter-spacing: -.02em;
+    margin: 0 0 10px;
+  }
+  .pw-title em { color: #0188cc; font-style: italic; }
+  
+  .pw-subtitle {
+    font-size: 1rem; color: #666; line-height: 1.65;
+    max-width: 580px; margin: 0 auto;
+  }
+
+  .pw-steps {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0; position: relative;
+  }
+  /* Connecting line behind the circles */
+  .pw-steps::before {
+    content: ''; position: absolute; top: 28px; left: 12%; right: 12%;
+    height: 2px; background: linear-gradient(90deg,transparent,rgba(1,136,204,.5) 20%,rgba(1,136,204,.5) 80%,transparent);
+    z-index: 0;
+  }
+  
+  .pw-step {
+    text-align: center; padding: 18px 16px 14px; position: relative; z-index: 1;
+    background: rgba(255,255,255,.82); border: 1px solid rgba(0,0,0,.06);
+    border-radius: 14px; box-shadow: 0 8px 22px rgba(1,136,204,.12);
+    backdrop-filter: blur(3px);
+  }
+  
+  .pw-step-num {
+    width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 18px;
+    background: #fff; border: 2px solid rgba(1,136,204,.38);
+    box-shadow: 0 6px 20px rgba(1,136,204,.18), 0 0 0 4px rgba(1,136,204,.16);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .pw-step-num-inner {
+    width: 38px; height: 38px; border-radius: 50%; background: #0188cc;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fjalla One', sans-serif; font-size: 1.1rem; color: #fff; letter-spacing: .02em;
+  }
+  
+  .pw-step-title {
+    font-family: 'Inter', sans-serif; font-size: .88rem; font-weight: 700; color: #111; margin-bottom: 8px;
+  }
+  .pw-step-text {
+    font-family: 'Inter', sans-serif; font-size: .78rem; color: #666; line-height: 1.55;
+  }
+
+  @media(max-width:768px){
+    .pw-steps{ grid-template-columns: 1fr 1fr; gap: 20px; }
+    .pw-steps::before{ display: none; }
+  }
+  @media(max-width:480px){
+    .pw-steps{ grid-template-columns: 1fr; gap: 24px; }
+    .pw-section{ padding: 60px 15px; }
+  }
+</style>
+
+<section class="pw-section" id="how-we-do-it">
+  <div class="pw-wrap">
+    <div class="pw-header">
+      <div class="pw-eyebrow" style="justify-content:center">Our Process</div>
+      <h2 class="pw-title">From Quote to <em>Installed.</em></h2>
+      <p class="pw-subtitle">Four simple steps from your first call to a finished custom storefront sign on your wall — nationwide sign installation included.</p>
+    </div>
+    
+    <div class="pw-steps">
+      <div class="pw-step">
+        <div class="pw-step-num"><div class="pw-step-num-inner">1</div></div>
+        <div class="pw-step-title">Fill the Form</div>
+        <div class="pw-step-text">90 seconds. Tell us your sign type, placement, and a few details. We'll call you within the hour.</div>
+      </div>
+      <div class="pw-step">
+        <div class="pw-step-num"><div class="pw-step-num-inner">2</div></div>
+        <div class="pw-step-title">Get Your Mockup</div>
+        <div class="pw-step-text">We place your sign on a photo of your actual building. Daytime and night versions, both free.</div>
+      </div>
+      <div class="pw-step">
+        <div class="pw-step-num"><div class="pw-step-num-inner">3</div></div>
+        <div class="pw-step-title">Approve &amp; Order</div>
+        <div class="pw-step-text">Review your quote, approve the design, then we begin production. No deposit until you're happy.</div>
+      </div>
+      <div class="pw-step">
+        <div class="pw-step-num"><div class="pw-step-num-inner">4</div></div>
+        <div class="pw-step-title">Delivered Fast</div>
+        <div class="pw-step-text">Your finished sign ships nationwide in 10-15 business days, ready for installation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NT Process v1",
+  "settings": [],
+  "presets": [{"name": "NT Process v1"}]
+}
+{% endschema %}
