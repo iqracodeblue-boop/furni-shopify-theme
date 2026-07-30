@@ -1,0 +1,306 @@
+<!-- sections/nt-categories-grid.liquid -->
+<style>
+  :root {
+    --fh: 'DM Serif Display', Georgia, serif;
+    --fb: 'Inter', system-ui, sans-serif;
+    --accent: #0188cc;
+    --acch: #016da0;
+    --ink: #111111;
+    --muted: #666666;
+  }
+  .nt-cats-section { background: #fff; padding: 80px 20px; font-family: var(--fb); }
+  .nt-container { max-width: 1200px; margin: 0 auto; }
+  .nt-head { text-align: center; margin-bottom: 50px; }
+  .nt-head h2 { font-family: var(--fh); font-size: 2.5rem; color: var(--ink); margin-bottom: 10px; font-weight: 400; }
+  .nt-head h2 em { color: var(--accent); font-style: italic; }
+  .nt-head p { color: var(--muted); max-width: 600px; margin: 0 auto; }
+
+  /* Category Grid */
+  .nt-cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  @media (max-width: 1100px) { .nt-cat-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .nt-cat-grid { grid-template-columns: 1fr; } }
+
+  .nt-cat-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 16px; overflow: hidden; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; }
+  .nt-cat-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); border-color: var(--accent); }
+  .nt-cat-img-wrap { position: relative; aspect-ratio: 5/4; overflow: hidden; background: #eee; }
+  .nt-cat-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+  .nt-cat-card:hover .nt-cat-img { transform: scale(1.05); }
+  .nt-cat-count { position: absolute; top: 12px; left: 12px; background: rgba(255,255,255,0.9); padding: 5px 10px; border-radius: 100px; font-size: 10.5px; font-weight: 700; color: #111; }
+  .nt-cat-count b { color: var(--accent); }
+  .nt-cat-body { padding: 16px; flex: 1; display: flex; flex-direction: column; }
+  .nt-cat-title { font-family: var(--fh); font-size: 18px; color: var(--ink); margin-bottom: 8px; }
+  .nt-cat-desc { font-size: 13px; color: var(--muted); line-height: 1.5; flex: 1; margin-bottom: 16px; }
+  .nt-explore-btn { width: 100%; padding: 10px; border: 1.5px solid var(--accent); color: var(--accent); background: transparent; border-radius: 8px; font-weight: 700; font-size: 11.5px; text-transform: uppercase; cursor: pointer; transition: 0.2s; }
+  .nt-explore-btn:hover { background: var(--accent); color: #fff; }
+
+  /* Signs Panel (Opens on click) */
+  .nt-signs-panel { display: none; animation: fadeIn 0.4s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .nt-back-btn { background: none; border: none; color: var(--muted); font-weight: 600; cursor: pointer; margin-bottom: 20px; display: flex; align-items: center; gap: 5px; }
+  .nt-back-btn:hover { color: var(--accent); }
+  .nt-panel-head { text-align: center; margin-bottom: 40px; }
+  .nt-panel-head h2 { font-family: var(--fh); font-size: 2rem; color: var(--ink); }
+  
+  .nt-sign-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 900px) { .nt-sign-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 500px) { .nt-sign-grid { grid-template-columns: 1fr; } }
+
+  .nt-sign-card { border: 1px solid #eee; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05); background: #fff; display: flex; flex-direction: column; }
+  .nt-sign-img-wrap { position: relative; aspect-ratio: 4/3; overflow: hidden; }
+  .nt-sign-img { width: 100%; height: 100%; object-fit: cover; }
+  .nt-sign-badge { position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.6); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; text-transform: uppercase; }
+  .nt-sign-body { padding: 14px; flex: 1; display: flex; flex-direction: column; }
+  .nt-sign-title { font-family: var(--fh); font-size: 1rem; color: var(--ink); margin-bottom: 6px; }
+  .nt-sign-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.4; margin-bottom: 10px; flex: 1; }
+  .nt-sign-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 12px; }
+  .nt-tag { background: #f5f5f5; color: #555; padding: 3px 8px; border-radius: 100px; font-size: 0.7rem; }
+  .nt-sign-btns { display: flex; gap: 6px; }
+  .nt-btn { flex: 1; padding: 8px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; text-align: center; cursor: pointer; text-decoration: none; border: 1px solid transparent; }
+  .nt-btn-outline { border-color: #ddd; color: #444; background: #fff; }
+  .nt-btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+  .nt-btn-primary { background: var(--accent); color: #fff; border: none; }
+  .nt-btn-primary:hover { background: var(--acch); }
+
+  /* Modal Form */
+  .nt-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 9999; justify-content: center; align-items: flex-start; padding: 40px 20px; overflow-y: auto; }
+  .nt-modal-overlay.active { display: flex; }
+  .nt-modal-box { background: #fff; max-width: 500px; width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.3); animation: slideDown 0.3s ease; }
+  @keyframes slideDown { from { transform: translateY(-30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+  .nt-modal-head { background: var(--accent); color: #fff; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; }
+  .nt-modal-head h3 { font-size: 1.1rem; font-weight: 700; margin: 0; }
+  .nt-modal-close { background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; line-height: 1; }
+  .nt-modal-body { padding: 24px; }
+  .nt-form-group { margin-bottom: 16px; }
+  .nt-form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: #555; margin-bottom: 6px; }
+  .nt-form-group input, .nt-form-group textarea { width: 100%; padding: 12px; border: 1.5px solid #ddd; border-radius: 8px; font-family: var(--fb); font-size: 0.95rem; box-sizing: border-box; }
+  .nt-form-group input:focus, .nt-form-group textarea:focus { border-color: var(--accent); outline: none; }
+  .nt-submit-btn { width: 100%; background: var(--accent); color: #fff; border: none; padding: 14px; border-radius: 8px; font-size: 1rem; font-weight: 700; text-transform: uppercase; cursor: pointer; }
+  .nt-submit-btn:hover { background: var(--acch); }
+</style>
+
+<section class="nt-cats-section">
+  <div class="nt-container">
+    <div class="nt-head">
+      <h2>Popular <em>Sign Types</em> We Build</h2>
+      <p>From bold storefront channel letters to refined lobby displays, every sign is engineered in our factory and built to UL standards.</p>
+    </div>
+
+    <!-- Category Grid -->
+    <div class="nt-cat-grid" id="ntCatGrid"></div>
+
+    <!-- Signs Panel (Hidden by default) -->
+    <div class="nt-signs-panel" id="ntSignsPanel">
+      <button class="nt-back-btn" onclick="showCategories()">← Back to Categories</button>
+      <div class="nt-panel-head">
+        <h2 id="ntPanelTitle">Sign Types</h2>
+      </div>
+      <div class="nt-sign-grid" id="ntSignGrid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Quote Modal -->
+<div class="nt-modal-overlay" id="ntSignModal" onclick="closeSignModal(event)">
+  <div class="nt-modal-box" onclick="event.stopPropagation()">
+    <div class="nt-modal-head">
+      <h3>Get Quote for <span id="ntModalSignName">Sign</span></h3>
+      <button class="nt-modal-close" onclick="closeSignModalDirect()">&times;</button>
+    </div>
+    <div class="nt-modal-body">
+      <form action="/contact#ContactForm" method="post">
+        <input type="hidden" id="ntSignNameInput" name="Sign Type">
+        <div class="nt-form-group"><label>Your Name *</label><input type="text" name="name" placeholder="John Doe" required></div>
+        <div class="nt-form-group"><label>Email Address *</label><input type="email" name="email" placeholder="you@example.com" required></div>
+        <div class="nt-form-group"><label>Phone Number</label><input type="tel" name="phone" placeholder="(555) 123-4567"></div>
+        <div class="nt-form-group"><label>Sign Details</label><textarea name="details" rows="3" placeholder="Size, color, installation location..."></textarea></div>
+        <div class="nt-form-group"><label>Upload Logo (Optional)</label><input type="file" name="logo" accept="image/*,.pdf,.ai,.eps"></div>
+        <button type="submit" class="nt-submit-btn">Submit Request</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 1. All Categories and Signs Data (Extracted from signs.inc source)
+  const NT_CATS = [
+    {
+      id: 'storefront', name: 'Storefront Signs', count: 11, img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg',
+      desc: 'The sign above your door works harder than any ad you run. It pulls foot traffic 24/7.',
+      signs: [
+        { name: 'Acrylic Front Lit', img: 'https://i.ibb.co/B2JQnr6N/74d052ff-c4ee-4cb5-ac7e-183dcb40f0e2.png', badge: 'Lit', desc: 'Acrylic channel letters with front illumination for storefront impact.', tags: ['Acrylic', 'Lit', 'Exterior'] },
+        { name: 'Push Thru Sign', img: 'https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg', badge: 'Lit', desc: 'Push-through illuminated letters with crisp acrylic faces.', tags: ['Push Thru', 'Lit', 'Exterior'] },
+        { name: '3D Metal Backlit', img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', badge: 'Lit', desc: 'Fabricated metal letters with halo-style back illumination.', tags: ['Metal', 'Backlit', '3D'] },
+        { name: 'Metal Backlit w/ Backboard', img: 'https://i.ibb.co/DH0FFQCd/66793f20edb71e28c00f7e453b711b46.jpg', badge: 'Lit', desc: 'Backlit metal letters on raceway or backboard for clean installation.', tags: ['Metal', 'Backlit', 'Raceway'] }
+      ]
+    },
+    {
+      id: 'reception', name: 'Reception & Studio Signs', count: 9, img: 'https://i.ibb.co/Z1bRvmFX/1a8bfc475f04e41dc4168ddc673f5e30.jpg',
+      desc: 'Soft, premium halo glow that elevates any brand. Ideal as an indoor office sign or reception display.',
+      signs: [
+        { name: 'Push Thru Sign', img: 'https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg', badge: 'Lit', desc: 'Push-through illuminated reception sign with clean acrylic face.', tags: ['Push Thru', 'Lit', 'Indoor'] },
+        { name: 'Metal Backlit', img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', badge: 'Lit', desc: 'Halo-lit fabricated metal letters for a refined lobby look.', tags: ['Metal', 'Backlit', 'Indoor'] },
+        { name: '3D Metal Backlit w/ Backboard', img: 'https://i.ibb.co/DH0FFQCd/66793f20edb71e28c00f7e453b711b46.jpg', badge: 'Lit', desc: 'Backlit metal letters on a contrasting backboard panel.', tags: ['Metal', 'Backlit', 'Backboard'] },
+        { name: 'UV Acrylic', img: 'https://i.ibb.co/2mRQ7Y0/e0cc8c5e140f122c969efb850e696e44.jpg', badge: 'Indoor', desc: 'UV-printed acrylic panel sign with vibrant, full-color graphics.', tags: ['UV', 'Acrylic', 'Indoor'] }
+      ]
+    },
+    {
+      id: 'medical', name: 'Medical & Clinic Signs', count: 11, img: 'https://i.ibb.co/VcjZ4ZBF/000.png',
+      desc: 'Professional, ADA-friendly signage for clinics and medical offices. Permits handled.',
+      signs: [
+        { name: 'Push Thru Sign', img: 'https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg', badge: 'Lit', desc: 'Push-through illuminated sign for clean interior branding.', tags: ['Push Thru', 'Lit', 'Indoor'] },
+        { name: 'Metal Backlit', img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', badge: 'Lit', desc: 'Halo-lit metal letters for a professional clinic entrance.', tags: ['Metal', 'Backlit', 'Indoor'] },
+        { name: 'UV Acrylic', img: 'https://i.ibb.co/2mRQ7Y0/e0cc8c5e140f122c969efb850e696e44.jpg', badge: 'Indoor', desc: 'UV-printed acrylic for directional and branded interior panels.', tags: ['UV', 'Acrylic', 'Indoor'] },
+        { name: '2D Metal Sign', img: 'https://i.ibb.co/tw6YCpDT/063b1e2c37358407418c077152045bc7.jpg', badge: 'Non-Lit', desc: 'Flat-cut precision metal letters for suite numbers and wayfinding.', tags: ['2D', 'Metal', 'Flat Cut'] }
+      ]
+    },
+    {
+      id: 'coffee', name: 'Coffee Shops & Restaurants', count: 10, img: 'https://i.ibb.co/jPLvTFk4/Storefronts-2.jpg',
+      desc: 'Lightbox signs, hanging storefront signs, blade signs, and laser cut acrylic sign fixtures.',
+      signs: [
+        { name: 'Open Face Neon', img: 'https://i.ibb.co/Xk4qPbsC/1532bdd2ade8d057d4e699a32c975bdf.jpg', badge: 'Lit', desc: 'Open-face neon sign with high character and strong visual draw.', tags: ['Neon', 'Open Face', 'Exterior'] },
+        { name: 'Metal Backlit', img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', badge: 'Lit', desc: 'Halo-lit metal for bar back walls and accent features.', tags: ['Metal', 'Backlit', 'Indoor'] },
+        { name: 'Single Sided Light Box', img: 'https://i.ibb.co/ymt16Mbq/Get-Free-Quote-1-1.jpg', badge: 'Lit', desc: 'Illuminated cabinet sign for high-traffic road visibility.', tags: ['Lightbox', 'Lit', 'Exterior'] },
+        { name: '2D / 3D Blade Sign', img: 'https://i.ibb.co/mV3v9BYN/82af58aae7504722de4ec7d81cd4b359.jpg', badge: 'Exterior', desc: 'Projecting blade sign for pedestrian-heavy streets.', tags: ['Blade', 'Projecting', 'Exterior'] }
+      ]
+    },
+    {
+      id: 'gym', name: 'Gym, Spa & Salon Signs', count: 10, img: 'https://i.ibb.co/tpq229Zx/86e7f4ccec44b08749e3403e5c444a65.jpg',
+      desc: 'Photogenic neon storefront signs, acrylic lettering signs, and dimensional wall signs.',
+      signs: [
+        { name: 'Neon Sign (Indoor)', img: 'https://i.ibb.co/VWjhRjwT/a7ea5d503588096afe9becc3339c493a.jpg', badge: 'Popular', desc: 'LED neon for selfie walls, motivational quotes, and brand moments.', tags: ['Neon', 'LED', 'Indoor'] },
+        { name: 'Metal Backlit', img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', badge: 'Lit', desc: 'Halo-lit metal for premium spa and studio branding.', tags: ['Metal', 'Backlit', 'Indoor'] },
+        { name: 'Acrylic Front Lit', img: 'https://i.ibb.co/B2JQnr6N/74d052ff-c4ee-4cb5-ac7e-183dcb40f0e2.png', badge: 'Lit', desc: 'Exterior channel letters for building-mounted gym/salon branding.', tags: ['Acrylic', 'Lit', 'Exterior'] },
+        { name: 'UV Acrylic', img: 'https://i.ibb.co/2mRQ7Y0/e0cc8c5e140f122c969efb850e696e44.jpg', badge: 'Indoor', desc: 'UV-printed panels for pricing boards, brand art, and wayfinding.', tags: ['UV', 'Acrylic', 'Indoor'] }
+      ]
+    },
+    {
+      id: 'auto', name: 'Auto Services & Real Estate', count: 9, img: 'https://i.ibb.co/zhspw9Zp/e099e6192c61020ed637eaefeee78b12.jpg',
+      desc: 'Showroom reception walls, dealership outdoor metal signs, and property office signage.',
+      signs: [
+        { name: 'Single Sided Light Box', img: 'https://i.ibb.co/ymt16Mbq/Get-Free-Quote-1-1.jpg', badge: 'Lit', desc: 'Illuminated cabinet for roadside auto service visibility.', tags: ['Lightbox', 'Lit', 'Exterior'] },
+        { name: 'Metal Backlit', img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', badge: 'Lit', desc: 'Halo-lit metal logo for reception areas.', tags: ['Metal', 'Backlit', 'Indoor'] },
+        { name: 'Double Sided Lightbox', img: 'https://i.ibb.co/d4WF9QcK/b3b4738c429129bd1ab66fe917ec6920.jpg', badge: 'Lit', desc: 'Two-sided lightbox for corner lot locations.', tags: ['Lightbox', 'Double Sided', 'Exterior'] },
+        { name: 'Acrylic Front Lit', img: 'https://i.ibb.co/B2JQnr6N/74d052ff-c4ee-4cb5-ac7e-183dcb40f0e2.png', badge: 'Lit', desc: 'Exterior channel letters for building facade.', tags: ['Acrylic', 'Lit', 'Exterior'] }
+      ]
+    },
+    {
+      id: 'lobby', name: 'Lobby & Interior Signs', count: 8, img: 'https://i.ibb.co/JFC3PgnK/2d-metal-5mm-image-2.jpg',
+      desc: 'The wall behind your reception desk is the most valuable brand real estate you own.',
+      signs: [
+        { name: '3D Metal Backlit', img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', badge: 'Lit', desc: 'Halo-lit fabricated metal letters for lobby walls.', tags: ['Metal', 'Backlit', '3D'] },
+        { name: '3D Metal Non Lit', img: 'https://i.ibb.co/XxBHkQjf/87f166fff9b333d24a15963efac6d657.jpg', badge: 'Non-Lit', desc: 'Dimensional brushed or painted metal for a refined look.', tags: ['3D', 'Metal', 'Non-Lit'] },
+        { name: '2D Metal Sign', img: 'https://i.ibb.co/tw6YCpDT/063b1e2c37358407418c077152045bc7.jpg', badge: 'Non-Lit', desc: 'Flat-cut precision metal letters, clean and minimal.', tags: ['2D', 'Metal', 'Flat Cut'] },
+        { name: 'Neon Sign', img: 'https://i.ibb.co/VWjhRjwT/a7ea5d503588096afe9becc3339c493a.jpg', badge: 'Popular', desc: 'LED neon for warm ambiance and memorable lobby branding.', tags: ['Neon', 'LED', 'Indoor'] }
+      ]
+    },
+    {
+      id: 'interior', name: 'Interior · All Signs', count: 16, img: 'https://i.ibb.co/h1tDfqnQ/download-45.jpg',
+      desc: 'Every indoor sign type we make — reception walls, lobby features, wayfinding, neon statement pieces.',
+      signs: [
+        { name: 'Metal Backlit', img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', badge: 'Lit', desc: 'Backlit metal letters for premium interior lobby and wall branding.', tags: ['Metal', 'Backlit', 'Interior'] },
+        { name: '2D Metal / 5mm Flat Cut', img: 'https://i.ibb.co/Fb0JMmQX/a1c7eb5a751b3cc57e5376b319783e3b.jpg', badge: 'Indoor', desc: 'Flat 5mm metal letters with minimalist non-lit look.', tags: ['2D', 'Metal', '5mm'] },
+        { name: 'LED Neon Sign', img: 'https://i.ibb.co/d0x1CYvz/NEON-1.png', badge: 'Lit', desc: 'Classic neon-style sign for statement walls and ambiance.', tags: ['Neon', 'Decorative', 'Interior'] },
+        { name: '3D Metal Non Lit', img: 'https://i.ibb.co/XxBHkQjf/87f166fff9b333d24a15963efac6d657.jpg', badge: 'Indoor', desc: 'Dimensional non-lit metal letters for refined corporate interiors.', tags: ['3D', 'Metal', 'Non-Lit'] }
+      ]
+    }
+  ];
+
+  // 2. Render Categories Function
+  function renderCategories() {
+    let html = '';
+    NT_CATS.forEach(cat => {
+      html += `
+        <div class="nt-cat-card" onclick="showSigns('${cat.id}')">
+          <div class="nt-cat-img-wrap">
+            <img src="${cat.img}" alt="${cat.name}" class="nt-cat-img" loading="lazy">
+            <span class="nt-cat-count"><b>${cat.count}</b> sign types</span>
+          </div>
+          <div class="nt-cat-body">
+            <h3 class="nt-cat-title">${cat.name}</h3>
+            <p class="nt-cat-desc">${cat.desc}</p>
+            <button class="nt-explore-btn">Explore Types →</button>
+          </div>
+        </div>
+      `;
+    });
+    document.getElementById('ntCatGrid').innerHTML = html;
+  }
+
+  // 3. Show Signs Function (When Category is clicked)
+  function showSigns(catId) {
+    const cat = NT_CATS.find(c => c.id === catId);
+    if (!cat) return;
+
+    let signsHtml = '';
+    cat.signs.forEach(sign => {
+      signsHtml += `
+        <div class="nt-sign-card">
+          <div class="nt-sign-img-wrap">
+            <img src="${sign.img}" alt="${sign.name}" class="nt-sign-img" loading="lazy">
+            <span class="nt-sign-badge">${sign.badge}</span>
+          </div>
+          <div class="nt-sign-body">
+            <h3 class="nt-sign-title">${sign.name}</h3>
+            <p class="nt-sign-desc">${sign.desc}</p>
+            <div class="nt-sign-tags">
+              ${sign.tags.map(t => `<span class="nt-tag">${t}</span>`).join('')}
+            </div>
+            <div class="nt-sign-btns">
+              <a href="#" class="nt-btn nt-btn-outline">View Designs</a>
+              <button class="nt-btn nt-btn-primary" onclick="openSignModal('${sign.name}')">Get Quote</button>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+
+    document.getElementById('ntPanelTitle').innerText = cat.name;
+    document.getElementById('ntSignGrid').innerHTML = signsHtml;
+    
+    document.getElementById('ntCatGrid').style.display = 'none';
+    document.getElementById('ntSignsPanel').style.display = 'block';
+    window.scrollTo({ top: document.getElementById('ntSignsPanel').offsetTop - 100, behavior: 'smooth' });
+  }
+
+  // 4. Back to Categories Function
+  function showCategories() {
+    document.getElementById('ntSignsPanel').style.display = 'none';
+    document.getElementById('ntCatGrid').style.display = 'grid';
+    window.scrollTo({ top: document.getElementById('ntCatGrid').offsetTop - 100, behavior: 'smooth' });
+  }
+
+  // 5. Modal Functions
+  function openSignModal(signName) {
+    var modal = document.getElementById('ntSignModal');
+    document.getElementById('ntModalSignName').textContent = signName;
+    document.getElementById('ntSignNameInput').value = signName;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeSignModal(event) {
+    if (event.target.id === 'ntSignModal') {
+      document.getElementById('ntSignModal').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+  }
+  function closeSignModalDirect() {
+    document.getElementById('ntSignModal').classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+
+  // Initialize on load
+  document.addEventListener('DOMContentLoaded', function() {
+    renderCategories();
+    document.addEventListener('keydown', function(event) {
+      if(event.key === "Escape") closeSignModalDirect();
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "NT Categories Grid",
+  "settings": [],
+  "presets": [{"name": "NT Categories Grid"}]
+}
+{% endschema %}
