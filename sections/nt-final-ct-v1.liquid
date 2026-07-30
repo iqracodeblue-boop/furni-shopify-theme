@@ -1,0 +1,70 @@
+<!-- sections/nt-final-cta-v1.liquid -->
+<style>
+  .nt-final-cta {
+    background: linear-gradient(180deg, #111 0%, #0a0a0a 100%);
+    color: #fff;
+    padding: 104px 48px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  .nt-final-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse 70% 50% at 0% 100%, rgba(1, 136, 204, 0.16) 0%, transparent 70%), radial-gradient(ellipse 60% 50% at 100% 0%, rgba(1, 136, 204, 0.1) 0%, transparent 65%);
+  }
+  .nt-final-inner { max-width: 780px; margin: 0 auto; position: relative; z-index: 1; }
+  .nt-final-label { display: inline-flex; align-items: center; gap: 8px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: #0188cc; margin-bottom: 16px; }
+  .nt-final-label::before, .nt-final-label::after { content: ''; width: 24px; height: 1px; background: #0188cc; }
+  
+  .nt-final-inner h2 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 5vw, 3.4rem); color: #fff; line-height: 1.04; letter-spacing: -0.02em; margin-bottom: 18px; font-weight: 400; }
+  .nt-final-inner h2 em { font-style: italic; color: #0188cc; }
+  .nt-final-inner p { font-size: 1.08rem; line-height: 1.6; color: rgba(255,255,255,0.72); max-width: 540px; margin: 0 auto 36px; }
+  
+  .nt-final-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .nt-btn-primary { background: #0188cc; color: #111; font-weight: 700; padding: 16px 28px; border-radius: 10px; text-decoration: none; display: inline-flex; gap: 10px; align-items: center; transition: 0.2s; box-shadow: 0 8px 24px rgba(1,136,204,0.32); border: none; cursor: pointer; font-size: 0.95rem; }
+  .nt-btn-primary:hover { background: #0170a8; transform: translateY(-2px); }
+  .nt-btn-ghost { background: transparent; color: #fff; font-weight: 600; padding: 15px 26px; border-radius: 10px; border: 1.5px solid rgba(255,255,255,0.32); text-decoration: none; display: inline-flex; gap: 10px; align-items: center; transition: 0.2s; font-size: 0.95rem; }
+  .nt-btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(1,136,204,0.6); }
+  
+  .nt-final-trust { margin-top: 42px; display: flex; justify-content: center; align-items: center; gap: 32px; flex-wrap: wrap; }
+  .nt-final-trust-item { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.52); font-size: 0.82rem; }
+  .nt-final-trust-item svg { width: 16px; height: 16px; stroke: #0188cc; stroke-width: 2; fill: none; }
+  
+  @media (max-width: 768px) { .nt-final-cta { padding: 72px 24px; } .nt-final-trust { gap: 18px; } }
+</style>
+
+<section class="nt-final-cta">
+  <div class="nt-final-inner">
+    <span class="nt-final-label">Ready When You Are</span>
+    <h2>Your Business Deserves a Sign <em>Worth Standing Behind.</em></h2>
+    <p>Free sign mockup in two hours. No obligation, no high-pressure sales call. Just a designed mockup of your custom business sign on your actual storefront so you can see exactly what it will look like.</p>
+    <div class="nt-final-ctas">
+      <button class="nt-btn-primary" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        Get Your Free Mockup
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </button>
+      <a href="tel:+12059007525" class="nt-btn-ghost">
+        Call +1 205 900 7525
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+      </a>
+    </div>
+    <div class="nt-final-trust">
+      <div class="nt-final-trust-item"><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg> Free 2-hour mockup</div>
+      <div class="nt-final-trust-item"><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg> No obligation</div>
+      <div class="nt-final-trust-item"><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg> 2-years warranty</div>
+      <div class="nt-final-trust-item"><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg> No middleman markup</div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NT Final CTA v1",
+  "settings": [],
+  "presets": [{"name": "NT Final CTA v1"}]
+}
+{% endschema %}
