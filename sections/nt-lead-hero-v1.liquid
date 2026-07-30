@@ -204,7 +204,8 @@
         </a>
       </div>
 
-      <form class="qf-wrap js-lead-form" action="javascript:void(0)">
+      <!-- NOTE: novalidate attribute added here to stop browser's default validation -->
+      <form class="qf-wrap js-lead-form" action="javascript:void(0)" novalidate>
         <h2 class="qf-title">Tell us about your sign.</h2>
         
         <!-- Hidden UUID Field for JS -->
@@ -383,23 +384,27 @@
       const emailValue = emailInput ? emailInput.value.trim() : '';
       const phoneValue = phoneInput ? phoneInput.value.trim() : '';
 
-      // Name Validation
+      // --- Name Validation ---
+      const nameRegex = /^[a-zA-Z\s]+$/; // Sirf letters aur spaces allow hain
       if (nameValue === '') {
         displayError(form, 'name', 'Name cannot be empty.');
         isValid = false;
+      } else if (!nameRegex.test(nameValue)) {
+        displayError(form, 'name', 'Name can only contain letters and spaces.');
+        isValid = false;
       }
 
-      // Email Validation
+      // --- Email Validation ---
       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
       if (emailValue === '') {
         displayError(form, 'email', 'Email cannot be empty.');
         isValid = false;
       } else if (!emailRegex.test(emailValue)) {
-        displayError(form, 'email', 'Please enter a valid email format.');
+        displayError(form, 'email', 'Please enter a valid email format (must include @).');
         isValid = false;
       }
 
-      // Phone Validation
+      // --- Phone Validation ---
       const phoneRegex = /^[0-9+\-\s()]+$/; // Sirf numbers, +, -, space, () allow hain
       if (phoneValue === '') {
         displayError(form, 'phone', 'Phone number cannot be empty.');
@@ -409,19 +414,17 @@
         isValid = false;
       }
 
-      // Image Upload Validation
+      // --- Image Upload Validation ---
       if (imageInput) {
         const file = imageInput.files[0];
         if (!file) {
           displayError(form, 'image', 'Image upload is required.');
           isValid = false;
         } else {
-          // Allowed: sirf image files
           if (!file.type.startsWith('image/')) {
             displayError(form, 'image', 'Only image files are accepted.');
             isValid = false;
           }
-          // Max size: 20 MB (20 * 1024 * 1024 = 20971520 bytes)
           if (file.size > 20971520) {
             displayError(form, 'image', 'File size exceeds 20 MB limit.');
             isValid = false;
@@ -433,9 +436,8 @@
       if (isValid) {
         const uuidInput = form.querySelector('.form-uuid');
         if (uuidInput) {
-          uuidInput.value = makeUuid(); // Unique ID generate karke hidden field mein daalna
+          uuidInput.value = makeUuid();
         }
-        
         console.log('Form Validated Successfully! UUID:', uuidInput ? uuidInput.value : 'No UUID field');
         alert('Validation Passed! Form is ready to submit to backend.');
         
