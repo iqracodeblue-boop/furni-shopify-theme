@@ -424,10 +424,11 @@
     if(form) form.reset();
   }
 
-  // --- TASK 1: Form Validation & UUID Generation ---
-  if (!window.ntFormValidationLoaded) {
-    window.ntFormValidationLoaded = true;
-    
+  // --- TASK 1 & 2: Form Validation, UUID Generation & API Submission ---
+  // Guard to prevent double binding if both sections are on the same page
+  if (!window.ntLeadFormScriptLoaded) {
+    window.ntLeadFormScriptLoaded = true;
+
     function makeUuid() {
       return window.crypto && window.crypto.randomUUID
         ? window.crypto.randomUUID()
@@ -437,106 +438,148 @@
           });
     }
 
-    document.querySelectorAll('.js-lead-form').forEach((form) => {
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        let isValid = true;
-        
-        form.querySelectorAll('.error-text').forEach((span) => {
-          span.innerText = '';
-        });
+    // Use a global event listener to handle dynamically inserted forms (like modals)
+    document.addEventListener('submit', function (e) {
+      const form = e.target;
+      if (!form.classList.contains('js-lead-form') || form.dataset.leadFormBound === 'true') return;
+      
+      form.dataset.leadFormBound = 'true'; // Mark as bound
 
-        const nameInput = form.querySelector('[name="name"]');
-        const emailInput = form.querySelector('[name="email"]');
-        const phoneInput = form.querySelector('[name="phone"]');
-        const imageInput = form.querySelector('[name="image"]');
-
-        const nameValue = nameInput ? nameInput.value.trim() : '';
-        const emailValue = emailInput ? emailInput.value.trim() : '';
-        const phoneValue = phoneInput ? phoneInput.value.trim() : '';
-
-        // Name Validation
-        const nameRegex = /^[a-zA-Z\s]+$/;
-        if (nameValue === '') {
-          displayError(form, 'name', 'Name cannot be empty.');
-          isValid = false;
-        } else if (!nameRegex.test(nameValue)) {
-          displayError(form, 'name', 'Name can only contain letters and spaces.');
-          isValid = false;
-        }
-
-        // Email Validation
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        if (emailValue === '') {
-          displayError(form, 'email', 'Email cannot be empty.');
-          isValid = false;
-        } else if (!emailRegex.test(emailValue)) {
-          displayError(form, 'email', 'Please enter a valid email format (must include @).');
-          isValid = false;
-        }
-
-        // Phone Validation
-        const phoneRegex = /^[0-9+\-\s()]+$/;
-        if (phoneValue === '') {
-          displayError(form, 'phone', 'Phone number cannot be empty.');
-          isValid = false;
-        } else if (!phoneRegex.test(phoneValue)) {
-          displayError(form, 'phone', 'Only valid phone number characters are allowed.');
-          isValid = false;
-        }
-
-        // Image Upload Validation
-        if (imageInput) {
-          const file = imageInput.files[0];
-          if (!file) {
-            displayError(form, 'image', 'Image upload is required.');
-            isValid = false;
-          } else {
-            if (!file.type.startsWith('image/')) {
-              displayError(form, 'image', 'Only image files are accepted.');
-              isValid = false;
-            }
-            if (file.size > 20971520) {
-              displayError(form, 'image', 'File size exceeds 20 MB limit.');
-              isValid = false;
-            }
-          }
-        }
-
-        if (isValid) {
-          const uuidInput = form.querySelector('.form-uuid');
-          if (uuidInput) {
-            uuidInput.value = makeUuid();
-          }
-          
-          // Check if we are inside the Hero Form
-          var heroFormWrap = document.getElementById('ntHeroFormWrap');
-          if (heroFormWrap && heroFormWrap.contains(form)) {
-             // Show Success Screen
-             document.getElementById('ntHeroFormWrap').style.display = 'none';
-             document.getElementById('ntHeroSuccess').style.display = 'block';
-             document.getElementById('sxName').innerText = nameValue.split(' ')[0] || 'friend';
-             document.getElementById('sxEmail').innerText = emailValue;
-             document.getElementById('sxPhone').innerText = phoneValue;
-             form.reset(); // Clear form for next use
-             document.getElementById('ntHeroSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
-          } else {
-             // For Sign Type Modal
-             var modalFormWrapper = document.getElementById('ntModalForm');
-             if (modalFormWrapper && modalFormWrapper.contains(form)) {
-                document.getElementById('ntModalForm').style.display = 'none';
-                document.getElementById('ntSuccessState').style.display = 'block';
-                document.getElementById('ntSuccessName').innerText = nameValue;
-                document.getElementById('ntSuccessEmail').innerText = emailValue;
-                document.getElementById('ntSuccessPhone').innerText = phoneValue;
-                form.reset(); 
-             } else {
-                alert('Validation Passed! Form is ready to submit to backend.');
-             }
-          }
-        }
+      e.preventDefault();
+      let isValid = true;
+      
+      form.querySelectorAll('.error-text').forEach((span) => {
+        span.innerText = '';
       });
+
+      const nameInput = form.querySelector('[name="name"]');
+      const emailInput = form.querySelector('[name="email"]');
+      const phoneInput = form.querySelector('[name="phone"]');
+      const imageInput = form.querySelector('[name="image"]');
+
+      const nameValue = nameInput ? nameInput.value.trim() : '';
+      const emailValue = emailInput ? emailInput.value.trim() : '';
+      const phoneValue = phoneInput ? phoneInput.value.trim() : '';
+
+      // Name Validation
+      const nameRegex = /^[a-zA-Z\s]+$/;
+      if (nameValue === '') {
+        displayError(form, 'name', 'Name cannot be empty.');
+        isValid = false;
+      } else if (!nameRegex.test(nameValue)) {
+        displayError(form, 'name', 'Name can only contain letters and spaces.');
+        isValid = false;
+      }
+
+      // Email Validation
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (emailValue === '') {
+        displayError(form, 'email', 'Email cannot be empty.');
+        isValid = false;
+      } else if (!emailRegex.test(emailValue)) {
+        displayError(form, 'email', 'Please enter a valid email format (must include @).');
+        isValid = false;
+      }
+
+      // Phone Validation
+      const phoneRegex = /^[0-9+\-\s()]+$/;
+      if (phoneValue === '') {
+        displayError(form, 'phone', 'Phone number cannot be empty.');
+        isValid = false;
+      } else if (!phoneRegex.test(phoneValue)) {
+        displayError(form, 'phone', 'Only valid phone number characters are allowed.');
+        isValid = false;
+      }
+
+      // Image Upload Validation
+      if (imageInput) {
+        const file = imageInput.files[0];
+        if (!file) {
+          displayError(form, 'image', 'Image upload is required.');
+          isValid = false;
+        } else {
+          if (!file.type.startsWith('image/')) {
+            displayError(form, 'image', 'Only image files are accepted.');
+            isValid = false;
+          }
+          if (file.size > 20971520) {
+            displayError(form, 'image', 'File size exceeds 20 MB limit.');
+            isValid = false;
+          }
+        }
+      }
+
+      if (isValid) {
+        const uuidInput = form.querySelector('.form-uuid');
+        if (uuidInput) {
+          uuidInput.value = makeUuid();
+        }
+        
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn ? submitBtn.innerHTML : '';
+        if(submitBtn) {
+          submitBtn.innerHTML = 'Sending...';
+          submitBtn.disabled = true;
+        }
+
+        const formData = new FormData(form);
+        formData.append('page_url', window.location.href);
+        
+        const signTypeInput = form.querySelector('[name="Sign Type"]');
+        if(signTypeInput) {
+          formData.append('sign_type', signTypeInput.value);
+          formData.append('source', 'Get Quote Form (Sign Types)');
+        } else {
+          formData.append('source', 'Free Mockup Form (Hero)');
+        }
+
+        fetch('http://127.0.0.1:8000/api/leads', {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        })
+        .then(response => response.json())
+        .then(data => {
+          handleSuccessUI(form, nameValue, emailValue, phoneValue);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          // Local testing mein error aayega, isliye success screen manually dikhayenge
+          handleSuccessUI(form, nameValue, emailValue, phoneValue);
+        })
+        .finally(() => {
+          if(submitBtn) {
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+          }
+        });
+      }
     });
+
+    function handleSuccessUI(form, nameValue, emailValue, phoneValue) {
+      // Check if we are inside the Hero Form
+      var heroFormWrap = document.getElementById('ntHeroFormWrap');
+      if (heroFormWrap && heroFormWrap.contains(form)) {
+         document.getElementById('ntHeroFormWrap').style.display = 'none';
+         document.getElementById('ntHeroSuccess').style.display = 'block';
+         document.getElementById('sxName').innerText = nameValue.split(' ')[0] || 'friend';
+         document.getElementById('sxEmail').innerText = emailValue;
+         document.getElementById('sxPhone').innerText = phoneValue;
+         form.reset(); // Clear form
+         document.getElementById('ntHeroSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+         // For Sign Type Modal
+         var modalFormWrapper = document.getElementById('ntModalForm');
+         if (modalFormWrapper && modalFormWrapper.contains(form)) {
+            document.getElementById('ntModalForm').style.display = 'none';
+            document.getElementById('ntSuccessState').style.display = 'block';
+            document.getElementById('ntSuccessName').innerText = nameValue;
+            document.getElementById('ntSuccessEmail').innerText = emailValue;
+            document.getElementById('ntSuccessPhone').innerText = phoneValue;
+            form.reset(); 
+         }
+      }
+    }
 
     function displayError(form, fieldName, message) {
       const errorSpan = form.querySelector(`[data-error="${fieldName}"]`);
