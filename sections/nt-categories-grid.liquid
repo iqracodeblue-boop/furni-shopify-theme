@@ -15,7 +15,6 @@
   .nt-head h2 em { color: var(--accent); font-style: italic; }
   .nt-head p { color: var(--muted); max-width: 600px; margin: 0 auto; }
 
-  /* Category Grid */
   .nt-cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
   @media (max-width: 1100px) { .nt-cat-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 600px) { .nt-cat-grid { grid-template-columns: 1fr; } }
@@ -33,7 +32,6 @@
   .nt-explore-btn { width: 100%; padding: 10px; border: 1.5px solid var(--accent); color: var(--accent); background: transparent; border-radius: 8px; font-weight: 700; font-size: 11.5px; text-transform: uppercase; cursor: pointer; transition: 0.2s; }
   .nt-explore-btn:hover { background: var(--accent); color: #fff; }
 
-  /* Signs Panel (Opens on click) */
   .nt-signs-panel { display: none; animation: fadeIn 0.4s ease; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
   .nt-back-btn { background: none; border: none; color: var(--muted); font-weight: 600; cursor: pointer; margin-bottom: 20px; display: flex; align-items: center; gap: 5px; }
@@ -61,7 +59,6 @@
   .nt-btn-primary { background: var(--accent); color: #fff; border: none; }
   .nt-btn-primary:hover { background: var(--acch); }
 
-  /* Modal Form */
   .nt-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 9999; justify-content: center; align-items: flex-start; padding: 40px 20px; overflow-y: auto; }
   .nt-modal-overlay.active { display: flex; }
   .nt-modal-box { background: #fff; max-width: 500px; width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.3); animation: slideDown 0.3s ease; position: relative; }
@@ -75,9 +72,7 @@
   .nt-form-group input, .nt-form-group textarea { width: 100%; padding: 12px; border: 1.5px solid #ddd; border-radius: 8px; font-family: var(--fb); font-size: 0.95rem; box-sizing: border-box; }
   .nt-form-group input:focus, .nt-form-group textarea:focus { border-color: var(--accent); outline: none; }
   .nt-submit-btn { width: 100%; background: var(--accent); color: #fff; border: none; padding: 14px; border-radius: 8px; font-size: 1rem; font-weight: 700; text-transform: uppercase; cursor: pointer; }
-  .nt-submit-btn:hover { background: var(--acch); }
 
-  /* Success State */
   .nt-success-state { display: none; background: var(--accent); margin: -24px; padding: 40px 24px; color: #fff; text-align: center; min-height: 400px; }
   .nt-success-ico { width: 58px; height: 58px; border-radius: 50%; background: #fff; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
   .nt-success-ico svg { width: 28px; height: 28px; stroke: var(--accent); stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
@@ -95,11 +90,7 @@
       <h2>Popular <em>Sign Types</em> We Build</h2>
       <p>From bold storefront channel letters to refined lobby displays, every sign is engineered in our factory and built to UL standards.</p>
     </div>
-
-    <!-- Category Grid -->
     <div class="nt-cat-grid" id="ntCatGrid"></div>
-
-    <!-- Signs Panel (Hidden by default) -->
     <div class="nt-signs-panel" id="ntSignsPanel">
       <button class="nt-back-btn" onclick="showCategories()">← Back to Categories</button>
       <div class="nt-panel-head">
@@ -110,7 +101,6 @@
   </div>
 </section>
 
-<!-- Quote Modal -->
 <div class="nt-modal-overlay" id="ntSignModal" onclick="closeSignModal(event)">
   <div class="nt-modal-box" onclick="event.stopPropagation()">
     <div class="nt-modal-head">
@@ -118,8 +108,6 @@
       <button class="nt-modal-close" onclick="closeSignModalDirect()">&times;</button>
     </div>
     <div class="nt-modal-body">
-      
-      <!-- Form Container -->
       <div id="ntModalForm">
         <form class="js-lead-form" action="javascript:void(0)" novalidate>
           <input type="hidden" id="ntSignNameInput" name="Sign Type">
@@ -130,42 +118,35 @@
             <input type="text" name="name" class="form-input" placeholder="John Doe" required>
             <span class="error-text" data-error="name" style="color: red; font-size: 12px; display: block; margin-top: 4px;"></span>
           </div>
-          
           <div class="nt-form-group">
             <label>Email Address *</label>
             <input type="email" name="email" class="form-input" placeholder="you@example.com" required>
             <span class="error-text" data-error="email" style="color: red; font-size: 12px; display: block; margin-top: 4px;"></span>
           </div>
-          
           <div class="nt-form-group">
             <label>Phone Number *</label>
             <input type="tel" name="phone" class="form-input" placeholder="(555) 123-4567" required>
             <span class="error-text" data-error="phone" style="color: red; font-size: 12px; display: block; margin-top: 4px;"></span>
           </div>
-          
           <div class="nt-form-group">
             <label>Sign Details</label>
             <textarea name="details" rows="3" placeholder="Size, color, installation location..."></textarea>
           </div>
-          
           <div class="nt-form-group">
             <label>Upload Logo *</label>
             <input type="file" name="image" class="form-image" accept="image/*,.pdf,.ai,.eps" required>
             <span class="error-text" data-error="image" style="color: red; font-size: 12px; display: block; margin-top: 4px;"></span>
           </div>
-          
           <button type="submit" class="nt-submit-btn">Submit Request</button>
         </form>
       </div>
 
-      <!-- Success Container (Hidden by default) -->
       <div class="nt-success-state" id="ntSuccessState">
         <div class="nt-success-ico">
           <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
         <h3 class="nt-success-title">We're already on it.</h3>
         <p class="nt-success-sub">Your request is in. Expect a call within the hour.</p>
-        
         <div class="nt-verify-row">
           <span class="nt-verify-lbl">Name</span>
           <span class="nt-verify-val" id="ntSuccessName">-</span>
@@ -178,152 +159,24 @@
           <span class="nt-verify-lbl">Phone</span>
           <span class="nt-verify-val" id="ntSuccessPhone">-</span>
         </div>
-        
         <button class="nt-success-reset" onclick="closeSignModalDirect()">Submit another request</button>
       </div>
-
     </div>
   </div>
 </div>
 
 <script>
-  // All Categories and Signs Data
   const NT_CATS = [
-    {
-      id: 'storefront', name: 'Storefront Signs', count: 11, img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg',
-      desc: 'The sign above your door works harder than any ad you run. It pulls foot traffic 24/7.',
-      signs: [
-        { name: 'Acrylic Front Lit', img: 'https://i.ibb.co/B2JQnr6N/74d052ff-c4ee-4cb5-ac7e-183dcb40f0e2.png', badge: 'Lit', desc: 'Acrylic channel letters with front illumination for storefront impact.', tags: ['Acrylic', 'Lit', 'Exterior'] },
-        { name: 'Push Thru Sign', img: 'https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg', badge: 'Lit', desc: 'Push-through illuminated letters with crisp acrylic faces.', tags: ['Push Thru', 'Lit', 'Exterior'] },
-        { name: '3D Metal Backlit', img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', badge: 'Lit', desc: 'Fabricated metal letters with halo-style back illumination.', tags: ['Metal', 'Backlit', '3D'] },
-        { name: 'Metal Backlit w/ Backboard', img: 'https://i.ibb.co/DH0FFQCd/66793f20edb71e28c00f7e453b711b46.jpg', badge: 'Lit', desc: 'Backlit metal letters on raceway or backboard for clean installation.', tags: ['Metal', 'Backlit', 'Raceway'] },
-        { name: 'Single Sided Light Box', img: 'https://i.ibb.co/ymt16Mbq/Get-Free-Quote-1-1.jpg', badge: 'Lit', desc: 'Illuminated cabinet sign with even light distribution.', tags: ['Lightbox', 'Lit', 'Exterior'] },
-        { name: '3D Metal Non Lit Sign', img: 'https://i.ibb.co/XxBHkQjf/87f166fff9b333d24a15963efac6d657.jpg', badge: 'Non-Lit', desc: 'Durable 3D fabricated metal letters, no lighting needed.', tags: ['3D', 'Metal', 'Non-Lit'] },
-        { name: 'Acrylic Double Lit Sign', img: 'https://i.ibb.co/zhspw9Zp/e099e6192c61020ed637eaefeee78b12.jpg', badge: 'Lit', desc: 'Double-illuminated acrylic for maximum brightness from both sides.', tags: ['Acrylic', 'Double Lit', 'Exterior'] },
-        { name: '3D Non Lit with Backboard', img: 'https://i.ibb.co/84SSsvZf/a7a2eaef0ef4d3d215fba120c6418940.jpg', badge: 'Non-Lit', desc: 'Dimensional non-lit letters mounted on a contrasting backboard.', tags: ['3D', 'Non-Lit', 'Backboard'] },
-        { name: 'Open Face Neon', img: 'https://i.ibb.co/Xk4qPbsC/1532bdd2ade8d057d4e699a32c975bdf.jpg', badge: 'Lit', desc: 'Open-face neon-style sign with high character and strong visual draw.', tags: ['Neon', 'Open Face', 'Exterior'] },
-        { name: 'Acrylic Backlit with Backboard', img: 'https://i.ibb.co/6cJ0BJWF/137e9116-cb1e-46a4-9038-a91dd15b03c9.png', badge: 'Lit', desc: 'Front-lit acrylic letters on raceway or backboard for bold storefront presence.', tags: ['Acrylic', 'Backlit', 'Raceway'] },
-        { name: 'Marquee Letters', img: 'https://i.ibb.co/G48pM6YL/Dmdj017-RZO5ty-KTu-GPv-GOImy-T2-Q2-Hwx-Yz-GMCWi-Gi-LP8dun6bn-XNH8-WKPZg-Kyo3-VIRXq-BUc-W2vp-GE3u-Kic-VJuf.jpg', badge: 'Popular', desc: 'Marquee-style letters for classic theatrical branding and high foot traffic attention.', tags: ['Marquee', 'Letters', 'Exterior'] }
-      ]
-    },
-    {
-      id: 'reception', name: 'Reception & Studio Signs', count: 9, img: 'https://i.ibb.co/Z1bRvmFX/1a8bfc475f04e41dc4168ddc673f5e30.jpg',
-      desc: 'Soft, premium halo glow that elevates any brand. Ideal as an indoor office sign or reception display.',
-      signs: [
-        { name: 'Push Thru Sign', img: 'https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg', badge: 'Lit', desc: 'Push-through illuminated reception sign with clean acrylic face.', tags: ['Push Thru', 'Lit', 'Indoor'] },
-        { name: 'Metal Backlit Signs', img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', badge: 'Lit', desc: 'Halo-lit fabricated metal letters for a refined lobby look.', tags: ['Metal', 'Backlit', 'Indoor'] },
-        { name: '3D Metal Backlit w/ Backboard', img: 'https://i.ibb.co/DH0FFQCd/66793f20edb71e28c00f7e453b711b46.jpg', badge: 'Lit', desc: 'Backlit metal letters on a contrasting backboard panel.', tags: ['Metal', 'Backlit', 'Backboard'] },
-        { name: 'UV Acrylic', img: 'https://i.ibb.co/2mRQ7Y0/e0cc8c5e140f122c969efb850e696e44.jpg', badge: 'Indoor', desc: 'UV-printed acrylic panel sign with vibrant, full-color graphics.', tags: ['UV', 'Acrylic', 'Indoor'] },
-        { name: '3D Metal Non Lit Sign', img: 'https://i.ibb.co/XxBHkQjf/87f166fff9b333d24a15963efac6d657.jpg', badge: 'Non-Lit', desc: 'Dimensional metal letters with brushed or painted finish.', tags: ['3D', 'Metal', 'Non-Lit'] },
-        { name: '2D Metal Sign', img: 'https://i.ibb.co/tw6YCpDT/063b1e2c37358407418c077152045bc7.jpg', badge: 'Non-Lit', desc: 'Flat-cut precision metal letters for minimalist branding.', tags: ['2D', 'Metal', 'Flat Cut'] },
-        { name: '2D Acrylic Sign', img: 'https://i.ibb.co/hRfBjC2X/63f2d997938c7fc6a05868334e2a25a8.jpg', badge: 'Non-Lit', desc: 'Laser-cut acrylic letters for clean, budget-friendly signage.', tags: ['2D', 'Acrylic', 'Indoor'] },
-        { name: 'Neon Sign', img: 'https://i.ibb.co/VWjhRjwT/a7ea5d503588096afe9becc3339c493a.jpg', badge: 'Popular', desc: 'LED neon sign for a warm, eye-catching reception wall statement.', tags: ['Neon', 'LED', 'Indoor'] },
-        { name: 'Vinyl/Flex Printing', img: 'https://i.ibb.co/gZ5TRXp7/d6a008e7276ede2c003d57c371562350.jpg', badge: 'Indoor', desc: 'Full-color vinyl or flex prints for walls, windows, and temporary branding.', tags: ['Vinyl', 'Print', 'Indoor'] }
-      ]
-    },
-    {
-      id: 'medical', name: 'Medical & Clinic Signs', count: 11, img: 'https://i.ibb.co/VcjZ4ZBF/000.png',
-      desc: 'Professional, ADA-friendly signage for clinics and medical offices. Permits handled.',
-      signs: [
-        { name: 'Push Thru Sign', img: 'https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg', badge: 'Lit', desc: 'Push-through illuminated sign for clean interior branding.', tags: ['Push Thru', 'Lit', 'Indoor'] },
-        { name: 'Metal Backlit Signs', img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', badge: 'Lit', desc: 'Halo-lit metal letters for a professional clinic entrance.', tags: ['Metal', 'Backlit', 'Indoor'] },
-        { name: '3D Metal Backlit w/ Backboard', img: 'https://i.ibb.co/DH0FFQCd/66793f20edb71e28c00f7e453b711b46.jpg', badge: 'Lit', desc: 'Backlit metal on backboard for structured interior branding.', tags: ['Metal', 'Backlit', 'Backboard'] },
-        { name: 'UV Acrylic', img: 'https://i.ibb.co/2mRQ7Y0/e0cc8c5e140f122c969efb850e696e44.jpg', badge: 'Indoor', desc: 'UV-printed acrylic for directional and branded interior panels.', tags: ['UV', 'Acrylic', 'Indoor'] },
-        { name: '3D Metal Non Lit Sign', img: 'https://i.ibb.co/XxBHkQjf/87f166fff9b333d24a15963efac6d657.jpg', badge: 'Non-Lit', desc: 'Dimensional non-lit metal for exterior building identification.', tags: ['3D', 'Metal', 'Non-Lit'] },
-        { name: '2D Metal Sign', img: 'https://i.ibb.co/tw6YCpDT/063b1e2c37358407418c077152045bc7.jpg', badge: 'Non-Lit', desc: 'Flat-cut metal letters for suite numbers and wayfinding.', tags: ['2D', 'Metal', 'Flat Cut'] },
-        { name: '2D Acrylic Sign', img: 'https://i.ibb.co/hRfBjC2X/63f2d997938c7fc6a05868334e2a25a8.jpg', badge: 'Non-Lit', desc: 'Laser-cut acrylic letters for interior directories.', tags: ['2D', 'Acrylic', 'Indoor'] },
-        { name: 'Acrylic Front Lit', img: 'https://i.ibb.co/B2JQnr6N/74d052ff-c4ee-4cb5-ac7e-183dcb40f0e2.png', badge: 'Lit', desc: 'Channel letters with front/back/side illumination for the building exterior.', tags: ['Acrylic', 'Lit', 'Exterior'] },
-        { name: 'Single Sided Light Box', img: 'https://i.ibb.co/ymt16Mbq/Get-Free-Quote-1-1.jpg', badge: 'Lit', desc: 'Illuminated cabinet sign for roadside clinic visibility.', tags: ['Lightbox', 'Lit', 'Exterior'] },
-        { name: 'Double Sided Lightbox', img: 'https://i.ibb.co/d4WF9QcK/b3b4738c429129bd1ab66fe917ec6920.jpg', badge: 'Lit', desc: 'Double-sided illuminated lightbox for corner or freestanding locations.', tags: ['Lightbox', 'Double Sided', 'Exterior'] },
-        { name: '2D / 3D Blade Sign', img: 'https://i.ibb.co/mV3v9BYN/82af58aae7504722de4ec7d81cd4b359.jpg', badge: 'Exterior', desc: 'Projecting blade sign for pedestrian-facing exterior visibility.', tags: ['Blade', 'Projecting', 'Exterior'] }
-      ]
-    },
-    {
-      id: 'coffee', name: 'Coffee Shops & Restaurants', count: 10, img: 'https://i.ibb.co/jPLvTFk4/Storefronts-2.jpg',
-      desc: 'Lightbox signs, hanging storefront signs, blade signs, and laser cut acrylic sign fixtures.',
-      signs: [
-        { name: 'Push Thru Sign', img: 'https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg', badge: 'Lit', desc: 'Push-through illuminated sign for branded interior walls.', tags: ['Push Thru', 'Lit', 'Indoor'] },
-        { name: 'Metal Backlit Signs', img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', badge: 'Lit', desc: 'Halo-lit metal for bar back walls and accent features.', tags: ['Metal', 'Backlit', 'Indoor'] },
-        { name: 'UV Acrylic', img: 'https://i.ibb.co/2mRQ7Y0/e0cc8c5e140f122c969efb850e696e44.jpg', badge: 'Indoor', desc: 'UV-printed acrylic for menu boards, specials, and brand art.', tags: ['UV', 'Acrylic', 'Indoor'] },
-        { name: 'Vinyl Signs', img: 'https://i.ibb.co/gZ5TRXp7/d6a008e7276ede2c003d57c371562350.jpg', badge: 'Indoor', desc: 'Full-color vinyl for windows, walls, and seasonal promotions.', tags: ['Vinyl', 'Print', 'Indoor'] },
-        { name: 'Acrylic Front Lit', img: 'https://i.ibb.co/B2JQnr6N/74d052ff-c4ee-4cb5-ac7e-183dcb40f0e2.png', badge: 'Lit', desc: 'Channel letters with front illumination for the building facade.', tags: ['Acrylic', 'Lit', 'Exterior'] },
-        { name: 'Metal Backlit w/ Backboard', img: 'https://i.ibb.co/DH0FFQCd/66793f20edb71e28c00f7e453b711b46.jpg', badge: 'Lit', desc: 'Backlit metal letters on raceway for exterior building mounting.', tags: ['Metal', 'Backlit', 'Exterior'] },
-        { name: 'Single Sided Light Box', img: 'https://i.ibb.co/ymt16Mbq/Get-Free-Quote-1-1.jpg', badge: 'Lit', desc: 'Illuminated sign cabinet for high-traffic road visibility.', tags: ['Lightbox', 'Lit', 'Exterior'] },
-        { name: 'Open Face Neon', img: 'https://i.ibb.co/Xk4qPbsC/1532bdd2ade8d057d4e699a32c975bdf.jpg', badge: 'Lit', desc: 'Open-face neon sign for character and visual draw at the entrance.', tags: ['Neon', 'Open Face', 'Exterior'] },
-        { name: 'Double Sided Lightbox', img: 'https://i.ibb.co/d4WF9QcK/b3b4738c429129bd1ab66fe917ec6920.jpg', badge: 'Lit', desc: 'Double-sided lightbox for corner locations and roadside.', tags: ['Lightbox', 'Double Sided', 'Exterior'] },
-        { name: '2D / 3D Blade Sign', img: 'https://i.ibb.co/mV3v9BYN/82af58aae7504722de4ec7d81cd4b359.jpg', badge: 'Exterior', desc: 'Projecting blade sign for pedestrian-heavy streets.', tags: ['Blade', 'Projecting', 'Exterior'] }
-      ]
-    },
-    {
-      id: 'gym', name: 'Gym, Spa & Salon Signs', count: 10, img: 'https://i.ibb.co/tpq229Zx/86e7f4ccec44b08749e3403e5c444a65.jpg',
-      desc: 'Photogenic neon storefront signs, acrylic lettering signs, and dimensional wall signs.',
-      signs: [
-        { name: 'Push Thru Sign', img: 'https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg', badge: 'Lit', desc: 'Push-through illuminated logo for gym entrance walls.', tags: ['Push Thru', 'Lit', 'Indoor'] },
-        { name: 'Metal Backlit Signs', img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', badge: 'Lit', desc: 'Halo-lit metal for premium spa and studio branding.', tags: ['Metal', 'Backlit', 'Indoor'] },
-        { name: 'UV Acrylic', img: 'https://i.ibb.co/2mRQ7Y0/e0cc8c5e140f122c969efb850e696e44.jpg', badge: 'Indoor', desc: 'UV-printed panels for pricing boards, brand art, and wayfinding.', tags: ['UV', 'Acrylic', 'Indoor'] },
-        { name: 'Neon Sign (Indoor)', img: 'https://i.ibb.co/VWjhRjwT/a7ea5d503588096afe9becc3339c493a.jpg', badge: 'Popular', desc: 'LED neon for selfie walls, motivational quotes, and brand moments.', tags: ['Neon', 'LED', 'Indoor'] },
-        { name: 'Acrylic Front Lit', img: 'https://i.ibb.co/B2JQnr6N/74d052ff-c4ee-4cb5-ac7e-183dcb40f0e2.png', badge: 'Lit', desc: 'Exterior channel letters for building-mounted gym/salon branding.', tags: ['Acrylic', 'Lit', 'Exterior'] },
-        { name: 'Metal Backlit w/ Backboard', img: 'https://i.ibb.co/DH0FFQCd/66793f20edb71e28c00f7e453b711b46.jpg', badge: 'Lit', desc: 'Exterior backlit letters on raceway for clean wall mounting.', tags: ['Metal', 'Backlit', 'Exterior'] },
-        { name: 'Single Sided Light Box', img: 'https://i.ibb.co/ymt16Mbq/Get-Free-Quote-1-1.jpg', badge: 'Lit', desc: 'Illuminated cabinet for strip mall and roadside visibility.', tags: ['Lightbox', 'Lit', 'Exterior'] },
-        { name: 'Open Face Neon', img: 'https://i.ibb.co/Xk4qPbsC/1532bdd2ade8d057d4e699a32c975bdf.jpg', badge: 'Lit', desc: 'Open neon for exterior character and nighttime draw.', tags: ['Neon', 'Open Face', 'Exterior'] },
-        { name: 'Double Sided Lightbox', img: 'https://i.ibb.co/d4WF9QcK/b3b4738c429129bd1ab66fe917ec6920.jpg', badge: 'Lit', desc: 'Double-sided lightbox for corner-facing locations.', tags: ['Lightbox', 'Double Sided', 'Exterior'] },
-        { name: '2D / 3D Blade Sign', img: 'https://i.ibb.co/mV3v9BYN/82af58aae7504722de4ec7d81cd4b359.jpg', badge: 'Exterior', desc: 'Projecting blade sign for pedestrian streets.', tags: ['Blade', 'Projecting', 'Exterior'] }
-      ]
-    },
-    {
-      id: 'auto', name: 'Auto Services & Real Estate', count: 9, img: 'https://i.ibb.co/zhspw9Zp/e099e6192c61020ed637eaefeee78b12.jpg',
-      desc: 'Showroom reception walls, dealership outdoor metal signs, and property office signage.',
-      signs: [
-        { name: 'Push Thru Sign', img: 'https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg', badge: 'Lit', desc: 'Push-through illuminated lobby sign.', tags: ['Push Thru', 'Lit', 'Indoor'] },
-        { name: 'Metal Backlit Signs', img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', badge: 'Lit', desc: 'Halo-lit metal logo for reception areas.', tags: ['Metal', 'Backlit', 'Indoor'] },
-        { name: 'UV Acrylic', img: 'https://i.ibb.co/2mRQ7Y0/e0cc8c5e140f122c969efb850e696e44.jpg', badge: 'Indoor', desc: 'UV-printed acrylic for interior branding and directories.', tags: ['UV', 'Acrylic', 'Indoor'] },
-        { name: 'Acrylic Front Lit', img: 'https://i.ibb.co/B2JQnr6N/74d052ff-c4ee-4cb5-ac7e-183dcb40f0e2.png', badge: 'Lit', desc: 'Exterior channel letters for building facade.', tags: ['Acrylic', 'Lit', 'Exterior'] },
-        { name: 'Metal Backlit w/ Backboard', img: 'https://i.ibb.co/DH0FFQCd/66793f20edb71e28c00f7e453b711b46.jpg', badge: 'Lit', desc: 'Exterior backlit metal on raceway or backboard.', tags: ['Metal', 'Backlit', 'Exterior'] },
-        { name: 'Single Sided Light Box', img: 'https://i.ibb.co/ymt16Mbq/Get-Free-Quote-1-1.jpg', badge: 'Lit', desc: 'Illuminated cabinet for roadside auto service visibility.', tags: ['Lightbox', 'Lit', 'Exterior'] },
-        { name: 'Double Sided Lightbox', img: 'https://i.ibb.co/d4WF9QcK/b3b4738c429129bd1ab66fe917ec6920.jpg', badge: 'Lit', desc: 'Two-sided lightbox for corner lot locations.', tags: ['Lightbox', 'Double Sided', 'Exterior'] },
-        { name: 'Open Face Neon', img: 'https://i.ibb.co/Xk4qPbsC/1532bdd2ade8d057d4e699a32c975bdf.jpg', badge: 'Lit', desc: 'Neon-style sign for vintage or character-driven branding.', tags: ['Neon', 'Open Face', 'Exterior'] },
-        { name: '2D / 3D Blade Sign', img: 'https://i.ibb.co/mV3v9BYN/82af58aae7504722de4ec7d81cd4b359.jpg', badge: 'Exterior', desc: 'Projecting blade sign for pedestrian and road visibility.', tags: ['Blade', 'Projecting', 'Exterior'] }
-      ]
-    },
-    {
-      id: 'lobby', name: 'Lobby & Interior Signs', count: 8, img: 'https://i.ibb.co/JFC3PgnK/2d-metal-5mm-image-2.jpg',
-      desc: 'The wall behind your reception desk is the most valuable brand real estate you own.',
-      signs: [
-        { name: '3D Metal Backlit Signs', img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', badge: 'Lit', desc: 'Halo-lit fabricated metal letters for lobby walls.', tags: ['Metal', 'Backlit', '3D'] },
-        { name: 'Push Thru Sign', img: 'https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg', badge: 'Lit', desc: 'Push-through illuminated sign for clean branded interiors.', tags: ['Push Thru', 'Lit', 'Indoor'] },
-        { name: '3D Metal Backlit w/ Backboard', img: 'https://i.ibb.co/DH0FFQCd/66793f20edb71e28c00f7e453b711b46.jpg', badge: 'Lit', desc: 'Backlit metal on contrasting backboard for structured lobby branding.', tags: ['Metal', 'Backlit', 'Backboard'] },
-        { name: 'UV Acrylic', img: 'https://i.ibb.co/2mRQ7Y0/e0cc8c5e140f122c969efb850e696e44.jpg', badge: 'Indoor', desc: 'UV-printed acrylic panel for full-color lobby graphics.', tags: ['UV', 'Acrylic', 'Indoor'] },
-        { name: '3D Metal Non Lit Sign', img: 'https://i.ibb.co/XxBHkQjf/87f166fff9b333d24a15963efac6d657.jpg', badge: 'Non-Lit', desc: 'Dimensional brushed or painted metal for a refined look.', tags: ['3D', 'Metal', 'Non-Lit'] },
-        { name: '2D Metal Sign', img: 'https://i.ibb.co/tw6YCpDT/063b1e2c37358407418c077152045bc7.jpg', badge: 'Non-Lit', desc: 'Flat-cut precision metal letters, clean and minimal.', tags: ['2D', 'Metal', 'Flat Cut'] },
-        { name: '2D Acrylic Sign', img: 'https://i.ibb.co/hRfBjC2X/63f2d997938c7fc6a05868334e2a25a8.jpg', badge: 'Non-Lit', desc: 'Laser-cut acrylic letters, budget-friendly and versatile.', tags: ['2D', 'Acrylic', 'Indoor'] },
-        { name: 'Neon Sign', img: 'https://i.ibb.co/VWjhRjwT/a7ea5d503588096afe9becc3339c493a.jpg', badge: 'Popular', desc: 'LED neon for warm ambiance and memorable lobby branding.', tags: ['Neon', 'LED', 'Indoor'] }
-      ]
-    },
-    {
-      id: 'interior', name: 'Interior · All Signs', count: 16, img: 'https://i.ibb.co/h1tDfqnQ/download-45.jpg',
-      desc: 'Every indoor sign type we make — reception walls, lobby features, wayfinding, neon statement pieces.',
-      signs: [
-        { name: 'Metal Backlit', img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', badge: 'Lit', desc: 'Backlit metal letters for premium interior lobby and wall branding.', tags: ['Metal', 'Backlit', 'Interior'] },
-        { name: 'Acrylic Front Lit', img: 'https://i.ibb.co/B2JQnr6N/74d052ff-c4ee-4cb5-ac7e-183dcb40f0e2.png', badge: 'Lit', desc: 'Front-lit acrylic letters with strong readability and clean finish.', tags: ['Acrylic', 'Front Lit', 'Interior'] },
-        { name: '2D Metal / 5mm Flat Cut', img: 'https://i.ibb.co/Fb0JMmQX/a1c7eb5a751b3cc57e5376b319783e3b.jpg', badge: 'Interior', desc: 'Flat 5mm metal letters with minimalist non-lit look.', tags: ['2D', 'Metal', '5mm'] },
-        { name: 'Push Thru Sign', img: 'https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg', badge: 'Lit', desc: 'Push-through illuminated signage for high-contrast interior branding.', tags: ['Push Thru', 'Lit', 'Interior'] },
-        { name: 'Metal Backlit w/ Backboard', img: 'https://i.ibb.co/DH0FFQCd/66793f20edb71e28c00f7e453b711b46.jpg', badge: 'Lit', desc: 'Backlit metal mounted on backboard for a premium framed appearance.', tags: ['Metal', 'Backlit', 'Backboard'] },
-        { name: '2D Blade Sign', img: 'https://i.ibb.co/mV3v9BYN/82af58aae7504722de4ec7d81cd4b359.jpg', badge: 'Interior', desc: 'Flat blade sign for indoor wayfinding and side-angle visibility.', tags: ['2D', 'Blade', 'Interior'] },
-        { name: 'Hollow Cut Sign', img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', badge: 'Lit', desc: 'Hollow-cut illuminated sign style with clean modern detail.', tags: ['Hollow Cut', 'Lit', 'Interior'] },
-        { name: 'LED Neon Sign', img: 'https://i.ibb.co/d0x1CYvz/NEON-1.png', badge: 'Lit', desc: 'Classic neon-style sign for statement walls and ambiance.', tags: ['Neon', 'Decorative', 'Interior'] },
-        { name: 'UV Acrylic Neon Panel', img: 'https://i.ibb.co/2mRQ7Y0/e0cc8c5e140f122c969efb850e696e44.jpg', badge: 'Interior', desc: 'UV-printed acrylic neon-look signage without wiring complexity.', tags: ['Neon Look', 'UV Acrylic', 'Interior'] },
-        { name: '3D Metal Non Lit', img: 'https://i.ibb.co/XxBHkQjf/87f166fff9b333d24a15963efac6d657.jpg', badge: 'Interior', desc: 'Dimensional non-lit metal letters for refined corporate interiors.', tags: ['3D', 'Metal', 'Non-Lit'] },
-        { name: '3D Acrylic Non Lit', img: 'https://i.ibb.co/hRfBjC2X/63f2d997938c7fc6a05868334e2a25a8.jpg', badge: 'Interior', desc: 'Dimensional non-lit acrylic letters for clean modern branding.', tags: ['3D', 'Acrylic', 'Non-Lit'] },
-        { name: '2D Acrylic - 10mm', img: 'https://i.ibb.co/hRfBjC2X/63f2d997938c7fc6a05868334e2a25a8.jpg', badge: 'Interior', desc: '10mm flat acrylic letters for crisp and affordable interior signs.', tags: ['2D', 'Acrylic', '10mm'] },
-        { name: 'Flat-Cut Letters (2mm)', img: 'https://i.ibb.co/tw6YCpDT/063b1e2c37358407418c077152045bc7.jpg', badge: 'Interior', desc: 'Slim 2mm flat-cut metal letters for subtle premium wall graphics.', tags: ['Flat Cut', '2mm', 'Metal'] },
-        { name: 'A-Frame Sign', img: 'https://i.ibb.co/ymt16Mbq/Get-Free-Quote-1-1.jpg', badge: 'Interior', desc: 'Foldable A-frame sign for indoor promotions, directions, and event messaging.', tags: ['A-frame', 'Portable', 'Interior'] },
-        { name: 'Wooden Sign', img: 'https://i.ibb.co/Fb0JMmQX/a1c7eb5a751b3cc57e5376b319783e3b.jpg', badge: 'Interior', desc: 'Custom wood signage for warm, natural, and boutique interior spaces.', tags: ['Wood', 'Custom', 'Interior'] },
-        { name: 'Vinyl/Flex Printing', img: 'https://i.ibb.co/gZ5TRXp7/d6a008e7276ede2c003d57c371562350.jpg', badge: 'Interior', desc: 'Full-color vinyl or flex prints for walls, windows, and temporary branding.', tags: ['Vinyl', 'Print', 'Interior'] }
-      ]
-    }
+    { id: 'storefront', name: 'Storefront Signs', count: 11, img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', desc: 'The sign above your door works harder than any ad you run. It pulls foot traffic 24/7.', signs: [ { name: 'Acrylic Front Lit', img: 'https://i.ibb.co/B2JQnr6N/74d052ff-c4ee-4cb5-ac7e-183dcb40f0e2.png', badge: 'Lit', desc: 'Acrylic channel letters with front illumination for storefront impact.', tags: ['Acrylic', 'Lit', 'Exterior'] }, { name: 'Push Thru Sign', img: 'https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg', badge: 'Lit', desc: 'Push-through illuminated letters with crisp acrylic faces.', tags: ['Push Thru', 'Lit', 'Exterior'] }, { name: '3D Metal Backlit', img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', badge: 'Lit', desc: 'Fabricated metal letters with halo-style back illumination.', tags: ['Metal', 'Backlit', '3D'] }, { name: 'Metal Backlit w/ Backboard', img: 'https://i.ibb.co/DH0FFQCd/66793f20edb71e28c00f7e453b711b46.jpg', badge: 'Lit', desc: 'Backlit metal letters on raceway or backboard for clean installation.', tags: ['Metal', 'Backlit', 'Raceway'] }, { name: 'Single Sided Light Box', img: 'https://i.ibb.co/ymt16Mbq/Get-Free-Quote-1-1.jpg', badge: 'Lit', desc: 'Illuminated cabinet sign with even light distribution.', tags: ['Lightbox', 'Lit', 'Exterior'] }, { name: '3D Metal Non Lit Sign', img: 'https://i.ibb.co/XxBHkQjf/87f166fff9b333d24a15963efac6d657.jpg', badge: 'Non-Lit', desc: 'Durable 3D fabricated metal letters, no lighting needed.', tags: ['3D', 'Metal', 'Non-Lit'] }, { name: 'Acrylic Double Lit Sign', img: 'https://i.ibb.co/zhspw9Zp/e099e6192c61020ed637eaefeee78b12.jpg', badge: 'Lit', desc: 'Double-illuminated acrylic for maximum brightness from both sides.', tags: ['Acrylic', 'Double Lit', 'Exterior'] }, { name: '3D Non Lit with Backboard', img: 'https://i.ibb.co/84SSsvZf/a7a2eaef0ef4d3d215fba120c6418940.jpg', badge: 'Non-Lit', desc: 'Dimensional non-lit letters mounted on a contrasting backboard.', tags: ['3D', 'Non-Lit', 'Backboard'] }, { name: 'Open Face Neon', img: 'https://i.ibb.co/Xk4qPbsC/1532bdd2ade8d057d4e699a32c975bdf.jpg', badge: 'Lit', desc: 'Open-face neon-style sign with high character and strong visual draw.', tags: ['Neon', 'Open Face', 'Exterior'] }, { name: 'Acrylic Backlit with Backboard', img: 'https://i.ibb.co/6cJ0BJWF/137e9116-cb1e-46a4-9038-a91dd15b03c9.png', badge: 'Lit', desc: 'Front-lit acrylic letters on raceway or backboard for bold storefront presence.', tags: ['Acrylic', 'Backlit', 'Raceway'] }, { name: 'Marquee Letters', img: 'https://i.ibb.co/G48pM6YL/Dmdj017-RZO5ty-KTu-GPv-GOImy-T2-Q2-Hwx-Yz-GMCWi-Gi-LP8dun6bn-XNH8-WKPZg-Kyo3-VIRXq-BUc-W2vp-GE3u-Kic-VJuf.jpg', badge: 'Popular', desc: 'Marquee-style letters for classic theatrical branding and high foot traffic attention.', tags: ['Marquee', 'Letters', 'Exterior'] } ] },
+    { id: 'reception', name: 'Reception & Studio Signs', count: 9, img: 'https://i.ibb.co/Z1bRvmFX/1a8bfc475f04e41dc4168ddc673f5e30.jpg', desc: 'Soft, premium halo glow that elevates any brand. Ideal as an indoor office sign or reception display.', signs: [ { name: 'Push Thru Sign', img: 'https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg', badge: 'Lit', desc: 'Push-through illuminated reception sign with clean acrylic face.', tags: ['Push Thru', 'Lit', 'Indoor'] }, { name: 'Metal Backlit Signs', img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', badge: 'Lit', desc: 'Halo-lit fabricated metal letters for a refined lobby look.', tags: ['Metal', 'Backlit', 'Indoor'] }, { name: '3D Metal Backlit w/ Backboard', img: 'https://i.ibb.co/DH0FFQCd/66793f20edb71e28c00f7e453b711b46.jpg', badge: 'Lit', desc: 'Backlit metal letters on a contrasting backboard panel.', tags: ['Metal', 'Backlit', 'Backboard'] }, { name: 'UV Acrylic', img: 'https://i.ibb.co/2mRQ7Y0/e0cc8c5e140f122c969efb850e696e44.jpg', badge: 'Indoor', desc: 'UV-printed acrylic panel sign with vibrant, full-color graphics.', tags: ['UV', 'Acrylic', 'Indoor'] }, { name: '3D Metal Non Lit Sign', img: 'https://i.ibb.co/XxBHkQjf/87f166fff9b333d24a15963efac6d657.jpg', badge: 'Non-Lit', desc: 'Dimensional metal letters with brushed or painted finish.', tags: ['3D', 'Metal', 'Non-Lit'] }, { name: '2D Metal Sign', img: 'https://i.ibb.co/tw6YCpDT/063b1e2c37358407418c077152045bc7.jpg', badge: 'Non-Lit', desc: 'Flat-cut precision metal letters for minimalist branding.', tags: ['2D', 'Metal', 'Flat Cut'] }, { name: '2D Acrylic Sign', img: 'https://i.ibb.co/hRfBjC2X/63f2d997938c7fc6a05868334e2a25a8.jpg', badge: 'Non-Lit', desc: 'Laser-cut acrylic letters for clean, budget-friendly signage.', tags: ['2D', 'Acrylic', 'Indoor'] }, { name: 'Neon Sign', img: 'https://i.ibb.co/VWjhRjwT/a7ea5d503588096afe9becc3339c493a.jpg', badge: 'Popular', desc: 'LED neon sign for a warm, eye-catching reception wall statement.', tags: ['Neon', 'LED', 'Indoor'] }, { name: 'Vinyl/Flex Printing', img: 'https://i.ibb.co/gZ5TRXp7/d6a008e7276ede2c003d57c371562350.jpg', badge: 'Indoor', desc: 'Full-color vinyl or flex prints for walls, windows, and temporary branding.', tags: ['Vinyl', 'Print', 'Indoor'] } ] },
+    { id: 'medical', name: 'Medical & Clinic Signs', count: 11, img: 'https://i.ibb.co/VcjZ4ZBF/000.png', desc: 'Professional, ADA-friendly signage for clinics and medical offices. Permits handled.', signs: [ { name: 'Push Thru Sign', img: 'https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg', badge: 'Lit', desc: 'Push-through illuminated sign for clean interior branding.', tags: ['Push Thru', 'Lit', 'Indoor'] }, { name: 'Metal Backlit Signs', img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', badge: 'Lit', desc: 'Halo-lit metal letters for a professional clinic entrance.', tags: ['Metal', 'Backlit', 'Indoor'] }, { name: '3D Metal Backlit w/ Backboard', img: 'https://i.ibb.co/DH0FFQCd/66793f20edb71e28c00f7e453b711b46.jpg', badge: 'Lit', desc: 'Backlit metal on backboard for structured interior branding.', tags: ['Metal', 'Backlit', 'Backboard'] }, { name: 'UV Acrylic', img: 'https://i.ibb.co/2mRQ7Y0/e0cc8c5e140f122c969efb850e696e44.jpg', badge: 'Indoor', desc: 'UV-printed acrylic for directional and branded interior panels.', tags: ['UV', 'Acrylic', 'Indoor'] }, { name: '3D Metal Non Lit Sign', img: 'https://i.ibb.co/XxBHkQjf/87f166fff9b333d24a15963efac6d657.jpg', badge: 'Non-Lit', desc: 'Dimensional non-lit metal for exterior building identification.', tags: ['3D', 'Metal', 'Non-Lit'] }, { name: '2D Metal Sign', img: 'https://i.ibb.co/tw6YCpDT/063b1e2c37358407418c077152045bc7.jpg', badge: 'Non-Lit', desc: 'Flat-cut metal letters for suite numbers and wayfinding.', tags: ['2D', 'Metal', 'Flat Cut'] }, { name: '2D Acrylic Sign', img: 'https://i.ibb.co/hRfBjC2X/63f2d997938c7fc6a05868334e2a25a8.jpg', badge: 'Non-Lit', desc: 'Laser-cut acrylic letters for interior directories.', tags: ['2D', 'Acrylic', 'Indoor'] }, { name: 'Acrylic Front Lit', img: 'https://i.ibb.co/B2JQnr6N/74d052ff-c4ee-4cb5-ac7e-183dcb40f0e2.png', badge: 'Lit', desc: 'Channel letters with front/back/side illumination for the building exterior.', tags: ['Acrylic', 'Lit', 'Exterior'] }, { name: 'Single Sided Light Box', img: 'https://i.ibb.co/ymt16Mbq/Get-Free-Quote-1-1.jpg', badge: 'Lit', desc: 'Illuminated cabinet sign for roadside clinic visibility.', tags: ['Lightbox', 'Lit', 'Exterior'] }, { name: 'Double Sided Lightbox', img: 'https://i.ibb.co/d4WF9QcK/b3b4738c429129bd1ab66fe917ec6920.jpg', badge: 'Lit', desc: 'Double-sided illuminated lightbox for corner or freestanding locations.', tags: ['Lightbox', 'Double Sided', 'Exterior'] }, { name: '2D / 3D Blade Sign', img: 'https://i.ibb.co/mV3v9BYN/82af58aae7504722de4ec7d81cd4b359.jpg', badge: 'Exterior', desc: 'Projecting blade sign for pedestrian-facing exterior visibility.', tags: ['Blade', 'Projecting', 'Exterior'] } ] },
+    { id: 'coffee', name: 'Coffee Shops & Restaurants', count: 10, img: 'https://i.ibb.co/jPLvTFk4/Storefronts-2.jpg', desc: 'Lightbox signs, hanging storefront signs, blade signs, and laser cut acrylic sign fixtures.', signs: [ { name: 'Push Thru Sign', img: 'https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg', badge: 'Lit', desc: 'Push-through illuminated sign for branded interior walls.', tags: ['Push Thru', 'Lit', 'Indoor'] }, { name: 'Metal Backlit Signs', img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', badge: 'Lit', desc: 'Halo-lit metal for bar back walls and accent features.', tags: ['Metal', 'Backlit', 'Indoor'] }, { name: 'UV Acrylic', img: 'https://i.ibb.co/2mRQ7Y0/e0cc8c5e140f122c969efb850e696e44.jpg', badge: 'Indoor', desc: 'UV-printed acrylic for menu boards, specials, and brand art.', tags: ['UV', 'Acrylic', 'Indoor'] }, { name: 'Vinyl Signs', img: 'https://i.ibb.co/gZ5TRXp7/d6a008e7276ede2c003d57c371562350.jpg', badge: 'Indoor', desc: 'Full-color vinyl for windows, walls, and seasonal promotions.', tags: ['Vinyl', 'Print', 'Indoor'] }, { name: 'Acrylic Front Lit', img: 'https://i.ibb.co/B2JQnr6N/74d052ff-c4ee-4cb5-ac7e-183dcb40f0e2.png', badge: 'Lit', desc: 'Channel letters with front illumination for the building facade.', tags: ['Acrylic', 'Lit', 'Exterior'] }, { name: 'Metal Backlit w/ Backboard', img: 'https://i.ibb.co/DH0FFQCd/66793f20edb71e28c00f7e453b711b46.jpg', badge: 'Lit', desc: 'Backlit metal letters on raceway for exterior building mounting.', tags: ['Metal', 'Backlit', 'Exterior'] }, { name: 'Single Sided Light Box', img: 'https://i.ibb.co/ymt16Mbq/Get-Free-Quote-1-1.jpg', badge: 'Lit', desc: 'Illuminated sign cabinet for high-traffic road visibility.', tags: ['Lightbox', 'Lit', 'Exterior'] }, { name: 'Open Face Neon', img: 'https://i.ibb.co/Xk4qPbsC/1532bdd2ade8d057d4e699a32c975bdf.jpg', badge: 'Lit', desc: 'Open-face neon sign for character and visual draw at the entrance.', tags: ['Neon', 'Open Face', 'Exterior'] }, { name: 'Double Sided Lightbox', img: 'https://i.ibb.co/d4WF9QcK/b3b4738c429129bd1ab66fe917ec6920.jpg', badge: 'Lit', desc: 'Double-sided lightbox for corner locations and roadside.', tags: ['Lightbox', 'Double Sided', 'Exterior'] }, { name: '2D / 3D Blade Sign', img: 'https://i.ibb.co/mV3v9BYN/82af58aae7504722de4ec7d81cd4b359.jpg', badge: 'Exterior', desc: 'Projecting blade sign for pedestrian-heavy streets.', tags: ['Blade', 'Projecting', 'Exterior'] } ] },
+    { id: 'gym', name: 'Gym, Spa & Salon Signs', count: 10, img: 'https://i.ibb.co/tpq229Zx/86e7f4ccec44b08749e3403e5c444a65.jpg', desc: 'Photogenic neon storefront signs, acrylic lettering signs, and dimensional wall signs.', signs: [ { name: 'Push Thru Sign', img: 'https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg', badge: 'Lit', desc: 'Push-through illuminated logo for gym entrance walls.', tags: ['Push Thru', 'Lit', 'Indoor'] }, { name: 'Metal Backlit Signs', img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', badge: 'Lit', desc: 'Halo-lit metal for premium spa and studio branding.', tags: ['Metal', 'Backlit', 'Indoor'] }, { name: 'UV Acrylic', img: 'https://i.ibb.co/2mRQ7Y0/e0cc8c5e140f122c969efb850e696e44.jpg', badge: 'Indoor', desc: 'UV-printed panels for pricing boards, brand art, and wayfinding.', tags: ['UV', 'Acrylic', 'Indoor'] }, { name: 'Neon Sign (Indoor)', img: 'https://i.ibb.co/VWjhRjwT/a7ea5d503588096afe9becc3339c493a.jpg', badge: 'Popular', desc: 'LED neon for selfie walls, motivational quotes, and brand moments.', tags: ['Neon', 'LED', 'Indoor'] }, { name: 'Acrylic Front Lit', img: 'https://i.ibb.co/B2JQnr6N/74d052ff-c4ee-4cb5-ac7e-183dcb40f0e2.png', badge: 'Lit', desc: 'Exterior channel letters for building-mounted gym/salon branding.', tags: ['Acrylic', 'Lit', 'Exterior'] }, { name: 'Metal Backlit w/ Backboard', img: 'https://i.ibb.co/DH0FFQCd/66793f20edb71e28c00f7e453b711b46.jpg', badge: 'Lit', desc: 'Exterior backlit letters on raceway for clean wall mounting.', tags: ['Metal', 'Backlit', 'Exterior'] }, { name: 'Single Sided Light Box', img: 'https://i.ibb.co/ymt16Mbq/Get-Free-Quote-1-1.jpg', badge: 'Lit', desc: 'Illuminated cabinet for strip mall and roadside visibility.', tags: ['Lightbox', 'Lit', 'Exterior'] }, { name: 'Open Face Neon', img: 'https://i.ibb.co/Xk4qPbsC/1532bdd2ade8d057d4e699a32c975bdf.jpg', badge: 'Lit', desc: 'Open neon for exterior character and nighttime draw.', tags: ['Neon', 'Open Face', 'Exterior'] }, { name: 'Double Sided Lightbox', img: 'https://i.ibb.co/d4WF9QcK/b3b4738c429129bd1ab66fe917ec6920.jpg', badge: 'Lit', desc: 'Double-sided lightbox for corner-facing locations.', tags: ['Lightbox', 'Double Sided', 'Exterior'] }, { name: '2D / 3D Blade Sign', img: 'https://i.ibb.co/mV3v9BYN/82af58aae7504722de4ec7d81cd4b359.jpg', badge: 'Exterior', desc: 'Projecting blade sign for pedestrian streets.', tags: ['Blade', 'Projecting', 'Exterior'] } ] },
+    { id: 'auto', name: 'Auto Services & Real Estate', count: 9, img: 'https://i.ibb.co/zhspw9Zp/e099e6192c61020ed637eaefeee78b12.jpg', desc: 'Showroom reception walls, dealership outdoor metal signs, and property office signage.', signs: [ { name: 'Push Thru Sign', img: 'https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg', badge: 'Lit', desc: 'Push-through illuminated lobby sign.', tags: ['Push Thru', 'Lit', 'Indoor'] }, { name: 'Metal Backlit Signs', img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', badge: 'Lit', desc: 'Halo-lit metal logo for reception areas.', tags: ['Metal', 'Backlit', 'Indoor'] }, { name: 'UV Acrylic', img: 'https://i.ibb.co/2mRQ7Y0/e0cc8c5e140f122c969efb850e696e44.jpg', badge: 'Indoor', desc: 'UV-printed acrylic for interior branding and directories.', tags: ['UV', 'Acrylic', 'Indoor'] }, { name: 'Acrylic Front Lit', img: 'https://i.ibb.co/B2JQnr6N/74d052ff-c4ee-4cb5-ac7e-183dcb40f0e2.png', badge: 'Lit', desc: 'Exterior channel letters for building facade.', tags: ['Acrylic', 'Lit', 'Exterior'] }, { name: 'Metal Backlit w/ Backboard', img: 'https://i.ibb.co/DH0FFQCd/66793f20edb71e28c00f7e453b711b46.jpg', badge: 'Lit', desc: 'Exterior backlit metal on raceway or backboard.', tags: ['Metal', 'Backlit', 'Exterior'] }, { name: 'Single Sided Light Box', img: 'https://i.ibb.co/ymt16Mbq/Get-Free-Quote-1-1.jpg', badge: 'Lit', desc: 'Illuminated cabinet for roadside auto service visibility.', tags: ['Lightbox', 'Lit', 'Exterior'] }, { name: 'Double Sided Lightbox', img: 'https://i.ibb.co/d4WF9QcK/b3b4738c429129bd1ab66fe917ec6920.jpg', badge: 'Lit', desc: 'Two-sided lightbox for corner lot locations.', tags: ['Lightbox', 'Double Sided', 'Exterior'] }, { name: 'Open Face Neon', img: 'https://i.ibb.co/Xk4qPbsC/1532bdd2ade8d057d4e699a32c975bdf.jpg', badge: 'Lit', desc: 'Neon-style sign for vintage or character-driven branding.', tags: ['Neon', 'Open Face', 'Exterior'] }, { name: '2D / 3D Blade Sign', img: 'https://i.ibb.co/mV3v9BYN/82af58aae7504722de4ec7d81cd4b359.jpg', badge: 'Exterior', desc: 'Projecting blade sign for pedestrian and road visibility.', tags: ['Blade', 'Projecting', 'Exterior'] } ] },
+    { id: 'lobby', name: 'Lobby & Interior Signs', count: 8, img: 'https://i.ibb.co/JFC3PgnK/2d-metal-5mm-image-2.jpg', desc: 'The wall behind your reception desk is the most valuable brand real estate you own.', signs: [ { name: '3D Metal Backlit Signs', img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', badge: 'Lit', desc: 'Halo-lit fabricated metal letters for lobby walls.', tags: ['Metal', 'Backlit', '3D'] }, { name: 'Push Thru Sign', img: 'https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg', badge: 'Lit', desc: 'Push-through illuminated sign for clean branded interiors.', tags: ['Push Thru', 'Lit', 'Indoor'] }, { name: '3D Metal Backlit w/ Backboard', img: 'https://i.ibb.co/DH0FFQCd/66793f20edb71e28c00f7e453b711b46.jpg', badge: 'Lit', desc: 'Backlit metal on contrasting backboard for structured lobby branding.', tags: ['Metal', 'Backlit', 'Backboard'] }, { name: 'UV Acrylic', img: 'https://i.ibb.co/2mRQ7Y0/e0cc8c5e140f122c969efb850e696e44.jpg', badge: 'Indoor', desc: 'UV-printed acrylic panel for full-color lobby graphics.', tags: ['UV', 'Acrylic', 'Indoor'] }, { name: '3D Metal Non Lit Sign', img: 'https://i.ibb.co/XxBHkQjf/87f166fff9b333d24a15963efac6d657.jpg', badge: 'Non-Lit', desc: 'Dimensional brushed or painted metal for a refined look.', tags: ['3D', 'Metal', 'Non-Lit'] }, { name: '2D Metal Sign', img: 'https://i.ibb.co/tw6YCpDT/063b1e2c37358407418c077152045bc7.jpg', badge: 'Non-Lit', desc: 'Flat-cut precision metal letters, clean and minimal.', tags: ['2D', 'Metal', 'Flat Cut'] }, { name: '2D Acrylic Sign', img: 'https://i.ibb.co/hRfBjC2X/63f2d997938c7fc6a05868334e2a25a8.jpg', badge: 'Non-Lit', desc: 'Laser-cut acrylic letters, budget-friendly and versatile.', tags: ['2D', 'Acrylic', 'Indoor'] }, { name: 'Neon Sign', img: 'https://i.ibb.co/VWjhRjwT/a7ea5d503588096afe9becc3339c493a.jpg', badge: 'Popular', desc: 'LED neon for warm ambiance and memorable lobby branding.', tags: ['Neon', 'LED', 'Indoor'] } ] },
+    { id: 'interior', name: 'Interior · All Signs', count: 16, img: 'https://i.ibb.co/h1tDfqnQ/download-45.jpg', desc: 'Every indoor sign type we make — reception walls, lobby features, wayfinding, neon statement pieces.', signs: [ { name: 'Metal Backlit', img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', badge: 'Lit', desc: 'Backlit metal letters for premium interior lobby and wall branding.', tags: ['Metal', 'Backlit', 'Interior'] }, { name: 'Acrylic Front Lit', img: 'https://i.ibb.co/B2JQnr6N/74d052ff-c4ee-4cb5-ac7e-183dcb40f0e2.png', badge: 'Lit', desc: 'Front-lit acrylic letters with strong readability and clean finish.', tags: ['Acrylic', 'Front Lit', 'Interior'] }, { name: '2D Metal / 5mm Flat Cut', img: 'https://i.ibb.co/Fb0JMmQX/a1c7eb5a751b3cc57e5376b319783e3b.jpg', badge: 'Interior', desc: 'Flat 5mm metal letters with minimalist non-lit look.', tags: ['2D', 'Metal', '5mm'] }, { name: 'Push Thru Sign', img: 'https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg', badge: 'Lit', desc: 'Push-through illuminated signage for high-contrast interior branding.', tags: ['Push Thru', 'Lit', 'Interior'] }, { name: 'Metal Backlit w/ Backboard', img: 'https://i.ibb.co/DH0FFQCd/66793f20edb71e28c00f7e453b711b46.jpg', badge: 'Lit', desc: 'Backlit metal mounted on backboard for a premium framed appearance.', tags: ['Metal', 'Backlit', 'Backboard'] }, { name: '2D Blade Sign', img: 'https://i.ibb.co/mV3v9BYN/82af58aae7504722de4ec7d81cd4b359.jpg', badge: 'Interior', desc: 'Flat blade sign for indoor wayfinding and side-angle visibility.', tags: ['2D', 'Blade', 'Interior'] }, { name: 'Hollow Cut Sign', img: 'https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg', badge: 'Lit', desc: 'Hollow-cut illuminated sign style with clean modern detail.', tags: ['Hollow Cut', 'Lit', 'Interior'] }, { name: 'LED Neon Sign', img: 'https://i.ibb.co/d0x1CYvz/NEON-1.png', badge: 'Lit', desc: 'Classic neon-style sign for statement walls and ambiance.', tags: ['Neon', 'Decorative', 'Interior'] }, { name: 'UV Acrylic Neon Panel', img: 'https://i.ibb.co/2mRQ7Y0/e0cc8c5e140f122c969efb850e696e44.jpg', badge: 'Interior', desc: 'UV-printed acrylic neon-look signage without wiring complexity.', tags: ['Neon Look', 'UV Acrylic', 'Interior'] }, { name: '3D Metal Non Lit', img: 'https://i.ibb.co/XxBHkQjf/87f166fff9b333d24a15963efac6d657.jpg', badge: 'Interior', desc: 'Dimensional non-lit metal letters for refined corporate interiors.', tags: ['3D', 'Metal', 'Non-Lit'] }, { name: '3D Acrylic Non Lit', img: 'https://i.ibb.co/hRfBjC2X/63f2d997938c7fc6a05868334e2a25a8.jpg', badge: 'Interior', desc: 'Dimensional non-lit acrylic letters for clean modern branding.', tags: ['3D', 'Acrylic', 'Non-Lit'] }, { name: '2D Acrylic - 10mm', img: 'https://i.ibb.co/hRfBjC2X/63f2d997938c7fc6a05868334e2a25a8.jpg', badge: 'Interior', desc: '10mm flat acrylic letters for crisp and affordable interior signs.', tags: ['2D', 'Acrylic', '10mm'] }, { name: 'Flat-Cut Letters (2mm)', img: 'https://i.ibb.co/tw6YCpDT/063b1e2c37358407418c077152045bc7.jpg', badge: 'Interior', desc: 'Slim 2mm flat-cut metal letters for subtle premium wall graphics.', tags: ['Flat Cut', '2mm', 'Metal'] }, { name: 'A-Frame Sign', img: 'https://i.ibb.co/ymt16Mbq/Get-Free-Quote-1-1.jpg', badge: 'Interior', desc: 'Foldable A-frame sign for indoor promotions, directions, and event messaging.', tags: ['A-frame', 'Portable', 'Interior'] }, { name: 'Wooden Sign', img: 'https://i.ibb.co/Fb0JMmQX/a1c7eb5a751b3cc57e5376b319783e3b.jpg', badge: 'Interior', desc: 'Custom wood signage for warm, natural, and boutique interior spaces.', tags: ['Wood', 'Custom', 'Interior'] }, { name: 'Vinyl/Flex Printing', img: 'https://i.ibb.co/gZ5TRXp7/d6a008e7276ede2c003d57c371562350.jpg', badge: 'Interior', desc: 'Full-color vinyl or flex prints for walls, windows, and temporary branding.', tags: ['Vinyl', 'Print', 'Interior'] } ] }
   ];
 
-  // Render Categories Function
   function renderCategories() {
     let html = '';
     NT_CATS.forEach(cat => {
@@ -344,7 +197,6 @@
     document.getElementById('ntCatGrid').innerHTML = html;
   }
 
-  // Show Signs Function (When Category is clicked)
   function showSigns(catId) {
     const cat = NT_CATS.find(c => c.id === catId);
     if (!cat) return;
@@ -380,25 +232,20 @@
     window.scrollTo({ top: document.getElementById('ntSignsPanel').offsetTop - 100, behavior: 'smooth' });
   }
 
-  // Back to Categories Function
   function showCategories() {
     document.getElementById('ntSignsPanel').style.display = 'none';
     document.getElementById('ntCatGrid').style.display = 'grid';
     window.scrollTo({ top: document.getElementById('ntCatGrid').offsetTop - 100, behavior: 'smooth' });
   }
 
-  // Modal Functions
   function openSignModal(signName) {
     var modal = document.getElementById('ntSignModal');
     document.getElementById('ntModalSignName').textContent = signName;
     document.getElementById('ntSignNameInput').value = signName;
-    
-    // Reset form and success state before opening
     document.getElementById('ntModalForm').style.display = 'block';
     document.getElementById('ntSuccessState').style.display = 'none';
     var form = modal.querySelector('.js-lead-form');
     if(form) form.reset();
-    
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
@@ -415,7 +262,6 @@
     document.body.style.overflow = 'auto';
   }
 
-  // Initialize on load
   document.addEventListener('DOMContentLoaded', function() {
     renderCategories();
     document.addEventListener('keydown', function(event) {
@@ -423,7 +269,6 @@
     });
   });
 
-  // --- TASK 1 & 2: Form Validation, UUID Generation & API Submission ---
   if (!window.ntFormValidationLoaded) {
     window.ntFormValidationLoaded = true;
     
@@ -436,135 +281,118 @@
           });
     }
 
-    document.querySelectorAll('.js-lead-form').forEach((form) => {
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        let isValid = true;
+    document.addEventListener('submit', function (e) {
+      const form = e.target;
+      if (!form.classList.contains('js-lead-form') || form.dataset.leadFormBound === 'true') return;
+      form.dataset.leadFormBound = 'true'; 
+      e.preventDefault();
+      
+      let isValid = true;
+      form.querySelectorAll('.error-text').forEach((span) => span.innerText = '');
+
+      const nameInput = form.querySelector('[name="name"]');
+      const emailInput = form.querySelector('[name="email"]');
+      const phoneInput = form.querySelector('[name="phone"]');
+      const imageInput = form.querySelector('[name="image"]');
+
+      const nameValue = nameInput ? nameInput.value.trim() : '';
+      const emailValue = emailInput ? emailInput.value.trim() : '';
+      const phoneValue = phoneInput ? phoneInput.value.trim() : '';
+
+      const nameRegex = /^[a-zA-Z\s]+$/;
+      if (nameValue === '') {
+        displayError(form, 'name', 'Name cannot be empty.');
+        isValid = false;
+      } else if (!nameRegex.test(nameValue)) {
+        displayError(form, 'name', 'Name can only contain letters and spaces.');
+        isValid = false;
+      }
+
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (emailValue === '') {
+        displayError(form, 'email', 'Email cannot be empty.');
+        isValid = false;
+      } else if (!emailRegex.test(emailValue)) {
+        displayError(form, 'email', 'Please enter a valid email format (must include @).');
+        isValid = false;
+      }
+
+      const phoneRegex = /^[0-9+\-\s()]+$/;
+      if (phoneValue === '') {
+        displayError(form, 'phone', 'Phone number cannot be empty.');
+        isValid = false;
+      } else if (!phoneRegex.test(phoneValue)) {
+        displayError(form, 'phone', 'Only valid phone number characters are allowed.');
+        isValid = false;
+      }
+
+      if (imageInput && imageInput.files.length > 0) {
+        const file = imageInput.files[0];
+        if (!file.type.startsWith('image/') && !['application/pdf', 'application/postscript'].includes(file.type)) {
+          displayError(form, 'image', 'Only image files are accepted.');
+          isValid = false;
+        }
+        if (file.size > 20971520) {
+          displayError(form, 'image', 'File size exceeds 20 MB limit.');
+          isValid = false;
+        }
+      }
+
+      if (isValid) {
+        const uuidInput = form.querySelector('.form-uuid');
+        if (uuidInput) uuidInput.value = makeUuid();
         
-        form.querySelectorAll('.error-text').forEach((span) => {
-          span.innerText = '';
-        });
-
-        const nameInput = form.querySelector('[name="name"]');
-        const emailInput = form.querySelector('[name="email"]');
-        const phoneInput = form.querySelector('[name="phone"]');
-        const imageInput = form.querySelector('[name="image"]');
-
-        const nameValue = nameInput ? nameInput.value.trim() : '';
-        const emailValue = emailInput ? emailInput.value.trim() : '';
-        const phoneValue = phoneInput ? phoneInput.value.trim() : '';
-
-        // Name Validation
-        const nameRegex = /^[a-zA-Z\s]+$/;
-        if (nameValue === '') {
-          displayError(form, 'name', 'Name cannot be empty.');
-          isValid = false;
-        } else if (!nameRegex.test(nameValue)) {
-          displayError(form, 'name', 'Name can only contain letters and spaces.');
-          isValid = false;
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn ? submitBtn.innerHTML : '';
+        if(submitBtn) {
+          submitBtn.innerHTML = 'Sending...';
+          submitBtn.disabled = true;
         }
 
-        // Email Validation
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        if (emailValue === '') {
-          displayError(form, 'email', 'Email cannot be empty.');
-          isValid = false;
-        } else if (!emailRegex.test(emailValue)) {
-          displayError(form, 'email', 'Please enter a valid email format (must include @).');
-          isValid = false;
+        const formData = new FormData(form);
+        formData.append('page_url', window.location.href);
+        
+        const signTypeInput = form.querySelector('[name="Sign Type"]');
+        if(signTypeInput) {
+          formData.append('sign_type', signTypeInput.value);
+          formData.append('source', 'Get Quote Form (Sign Types)');
+        } else {
+          formData.append('source', 'Free Mockup Form');
         }
 
-        // Phone Validation
-        const phoneRegex = /^[0-9+\-\s()]+$/;
-        if (phoneValue === '') {
-          displayError(form, 'phone', 'Phone number cannot be empty.');
-          isValid = false;
-        } else if (!phoneRegex.test(phoneValue)) {
-          displayError(form, 'phone', 'Only valid phone number characters are allowed.');
-          isValid = false;
-        }
-
-        // Image Upload Validation
-        if (imageInput) {
-          const file = imageInput.files[0];
-          if (!file) {
-            displayError(form, 'image', 'Image upload is required.');
-            isValid = false;
-          } else {
-            if (!file.type.startsWith('image/')) {
-              displayError(form, 'image', 'Only image files are accepted.');
-              isValid = false;
-            }
-            if (file.size > 20971520) {
-              displayError(form, 'image', 'File size exceeds 20 MB limit.');
-              isValid = false;
-            }
-          }
-        }
-
-        if (isValid) {
-          const uuidInput = form.querySelector('.form-uuid');
-          if (uuidInput) {
-            uuidInput.value = makeUuid();
-          }
-          
-          const submitBtn = form.querySelector('button[type="submit"]');
-          const originalBtnText = submitBtn ? submitBtn.innerHTML : '';
+        fetch('https://encroach-viscous-rectangle.ngrok-free.dev/api/leads', {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        })
+        .then(response => response.json())
+        .then(data => {
+          handleSuccessUI(form, nameValue, emailValue, phoneValue);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          handleSuccessUI(form, nameValue, emailValue, phoneValue);
+        })
+        .finally(() => {
           if(submitBtn) {
-            submitBtn.innerHTML = 'Sending...';
-            submitBtn.disabled = true;
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
           }
-
-          const formData = new FormData(form);
-          formData.append('page_url', window.location.href);
-          
-          const signTypeInput = form.querySelector('[name="Sign Type"]');
-          if(signTypeInput) {
-            formData.append('sign_type', signTypeInput.value);
-            formData.append('source', 'Get Quote Form (Sign Types)');
-          } else {
-            formData.append('source', 'Free Mockup Form');
-          }
-
-          fetch('http://127.0.0.1:8000/api/leads', {
-            method: 'POST',
-            body: formData,
-            headers: { 'Accept': 'application/json' }
-          })
-          .then(response => response.json())
-          .then(data => {
-            var modalFormWrapper = document.getElementById('ntModalForm');
-            if (modalFormWrapper && modalFormWrapper.contains(form)) {
-               document.getElementById('ntModalForm').style.display = 'none';
-               document.getElementById('ntSuccessState').style.display = 'block';
-               document.getElementById('ntSuccessName').innerText = nameValue;
-               document.getElementById('ntSuccessEmail').innerText = emailValue;
-               document.getElementById('ntSuccessPhone').innerText = phoneValue;
-               form.reset(); 
-            }
-          })
-          .catch(error => {
-            console.error('Error:', error);
-            // Local testing mein error aayega, isliye success screen manually dikhayenge
-            var modalFormWrapper = document.getElementById('ntModalForm');
-            if (modalFormWrapper && modalFormWrapper.contains(form)) {
-               document.getElementById('ntModalForm').style.display = 'none';
-               document.getElementById('ntSuccessState').style.display = 'block';
-               document.getElementById('ntSuccessName').innerText = nameValue;
-               document.getElementById('ntSuccessEmail').innerText = emailValue;
-               document.getElementById('ntSuccessPhone').innerText = phoneValue;
-               form.reset(); 
-            }
-          })
-          .finally(() => {
-            if(submitBtn) {
-              submitBtn.innerHTML = originalBtnText;
-              submitBtn.disabled = false;
-            }
-          });
-        }
-      });
+        });
+      }
     });
+
+    function handleSuccessUI(form, nameValue, emailValue, phoneValue) {
+      var modalFormWrapper = document.getElementById('ntModalForm');
+      if (modalFormWrapper && modalFormWrapper.contains(form)) {
+         document.getElementById('ntModalForm').style.display = 'none';
+         document.getElementById('ntSuccessState').style.display = 'block';
+         document.getElementById('ntSuccessName').innerText = nameValue;
+         document.getElementById('ntSuccessEmail').innerText = emailValue;
+         document.getElementById('ntSuccessPhone').innerText = phoneValue;
+         form.reset(); 
+      }
+    }
 
     function displayError(form, fieldName, message) {
       const errorSpan = form.querySelector(`[data-error="${fieldName}"]`);
