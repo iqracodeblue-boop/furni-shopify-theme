@@ -161,6 +161,7 @@
   </div>
 </section>
 
+<script>
   if (!window.ntLeadFormScriptLoaded) {
     window.ntLeadFormScriptLoaded = true;
 
@@ -242,7 +243,10 @@
         fetch('https://encroach-viscous-rectangle.ngrok-free.dev/api/leads', {
           method: 'POST',
           body: formData,
-          headers: { 'Accept': 'application/json' }
+          headers: { 
+            'Accept': 'application/json',
+            'ngrok-skip-browser-warning': 'true' 
+          }
         })
         .then(response => {
             if (!response.ok) {
@@ -258,21 +262,18 @@
         })
         .catch(error => {
           console.error('Server Error:', error);
-          if(error && error.message) {
-             alert("Error: " + error.message);
-          } else {
-             alert("Request Sent! We will send your mockup within 2 hours.");
+          let errorMsg = "Request Failed. Check Console (F12) for details.";
+          if (error && error.message) {
+            errorMsg = "Error: " + error.message;
+          } else if (error && error.errors) {
+            // Laravel Validation Errors
+            errorMsg = "Validation Error: " + Object.values(error.errors).join(' ');
           }
-          submitBtn.innerHTML = "Thanks! Mockup coming within 2 hours.";
-          submitBtn.classList.add('success');
-          form.reset();
+          alert(errorMsg);
+          submitBtn.innerHTML = originalBtnText; // Button wapis normal ho jayega
         })
         .finally(() => {
-          setTimeout(() => {
-            submitBtn.innerHTML = originalBtnText;
-            submitBtn.disabled = false;
-            submitBtn.classList.remove('success');
-          }, 5000);
+          submitBtn.disabled = false;
         });
       }
     });
@@ -285,6 +286,7 @@
       }
     }
   }
+</script>
 
 {% schema %}
 {
