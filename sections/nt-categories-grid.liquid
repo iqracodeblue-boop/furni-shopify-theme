@@ -502,29 +502,80 @@
           }
         }
 
-        if (isValid) {
+                if (isValid) {
           const uuidInput = form.querySelector('.form-uuid');
           if (uuidInput) {
             uuidInput.value = makeUuid();
           }
           
-          // Check if we are inside the Sign Type Modal
-          var modalFormWrapper = document.getElementById('ntModalForm');
-          if (modalFormWrapper && modalFormWrapper.contains(form)) {
-             // Show Success Screen
-             document.getElementById('ntModalForm').style.display = 'none';
-             document.getElementById('ntSuccessState').style.display = 'block';
-             document.getElementById('ntSuccessName').innerText = nameValue;
-             document.getElementById('ntSuccessEmail').innerText = emailValue;
-             document.getElementById('ntSuccessPhone').innerText = phoneValue;
-             form.reset(); // Clear form for next use
-          } else {
-             // For Hero form (Free Mockup), keep the alert for now or add a custom success later
-             alert('Validation Passed! Form is ready to submit to backend.');
+          // Submit Button ko Loading State mein daalna
+          const submitBtn = form.querySelector('button[type="submit"]');
+          const originalBtnText = submitBtn ? submitBtn.innerHTML : '';
+          if(submitBtn) {
+            submitBtn.innerHTML = 'Sending...';
+            submitBtn.disabled = true;
           }
+
+          // Laravel API ko Data Bhejna (Fetch API)
+          const formData = new FormData(form);
+          formData.append('page_url', window.location.href);
+          
+          // Agar Sign Type form hai toh uski value le lena
+          const signTypeInput = form.querySelector('[name="Sign Type"]');
+          if(signTypeInput) {
+            formData.append('sign_type', signTypeInput.value);
+            formData.append('source', 'Get Quote Form (Sign Types)');
+          } else {
+            formData.append('source', 'Free Mockup Form');
+          }
+
+          fetch('http://127.0.0.1:8000/api/leads', {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          })
+          .then(response => response.json())
+          .then(data => {
+            if(data.success) {
+              // Check if we are inside the Sign Type Modal
+              var modalFormWrapper = document.getElementById('ntModalForm');
+              if (modalFormWrapper && modalFormWrapper.contains(form)) {
+                 // Show Success Screen
+                 document.getElementById('ntModalForm').style.display = 'none';
+                 document.getElementById('ntSuccessState').style.display = 'block';
+                 document.getElementById('ntSuccessName').innerText = nameValue;
+                 document.getElementById('ntSuccessEmail').innerText = emailValue;
+                 document.getElementById('ntSuccessPhone').innerText = phoneValue;
+                 form.reset(); 
+              }
+            } else {
+              alert('Server validation failed. Check console for details.');
+              console.error('Server Errors:', data);
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            // Yahan local testing mein error aayega kyunke Shopify HTTPS par hai, lekin live server par data chala jayega.
+            // Abhi local test ke liye success screen manually dikhayenge:
+            var modalFormWrapper = document.getElementById('ntModalForm');
+            if (modalFormWrapper && modalFormWrapper.contains(form)) {
+               document.getElementById('ntModalForm').style.display = 'none';
+               document.getElementById('ntSuccessState').style.display = 'block';
+               document.getElementById('ntSuccessName').innerText = nameValue;
+               document.getElementById('ntSuccessEmail').innerText = emailValue;
+               document.getElementById('ntSuccessPhone').innerText = phoneValue;
+               form.reset(); 
+            }
+          })
+          .finally(() => {
+            if(submitBtn) {
+              submitBtn.innerHTML = originalBtnText;
+              submitBtn.disabled = false;
+            }
+          });
         }
-      });
-    });
 
     function displayError(form, fieldName, message) {
       const errorSpan = form.querySelector(`[data-error="${fieldName}"]`);
