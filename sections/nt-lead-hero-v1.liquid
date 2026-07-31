@@ -162,7 +162,6 @@
 </section>
 
 <script>
-  // Prevent double binding
   if (!window.ntLeadFormScriptLoaded) {
     window.ntLeadFormScriptLoaded = true;
 
@@ -194,13 +193,11 @@
       const emailValue = emailInput.value.trim();
       const phoneValue = phoneInput.value.trim();
 
-      // Name Validation
       if (nameValue === '') {
         displayError(form, 'name', 'Name is required.');
         isValid = false;
       }
 
-      // Email Validation
       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
       if (emailValue === '') {
         displayError(form, 'email', 'Email is required.');
@@ -210,7 +207,6 @@
         isValid = false;
       }
 
-      // Phone Validation
       const phoneRegex = /^[0-9+\-\s()]+$/;
       if (phoneValue === '') {
         displayError(form, 'phone', 'Phone is required.');
@@ -220,7 +216,6 @@
         isValid = false;
       }
 
-      // Image Upload Validation (Optional in this form, but if selected, check size/type)
       if (imageInput && imageInput.files.length > 0) {
         const file = imageInput.files[0];
         if (!file.type.startsWith('image/') && !['application/pdf', 'application/postscript'].includes(file.type)) {
@@ -245,7 +240,7 @@
         const formData = new FormData(form);
         formData.append('page_url', window.location.href);
 
-        fetch('http://127.0.0.1:8000/api/leads', {
+        fetch('https://encroach-viscous-rectangle.ngrok-free.dev/api/leads', {
           method: 'POST',
           body: formData,
           headers: { 'Accept': 'application/json' }
@@ -259,7 +254,6 @@
         })
         .catch(error => {
           console.error('Error:', error);
-          // Local testing mein error aayega, isliye yahan bhi success dikhayenge
           alert("Request Sent! We will send your mockup within 2 hours.");
           submitBtn.innerHTML = "Thanks! Mockup coming within 2 hours.";
           submitBtn.classList.add('success');
@@ -270,7 +264,7 @@
             submitBtn.innerHTML = originalBtnText;
             submitBtn.disabled = false;
             submitBtn.classList.remove('success');
-          }, 5000); // 5 seconds baad button wapis normal ho jayega
+          }, 5000);
         });
       }
     });
