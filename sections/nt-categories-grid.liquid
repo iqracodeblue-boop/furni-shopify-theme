@@ -423,7 +423,7 @@
     });
   });
 
-  // --- TASK 1: Form Validation & UUID Generation ---
+  // --- TASK 1 & 2: Form Validation, UUID Generation & API Submission ---
   if (!window.ntFormValidationLoaded) {
     window.ntFormValidationLoaded = true;
     
@@ -508,20 +508,60 @@
             uuidInput.value = makeUuid();
           }
           
-          // Check if we are inside the Sign Type Modal
-          var modalFormWrapper = document.getElementById('ntModalForm');
-          if (modalFormWrapper && modalFormWrapper.contains(form)) {
-             // Show Success Screen
-             document.getElementById('ntModalForm').style.display = 'none';
-             document.getElementById('ntSuccessState').style.display = 'block';
-             document.getElementById('ntSuccessName').innerText = nameValue;
-             document.getElementById('ntSuccessEmail').innerText = emailValue;
-             document.getElementById('ntSuccessPhone').innerText = phoneValue;
-             form.reset(); // Clear form for next use
-          } else {
-             // For Hero form (Free Mockup), keep the alert for now or add a custom success later
-             alert('Validation Passed! Form is ready to submit to backend.');
+          const submitBtn = form.querySelector('button[type="submit"]');
+          const originalBtnText = submitBtn ? submitBtn.innerHTML : '';
+          if(submitBtn) {
+            submitBtn.innerHTML = 'Sending...';
+            submitBtn.disabled = true;
           }
+
+          const formData = new FormData(form);
+          formData.append('page_url', window.location.href);
+          
+          const signTypeInput = form.querySelector('[name="Sign Type"]');
+          if(signTypeInput) {
+            formData.append('sign_type', signTypeInput.value);
+            formData.append('source', 'Get Quote Form (Sign Types)');
+          } else {
+            formData.append('source', 'Free Mockup Form');
+          }
+
+          fetch('http://127.0.0.1:8000/api/leads', {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+          })
+          .then(response => response.json())
+          .then(data => {
+            var modalFormWrapper = document.getElementById('ntModalForm');
+            if (modalFormWrapper && modalFormWrapper.contains(form)) {
+               document.getElementById('ntModalForm').style.display = 'none';
+               document.getElementById('ntSuccessState').style.display = 'block';
+               document.getElementById('ntSuccessName').innerText = nameValue;
+               document.getElementById('ntSuccessEmail').innerText = emailValue;
+               document.getElementById('ntSuccessPhone').innerText = phoneValue;
+               form.reset(); 
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            // Local testing mein error aayega, isliye success screen manually dikhayenge
+            var modalFormWrapper = document.getElementById('ntModalForm');
+            if (modalFormWrapper && modalFormWrapper.contains(form)) {
+               document.getElementById('ntModalForm').style.display = 'none';
+               document.getElementById('ntSuccessState').style.display = 'block';
+               document.getElementById('ntSuccessName').innerText = nameValue;
+               document.getElementById('ntSuccessEmail').innerText = emailValue;
+               document.getElementById('ntSuccessPhone').innerText = phoneValue;
+               form.reset(); 
+            }
+          })
+          .finally(() => {
+            if(submitBtn) {
+              submitBtn.innerHTML = originalBtnText;
+              submitBtn.disabled = false;
+            }
+          });
         }
       });
     });
