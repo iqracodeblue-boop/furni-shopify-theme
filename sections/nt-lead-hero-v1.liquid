@@ -240,12 +240,17 @@
         const formData = new FormData(form);
         formData.append('page_url', window.location.href);
 
-        fetch('https://encroach-viscous-rectangle.ngrok-free.dev/api/leads', {
+               fetch('https://encroach-viscous-rectangle.ngrok-free.dev/api/leads', {
           method: 'POST',
           body: formData,
           headers: { 'Accept': 'application/json' }
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(err => { throw err; });
+            }
+            return response.json();
+        })
         .then(data => {
           alert("Request Sent! We will send your mockup within 2 hours.");
           submitBtn.innerHTML = "Thanks! Mockup coming within 2 hours.";
@@ -253,8 +258,12 @@
           form.reset();
         })
         .catch(error => {
-          console.error('Error:', error);
-          alert("Request Sent! We will send your mockup within 2 hours.");
+          console.error('Server Error:', error);
+          if(error && error.message) {
+             alert("Error: " + error.message);
+          } else {
+             alert("Request Sent! We will send your mockup within 2 hours.");
+          }
           submitBtn.innerHTML = "Thanks! Mockup coming within 2 hours.";
           submitBtn.classList.add('success');
           form.reset();
@@ -266,9 +275,6 @@
             submitBtn.classList.remove('success');
           }, 5000);
         });
-      }
-    });
-
     function displayError(form, fieldName, message) {
       const errorSpan = form.querySelector(`[data-error="${fieldName}"]`);
       if (errorSpan) {
