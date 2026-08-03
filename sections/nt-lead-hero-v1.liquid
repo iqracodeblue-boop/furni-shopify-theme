@@ -18,7 +18,9 @@
     background-image: url('https://i.ibb.co/gFdwCYNb/Chat-GPT-Image-Jun-29-2026-03-11-07-PM.png');
     background-size: cover;
     background-position: center 30%;
-    padding-top: 100px;
+    display: flex;
+    align-items: center;
+    padding: 80px 20px;
   }
   .nt-hero-section::before {
     content: '';
@@ -33,132 +35,57 @@
     z-index: 2;
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 460px);
-    align-items: start;
     max-width: 1320px;
     margin: 0 auto;
-    padding: 28px 48px 32px;
-    gap: 48px;
+    padding: 0 48px;
+    gap: 64px;
+    width: 100%;
   }
 
   /* Left Side */
-  .nt-hero-left { display: flex; flex-direction: column; gap: 20px; }
-  .nt-kicker { display: inline-flex; align-items: center; gap: 9px; font-family: var(--fb); font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.8); padding: 7px 14px; border-radius: 100px; background: rgba(1, 136, 204, 0.12); border: 1px solid rgba(1, 136, 204, 0.32); width: max-content; }
-  .nt-kicker span { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 8px rgba(34, 197, 94, 0.7); }
-  .nt-h1 { font-family: var(--fh-hero); font-size: clamp(30px, 3.6vw, 52px); color: #fff; line-height: 1.06; }
-  .nt-h1 .accent { color: #02a0eb; }
-  .nt-lede { font-family: var(--fb); font-size: 16px; color: rgba(255,255,255,0.72); max-width: 520px; }
+  .nt-hero-left { display: flex; flex-direction: column; gap: 20px; padding-top: 40px; }
+  .nt-h2 { font-family: var(--fh-hero); font-size: 1.5rem; color: #fff; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
+  .nt-h3 { font-family: var(--fh-hero); font-size: clamp(28px, 3vw, 42px); color: #fff; line-height: 1.1; margin: 0; }
+  .nt-hero-sub { font-family: var(--fb); font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.5; max-width: 500px; margin-top: 10px; }
+  .nt-check-list { list-style: none; padding: 0; margin: 30px 0 0 0; display: flex; flex-direction: column; gap: 15px; }
+  .nt-check-item { display: flex; align-items: center; gap: 12px; font-family: var(--fb); font-size: 16px; color: rgba(255,255,255,0.9); }
+  .nt-check-item svg { width: 20px; height: 20px; background: var(--accent); border-radius: 50%; padding: 3px; box-sizing: border-box; fill: #fff; flex-shrink: 0; }
 
-  .nt-showcase { margin-top: 10px; max-width: 620px; }
-  .nt-showcase-label { font-family: var(--fb); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 10px; display: block; }
-  .nt-showcase-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; grid-template-rows: repeat(2, 1fr); gap: 7px; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 56px rgba(0,0,0,0.6); }
-  .nt-sc-feature { grid-row: span 2; position: relative; overflow: hidden; }
-  .nt-sc-cell { position: relative; overflow: hidden; aspect-ratio: 4/3; }
-  .nt-sc-feature img, .nt-sc-cell img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; transition: transform 0.5s; }
-  .nt-sc-feature:hover img, .nt-sc-cell:hover img { transform: scale(1.05); }
-  .nt-sc-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 16px 7px 6px; background: linear-gradient(to top, rgba(0,0,0,0.85), transparent); color: #fff; font-size: 9.5px; font-weight: 700; text-transform: uppercase; }
-  .nt-sc-feature-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 30px 14px 14px; background: linear-gradient(to top, rgba(0,0,0,0.88), transparent); }
-  .nt-sc-feature-label strong { font-family: var(--fh-hero); font-size: 0.98rem; color: #fff; display: block; }
-  .nt-sc-feature-label span { font-family: var(--fb); font-size: 0.68rem; color: rgba(255,255,255,0.6); }
-
-  /* Right Side Form Container */
-  .nt-hero-right { display: flex; flex-direction: column; gap: 14px; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
-  .nt-delivery-banner { display: flex; align-items: center; justify-content: space-between; background: #111; padding: 8px 16px; }
-  .nt-del-left { display: flex; align-items: center; gap: 8px; }
-  .nt-del-text { font-family: var(--fb); font-size: 11.5px; font-weight: 700; color: #fff; }
-  .nt-del-text span { color: #5cbef0; }
-  .nt-del-right { display: flex; align-items: center; gap: 7px; color: #fff; font-size: 11.5px; font-weight: 700; text-decoration: none; }
-  .nt-del-right svg { width: 13px; height: 13px; stroke: var(--accent); fill: none; stroke-width: 2; }
-
-  .qf-wrap { padding: 18px 18px 14px; }
-  .qf-title { font-family: var(--fh-hero); font-size: 22px; color: #111; text-transform: uppercase; margin-bottom: 12px; }
+  /* Right Side Form */
+  .nt-hero-right { background: #fff; border-radius: 12px; padding: 32px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); max-height: 90vh; overflow-y: auto; }
   
-  .qf-section { border: 1.5px solid #e0e0e0; border-radius: 10px; margin-bottom: 12px; overflow: hidden; }
-  .qf-section-label { background: var(--accent); color: #fff; padding: 8px 12px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; display: flex; align-items: center; gap: 6px; }
-  .qf-section-req { color: #c0392b; }
-  .qf-section-body { padding: 14px; }
-
-  .qf-field { margin-bottom: 8px; display: flex; flex-direction: column; gap: 4px; }
-  .qf-label { font-size: 10.5px; font-weight: 700; color: #555; text-transform: uppercase; letter-spacing: 0.07em; display: flex; justify-content: space-between; }
-  .qf-label .opt { font-weight: 400; color: #999; text-transform: none; font-size: 11px; }
-  .qf-input-wrap { position: relative; display: flex; align-items: center; }
-  .qf-input-icon { position: absolute; left: 12px; color: #bbb; width: 16px; height: 16px; pointer-events: none; }
-  .qf-input { width: 100%; background: #fff; border: 1.5px solid #ddd; border-radius: 8px; padding: 10px 12px 10px 36px; color: #111; font-family: var(--fb); font-size: 14px; box-sizing: border-box; }
-  .qf-input:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px rgba(1,136,204,0.13); }
-  .qf-textarea { padding: 10px 12px; resize: none; min-height: 38px; line-height: 1.45; }
-  .qf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-
-  /* Upload Box */
-  .qf-file-wrap { position: relative; display: flex; flex-direction: row; align-items: center; gap: 10px; padding: 10px 12px; background: #fff; border: 2px dashed #ccc; border-radius: 8px; cursor: pointer; }
-  .qf-file-wrap:hover { border-color: var(--accent); background: #f5faff; }
-  .qf-file-wrap input[type='file'] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
-  .qf-file-icon { color: var(--accent); flex-shrink: 0; width: 22px; height: 22px; }
-  .qf-file-text { display: flex; flex-direction: column; gap: 1px; flex: 1; min-width: 0; }
-  .qf-file-main { font-size: 13px; font-weight: 600; color: #111; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .qf-file-main a { color: var(--accent); text-decoration: underline; }
-  .qf-file-hint { font-size: 11px; color: #999; }
-
-  /* Green Tick & Error States for Upload */
-  .qf-check { display: none; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; background: #1d9b5e; border-radius: 50%; color: #fff; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
-  .qf-file-wrap.has-file .qf-check { display: flex; }
-  .qf-file-wrap.has-file .qf-file-icon { color: #1d9b5e; }
-  .qf-file-wrap.has-file .qf-file-hint { color: #1d9b5e; font-weight: 600; }
-  .qf-file-wrap.err { border-color: #c0392b; background: rgba(192, 57, 43, 0.05); }
-  .qf-file-wrap.err .qf-file-icon { color: #c0392b; }
-  .qf-file-wrap.err .qf-file-hint { color: #c0392b; font-weight: 600; }
-
-  .qf-toggle-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .qf-toggle-btn { display: flex; align-items: center; justify-content: center; gap: 7px; background: #fff; border: 1.5px solid #ddd; border-radius: 8px; padding: 10px; font-family: var(--fb); font-size: 13.5px; font-weight: 500; color: #444; cursor: pointer; transition: 0.15s; }
-  .qf-toggle-btn:hover { border-color: var(--accent); color: #111; }
-  .qf-toggle-btn.sel { border-color: var(--accent); color: var(--accent); font-weight: 700; box-shadow: 0 0 0 3px rgba(1,136,204,0.12); }
-
-  .qf-mockup-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 4px; }
-  .qf-mockup-card { position: relative; border: 2px solid #e0e0e0; border-radius: 8px; overflow: hidden; cursor: pointer; transition: 0.15s; }
-  .qf-mockup-card:hover { border-color: var(--accent); }
-  .qf-mockup-card.sel { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(1,136,204,0.2); }
-  .qf-mockup-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; pointer-events: none; }
-  .qf-mockup-info { padding: 6px 7px 5px; background: #fff; display: flex; flex-direction: column; gap: 3px; }
-  .qf-mockup-name { font-size: 11.5px; font-weight: 600; color: #111; }
-  .qf-mockup-badge { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 9px; font-weight: 700; text-transform: uppercase; background: #e8f4f0; color: #0d7a5f; width: max-content; }
-  .qf-mockup-card.sel .qf-mockup-badge { background: var(--accent); color: #fff; }
-
-  .qf-submit { width: 100%; background: var(--accent); color: #fff; border: none; padding: 13px; border-radius: 10px; font-size: 15px; font-weight: 700; text-transform: uppercase; cursor: pointer; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 18px rgba(1,136,204,0.32); }
-  .qf-submit:hover { background: var(--acch); }
+  .nt-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .nt-form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .nt-form-group.full { grid-column: span 2; }
   
-  .qf-trust-row { margin-top: 8px; padding-top: 8px; border-top: 1px solid #eee; display: flex; justify-content: space-between; gap: 8px; }
-  .qf-trust-item { display: flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 700; color: #888; text-transform: uppercase; }
-  .qf-trust-item svg { width: 12px; height: 12px; stroke: var(--accent); stroke-width: 2; fill: none; }
+  .nt-label { font-size: 13px; font-weight: 600; color: #333; }
+  .nt-input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-family: var(--fb); font-size: 14px; box-sizing: border-box; background: #f9f9f9; }
+  .nt-input:focus { border-color: var(--accent); outline: none; background: #fff; }
+  textarea.nt-input { resize: vertical; min-height: 80px; }
+  
+  .nt-submit-btn { width: 100%; background: var(--accent); color: #fff; border: none; padding: 16px; border-radius: 6px; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 10px; transition: background 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .nt-submit-btn:hover { background: var(--acch); }
+  .nt-submit-btn.success { background: #1d9b5e; }
+  
+  .nt-privacy { text-align: center; font-size: 11px; color: #888; margin-top: 12px; }
 
-  /* Success State */
-  .qf-success { display: none; background: #0d0d0d; padding: 20px; color: #fff; border-top: 3px solid var(--accent); border-radius: 0 0 14px 14px; }
-  .sx-hero { text-align: center; padding: 20px 10px; border-bottom: 1px solid rgba(1,136,204,0.18); margin-bottom: 20px; }
-  .sx-ico { width: 58px; height: 58px; background: #fff; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-  .sx-ico svg { stroke: #1d9b5e; width: 28px; height: 28px; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-  .sx-h { font-family: var(--fh-hero); font-size: 24px; color: #fff; margin-bottom: 10px; }
-  .sx-h em { color: var(--accent); font-style: normal; }
-  .sx-sub { font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 8px; line-height: 1.5; }
-  .sx-sub strong { color: #fff; }
-  
-  .sx-bottom { display: flex; flex-direction: column; gap: 12px; }
-  .sx-status-card { border: 1px solid #333; border-radius: 10px; overflow: hidden; }
-  .sx-designer { display: flex; align-items: center; gap: 10px; padding: 12px; border-bottom: 1px solid #222; }
-  .sx-designer-av { width: 38px; height: 38px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; }
-  .sx-designer-name { font-size: 13px; font-weight: 700; color: #fff; }
-  .sx-designer-role { font-size: 11px; color: #888; margin-top: 2px; }
-  
-  .sx-next-strip { display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: #161616; font-size: 11px; font-weight: 600; }
-  .sx-next-item { display: flex; align-items: center; gap: 5px; color: #555; }
-  .sx-next-item.done { color: #1d9b5e; }
-  .sx-next-item.active { color: var(--accent); }
-  .sx-next-sep { width: 20px; height: 1px; background: #333; }
-  
-  .sx-call { background: #1a1a1a; border: 1px solid #333; color: #fff; padding: 12px; border-radius: 8px; text-align: center; text-decoration: none; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 8px; }
-  .sx-call:hover { background: #222; }
-  .sx-reset { background: var(--accent); color: #fff; border: none; padding: 14px; border-radius: 8px; font-weight: 700; cursor: pointer; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; }
-  .sx-reset:hover { background: var(--acch); }
+  /* Upload Box (Simple) */
+  .nt-upload-area { border: 2px dashed #ccc; padding: 15px; border-radius: 8px; text-align: center; cursor: pointer; position: relative; }
+  .nt-upload-area:hover { border-color: var(--accent); background: #f8fdff; }
+  .nt-upload-area input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+  .nt-upload-icon { color: var(--accent); margin-bottom: 5px; }
+  .nt-upload-text { font-size: 13px; color: #555; font-weight: 600; }
+  .nt-upload-sub { font-size: 11px; color: #999; margin-top: 2px; }
+  .nt-upload-area.has-file { border-color: #1d9b5e; background: #f0fff4; }
+  .nt-upload-area.has-file .nt-upload-text { color: #1d9b5e; }
+  .nt-upload-area.err { border-color: #c0392b; background: #fff5f5; }
+  .nt-upload-area.err .nt-upload-text { color: #c0392b; }
 
   @media (max-width: 1024px) {
-    .nt-stage { grid-template-columns: 1fr; padding: 16px 20px 48px; }
-    .nt-hero-section { min-height: auto; padding-top: 80px; }
+    .nt-stage { grid-template-columns: 1fr; padding: 0 20px; gap: 40px; }
+    .nt-hero-section { min-height: auto; padding: 60px 0; }
+    .nt-hero-left { padding-top: 0; text-align: center; }
+    .nt-check-list { align-items: center; }
   }
 </style>
 
@@ -166,248 +93,97 @@
   <div class="nt-stage">
     <!-- Left Side -->
     <div class="nt-hero-left">
-      <div class="nt-kicker"><span></span> Free Mock up and Quote in two hours</div>
-      <h1 class="nt-h1">Custom 3D business signs.<br><span class="accent">Free quote &amp; mockup.</span></h1>
-      <p class="nt-lede">Looking for custom storefront signs, illuminated business signage, backlit signs, or dimensional logo signs? Upload your logo for a free mockup and quote on premium indoor and outdoor signage, built to last and shipped fast.</p>
-      
-      <div class="nt-showcase">
-        <span class="nt-showcase-label">What we build</span>
-        <div class="nt-showcase-grid">
-          <div class="nt-sc-feature" style="grid-column:1;grid-row:1/3">
-            <img src="https://i.ibb.co/Kcw6nP6Y/2ed997c391e78c87e4ef3323b6ce9594.jpg" alt="3D Metal Backlit" onclick="openLightbox(this.src)">
-            <div class="nt-sc-feature-label"><strong>3D Metal Backlit</strong><span>Our most-ordered storefront sign</span></div>
-          </div>
-          <div class="nt-sc-cell" style="grid-column:2;grid-row:1">
-            <img src="https://i.ibb.co/1Gp76c58/cb25442aad4c8435bb11a509ccc4b132.jpg" alt="Halo Lit" onclick="openLightbox(this.src)">
-            <div class="nt-sc-label">Halo Lit</div>
-          </div>
-          <div class="nt-sc-cell" style="grid-column:2;grid-row:2">
-            <img src="https://i.ibb.co/B2JQnr6N/74d052ff-c4ee-4cb5-ac7e-183dcb40f0e2.png" alt="Acrylic Front Lit" onclick="openLightbox(this.src)">
-            <div class="nt-sc-label">Acrylic Front Lit</div>
-          </div>
-          <div class="nt-sc-cell" style="grid-column:3;grid-row:1">
-            <img src="https://i.ibb.co/Txv6T1Xs/73a77a70eba24d8090295aa71ab1a4c5.jpg" alt="Push Thru Sign" onclick="openLightbox(this.src)">
-            <div class="nt-sc-label">Push Thru Sign</div>
-          </div>
-          <div class="nt-sc-cell" style="grid-column:3;grid-row:2">
-            <img src="https://i.ibb.co/DH0FFQCd/66793f20edb71e28c00f7e453b711b46.jpg" alt="Backlit w/ Backboard" onclick="openLightbox(this.src)">
-            <div class="nt-sc-label">Backlit w/ Backboard</div>
-          </div>
-          <div class="nt-sc-cell" style="grid-column:4;grid-row:1">
-            <img src="https://i.ibb.co/07TMQzZ/2d-blade-sign-image-8.png" alt="3D Blade Sign" onclick="openLightbox(this.src)">
-            <div class="nt-sc-label">3D Blade Sign</div>
-          </div>
-          <div class="nt-sc-cell" style="grid-column:4;grid-row:2">
-            <img src="https://i.ibb.co/2mRQ7Y0/e0cc8c5e140f122c969efb850e696e44.jpg" alt="UV Acrylic" onclick="openLightbox(this.src)">
-            <div class="nt-sc-label">UV Acrylic</div>
-          </div>
-        </div>
-      </div>
+      <h2 class="nt-h2">FREE MOCKUP</h2>
+      <h3 class="nt-h3">Get a Free Mockup in 2 Hours.</h3>
+      <p class="nt-hero-sub">Tell us about your project. We'll design a photoreal mockup on your building and send it back in 2 hours. No obligation, no deposit.</p>
+      <ul class="nt-check-list">
+        <li class="nt-check-item">
+          <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          Free mockup, no commitment
+        </li>
+        <li class="nt-check-item">
+          <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          Designed by hand, not a template
+        </li>
+        <li class="nt-check-item">
+          <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          Transparent pricing, no hidden fees
+        </li>
+        <li class="nt-check-item">
+          <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          Permit guidance included
+        </li>
+      </ul>
     </div>
 
-    <!-- Right Side Form & Success Container -->
+    <!-- Right Side Form -->
     <div class="nt-hero-right">
-      <div class="nt-delivery-banner">
-        <div class="nt-del-left">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0188CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-          <div class="nt-del-text"><span>FREE SHIPPING</span> to all 50 States</div>
-        </div>
-        <a href="tel:12059007525" class="nt-del-right">
-          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
-          +1 205 900 7525
-        </a>
-      </div>
-
-      <!-- Form Wrapper -->
-      <div id="ntHeroFormWrap">
-        <form class="qf-wrap js-lead-form" action="javascript:void(0)" novalidate>
-          <h2 class="qf-title">Tell us about your sign.</h2>
-          
-          <input type="hidden" name="uuid" class="form-uuid">
-          <input type="hidden" name="source" value="Free Mockup Form (Hero)">
-
-          <div class="qf-section">
-            <div class="qf-section-label">Contact Information <span class="qf-section-req">*</span></div>
-            <div class="qf-section-body">
-              <div class="qf-row">
-                <div class="qf-field">
-                  <label class="qf-label">Your name</label>
-                  <div class="qf-input-wrap">
-                    <svg class="qf-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                    <input class="qf-input form-input" type="text" name="name" required>
-                  </div>
-                  <span class="error-text" data-error="name" style="color: red; font-size: 12px; display: block; margin-top: 4px;"></span>
-                </div>
-                <div class="qf-field">
-                  <label class="qf-label">Phone</label>
-                  <div class="qf-input-wrap">
-                    <svg class="qf-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
-                    <input class="qf-input form-input" type="tel" name="phone" required oninput="formatPhone(this)">
-                  </div>
-                  <span class="error-text" data-error="phone" style="color: red; font-size: 12px; display: block; margin-top: 4px;"></span>
-                </div>
-              </div>
-              <div class="qf-field">
-                <label class="qf-label">Email</label>
-                <div class="qf-input-wrap">
-                  <svg class="qf-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m2 7 10 7 10-7"/></svg>
-                  <input class="qf-input form-input" type="email" name="email" required>
-                </div>
-                <span class="error-text" data-error="email" style="color: red; font-size: 12px; display: block; margin-top: 4px;"></span>
-              </div>
-              <div class="qf-field">
-                <label class="qf-label">Upload your logo <span class="opt">Recommended</span></label>
-                <label class="qf-file-wrap" id="qfFileWrap">
-                  <svg class="qf-file-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                  <span class="qf-file-text">
-                    <span class="qf-file-main" id="qfFileMain">Logo &amp; site photo — drop or <a href="#" onclick="return false">browse</a></span>
-                    <span class="qf-file-hint" id="qfFileHint">PNG, JPG, PDF, AI, EPS, SVG — Max 20 MB each</span>
-                  </span>
-                  <span class="qf-check" id="qfFileCheck">✓</span>
-                  <input type="file" name="image" id="qfLogo" class="form-image" accept="image/*,.pdf,.ai,.eps" required onchange="handleFileSelect(this)">
-                </label>
-                <span class="error-text" data-error="image" style="color: red; font-size: 12px; display: block; margin-top: 4px;"></span>
-              </div>
-            </div>
-          </div>
-
-          <div class="qf-section">
-            <div class="qf-section-label">Sign Details</div>
-            <div class="qf-section-body">
-              <div class="qf-field">
-                <label class="qf-label">Sign usage</label>
-                <div class="qf-toggle-row">
-                  <button type="button" class="qf-toggle-btn" onclick="toggleBtn(this)">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Indoor
-                  </button>
-                  <button type="button" class="qf-toggle-btn" onclick="toggleBtn(this)">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v4m6.36.64l-2.83 2.83M20 12h4M17.66 17.66l2.83 2.83M12 20v4M4.34 17.66l-2.83 2.83M4 12H0M6.34 6.34L3.51 3.51"/><circle cx="12" cy="12" r="5"/></svg> Outdoor
-                  </button>
-                </div>
-              </div>
-
-              <div class="qf-field">
-                <label class="qf-label">Select mockup type(s)</label>
-                <div class="qf-mockup-grid">
-                  <div class="qf-mockup-card" onclick="toggleMockup(this)">
-                    <img src="https://cdn.shopify.com/s/files/1/0598/2096/6023/files/b6d42cc645663d276ce14ed30556dca0_3fc4a075-1ffa-4c1f-8bf0-1250d36f862a.jpg?v=1784115140" alt="Lightbox">
-                    <div class="qf-mockup-info"><div class="qf-mockup-name">Lightbox</div><span class="qf-mockup-badge">Recommended</span></div>
-                  </div>
-                  <div class="qf-mockup-card" onclick="toggleMockup(this)">
-                    <img src="https://cdn.shopify.com/s/files/1/0598/2096/6023/files/image_52.webp?v=1784021842" alt="Halo Lit">
-                    <div class="qf-mockup-info"><div class="qf-mockup-name">Halo Lit</div><span class="qf-mockup-badge">Recommended</span></div>
-                  </div>
-                  <div class="qf-mockup-card" onclick="toggleMockup(this)">
-                    <img src="https://cdn.shopify.com/s/files/1/0598/2096/6023/files/a41f50aee39a3c269c600156808215e7_33604a3c-bf4c-429a-ab64-609105320a86.jpg?v=1784115146" alt="Face Lit">
-                    <div class="qf-mockup-info"><div class="qf-mockup-name">Face Lit</div><span class="qf-mockup-badge">Recommended</span></div>
-                  </div>
-                  <div class="qf-mockup-card" onclick="toggleMockup(this)">
-                    <img src="https://cdn.shopify.com/s/files/1/0598/2096/6023/files/2d85a2a2fc7666b85ef8c76c8d30591a.jpg?v=1774339718" alt="Flat Cut">
-                    <div class="qf-mockup-info"><div class="qf-mockup-name">Flat Cut</div></div>
-                  </div>
-                  <div class="qf-mockup-card" onclick="toggleMockup(this)">
-                    <img src="https://cdn.shopify.com/s/files/1/0598/2096/6023/files/1164690c75c91f2fa591ac6e1af532d9.jpg?v=1773827490" alt="Fabricated">
-                    <div class="qf-mockup-info"><div class="qf-mockup-name">Fabricated</div></div>
-                  </div>
-                  <div class="qf-mockup-card" onclick="toggleMockup(this)">
-                    <img src="https://cdn.shopify.com/s/files/1/0598/2096/6023/files/Push-Through-Sign.jpg?v=1773828070" alt="Push Through">
-                    <div class="qf-mockup-info"><div class="qf-mockup-name">Push Through</div></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="qf-field">
-                <label class="qf-label">Estimated size</label>
-                <textarea class="qf-input qf-textarea" name="size" placeholder='e.g. 4ft × 2ft or "about 3 feet wide"' rows="1"></textarea>
-              </div>
-              <div class="qf-field">
-                <label class="qf-label">Project details</label>
-                <textarea class="qf-input qf-textarea" name="details" placeholder="Wall material, budget, finishing, timeline..." rows="2"></textarea>
-              </div>
-            </div>
-          </div>
-
-          <button type="submit" class="qf-submit">
-            Get My Free Mockup
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </button>
-
-          <div class="qf-trust-row">
-            <span class="qf-trust-item"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> No spam ever</span>
-            <span class="qf-trust-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 2-hour reply</span>
-            <span class="qf-trust-item"><svg viewBox="0 0 24 24"><path d="M12 2v6m0 0 3-3m-3 3-3-3m9 9h-2a3 3 0 0 0-3 3v3H9v-3a3 3 0 0 0-3-3H4"/></svg> $0 deposit</span>
-          </div>
-        </form>
-      </div>
-
-      <!-- Success State (Hidden by default) -->
-      <div class="qf-success" id="ntHeroSuccess">
-        <div class="sx-hero">
-          <div class="sx-ico">
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
-          <h2 class="sx-h">You're in, <em id="sxName">friend</em>.</h2>
-          <p class="sx-sub">Your request is on a designer's screen right now. We'll send your photoreal mockup to <strong id="sxEmail">your inbox</strong> within 2 hours.</p>
-          <p class="sx-sub">We'll also reach out on <strong id="sxPhone">your phone</strong>.</p>
-        </div>
+      <form class="js-lead-form" action="javascript:void(0)" novalidate>
+        <input type="hidden" name="uuid" class="form-uuid">
+        <input type="hidden" name="source" value="Free Mockup Form (Home)">
         
-        <div class="sx-bottom">
-          <div class="sx-status-card">
-            <div class="sx-designer">
-              <div class="sx-designer-av">J</div>
-              <div class="sx-designer-body">
-                <div class="sx-designer-name">Jessica . — Senior Designer</div>
-                <div class="sx-designer-role">Working on your mockup now</div>
-              </div>
-            </div>
-            <div class="sx-next-strip">
-              <div class="sx-next-item done">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Request received
-              </div>
-              <div class="sx-next-sep"></div>
-              <div class="sx-next-item active">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Mockup & Quote in 2 hours
-              </div>
-            </div>
+        <div class="nt-form-grid">
+          <div class="nt-form-group">
+            <label class="nt-label">Full Name *</label>
+            <input type="text" name="name" class="form-input nt-input" required>
+            <span class="error-text" data-error="name" style="color: red; font-size: 12px;"></span>
           </div>
-          
-          <a href="tel:12059007525" class="sx-call">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Talk to us sooner: (205) 900-7525
-          </a>
-          
-          <button class="sx-reset" onclick="resetHeroForm()">Submit another request</button>
+          <div class="nt-form-group">
+            <label class="nt-label">Phone *</label>
+            <input type="tel" name="phone" class="form-input nt-input" required oninput="formatPhone(this)">
+            <span class="error-text" data-error="phone" style="color: red; font-size: 12px;"></span>
+          </div>
+          <div class="nt-form-group full">
+            <label class="nt-label">Email *</label>
+            <input type="email" name="email" class="form-input nt-input" required>
+            <span class="error-text" data-error="email" style="color: red; font-size: 12px;"></span>
+          </div>
+          <div class="nt-form-group full">
+            <label class="nt-label">Business Name</label>
+            <input type="text" name="business_name" class="nt-input">
+          </div>
+          <div class="nt-form-group">
+            <label class="nt-label">Sign Type</label>
+            <select name="sign_type" class="nt-input">
+              <option value="">Select Type</option>
+              <option value="Storefront Sign">Storefront Sign</option>
+              <option value="Reception Sign">Reception Sign</option>
+              <option value="Metal Backlit">Metal Backlit</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="nt-form-group">
+            <label class="nt-label">State</label>
+            <input type="text" name="state" class="nt-input" placeholder="e.g. NY">
+          </div>
+          <div class="nt-form-group full">
+            <label class="nt-label">Project Details</label>
+            <textarea name="details" class="nt-input" rows="3" placeholder="Tell us about your sign needs..."></textarea>
+          </div>
+          <div class="nt-form-group full">
+            <label class="nt-label">Upload Logo (Optional)</label>
+            <div class="nt-upload-area" id="ntUploadArea" onclick="document.getElementById('ntFileInput').click()">
+              <div class="nt-upload-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              </div>
+              <div class="nt-upload-text" id="ntUploadText">Click to browse or drag file here</div>
+              <div class="nt-upload-sub" id="ntUploadSub">PNG, JPG, PDF, AI, EPS up to 20MB</div>
+              <input type="file" name="image" id="ntFileInput" class="form-image" accept="image/*,.pdf,.ai,.eps" style="display:none;" onchange="handleFileSelect(this)">
+            </div>
+            <span class="error-text" data-error="image" style="color: red; font-size: 12px;"></span>
+          </div>
         </div>
-      </div>
 
+        <button type="submit" class="nt-submit-btn">
+          Send Me My Free Mockup →
+        </button>
+        <p class="nt-privacy">Your information is private and never shared.</p>
+      </form>
     </div>
   </div>
 </section>
 
-<!-- Lightbox JS -->
-<div id="nt-lightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; justify-content:center; align-items:center;" onclick="closeLightbox()">
-  <img id="nt-lightbox-img" src="" style="max-width:90%; max-height:90%; border-radius:8px;">
-</div>
-
 <script>
-  // Lightbox functions
-  function openLightbox(src) {
-    var lb = document.getElementById('nt-lightbox');
-    var img = document.getElementById('nt-lightbox-img');
-    img.src = src;
-    lb.style.display = 'flex';
-  }
-  function closeLightbox() {
-    document.getElementById('nt-lightbox').style.display = 'none';
-  }
-  function toggleBtn(btn) {
-    btn.parentElement.querySelectorAll('.qf-toggle-btn').forEach(b => b.classList.remove('sel'));
-    btn.classList.add('sel');
-  }
-  function toggleMockup(card) {
-    card.classList.toggle('sel');
-  }
-
   // Phone Formatter
   function formatPhone(input) {
     let digits = input.value.replace(/\D/g, '');
@@ -423,58 +199,37 @@
     }
   }
 
-  // Reset Hero Form
-  function resetHeroForm() {
-    document.getElementById('ntHeroFormWrap').style.display = 'block';
-    document.getElementById('ntHeroSuccess').style.display = 'none';
-    var form = document.querySelector('.nt-hero-right .js-lead-form');
-    if(form) form.reset();
-    // Reset file upload UI as well
-    var wrap = document.getElementById('qfFileWrap');
-    if(wrap) {
-      wrap.classList.remove('has-file', 'err');
-      document.getElementById('qfFileMain').innerHTML = 'Logo &amp; site photo — drop or <a href="#" onclick="return false">browse</a>';
-      document.getElementById('qfFileHint').innerText = 'PNG, JPG, PDF, AI, EPS, SVG — Max 20 MB each';
-      document.getElementById('qfFileCheck').style.display = 'none';
-    }
-  }
-
-  // Handle File Selection (Green Tick & 20MB Validation)
+  // File Handler
   function handleFileSelect(input) {
-    var wrap = document.getElementById('qfFileWrap');
-    var main = document.getElementById('qfFileMain');
-    var hint = document.getElementById('qfFileHint');
-    var check = document.getElementById('qfFileCheck');
+    var area = document.getElementById('ntUploadArea');
+    var text = document.getElementById('ntUploadText');
+    var sub = document.getElementById('ntUploadSub');
     var errorSpan = document.querySelector('[data-error="image"]');
     
-    if(errorSpan) errorSpan.innerText = ''; // Clear previous submit error
-    wrap.classList.remove('err');
+    if(errorSpan) errorSpan.innerText = '';
+    area.classList.remove('err');
 
     if (input.files && input.files[0]) {
       var file = input.files[0];
-      if (file.size > 20971520) { // 20MB = 20 * 1024 * 1024 bytes
-        wrap.classList.add('err');
-        wrap.classList.remove('has-file');
-        main.innerHTML = 'Logo &amp; site photo — drop or <a href="#" onclick="return false">browse</a>';
-        hint.innerText = 'File exceeds 20MB limit.';
-        check.style.display = 'none';
-        input.value = ''; // Clear the file input
+      if (file.size > 20971520) { // 20MB
+        area.classList.add('err');
+        area.classList.remove('has-file');
+        text.innerText = 'File exceeds 20MB limit.';
+        sub.innerText = 'Please try a smaller file.';
+        input.value = ''; 
         if(errorSpan) {
           errorSpan.innerText = 'File size exceeds 20 MB limit.';
           errorSpan.style.display = 'block';
         }
       } else {
-        wrap.classList.add('has-file');
-        wrap.classList.remove('err');
-        main.innerText = file.name;
-        hint.innerText = 'Ready to send';
-        check.style.display = 'flex';
+        area.classList.add('has-file');
+        text.innerText = file.name;
+        sub.innerText = 'Ready to send';
       }
     } else {
-      wrap.classList.remove('has-file');
-      main.innerHTML = 'Logo &amp; site photo — drop or <a href="#" onclick="return false">browse</a>';
-      hint.innerText = 'PNG, JPG, PDF, AI, EPS, SVG — Max 20 MB each';
-      check.style.display = 'none';
+      area.classList.remove('has-file');
+      text.innerText = 'Click to browse or drag file here';
+      sub.innerText = 'PNG, JPG, PDF, AI, EPS up to 20MB';
     }
   }
 
@@ -493,8 +248,9 @@
 
     document.addEventListener('submit', function (e) {
       const form = e.target;
-      if (!form.classList.contains('js-lead-form')) return;
+      if (!form.classList.contains('js-lead-form') || form.dataset.leadFormBound === 'true') return;
       
+      form.dataset.leadFormBound = 'true'; 
       e.preventDefault();
       
       let isValid = true;
@@ -509,43 +265,32 @@
       const emailValue = emailInput ? emailInput.value.trim() : '';
       const phoneValue = phoneInput ? phoneInput.value.trim() : '';
 
-      // 1. Name Validation
-      const nameRegex = /^[a-zA-Z\s]+$/;
       if (nameValue === '') {
-        displayError(form, 'name', 'Name cannot be empty.');
-        isValid = false;
-      } else if (!nameRegex.test(nameValue)) {
-        displayError(form, 'name', 'Name can only contain letters and spaces.');
+        displayError(form, 'name', 'Name is required.');
         isValid = false;
       }
 
-      // 2. Email Validation
       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
       if (emailValue === '') {
-        displayError(form, 'email', 'Email cannot be empty.');
+        displayError(form, 'email', 'Email is required.');
         isValid = false;
       } else if (!emailRegex.test(emailValue)) {
-        displayError(form, 'email', 'Please enter a valid email format (must include @).');
+        displayError(form, 'email', 'Invalid email format.');
         isValid = false;
       }
 
-      // 3. Phone Validation
       const phoneRegex = /^[0-9+\-\s()]+$/;
       if (phoneValue === '') {
-        displayError(form, 'phone', 'Phone number cannot be empty.');
+        displayError(form, 'phone', 'Phone is required.');
         isValid = false;
       } else if (!phoneRegex.test(phoneValue)) {
-        displayError(form, 'phone', 'Only valid phone number characters are allowed.');
+        displayError(form, 'phone', 'Invalid phone characters.');
         isValid = false;
       }
 
-      // 4. Image Upload Validation
-      if (imageInput) {
+      if (imageInput && imageInput.files.length > 0) {
         const file = imageInput.files[0];
-        if (!file) {
-          displayError(form, 'image', 'Image upload is required.');
-          isValid = false;
-        } else if (file.size > 20971520) {
+        if (file.size > 20971520) {
           displayError(form, 'image', 'File size exceeds 20 MB limit.');
           isValid = false;
         }
@@ -556,11 +301,9 @@
         if (uuidInput) uuidInput.value = makeUuid();
         
         const submitBtn = form.querySelector('button[type="submit"]');
-        const originalBtnText = submitBtn ? submitBtn.innerHTML : '';
-        if(submitBtn) {
-          submitBtn.innerHTML = 'Sending...';
-          submitBtn.disabled = true;
-        }
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.innerHTML = 'Sending...';
+        submitBtn.disabled = true;
 
         const formData = new FormData(form);
         formData.append('page_url', window.location.href);
@@ -580,58 +323,34 @@
             return response.json();
         })
         .then(data => {
-          handleSuccessUI(form, nameValue, emailValue, phoneValue);
+          alert("Request Sent! We will send your mockup within 2 hours.");
+          submitBtn.innerHTML = "Thanks! Mockup coming within 2 hours.";
+          submitBtn.classList.add('success');
+          form.reset();
+          // Reset file UI
+          var area = document.getElementById('ntUploadArea');
+          if(area) {
+            area.classList.remove('has-file', 'err');
+            document.getElementById('ntUploadText').innerText = 'Click to browse or drag file here';
+            document.getElementById('ntUploadSub').innerText = 'PNG, JPG, PDF, AI, EPS up to 20MB';
+          }
         })
         .catch(error => {
-          console.error('Error:', error);
-          handleSuccessUI(form, nameValue, emailValue, phoneValue);
+          console.error('Server Error:', error);
+          let errorMsg = "Request Failed. Check Console (F12) for details.";
+          if (error && error.message) {
+            errorMsg = "Error: " + error.message;
+          } else if (error && error.errors) {
+            errorMsg = "Validation Error: " + Object.values(error.errors).join(' ');
+          }
+          alert(errorMsg);
+          submitBtn.innerHTML = originalBtnText; 
         })
         .finally(() => {
-          if(submitBtn) {
-            submitBtn.innerHTML = originalBtnText;
-            submitBtn.disabled = false;
-          }
+          submitBtn.disabled = false;
         });
       }
     });
-
-    function handleSuccessUI(form, nameValue, emailValue, phoneValue) {
-      var heroFormWrap = document.getElementById('ntHeroFormWrap');
-      if (heroFormWrap && heroFormWrap.contains(form)) {
-         document.getElementById('ntHeroFormWrap').style.display = 'none';
-         document.getElementById('ntHeroSuccess').style.display = 'block';
-         document.getElementById('sxName').innerText = nameValue.split(' ')[0] || 'friend';
-         document.getElementById('sxEmail').innerText = emailValue;
-         document.getElementById('sxPhone').innerText = phoneValue;
-         form.reset(); 
-         // Reset file UI after submit
-         var wrap = document.getElementById('qfFileWrap');
-         if(wrap) {
-            wrap.classList.remove('has-file', 'err');
-            document.getElementById('qfFileMain').innerHTML = 'Logo &amp; site photo — drop or <a href="#" onclick="return false">browse</a>';
-            document.getElementById('qfFileHint').innerText = 'PNG, JPG, PDF, AI, EPS, SVG — Max 20 MB each';
-            document.getElementById('qfFileCheck').style.display = 'none';
-         }
-         document.getElementById('ntHeroSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
-      } else {
-         var modalFormWrapper = document.getElementById('ntModalForm');
-         if (modalFormWrapper && modalFormWrapper.contains(form)) {
-            document.getElementById('ntModalForm').style.display = 'none';
-            document.getElementById('ntSuccessState').style.display = 'block';
-            document.getElementById('ntSuccessName').innerText = nameValue;
-            document.getElementById('ntSuccessEmail').innerText = emailValue;
-            document.getElementById('ntSuccessPhone').innerText = phoneValue;
-            form.reset(); 
-            var wrapModal = document.getElementById('qfFileWrapModal');
-            if(wrapModal) {
-               wrapModal.classList.remove('has-file', 'err');
-               document.getElementById('qfFileMainModal').innerHTML = 'Logo &amp; site photo — drop or <a href="#" onclick="return false">browse</a>';
-               document.getElementById('qfFileHintModal').innerText = 'PNG, JPG, PDF, AI, EPS, SVG — Max 20 MB';
-               document.getElementById('qfFileCheckModal').style.display = 'none';
-            }
-         }
-      }
-    }
 
     function displayError(form, fieldName, message) {
       const errorSpan = form.querySelector(`[data-error="${fieldName}"]`);
