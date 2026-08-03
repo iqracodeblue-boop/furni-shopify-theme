@@ -87,14 +87,24 @@
   .qf-textarea { padding: 10px 12px; resize: none; min-height: 38px; line-height: 1.45; }
   .qf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
+  /* Upload Box */
   .qf-file-wrap { position: relative; display: flex; flex-direction: row; align-items: center; gap: 10px; padding: 10px 12px; background: #fff; border: 2px dashed #ccc; border-radius: 8px; cursor: pointer; }
   .qf-file-wrap:hover { border-color: var(--accent); background: #f5faff; }
   .qf-file-wrap input[type='file'] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
   .qf-file-icon { color: var(--accent); flex-shrink: 0; width: 22px; height: 22px; }
-  .qf-file-text { display: flex; flex-direction: column; gap: 1px; }
-  .qf-file-main { font-size: 13px; font-weight: 600; color: #111; }
+  .qf-file-text { display: flex; flex-direction: column; gap: 1px; flex: 1; min-width: 0; }
+  .qf-file-main { font-size: 13px; font-weight: 600; color: #111; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .qf-file-main a { color: var(--accent); text-decoration: underline; }
   .qf-file-hint { font-size: 11px; color: #999; }
+
+  /* Green Tick & Error States for Upload */
+  .qf-check { display: none; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; background: #1d9b5e; border-radius: 50%; color: #fff; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
+  .qf-file-wrap.has-file .qf-check { display: flex; }
+  .qf-file-wrap.has-file .qf-file-icon { color: #1d9b5e; }
+  .qf-file-wrap.has-file .qf-file-hint { color: #1d9b5e; font-weight: 600; }
+  .qf-file-wrap.err { border-color: #c0392b; background: rgba(192, 57, 43, 0.05); }
+  .qf-file-wrap.err .qf-file-icon { color: #c0392b; }
+  .qf-file-wrap.err .qf-file-hint { color: #c0392b; font-weight: 600; }
 
   .qf-toggle-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
   .qf-toggle-btn { display: flex; align-items: center; justify-content: center; gap: 7px; background: #fff; border: 1.5px solid #ddd; border-radius: 8px; padding: 10px; font-family: var(--fb); font-size: 13.5px; font-weight: 500; color: #444; cursor: pointer; transition: 0.15s; }
@@ -247,13 +257,14 @@
               </div>
               <div class="qf-field">
                 <label class="qf-label">Upload your logo <span class="opt">Recommended</span></label>
-                <label class="qf-file-wrap">
+                <label class="qf-file-wrap" id="qfFileWrap">
                   <svg class="qf-file-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
                   <span class="qf-file-text">
-                    <span class="qf-file-main">Logo &amp; site photo — drop or <a href="#" onclick="return false">browse</a></span>
-                    <span class="qf-file-hint">PNG, JPG, PDF, AI, EPS, SVG — Max 20 MB each</span>
+                    <span class="qf-file-main" id="qfFileMain">Logo &amp; site photo — drop or <a href="#" onclick="return false">browse</a></span>
+                    <span class="qf-file-hint" id="qfFileHint">PNG, JPG, PDF, AI, EPS, SVG — Max 20 MB each</span>
                   </span>
-                  <input type="file" name="image" class="form-image" accept="image/*,.pdf,.ai,.eps" required>
+                  <span class="qf-check" id="qfFileCheck">✓</span>
+                  <input type="file" name="image" id="qfLogo" class="form-image" accept="image/*,.pdf,.ai,.eps" required onchange="handleFileSelect(this)">
                 </label>
                 <span class="error-text" data-error="image" style="color: red; font-size: 12px; display: block; margin-top: 4px;"></span>
               </div>
@@ -403,6 +414,53 @@
     document.getElementById('ntHeroSuccess').style.display = 'none';
     var form = document.querySelector('.nt-hero-right .js-lead-form');
     if(form) form.reset();
+    // Reset file upload UI as well
+    var wrap = document.getElementById('qfFileWrap');
+    if(wrap) {
+      wrap.classList.remove('has-file', 'err');
+      document.getElementById('qfFileMain').innerHTML = 'Logo &amp; site photo — drop or <a href="#" onclick="return false">browse</a>';
+      document.getElementById('qfFileHint').innerText = 'PNG, JPG, PDF, AI, EPS, SVG — Max 20 MB each';
+      document.getElementById('qfFileCheck').style.display = 'none';
+    }
+  }
+
+  // Handle File Selection (Green Tick & 20MB Validation)
+  function handleFileSelect(input) {
+    var wrap = document.getElementById('qfFileWrap');
+    var main = document.getElementById('qfFileMain');
+    var hint = document.getElementById('qfFileHint');
+    var check = document.getElementById('qfFileCheck');
+    var errorSpan = document.querySelector('[data-error="image"]');
+    
+    if(errorSpan) errorSpan.innerText = ''; // Clear previous submit error
+    wrap.classList.remove('err');
+
+    if (input.files && input.files[0]) {
+      var file = input.files[0];
+      if (file.size > 20971520) { // 20MB = 20 * 1024 * 1024 bytes
+        wrap.classList.add('err');
+        wrap.classList.remove('has-file');
+        main.innerHTML = 'Logo &amp; site photo — drop or <a href="#" onclick="return false">browse</a>';
+        hint.innerText = 'File exceeds 20MB limit.';
+        check.style.display = 'none';
+        input.value = ''; // Clear the file input
+        if(errorSpan) {
+          errorSpan.innerText = 'File size exceeds 20 MB limit.';
+          errorSpan.style.display = 'block';
+        }
+      } else {
+        wrap.classList.add('has-file');
+        wrap.classList.remove('err');
+        main.innerText = file.name;
+        hint.innerText = 'Ready to send';
+        check.style.display = 'flex';
+      }
+    } else {
+      wrap.classList.remove('has-file');
+      main.innerHTML = 'Logo &amp; site photo — drop or <a href="#" onclick="return false">browse</a>';
+      hint.innerText = 'PNG, JPG, PDF, AI, EPS, SVG — Max 20 MB each';
+      check.style.display = 'none';
+    }
   }
 
   // --- TASK 1 & 2: Form Validation, UUID Generation & API Submission ---
@@ -418,19 +476,15 @@
           });
     }
 
-    // Use a global event listener to handle dynamically inserted forms (like modals)
     document.addEventListener('submit', function (e) {
       const form = e.target;
       if (!form.classList.contains('js-lead-form') || form.dataset.leadFormBound === 'true') return;
       
-      form.dataset.leadFormBound = 'true'; // Mark as bound
-
+      form.dataset.leadFormBound = 'true'; 
       e.preventDefault();
-      let isValid = true;
       
-      form.querySelectorAll('.error-text').forEach((span) => {
-        span.innerText = '';
-      });
+      let isValid = true;
+      form.querySelectorAll('.error-text').forEach((span) => span.innerText = '');
 
       const nameInput = form.querySelector('[name="name"]');
       const emailInput = form.querySelector('[name="email"]');
@@ -471,21 +525,15 @@
         isValid = false;
       }
 
-      // 4. Image Upload Validation
+      // 4. Image Upload Validation (Double check on submit)
       if (imageInput) {
         const file = imageInput.files[0];
         if (!file) {
           displayError(form, 'image', 'Image upload is required.');
           isValid = false;
-        } else {
-          if (!file.type.startsWith('image/') && !['application/pdf', 'application/postscript'].includes(file.type)) {
-            displayError(form, 'image', 'Only image files are accepted.');
-            isValid = false;
-          }
-          if (file.size > 20971520) { // 20MB = 20 * 1024 * 1024 bytes
-            displayError(form, 'image', 'File size exceeds 20 MB limit.');
-            isValid = false;
-          }
+        } else if (file.size > 20971520) {
+          displayError(form, 'image', 'File size exceeds 20 MB limit.');
+          isValid = false;
         }
       }
 
@@ -535,7 +583,6 @@
     });
 
     function handleSuccessUI(form, nameValue, emailValue, phoneValue) {
-      // Check if we are inside the Hero Form
       var heroFormWrap = document.getElementById('ntHeroFormWrap');
       if (heroFormWrap && heroFormWrap.contains(form)) {
          document.getElementById('ntHeroFormWrap').style.display = 'none';
@@ -543,19 +590,16 @@
          document.getElementById('sxName').innerText = nameValue.split(' ')[0] || 'friend';
          document.getElementById('sxEmail').innerText = emailValue;
          document.getElementById('sxPhone').innerText = phoneValue;
-         form.reset(); // Clear form
-         document.getElementById('ntHeroSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
-      } else {
-         // For Sign Type Modal
-         var modalFormWrapper = document.getElementById('ntModalForm');
-         if (modalFormWrapper && modalFormWrapper.contains(form)) {
-            document.getElementById('ntModalForm').style.display = 'none';
-            document.getElementById('ntSuccessState').style.display = 'block';
-            document.getElementById('ntSuccessName').innerText = nameValue;
-            document.getElementById('ntSuccessEmail').innerText = emailValue;
-            document.getElementById('ntSuccessPhone').innerText = phoneValue;
-            form.reset(); 
+         form.reset(); 
+         // Reset file UI after submit
+         var wrap = document.getElementById('qfFileWrap');
+         if(wrap) {
+            wrap.classList.remove('has-file', 'err');
+            document.getElementById('qfFileMain').innerHTML = 'Logo &amp; site photo — drop or <a href="#" onclick="return false">browse</a>';
+            document.getElementById('qfFileHint').innerText = 'PNG, JPG, PDF, AI, EPS, SVG — Max 20 MB each';
+            document.getElementById('qfFileCheck').style.display = 'none';
          }
+         document.getElementById('ntHeroSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     }
 
