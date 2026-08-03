@@ -1,201 +1,373 @@
+<!-- sections/nt-quote-main.liquid -->
 <style>
-:root{
-  --ts-2xl:clamp(2.4rem,5vw,4.4rem); --navy:#111111; --navy-deep:#0a0a0a; --gold:#0188CC;
-  --cream:#ffffff; --cream-deep:#f5f5f5; --ink:#111111; --body:#333333; --muted:#666666;
-  --line:rgba(0,0,0,.07); --line2:rgba(0,0,0,.12); --red:#0188CC; --gold-line:rgba(1,136,204,.24);
-  --fh:'DM Serif Display',Georgia,serif; --fb:'Inter',system-ui,sans-serif;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-size:93%}
-body{font-family:var(--fb);background:var(--cream);color:var(--body);line-height:1.6;}
+  :root {
+    --fh-hero: 'DM Serif Display', Georgia, serif;
+    --fb: 'Inter', system-ui, sans-serif;
+    --accent: #0188cc;
+    --acch: #016da0;
+    --ink: #111111;
+    --muted: #666666;
+  }
 
-.quote-section{
-  background:var(--cream-deep);
-  padding:96px 48px;
-  position:relative;
-}
-.quote-inner{
-  max-width:980px;margin:0 auto;
-  background:#fff;
-  border-radius:20px;
-  overflow:hidden;
-  display:grid;grid-template-columns:.85fr 1fr;
-  box-shadow:0 24px 60px rgba(0,0,0,.14);
-  border:1px solid var(--line);
-}
-.quote-side{
-  background:linear-gradient(180deg,var(--navy) 0%,var(--navy-deep) 100%);
-  color:#fff;padding:48px 40px;
-  position:relative;overflow:hidden;
-}
-.quote-side::before{
-  content:"";position:absolute;inset:0;
-  background:radial-gradient(ellipse 70% 50% at 0% 100%,rgba(1,136,204,.16) 0%,transparent 70%);
-}
-.quote-side-inner{position:relative;z-index:1}
-.sec-label{
-  display:inline-flex;align-items:center;gap:8px;
-  font-family:var(--fb);font-size:.82rem;font-weight:700;
-  letter-spacing:.28em;text-transform:uppercase;
-  color:var(--red);margin-bottom:16px;
-}
-.sec-label::before{content:"";width:24px;height:1px;background:var(--red);}
-.sec-label::after{content:"";width:24px;height:1px;background:var(--red);}
-.quote-side .sec-label{color:var(--gold)}
-.quote-side .sec-label::before,.quote-side .sec-label::after{background:var(--gold)}
-.quote-side h3{
-  font-family:var(--fh);font-size:2rem;color:#fff;
-  line-height:1.1;margin-bottom:14px;font-weight:400;letter-spacing:-.01em;
-}
-.quote-side h3 em{font-style:italic;color:var(--gold)}
-.quote-side p{
-  font-family:var(--fb);font-size:.95rem;line-height:1.65;
-  color:rgba(255,255,255,.72);margin-bottom:28px;
-}
-.quote-side-list{list-style:none;display:flex;flex-direction:column;gap:14px}
-.quote-side-list li{
-  display:flex;align-items:flex-start;gap:11px;
-  font-family:var(--fb);font-size:.88rem;color:rgba(255,255,255,.88);line-height:1.5;
-}
-.quote-side-list li svg{
-  width:18px;height:18px;stroke:var(--gold);stroke-width:2.5;fill:none;
-  flex-shrink:0;margin-top:2px;
-}
+  .nt-hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: #0a0a0a;
+    background-image: url('https://i.ibb.co/gFdwCYNb/Chat-GPT-Image-Jun-29-2026-03-11-07-PM.png');
+    background-size: cover;
+    background-position: center 30%;
+    display: flex;
+    align-items: center;
+    padding: 80px 20px;
+  }
+  .nt-hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(100deg, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.78) 38%, rgba(0, 0, 0, 0.35) 58%, rgba(0, 0, 0, 0.1) 100%);
+  }
 
-.quote-form{padding:48px 40px;background:#fff}
-.qf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
-.qf-field{display:flex;flex-direction:column}
-.qf-field.full{grid-column:span 2}
-.qf-label{
-  font-family:var(--fb);font-size:.74rem;font-weight:700;
-  color:var(--ink);letter-spacing:.06em;text-transform:uppercase;
-  margin-bottom:7px;
-}
-.qf-label .req{color:var(--red)}
-.qf-input,.qf-select,.qf-textarea{
-  font-family:var(--fb);font-size:.92rem;
-  padding:13px 14px;border-radius:9px;
-  border:1.5px solid var(--line2);
-  background:var(--cream);color:var(--ink);
-  transition:border-color .2s,background .2s,box-shadow .2s;
-  width:100%;outline:none;
-}
-.qf-input:focus,.qf-select:focus,.qf-textarea:focus{
-  border-color:var(--gold);background:#fff;
-  box-shadow:0 0 0 4px rgba(1,136,204,.14);
-}
-.qf-textarea{resize:vertical;min-height:90px;font-family:var(--fb)}
-.qf-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23111111'%3E%3Cpath d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:16px;padding-right:38px}
-.qf-submit{
-  width:100%;background:var(--navy);color:#fff;
-  font-family:var(--fb);font-size:.95rem;font-weight:700;
-  padding:16px;border-radius:10px;
-  margin-top:6px;
-  display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  transition:background .25s,transform .2s,box-shadow .25s;
-  letter-spacing:.01em;cursor:pointer;
-}
-.qf-submit:hover{background:var(--navy-deep);transform:translateY(-1px);box-shadow:0 10px 26px rgba(0,0,0,.28)}
-.qf-submit svg{width:16px;height:16px;stroke:#fff;stroke-width:2.5;fill:none}
-.qf-note{
-  font-family:var(--fb);font-size:.72rem;color:var(--muted);
-  text-align:center;margin-top:14px;line-height:1.5;
-}
-.qf-note svg{width:11px;height:11px;stroke:var(--gold);stroke-width:2;fill:none;display:inline-block;vertical-align:-1px;margin-right:3px}
+  .nt-stage {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 460px);
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 48px;
+    gap: 64px;
+    width: 100%;
+  }
 
-@media(max-width:880px){
-  .quote-inner{grid-template-columns:1fr}
-  .quote-side{padding:36px 28px}
-  .quote-form{padding:36px 28px}
-  .quote-section{padding:64px 22px}
-  .qf-row{grid-template-columns:1fr;gap:14px}
-  .qf-field.full{grid-column:span 1}
-}
+  /* Left Side */
+  .nt-hero-left { display: flex; flex-direction: column; gap: 20px; padding-top: 40px; }
+  .nt-h2 { font-family: var(--fh-hero); font-size: 1.5rem; color: #fff; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
+  .nt-h3 { font-family: var(--fh-hero); font-size: clamp(28px, 3vw, 42px); color: #fff; line-height: 1.1; margin: 0; }
+  .nt-hero-sub { font-family: var(--fb); font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.5; max-width: 500px; margin-top: 10px; }
+  .nt-check-list { list-style: none; padding: 0; margin: 30px 0 0 0; display: flex; flex-direction: column; gap: 15px; }
+  .nt-check-item { display: flex; align-items: center; gap: 12px; font-family: var(--fb); font-size: 16px; color: rgba(255,255,255,0.9); }
+  .nt-check-item svg { width: 20px; height: 20px; background: var(--accent); border-radius: 50%; padding: 3px; box-sizing: border-box; fill: #fff; flex-shrink: 0; }
+
+  /* Right Side Form */
+  .nt-hero-right { background: #fff; border-radius: 12px; padding: 32px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); max-height: 90vh; overflow-y: auto; }
+  
+  .nt-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .nt-form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .nt-form-group.full { grid-column: span 2; }
+  
+  .nt-label { font-size: 13px; font-weight: 600; color: #333; }
+  .nt-input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-family: var(--fb); font-size: 14px; box-sizing: border-box; background: #f9f9f9; }
+  .nt-input:focus { border-color: var(--accent); outline: none; background: #fff; }
+  textarea.nt-input { resize: vertical; min-height: 80px; }
+  
+  .nt-submit-btn { width: 100%; background: var(--accent); color: #fff; border: none; padding: 16px; border-radius: 6px; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 10px; transition: background 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .nt-submit-btn:hover { background: var(--acch); }
+  .nt-submit-btn.success { background: #1d9b5e; }
+  
+  .nt-privacy { text-align: center; font-size: 11px; color: #888; margin-top: 12px; }
+
+  /* Upload Box (Simple) */
+  .nt-upload-area { border: 2px dashed #ccc; padding: 15px; border-radius: 8px; text-align: center; cursor: pointer; position: relative; }
+  .nt-upload-area:hover { border-color: var(--accent); background: #f8fdff; }
+  .nt-upload-area input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+  .nt-upload-icon { color: var(--accent); margin-bottom: 5px; }
+  .nt-upload-text { font-size: 13px; color: #555; font-weight: 600; }
+  .nt-upload-sub { font-size: 11px; color: #999; margin-top: 2px; }
+  .nt-upload-area.has-file { border-color: #1d9b5e; background: #f0fff4; }
+  .nt-upload-area.has-file .nt-upload-text { color: #1d9b5e; }
+  .nt-upload-area.err { border-color: #c0392b; background: #fff5f5; }
+  .nt-upload-area.err .nt-upload-text { color: #c0392b; }
+
+  @media (max-width: 1024px) {
+    .nt-stage { grid-template-columns: 1fr; padding: 0 20px; gap: 40px; }
+    .nt-hero-section { min-height: auto; padding: 60px 0; }
+    .nt-hero-left { padding-top: 0; text-align: center; }
+    .nt-check-list { align-items: center; }
+  }
 </style>
 
-<section class="quote-section" id="quote">
-  <div class="quote-inner">
-    <div class="quote-side">
-      <div class="quote-side-inner">
-        <span class="sec-label">Free Mockup</span>
-        <h3>Get a Free <em>Mockup in 2 Hours.</em></h3>
-        <p>Tell us a little about your business and the sign you have in mind. We will send a designed mockup on your actual storefront, with no obligation.</p>
-        <ul class="quote-side-list">
-          <li><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg>Free mockup, no commitment</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg>Designed by hand, not a template</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg>Transparent pricing up front</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg>Permit and install guidance included</li>
-        </ul>
-      </div>
+<section class="nt-hero-section">
+  <div class="nt-stage">
+    <!-- Left Side -->
+    <div class="nt-hero-left">
+      <h2 class="nt-h2">FREE MOCKUP</h2>
+      <h3 class="nt-h3">Get a Free Mockup in 2 Hours.</h3>
+      <p class="nt-hero-sub">Tell us about your project. We'll design a photoreal mockup on your building and send it back in 2 hours. No obligation, no deposit.</p>
+      <ul class="nt-check-list">
+        <li class="nt-check-item">
+          <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          Free mockup, no commitment
+        </li>
+        <li class="nt-check-item">
+          <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          Designed by hand, not a template
+        </li>
+        <li class="nt-check-item">
+          <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          Transparent pricing, no hidden fees
+        </li>
+        <li class="nt-check-item">
+          <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          Permit guidance included
+        </li>
+      </ul>
     </div>
 
-    <form class="quote-form" id="quoteForm" onsubmit="event.preventDefault();alert('Request Sent! We will send your mockup within 2 hours.');this.reset();">
-      <div class="qf-row">
-        <div class="qf-field">
-          <label class="qf-label" for="qf-name">Full Name <span class="req">*</span></label>
-          <input type="text" id="qf-name" class="qf-input" placeholder="John Carter" required>
+    <!-- Right Side Form -->
+    <div class="nt-hero-right">
+      <form class="js-lead-form" action="javascript:void(0)" novalidate>
+        <input type="hidden" name="uuid" class="form-uuid">
+        <input type="hidden" name="source" value="Free Mockup Form (Home)">
+        
+        <div class="nt-form-grid">
+          <div class="nt-form-group">
+            <label class="nt-label">Full Name *</label>
+            <input type="text" name="name" class="form-input nt-input">
+            <span class="error-text" data-error="name" style="color: red; font-size: 12px;"></span>
+          </div>
+          <div class="nt-form-group">
+            <label class="nt-label">Phone *</label>
+            <input type="tel" name="phone" class="form-input nt-input" oninput="formatPhone(this)">
+            <span class="error-text" data-error="phone" style="color: red; font-size: 12px;"></span>
+          </div>
+          <div class="nt-form-group full">
+            <label class="nt-label">Email *</label>
+            <input type="email" name="email" class="form-input nt-input">
+            <span class="error-text" data-error="email" style="color: red; font-size: 12px;"></span>
+          </div>
+          <div class="nt-form-group full">
+            <label class="nt-label">Business Name</label>
+            <input type="text" name="business_name" class="nt-input">
+          </div>
+          <div class="nt-form-group">
+            <label class="nt-label">Sign Type</label>
+            <select name="sign_type" class="nt-input">
+              <option value="">Select Type</option>
+              <option value="Storefront Sign">Storefront Sign</option>
+              <option value="Reception Sign">Reception Sign</option>
+              <option value="Metal Backlit">Metal Backlit</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="nt-form-group">
+            <label class="nt-label">State</label>
+            <input type="text" name="state" class="nt-input" placeholder="e.g. NY">
+          </div>
+          <div class="nt-form-group full">
+            <label class="nt-label">Project Details</label>
+            <textarea name="details" class="nt-input" rows="3" placeholder="Tell us about your sign needs..."></textarea>
+          </div>
+          <div class="nt-form-group full">
+            <label class="nt-label">Upload Logo (Optional)</label>
+            <div class="nt-upload-area" id="ntUploadArea" onclick="document.getElementById('ntFileInput').click()">
+              <div class="nt-upload-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              </div>
+              <div class="nt-upload-text" id="ntUploadText">Click to browse or drag file here</div>
+              <div class="nt-upload-sub" id="ntUploadSub">PNG, JPG, PDF, AI, EPS up to 20MB</div>
+              <input type="file" name="image" id="ntFileInput" class="form-image" accept="image/*,.pdf,.ai,.eps" style="display:none;" onchange="handleFileSelect(this)">
+            </div>
+            <span class="error-text" data-error="image" style="color: red; font-size: 12px;"></span>
+          </div>
         </div>
-        <div class="qf-field">
-          <label class="qf-label" for="qf-phone">Phone <span class="req">*</span></label>
-          <input type="tel" id="qf-phone" class="qf-input" placeholder="(555) 123-4567" required>
-        </div>
-      </div>
-      <div class="qf-row">
-        <div class="qf-field">
-          <label class="qf-label" for="qf-email">Email <span class="req">*</span></label>
-          <input type="email" id="qf-email" class="qf-input" placeholder="you@business.com" required>
-        </div>
-        <div class="qf-field">
-          <label class="qf-label" for="qf-business">Business Name</label>
-          <input type="text" id="qf-business" class="qf-input" placeholder="Your business">
-        </div>
-      </div>
-      <div class="qf-row">
-        <div class="qf-field">
-          <label class="qf-label" for="qf-type">Sign Type <span class="req">*</span></label>
-          <select id="qf-type" class="qf-select" required>
-            <option value="">Select sign type</option>
-            <option>Storefront signs</option>
-            <option>Reception &amp; studio signs</option>
-            <option>Medical and Clinic signs</option>
-            <option>Coffee shops and restaurants</option>
-            <option>Gym, Spa &amp; Salon signs</option>
-            <option>Auto Services &amp; Real Estate</option>
-            <option>Lobby &amp; Interior Signs</option>
-            <option>Other / Browse All Signs</option>
-            <option>Not sure yet</option>
-          </select>
-        </div>
-        <div class="qf-field">
-          <label class="qf-label" for="qf-state">State</label>
-          <input type="text" id="qf-state" class="qf-input" placeholder="e.g. Texas">
-        </div>
-      </div>
-      <div class="qf-row">
-        <div class="qf-field full">
-          <label class="qf-label" for="qf-msg">Project Details</label>
-          <textarea id="qf-msg" class="qf-textarea" placeholder="Approximate size, dimensions, timeline, or any reference images you have..."></textarea>
-        </div>
-      </div>
-      <button type="submit" class="qf-submit">
-        Send Me My Free Mockup
-        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </button>
-      <p class="qf-note">
-        <svg viewBox="0 0 24 24"><path d="M12 2L3 7v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7l-9-5z"/></svg>
-        Your information is private. We never sell, share or spam.
-      </p>
-    </form>
+
+        <button type="submit" class="nt-submit-btn">
+          Send Me My Free Mockup →
+        </button>
+        <p class="nt-privacy">Your information is private and never shared.</p>
+      </form>
+    </div>
   </div>
 </section>
+
+<script>
+  // Phone Formatter
+  function formatPhone(input) {
+    let digits = input.value.replace(/\D/g, '');
+    if (digits.length > 10) digits = digits.slice(0, 10);
+    if (digits.length > 6) {
+      input.value = `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+    } else if (digits.length > 3) {
+      input.value = `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+    } else if (digits.length > 0) {
+      input.value = `(${digits}`;
+    } else {
+      input.value = '';
+    }
+  }
+
+  // File Handler
+  function handleFileSelect(input) {
+    var area = document.getElementById('ntUploadArea');
+    var text = document.getElementById('ntUploadText');
+    var sub = document.getElementById('ntUploadSub');
+    var errorSpan = document.querySelector('[data-error="image"]');
+    
+    if(errorSpan) errorSpan.innerText = '';
+    area.classList.remove('err');
+
+    if (input.files && input.files[0]) {
+      var file = input.files[0];
+      if (file.size > 20971520) { // 20MB
+        area.classList.add('err');
+        area.classList.remove('has-file');
+        text.innerText = 'File exceeds 20MB limit.';
+        sub.innerText = 'Please try a smaller file.';
+        input.value = ''; 
+        if(errorSpan) {
+          errorSpan.innerText = 'File size exceeds 20 MB limit.';
+          errorSpan.style.display = 'block';
+        }
+      } else {
+        area.classList.add('has-file');
+        text.innerText = file.name;
+        sub.innerText = 'Ready to send';
+      }
+    } else {
+      area.classList.remove('has-file');
+      text.innerText = 'Click to browse or drag file here';
+      sub.innerText = 'PNG, JPG, PDF, AI, EPS up to 20MB';
+    }
+  }
+
+  // --- TASK 1 & 2: Form Validation, UUID Generation & API Submission ---
+  if (!window.ntLeadFormScriptLoaded) {
+    window.ntLeadFormScriptLoaded = true;
+
+    function makeUuid() {
+      return window.crypto && window.crypto.randomUUID
+        ? window.crypto.randomUUID()
+        : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            var r = (Math.random() * 16) | 0;
+            return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
+          });
+    }
+
+    document.addEventListener('submit', function (e) {
+      const form = e.target;
+      if (!form.classList.contains('js-lead-form')) return;
+      
+      e.preventDefault(); // Pehle default submit rokdo taake browser popup na aaye
+      
+      if (form.dataset.leadFormBound === 'true') return; // Agar pehle se process ho raha hai toh dobara mat karo
+      form.dataset.leadFormBound = 'true'; 
+      
+      let isValid = true;
+      form.querySelectorAll('.error-text').forEach((span) => span.innerText = '');
+
+      const nameInput = form.querySelector('[name="name"]');
+      const emailInput = form.querySelector('[name="email"]');
+      const phoneInput = form.querySelector('[name="phone"]');
+      const imageInput = form.querySelector('[name="image"]');
+
+      const nameValue = nameInput ? nameInput.value.trim() : '';
+      const emailValue = emailInput ? emailInput.value.trim() : '';
+      const phoneValue = phoneInput ? phoneInput.value.trim() : '';
+
+      if (nameValue === '') {
+        displayError(form, 'name', 'Name is required.');
+        isValid = false;
+      }
+
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (emailValue === '') {
+        displayError(form, 'email', 'Email is required.');
+        isValid = false;
+      } else if (!emailRegex.test(emailValue)) {
+        displayError(form, 'email', 'Invalid email format.');
+        isValid = false;
+      }
+
+      const phoneRegex = /^[0-9+\-\s()]+$/;
+      if (phoneValue === '') {
+        displayError(form, 'phone', 'Phone is required.');
+        isValid = false;
+      } else if (!phoneRegex.test(phoneValue)) {
+        displayError(form, 'phone', 'Invalid phone characters.');
+        isValid = false;
+      }
+
+      if (imageInput && imageInput.files.length > 0) {
+        const file = imageInput.files[0];
+        if (file.size > 20971520) {
+          displayError(form, 'image', 'File size exceeds 20 MB limit.');
+          isValid = false;
+        }
+      }
+
+      if (isValid) {
+        const uuidInput = form.querySelector('.form-uuid');
+        if (uuidInput) uuidInput.value = makeUuid();
+        
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.innerHTML = 'Sending...';
+        submitBtn.disabled = true;
+
+        const formData = new FormData(form);
+        formData.append('page_url', window.location.href);
+
+        fetch('https://encroach-viscous-rectangle.ngrok-free.dev/api/leads', {
+          method: 'POST',
+          body: formData,
+          headers: { 
+            'Accept': 'application/json',
+            'ngrok-skip-browser-warning': 'true' 
+          }
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(err => { throw err; });
+            }
+            return response.json();
+        })
+        .then(data => {
+          alert("Request Sent! We will send your mockup within 2 hours.");
+          submitBtn.innerHTML = "Thanks! Mockup coming within 2 hours.";
+          submitBtn.classList.add('success');
+          form.reset();
+          // Reset file UI
+          var area = document.getElementById('ntUploadArea');
+          if(area) {
+            area.classList.remove('has-file', 'err');
+            document.getElementById('ntUploadText').innerText = 'Click to browse or drag file here';
+            document.getElementById('ntUploadSub').innerText = 'PNG, JPG, PDF, AI, EPS up to 20MB';
+          }
+        })
+        .catch(error => {
+          console.error('Server Error:', error);
+          let errorMsg = "Request Failed. Check Console (F12) for details.";
+          if (error && error.message) {
+            errorMsg = "Error: " + error.message;
+          } else if (error && error.errors) {
+            errorMsg = "Validation Error: " + Object.values(error.errors).join(' ');
+          }
+          alert(errorMsg);
+          submitBtn.innerHTML = originalBtnText; 
+        })
+        .finally(() => {
+          submitBtn.disabled = false;
+        });
+      }
+    });
+
+    function displayError(form, fieldName, message) {
+      const errorSpan = form.querySelector(`[data-error="${fieldName}"]`);
+      if (errorSpan) {
+        errorSpan.innerText = message;
+        errorSpan.style.display = 'block';
+      }
+    }
+  }
+</script>
 
 {% schema %}
 {
   "name": "NT Quote Main",
-  "presets": [
-    {
-      "name": "NT Quote Main"
-    }
-  ]
+  "settings": [],
+  "presets": [{"name": "NT Quote Main"}]
 }
 {% endschema %}
